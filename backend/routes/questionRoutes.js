@@ -4,12 +4,14 @@ const router = express.Router();
 
 const {
     getQuestions,
+    getRandomQuestion,
     createQuestion,
     updateQuestion,
     deleteQuestion
 } = require('../controllers/questionController');
 
 router.get('/', getQuestions);
+router.get('/random', getRandomQuestion);
 
 router.post('/', createQuestion);
 

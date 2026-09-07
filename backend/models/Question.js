@@ -1,38 +1,57 @@
 const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({
-
     company: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
-
-    category: {
+    title: {
+        type: String,
+        default: 'Interview Problem'
+    },
+    problemStatement: {
         type: String,
         required: true
     },
-
-    question: {
+    constraints: [{
+        type: String
+    }],
+    recollectionType: {
         type: String,
-        required: true
+        enum: ['original', 'randomised', 'constraint'],
+        default: 'randomised'
     },
-
     difficulty: {
         type: String,
-        required: true
+        enum: ['Easy', 'Medium', 'Hard'],
+        default: 'Medium'
     },
-
+    category: {
+        type: String,
+        default: 'DSA'
+    },
+    round: {
+        type: String,
+        default: 'Technical Round'
+    },
     source: {
         type: String,
-        required: true
+        default: 'Interview Experience'
     },
-
     sourceUrl: {
-        type: String,
-        required: true
-    }
-
-});
+        type: String
+    },
+    matchedProblems: [{
+        platform: {
+            type: String,
+            enum: ['LeetCode', 'Codeforces', 'GeeksforGeeks']
+        },
+        problemName: String,
+        problemUrl: String,
+        similarityScore: Number
+    }]
+}, { timestamps: true });
 
 const Question = mongoose.model('Question', questionSchema);
 
