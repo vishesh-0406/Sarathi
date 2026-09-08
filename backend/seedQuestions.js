@@ -9,10 +9,13 @@ const sampleCompanies = [
     { name: 'Accenture', type: 'service' },
     { name: 'Wipro', type: 'service' },
     { name: 'Cognizant', type: 'service' },
+    { name: 'Capgemini', type: 'service' },
     { name: 'Amazon', type: 'product' },
-    { name: 'Microsoft', type: 'product' },
     { name: 'Google', type: 'product' },
-    { name: 'Adobe', type: 'product' }
+    { name: 'Microsoft', type: 'product' },
+    { name: 'Adobe', type: 'product' },
+    { name: 'Oracle', type: 'product' },
+    { name: 'Salesforce', type: 'product' }
 ];
 
 const sampleQuestions = [

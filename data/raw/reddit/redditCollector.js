@@ -12,9 +12,15 @@ const TARGET_COMPANIES = [
     { name: 'TCS', type: 'service' },
     { name: 'Infosys', type: 'service' },
     { name: 'Wipro', type: 'service' },
+    { name: 'Accenture', type: 'service' },
+    { name: 'Cognizant', type: 'service' },
+    { name: 'Capgemini', type: 'service' },
     { name: 'Amazon', type: 'product' },
     { name: 'Google', type: 'product' },
-    { name: 'Microsoft', type: 'product' }
+    { name: 'Microsoft', type: 'product' },
+    { name: 'Adobe', type: 'product' },
+    { name: 'Oracle', type: 'product' },
+    { name: 'Salesforce', type: 'product' }
 ];
 
 /**
@@ -212,10 +218,15 @@ async function collectRedditPosts() {
 
     let posts;
     try {
-        const { getAllExpandedPosts } = require('./questionExpander');
-        posts = getAllExpandedPosts();
+        const { getAll12CompanyQuestions } = require('../../banks');
+        posts = getAll12CompanyQuestions();
     } catch (e) {
-        posts = [...AUTHENTIC_CANDIDATE_POSTS];
+        try {
+            const { getAllExpandedPosts } = require('./questionExpander');
+            posts = getAllExpandedPosts();
+        } catch (err) {
+            posts = [...AUTHENTIC_CANDIDATE_POSTS];
+        }
     }
 
     // Check if Reddit API credentials exist in environment
