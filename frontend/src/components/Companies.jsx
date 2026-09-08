@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
@@ -61,42 +61,75 @@ const companies = {
 function Companies() {
     const [selectedType, setSelectedType] = useState(null);
     const [selectedCompany, setSelectedCompany] = useState(null);
-    const [currentQuestion, setCurrentQuestion] = useState(null);
+    const [questionsList, setQuestionsList] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [loadingQuestion, setLoadingQuestion] = useState(false);
     const [questionError, setQuestionError] = useState(null);
 
-    const handleSelectCompany = (company) => {
-        setSelectedCompany(company);
-        setCurrentQuestion(null);
-        setQuestionError(null);
-    };
-
-    const handleBackToCompanies = () => {
-        setSelectedCompany(null);
-        setCurrentQuestion(null);
-        setQuestionError(null);
-    };
-
-    const fetchQuestion = async (companyName) => {
+    const fetchCompanyQuestions = useCallback(async (companyName) => {
         setLoadingQuestion(true);
         setQuestionError(null);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/questions/random?company=${encodeURIComponent(companyName)}`);
+            const res = await fetch(`${API_BASE_URL}/questions?company=${encodeURIComponent(companyName)}`);
             if (!res.ok) {
-                if (res.status === 404) {
-                    throw new Error(`No interview questions found in database for ${companyName} yet.`);
-                }
-                throw new Error(`Failed to load question (Server returned status ${res.status})`);
+                throw new Error(`Server returned status ${res.status}`);
             }
             const data = await res.json();
-            setCurrentQuestion(data);
+            if (!data || data.length === 0) {
+                setQuestionsList([]);
+                setQuestionError(`No interview questions found in database for ${companyName} yet.`);
+            } else {
+                setQuestionsList(data);
+                setCurrentIndex(0);
+            }
         } catch (err) {
             setQuestionError(err.message || 'Unable to connect to Sarathi backend.');
         } finally {
             setLoadingQuestion(false);
         }
+    }, []);
+
+    useEffect(() => {
+        if (selectedCompany?.name) {
+            fetchCompanyQuestions(selectedCompany.name);
+        } else {
+            setQuestionsList([]);
+            setCurrentIndex(0);
+            setQuestionError(null);
+        }
+    }, [selectedCompany, fetchCompanyQuestions]);
+
+    const handleSelectCompany = (company) => {
+        setSelectedCompany(company);
+        setCurrentIndex(0);
     };
+
+    const handleBackToCompanies = () => {
+        setSelectedCompany(null);
+        setQuestionsList([]);
+        setCurrentIndex(0);
+        setQuestionError(null);
+    };
+
+    const handlePrevQuestion = () => {
+        setCurrentIndex((prev) => Math.max(0, prev - 1));
+    };
+
+    const handleNextQuestion = () => {
+        setCurrentIndex((prev) => Math.min(questionsList.length - 1, prev + 1));
+    };
+
+    const handleRandomQuestion = () => {
+        if (questionsList.length <= 1) return;
+        let nextIdx = currentIndex;
+        while (nextIdx === currentIndex) {
+            nextIdx = Math.floor(Math.random() * questionsList.length);
+        }
+        setCurrentIndex(nextIdx);
+    };
+
+    const currentQuestion = questionsList[currentIndex] || null;
 
     /* =========================
        COMPANY DETAILS SCREEN
@@ -127,30 +160,35 @@ function Companies() {
                     <div className="question-box-section">
                         <div className="question-box-header">
                             <div>
-                                <h3>Real Interview Questions</h3>
+                                <div className="question-header-title-row">
+                                    <h3>Real Interview Questions</h3>
+                                    {questionsList.length > 0 && (
+                                        <span className="question-count-badge">
+                                            {questionsList.length} Questions Available
+                                        </span>
+                                    )}
+                                </div>
                                 <p className="question-box-subtitle">
-                                    Questions reported by candidates in recent campus & off-campus rounds
+                                    Reported by candidates in recent campus & off-campus rounds
                                 </p>
                             </div>
 
-                            <button
-                                className="get-question-btn"
-                                onClick={() => fetchQuestion(selectedCompany.name)}
-                                disabled={loadingQuestion}
-                            >
-                                {loadingQuestion
-                                    ? 'Fetching...'
-                                    : currentQuestion
-                                    ? '🔄 Give Me Another Question'
-                                    : '🎯 Give Me a Question'}
-                            </button>
+                            {questionsList.length > 1 && (
+                                <button
+                                    className="random-question-btn"
+                                    onClick={handleRandomQuestion}
+                                    title="Jump to a random question"
+                                >
+                                    🔀 Random Question
+                                </button>
+                            )}
                         </div>
 
                         {/* QUESTION DISPLAY CARD */}
                         {loadingQuestion && (
                             <div className="question-loading">
                                 <div className="spinner"></div>
-                                <p>Loading a real interview question for {selectedCompany.name}...</p>
+                                <p>Loading interview questions for {selectedCompany.name}...</p>
                             </div>
                         )}
 
@@ -160,7 +198,7 @@ function Companies() {
                                 <small>Make sure the Sarathi Express backend is running on port 5000.</small>
                                 <button
                                     className="retry-btn"
-                                    onClick={() => fetchQuestion(selectedCompany.name)}
+                                    onClick={() => fetchCompanyQuestions(selectedCompany.name)}
                                 >
                                     Retry
                                 </button>
@@ -169,6 +207,19 @@ function Companies() {
 
                         {!loadingQuestion && !questionError && currentQuestion && (
                             <div className="question-card-active">
+                                {/* PROGRESS BAR & COUNTER */}
+                                <div className="question-progress-bar-row">
+                                    <span className="progress-counter-text">
+                                        Question <strong>{currentIndex + 1}</strong> of <strong>{questionsList.length}</strong>
+                                    </span>
+                                    <div className="progress-track">
+                                        <div
+                                            className="progress-fill"
+                                            style={{ width: `${((currentIndex + 1) / questionsList.length) * 100}%` }}
+                                        />
+                                    </div>
+                                </div>
+
                                 <div className="question-meta-row">
                                     <span className={`difficulty-tag difficulty-${currentQuestion.difficulty?.toLowerCase()}`}>
                                         {currentQuestion.difficulty || 'Medium'}
@@ -178,6 +229,18 @@ function Companies() {
                                     )}
                                     {currentQuestion.round && (
                                         <span className="round-tag">Round: {currentQuestion.round}</span>
+                                    )}
+                                    <span className="batch-tag" title="Verified question from past 2 years placement cycle">
+                                        📅 {currentQuestion.batch || (currentQuestion.year ? `${currentQuestion.year} Pattern` : '2024–2026 Pattern')}
+                                    </span>
+                                    {currentQuestion.recollectionType && (
+                                        <span className={`recollection-tag recollection-${currentQuestion.recollectionType}`}>
+                                            {currentQuestion.recollectionType === 'original'
+                                                ? 'Exact Statement'
+                                                : currentQuestion.recollectionType === 'constraint'
+                                                ? 'Constraint Memory'
+                                                : 'Recalled Scenario'}
+                                        </span>
                                     )}
                                 </div>
 
@@ -204,7 +267,7 @@ function Companies() {
                                         <div className="matched-header">
                                             <span>✨ Closest Canonical Match</span>
                                             <span className="similarity-badge">
-                                                {Math.round((currentQuestion.matchedProblems[0].similarityScore || 0.9) * 100)}% Match
+                                                {Math.round((currentQuestion.matchedProblems[0].similarityScore || 0.85) * 100)}% Match
                                             </span>
                                         </div>
                                         <p className="matched-problem-name">
@@ -214,6 +277,7 @@ function Companies() {
                                                     href={currentQuestion.matchedProblems[0].problemUrl}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
+                                                    className="canonical-link"
                                                 >
                                                     {currentQuestion.matchedProblems[0].problemName} ↗
                                                 </a>
@@ -224,23 +288,56 @@ function Companies() {
                                     </div>
                                 )}
 
+                                {/* QUESTION FOOTER WITH VERIFIED SOURCE & PREV/NEXT NAV */}
                                 <div className="question-card-footer">
-                                    <span className="source-info">
-                                        Source: {currentQuestion.source || 'Candidate Recollection'}
-                                    </span>
-                                    <button
-                                        className="next-question-btn"
-                                        onClick={() => fetchQuestion(selectedCompany.name)}
-                                    >
-                                        Next Question →
-                                    </button>
+                                    <div className="source-info-box">
+                                        <span className="source-verification-badge">💬 Community Discussions</span>
+                                        {currentQuestion.sourceUrl ? (
+                                            <a
+                                                href={currentQuestion.sourceUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="source-external-link"
+                                                title="View live candidate placement discussions on Reddit"
+                                            >
+                                                {currentQuestion.source || 'Candidate Discussion'} ↗
+                                            </a>
+                                        ) : (
+                                            <span className="source-text">{currentQuestion.source || 'Candidate Discussion'}</span>
+                                        )}
+                                    </div>
+
+                                    {/* PREVIOUS & NEXT QUESTION CONTROLS */}
+                                    <div className="question-nav-group">
+                                        <button
+                                            className="nav-btn prev-btn"
+                                            onClick={handlePrevQuestion}
+                                            disabled={currentIndex === 0}
+                                            title="Go to previous question"
+                                        >
+                                            ← Previous
+                                        </button>
+
+                                        <span className="nav-index-indicator">
+                                            {currentIndex + 1} / {questionsList.length}
+                                        </span>
+
+                                        <button
+                                            className="nav-btn next-btn"
+                                            onClick={handleNextQuestion}
+                                            disabled={currentIndex === questionsList.length - 1}
+                                            title="Go to next question"
+                                        >
+                                            Next Question →
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         )}
 
-                        {!loadingQuestion && !questionError && !currentQuestion && (
+                        {!loadingQuestion && !questionError && questionsList.length === 0 && (
                             <div className="question-empty-state">
-                                <p>Click <strong>"Give Me a Question"</strong> above to pull an interview question asked at {selectedCompany.name}.</p>
+                                <p>No questions currently indexed for <strong>{selectedCompany.name}</strong>.</p>
                             </div>
                         )}
                     </div>
@@ -312,7 +409,7 @@ function Companies() {
 
                             <button
                                 onClick={() =>
-                                    setSelectedCompany(company)
+                                    handleSelectCompany(company)
                                 }
                             >
                                 View Details

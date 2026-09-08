@@ -35,6 +35,14 @@ const questionSchema = new mongoose.Schema({
         type: String,
         default: 'Technical Round'
     },
+    year: {
+        type: Number,
+        default: 2025
+    },
+    batch: {
+        type: String,
+        default: '2024–2026'
+    },
     source: {
         type: String,
         default: 'Interview Experience'

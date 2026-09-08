@@ -318,9 +318,26 @@ async function seed() {
         console.log(`Seeded ${sampleCompanies.length} companies.`);
 
         // Clear and seed Questions
+        const fs = require('fs');
+        const path = require('path');
+        const processedPath = path.join(__dirname, '../data/processed_questions.json');
+        let questionsToSeed = sampleQuestions;
+
+        if (fs.existsSync(processedPath)) {
+            try {
+                const processed = JSON.parse(fs.readFileSync(processedPath, 'utf-8'));
+                if (Array.isArray(processed) && processed.length > 0) {
+                    questionsToSeed = processed;
+                    console.log(`Loaded ${processed.length} dynamically processed & matched questions from data pipeline.`);
+                }
+            } catch (e) {
+                console.warn('Could not load processed_questions.json, using built-in samples:', e.message);
+            }
+        }
+
         await Question.deleteMany({});
-        const inserted = await Question.insertMany(sampleQuestions);
-        console.log(`Successfully seeded ${inserted.length} interview questions across companies!`);
+        const inserted = await Question.insertMany(questionsToSeed);
+        console.log(`Successfully seeded ${inserted.length} interview questions across companies into MongoDB!`);
 
         process.exit(0);
     } catch (err) {
