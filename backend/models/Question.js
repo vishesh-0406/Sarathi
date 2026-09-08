@@ -29,11 +29,30 @@ const questionSchema = new mongoose.Schema({
     },
     category: {
         type: String,
+        enum: ['DSA', 'Interview', 'Aptitude'],
         default: 'DSA'
+    },
+    topic: {
+        type: String,
+        default: 'General'
     },
     round: {
         type: String,
         default: 'Technical Round'
+    },
+    // For Aptitude MCQs
+    options: [{
+        type: String
+    }],
+    correctOption: {
+        type: String
+    },
+    explanation: {
+        type: String
+    },
+    // For HR & Technical Interviews (STAR Method / Evaluation Tips)
+    answerTips: {
+        type: String
     },
     year: {
         type: Number,

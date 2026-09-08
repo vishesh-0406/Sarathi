@@ -1,8 +1,22 @@
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Companies from './components/Companies';
+import DSA from './components/DSA';
+import Aptitude from './components/Aptitude';
+import Interviews from './components/Interviews';
 
 function App() {
+    const [activePrepSection, setActivePrepSection] = useState(null);
+
+    const openSection = (sectionName) => {
+        setActivePrepSection(sectionName);
+        setTimeout(() => {
+            const el = document.getElementById('preparation');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+    };
+
     return (
         <>
             <Navbar />
@@ -40,31 +54,47 @@ function App() {
                     <h2>What can Sarathi help you with?</h2>
 
                     <div className="feature-container">
-                        <div className="feature-card">
+                        <div
+                            className="feature-card clickable"
+                            onClick={() => {
+                                document.getElementById('companies').scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            }}
+                        >
                             <h3>Companies</h3>
                             <p>
-                                Explore companies and their hiring process.
+                                Explore 12 top companies and 600 verified hiring patterns.
                             </p>
                         </div>
 
-                        <div className="feature-card">
+                        <div
+                            className="feature-card clickable"
+                            onClick={() => openSection('dsa')}
+                        >
                             <h3>DSA</h3>
                             <p>
-                                Prepare coding and data structures topics.
+                                Practice 600 LeetCode-matched coding problems by topic.
                             </p>
                         </div>
 
-                        <div className="feature-card">
+                        <div
+                            className="feature-card clickable"
+                            onClick={() => openSection('aptitude')}
+                        >
                             <h3>Aptitude</h3>
                             <p>
-                                Practice aptitude and reasoning resources.
+                                Practice Quantitative, Logical, and Verbal tests with instant checks.
                             </p>
                         </div>
 
-                        <div className="feature-card">
+                        <div
+                            className="feature-card clickable"
+                            onClick={() => openSection('interviews')}
+                        >
                             <h3>Interviews</h3>
                             <p>
-                                Prepare for technical and HR interviews.
+                                Prepare for HR, Core CS, and Behavioral rounds from LinkedIn.
                             </p>
                         </div>
                     </div>
@@ -83,41 +113,57 @@ function App() {
                    ========================= */}
 
                 <section id="preparation" className="preparation-section">
-                    <h2>Preparation</h2>
+                    {activePrepSection === 'dsa' && (
+                        <DSA onBack={() => setActivePrepSection(null)} />
+                    )}
 
-                    <p className="section-intro">
-                        Build your placement preparation with focused
-                        practice areas.
-                    </p>
+                    {activePrepSection === 'aptitude' && (
+                        <Aptitude onBack={() => setActivePrepSection(null)} />
+                    )}
 
-                    <div className="preparation-container">
-                        <div className="preparation-card">
-                            <h3>DSA</h3>
-                            <p>
-                                Practice data structures and algorithms
-                                for coding rounds.
+                    {activePrepSection === 'interviews' && (
+                        <Interviews onBack={() => setActivePrepSection(null)} />
+                    )}
+
+                    {!activePrepSection && (
+                        <>
+                            <h2>Preparation</h2>
+
+                            <p className="section-intro">
+                                Build your placement preparation with focused
+                                practice areas powered by Reddit, LinkedIn, and X.
                             </p>
-                            <button>Explore DSA</button>
-                        </div>
 
-                        <div className="preparation-card">
-                            <h3>Aptitude</h3>
-                            <p>
-                                Improve quantitative aptitude, logical
-                                reasoning, and problem solving.
-                            </p>
-                            <button>Practice Aptitude</button>
-                        </div>
+                            <div className="preparation-container">
+                                <div className="preparation-card">
+                                    <h3>DSA</h3>
+                                    <p>
+                                        Practice 600 data structures & algorithm problems
+                                        dynamically matched to canonical LeetCode challenges.
+                                    </p>
+                                    <button onClick={() => openSection('dsa')}>Explore DSA</button>
+                                </div>
 
-                        <div className="preparation-card">
-                            <h3>Interviews</h3>
-                            <p>
-                                Prepare for technical and HR interview
-                                rounds.
-                            </p>
-                            <button>Prepare for Interviews</button>
-                        </div>
-                    </div>
+                                <div className="preparation-card">
+                                    <h3>Aptitude</h3>
+                                    <p>
+                                        Improve quantitative aptitude, logical
+                                        reasoning, and verbal ability with step-by-step math solutions.
+                                    </p>
+                                    <button onClick={() => openSection('aptitude')}>Practice Aptitude</button>
+                                </div>
+
+                                <div className="preparation-card">
+                                    <h3>Interviews</h3>
+                                    <p>
+                                        Prepare for technical (DBMS, OS, OOP) and HR behavioral
+                                        interview rounds with STAR answer guidelines from LinkedIn.
+                                    </p>
+                                    <button onClick={() => openSection('interviews')}>Prepare for Interviews</button>
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </section>
 
 

@@ -323,24 +323,58 @@ async function seed() {
         // Clear and seed Questions
         const fs = require('fs');
         const path = require('path');
-        const processedPath = path.join(__dirname, '../data/processed_questions.json');
-        let questionsToSeed = sampleQuestions;
+        const dsaPath = path.join(__dirname, '../data/processed_questions.json');
+        const linkedinPath = path.join(__dirname, '../data/raw/linkedin/raw_linkedin_posts.json');
+        const aptitudePath = path.join(__dirname, '../data/raw/x/raw_aptitude_posts.json');
+        
+        let allQuestions = [];
 
-        if (fs.existsSync(processedPath)) {
+        // 1. Load DSA Questions (Reddit + LeetCode Matcher)
+        if (fs.existsSync(dsaPath)) {
             try {
-                const processed = JSON.parse(fs.readFileSync(processedPath, 'utf-8'));
-                if (Array.isArray(processed) && processed.length > 0) {
-                    questionsToSeed = processed;
-                    console.log(`Loaded ${processed.length} dynamically processed & matched questions from data pipeline.`);
+                const dsa = JSON.parse(fs.readFileSync(dsaPath, 'utf-8'));
+                if (Array.isArray(dsa) && dsa.length > 0) {
+                    allQuestions.push(...dsa);
+                    console.log(`Loaded ${dsa.length} DSA questions (Reddit + LeetCode).`);
                 }
             } catch (e) {
-                console.warn('Could not load processed_questions.json, using built-in samples:', e.message);
+                console.warn('Could not load processed_questions.json:', e.message);
             }
         }
 
+        // 2. Load Interview Questions (LinkedIn HR & Core CS)
+        if (fs.existsSync(linkedinPath)) {
+            try {
+                const linkedin = JSON.parse(fs.readFileSync(linkedinPath, 'utf-8'));
+                if (Array.isArray(linkedin) && linkedin.length > 0) {
+                    allQuestions.push(...linkedin);
+                    console.log(`Loaded ${linkedin.length} Interview & HR questions (LinkedIn).`);
+                }
+            } catch (e) {
+                console.warn('Could not load raw_linkedin_posts.json:', e.message);
+            }
+        }
+
+        // 3. Load Aptitude Questions (X & Campus Drive Memories)
+        if (fs.existsSync(aptitudePath)) {
+            try {
+                const aptitude = JSON.parse(fs.readFileSync(aptitudePath, 'utf-8'));
+                if (Array.isArray(aptitude) && aptitude.length > 0) {
+                    allQuestions.push(...aptitude);
+                    console.log(`Loaded ${aptitude.length} Aptitude questions (X / Exam Memories).`);
+                }
+            } catch (e) {
+                console.warn('Could not load raw_aptitude_posts.json:', e.message);
+            }
+        }
+
+        if (allQuestions.length === 0) {
+            allQuestions = sampleQuestions;
+        }
+
         await Question.deleteMany({});
-        const inserted = await Question.insertMany(questionsToSeed);
-        console.log(`Successfully seeded ${inserted.length} interview questions across companies into MongoDB!`);
+        const inserted = await Question.insertMany(allQuestions);
+        console.log(`Successfully seeded ${inserted.length} questions (DSA, Interview, Aptitude) across all 12 companies into MongoDB!`);
 
         process.exit(0);
     } catch (err) {

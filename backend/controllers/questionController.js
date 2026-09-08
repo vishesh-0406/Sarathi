@@ -2,7 +2,7 @@ const Question = require('../models/Question');
 
 const getQuestions = async (req, res) => {
     try {
-        const { company, category, difficulty } = req.query;
+        const { company, category, difficulty, topic } = req.query;
         const filter = {};
 
         if (company) {
@@ -14,6 +14,9 @@ const getQuestions = async (req, res) => {
         }
         if (difficulty) {
             filter.difficulty = new RegExp(`^${difficulty.trim()}$`, 'i');
+        }
+        if (topic) {
+            filter.topic = new RegExp(`^${topic.trim()}$`, 'i');
         }
 
         const questions = await Question.find(filter).sort({ createdAt: -1 });
@@ -28,7 +31,7 @@ const getQuestions = async (req, res) => {
 
 const getRandomQuestion = async (req, res) => {
     try {
-        const { company, category, difficulty } = req.query;
+        const { company, category, difficulty, topic } = req.query;
         const match = {};
 
         if (company) {
@@ -39,6 +42,9 @@ const getRandomQuestion = async (req, res) => {
         }
         if (difficulty) {
             match.difficulty = new RegExp(`^${difficulty.trim()}$`, 'i');
+        }
+        if (topic) {
+            match.topic = new RegExp(`^${topic.trim()}$`, 'i');
         }
 
         const sample = await Question.aggregate([
