@@ -12,7 +12,7 @@ const TOPIC_PILLS = [
     'Dynamic Programming', 'Stacks & Queues', 'Binary Search', 'Two Pointers'
 ];
 
-function DSA({ onBack }) {
+function DSA({ onBack, onOpenIDE }) {
     const [selectedCompany, setSelectedCompany] = useState('All');
     const [selectedDifficulty, setSelectedDifficulty] = useState('All');
     const [selectedTopic, setSelectedTopic] = useState('All');
@@ -206,31 +206,30 @@ function DSA({ onBack }) {
                                 </div>
                             )}
 
-                            {/* LeetCode Matcher Block */}
-                            {matched && (
-                                <div className="matched-leetcode-box">
-                                    <div className="match-info">
-                                        <span className="platform-tag">LeetCode</span>
-                                        <span className="match-name" title={matched.problemName}>
-                                            {matched.problemName}
-                                        </span>
-                                        <span className="similarity-badge">
-                                            {Math.round(matched.similarityScore * 100)}% Match
-                                        </span>
-                                    </div>
+                            {/* Action Row with IDE Solver & LeetCode */}
+                            <div className="card-action-row">
+                                {onOpenIDE && (
+                                    <button
+                                        type="button"
+                                        className="solve-ide-btn"
+                                        onClick={() => onOpenIDE(q)}
+                                    >
+                                        💻 Solve in IDE
+                                    </button>
+                                )}
 
-                                    {matched.problemUrl && (
-                                        <a
-                                            href={matched.problemUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="solve-leetcode-btn"
-                                        >
-                                            🚀 Solve on LeetCode ↗
-                                        </a>
-                                    )}
-                                </div>
-                            )}
+                                {matched && matched.problemUrl && (
+                                    <a
+                                        href={matched.problemUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="solve-leetcode-btn"
+                                        title={matched.problemName}
+                                    >
+                                        🚀 LeetCode ({Math.round(matched.similarityScore * 100)}%) ↗
+                                    </a>
+                                )}
+                            </div>
 
                             {/* Card Footer with Reddit Link */}
                             <div className="card-footer">

@@ -17,6 +17,20 @@ const questionSchema = new mongoose.Schema({
     constraints: [{
         type: String
     }],
+    testCases: [{
+        input: {
+            type: String,
+            default: ''
+        },
+        output: {
+            type: String,
+            default: ''
+        },
+        explanation: {
+            type: String,
+            default: ''
+        }
+    }],
     recollectionType: {
         type: String,
         enum: ['original', 'randomised', 'constraint'],

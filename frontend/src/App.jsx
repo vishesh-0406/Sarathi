@@ -5,14 +5,25 @@ import Companies from './components/Companies';
 import DSA from './components/DSA';
 import Aptitude from './components/Aptitude';
 import Interviews from './components/Interviews';
+import IDE from './components/IDE';
 
 function App() {
     const [activePrepSection, setActivePrepSection] = useState(null);
+    const [activeIdeQuestion, setActiveIdeQuestion] = useState(null);
 
     const openSection = (sectionName) => {
+        setActiveIdeQuestion(null);
         setActivePrepSection(sectionName);
         setTimeout(() => {
             const el = document.getElementById('preparation');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+    };
+
+    const handleOpenIDE = (question) => {
+        setActiveIdeQuestion(question);
+        setTimeout(() => {
+            const el = document.getElementById('ide-workspace-section');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 50);
     };
@@ -105,27 +116,40 @@ function App() {
                     COMPANIES SECTION
                    ========================= */}
 
-                <Companies />
+                <Companies onOpenIDE={handleOpenIDE} />
 
 
                 {/* =========================
-                    PREPARATION SECTION
+                    PREPARATION SECTION & IDE
                    ========================= */}
 
                 <section id="preparation" className="preparation-section">
-                    {activePrepSection === 'dsa' && (
-                        <DSA onBack={() => setActivePrepSection(null)} />
+                    {/* Active IDE Workspace View */}
+                    {activeIdeQuestion && (
+                        <div id="ide-workspace-section">
+                            <IDE
+                                question={activeIdeQuestion}
+                                onBack={() => setActiveIdeQuestion(null)}
+                            />
+                        </div>
                     )}
 
-                    {activePrepSection === 'aptitude' && (
+                    {!activeIdeQuestion && activePrepSection === 'dsa' && (
+                        <DSA
+                            onBack={() => setActivePrepSection(null)}
+                            onOpenIDE={handleOpenIDE}
+                        />
+                    )}
+
+                    {!activeIdeQuestion && activePrepSection === 'aptitude' && (
                         <Aptitude onBack={() => setActivePrepSection(null)} />
                     )}
 
-                    {activePrepSection === 'interviews' && (
+                    {!activeIdeQuestion && activePrepSection === 'interviews' && (
                         <Interviews onBack={() => setActivePrepSection(null)} />
                     )}
 
-                    {!activePrepSection && (
+                    {!activeIdeQuestion && !activePrepSection && (
                         <>
                             <h2>Preparation</h2>
 
@@ -139,7 +163,7 @@ function App() {
                                     <h3>DSA</h3>
                                     <p>
                                         Practice 600 data structures & algorithm problems
-                                        dynamically matched to canonical LeetCode challenges.
+                                        with automated LeetCode matching and in-browser IDE.
                                     </p>
                                     <button onClick={() => openSection('dsa')}>Explore DSA</button>
                                 </div>
@@ -160,6 +184,24 @@ function App() {
                                         interview rounds with STAR answer guidelines from LinkedIn.
                                     </p>
                                     <button onClick={() => openSection('interviews')}>Prepare for Interviews</button>
+                                </div>
+
+                                <div className="preparation-card ide-sandbox-card">
+                                    <h3>Code IDE</h3>
+                                    <p>
+                                        Sandboxed code execution for Python, JavaScript, and Java
+                                        with real-time testcase verification and TLE detection.
+                                    </p>
+                                    <button onClick={() => handleOpenIDE({
+                                        title: 'Two Sum Problem',
+                                        problemStatement: 'Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.',
+                                        constraints: ['2 <= nums.length <= 10^4', '-10^9 <= nums[i] <= 10^9', '-10^9 <= target <= 10^9'],
+                                        difficulty: 'Easy',
+                                        company: 'Amazon / TCS Digital',
+                                        round: 'Coding Assessment'
+                                    })}>
+                                        Launch IDE
+                                    </button>
                                 </div>
                             </div>
                         </>

@@ -58,7 +58,7 @@ const companies = {
     ]
 };
 
-function Companies() {
+function Companies({ onOpenIDE }) {
     const [selectedType, setSelectedType] = useState(null);
     const [selectedCompany, setSelectedCompany] = useState(null);
     const [questionsList, setQuestionsList] = useState([]);
@@ -285,6 +285,19 @@ function Companies() {
                                                 <span>{currentQuestion.matchedProblems[0].problemName}</span>
                                             )}
                                         </p>
+                                    </div>
+                                )}
+
+                                {/* SOLVE IN IDE ACTION ROW */}
+                                {onOpenIDE && (
+                                    <div className="company-ide-action-row">
+                                        <button
+                                            type="button"
+                                            className="solve-ide-btn company-solve-ide-btn"
+                                            onClick={() => onOpenIDE(currentQuestion)}
+                                        >
+                                            💻 Open & Solve in IDE
+                                        </button>
                                     </div>
                                 )}
 
