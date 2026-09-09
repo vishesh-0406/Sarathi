@@ -65,6 +65,9 @@ function Companies({ onOpenIDE }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loadingQuestion, setLoadingQuestion] = useState(false);
     const [questionError, setQuestionError] = useState(null);
+    const [categoryFilter, setCategoryFilter] = useState('ALL'); // 'ALL' | 'DSA' | 'Aptitude' | 'Interview'
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [showAnswerTips, setShowAnswerTips] = useState(false);
 
     const fetchCompanyQuestions = useCallback(async (companyName) => {
         setLoadingQuestion(true);
@@ -82,6 +85,8 @@ function Companies({ onOpenIDE }) {
             } else {
                 setQuestionsList(data);
                 setCurrentIndex(0);
+                setSelectedOption(null);
+                setShowAnswerTips(false);
             }
         } catch (err) {
             setQuestionError(err.message || 'Unable to connect to Sarathi backend.');
@@ -97,12 +102,17 @@ function Companies({ onOpenIDE }) {
             setQuestionsList([]);
             setCurrentIndex(0);
             setQuestionError(null);
+            setSelectedOption(null);
+            setShowAnswerTips(false);
         }
     }, [selectedCompany, fetchCompanyQuestions]);
 
     const handleSelectCompany = (company) => {
         setSelectedCompany(company);
         setCurrentIndex(0);
+        setCategoryFilter('ALL');
+        setSelectedOption(null);
+        setShowAnswerTips(false);
     };
 
     const handleBackToCompanies = () => {
@@ -110,26 +120,39 @@ function Companies({ onOpenIDE }) {
         setQuestionsList([]);
         setCurrentIndex(0);
         setQuestionError(null);
+        setSelectedOption(null);
+        setShowAnswerTips(false);
     };
+
+    const filteredQuestions = questionsList.filter((q) => {
+        if (categoryFilter === 'ALL') return true;
+        return q.category?.toLowerCase() === categoryFilter.toLowerCase();
+    });
 
     const handlePrevQuestion = () => {
         setCurrentIndex((prev) => Math.max(0, prev - 1));
+        setSelectedOption(null);
+        setShowAnswerTips(false);
     };
 
     const handleNextQuestion = () => {
-        setCurrentIndex((prev) => Math.min(questionsList.length - 1, prev + 1));
+        setCurrentIndex((prev) => Math.min(filteredQuestions.length - 1, prev + 1));
+        setSelectedOption(null);
+        setShowAnswerTips(false);
     };
 
     const handleRandomQuestion = () => {
-        if (questionsList.length <= 1) return;
+        if (filteredQuestions.length <= 1) return;
         let nextIdx = currentIndex;
         while (nextIdx === currentIndex) {
-            nextIdx = Math.floor(Math.random() * questionsList.length);
+            nextIdx = Math.floor(Math.random() * filteredQuestions.length);
         }
         setCurrentIndex(nextIdx);
+        setSelectedOption(null);
+        setShowAnswerTips(false);
     };
 
-    const currentQuestion = questionsList[currentIndex] || null;
+    const currentQuestion = filteredQuestions[currentIndex] || null;
 
     /* =========================
        COMPANY DETAILS SCREEN
@@ -162,9 +185,9 @@ function Companies({ onOpenIDE }) {
                             <div>
                                 <div className="question-header-title-row">
                                     <h3>Real Interview Questions</h3>
-                                    {questionsList.length > 0 && (
+                                    {filteredQuestions.length > 0 && (
                                         <span className="question-count-badge">
-                                            {questionsList.length} Questions Available
+                                            {filteredQuestions.length} Questions
                                         </span>
                                     )}
                                 </div>
@@ -173,7 +196,7 @@ function Companies({ onOpenIDE }) {
                                 </p>
                             </div>
 
-                            {questionsList.length > 1 && (
+                            {filteredQuestions.length > 1 && (
                                 <button
                                     className="random-question-btn"
                                     onClick={handleRandomQuestion}
@@ -183,6 +206,40 @@ function Companies({ onOpenIDE }) {
                                 </button>
                             )}
                         </div>
+
+                        {/* CATEGORY FILTER TABS */}
+                        {questionsList.length > 0 && (
+                            <div className="company-category-filters">
+                                <button
+                                    type="button"
+                                    className={`filter-pill ${categoryFilter === 'ALL' ? 'active' : ''}`}
+                                    onClick={() => { setCategoryFilter('ALL'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
+                                >
+                                    All ({questionsList.length})
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`filter-pill ${categoryFilter === 'DSA' ? 'active' : ''}`}
+                                    onClick={() => { setCategoryFilter('DSA'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
+                                >
+                                    💻 Coding / DSA ({questionsList.filter((q) => q.category === 'DSA').length})
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`filter-pill ${categoryFilter === 'Aptitude' ? 'active' : ''}`}
+                                    onClick={() => { setCategoryFilter('Aptitude'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
+                                >
+                                    🎯 Aptitude & Verbal ({questionsList.filter((q) => q.category === 'Aptitude').length})
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`filter-pill ${categoryFilter === 'Interview' ? 'active' : ''}`}
+                                    onClick={() => { setCategoryFilter('Interview'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
+                                >
+                                    👔 HR & Interview ({questionsList.filter((q) => q.category === 'Interview').length})
+                                </button>
+                            </div>
+                        )}
 
                         {/* QUESTION DISPLAY CARD */}
                         {loadingQuestion && (
@@ -210,12 +267,12 @@ function Companies({ onOpenIDE }) {
                                 {/* PROGRESS BAR & COUNTER */}
                                 <div className="question-progress-bar-row">
                                     <span className="progress-counter-text">
-                                        Question <strong>{currentIndex + 1}</strong> of <strong>{questionsList.length}</strong>
+                                        Question <strong>{currentIndex + 1}</strong> of <strong>{filteredQuestions.length}</strong>
                                     </span>
                                     <div className="progress-track">
                                         <div
                                             className="progress-fill"
-                                            style={{ width: `${((currentIndex + 1) / questionsList.length) * 100}%` }}
+                                            style={{ width: `${((currentIndex + 1) / filteredQuestions.length) * 100}%` }}
                                         />
                                     </div>
                                 </div>
@@ -225,7 +282,9 @@ function Companies({ onOpenIDE }) {
                                         {currentQuestion.difficulty || 'Medium'}
                                     </span>
                                     {currentQuestion.category && (
-                                        <span className="category-tag">{currentQuestion.category}</span>
+                                        <span className={`category-tag category-${currentQuestion.category.toLowerCase()}`}>
+                                            {currentQuestion.category}
+                                        </span>
                                     )}
                                     {currentQuestion.round && (
                                         <span className="round-tag">Round: {currentQuestion.round}</span>
@@ -250,55 +309,118 @@ function Companies({ onOpenIDE }) {
                                     <p>{currentQuestion.problemStatement}</p>
                                 </div>
 
-                                {currentQuestion.constraints && currentQuestion.constraints.length > 0 && (
-                                    <div className="constraints-section">
-                                        <h5>⚡ Memory Constraints & Bounds</h5>
-                                        <ul>
-                                            {currentQuestion.constraints.map((c, i) => (
-                                                <li key={i}><code>{c}</code></li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                {/* PHASE 2 MATCHED PROBLEM PREVIEW */}
-                                {currentQuestion.matchedProblems && currentQuestion.matchedProblems.length > 0 && (
-                                    <div className="matched-problems-box">
-                                        <div className="matched-header">
-                                            <span>✨ Closest Canonical Match</span>
-                                            <span className="similarity-badge">
-                                                {Math.round((currentQuestion.matchedProblems[0].similarityScore || 0.85) * 100)}% Match
-                                            </span>
+                                {/* CASE 1: APTITUDE & VERBAL MCQ CARD */}
+                                {currentQuestion.category === 'Aptitude' && currentQuestion.options && currentQuestion.options.length > 0 && (
+                                    <div className="company-mcq-section">
+                                        <h5 className="mcq-prompt">Choose the correct answer:</h5>
+                                        <div className="options-grid">
+                                            {currentQuestion.options.map((opt, i) => {
+                                                const optLetter = opt.trim()[0];
+                                                const isSelected = selectedOption === optLetter;
+                                                const isCorrect = currentQuestion.correctOption === optLetter;
+                                                let btnClass = 'option-btn';
+                                                if (selectedOption) {
+                                                    if (isCorrect) btnClass += ' correct';
+                                                    else if (isSelected) btnClass += ' incorrect';
+                                                }
+                                                return (
+                                                    <button
+                                                        key={i}
+                                                        type="button"
+                                                        className={btnClass}
+                                                        onClick={() => setSelectedOption(optLetter)}
+                                                    >
+                                                        <span className="option-indicator">{optLetter}</span>
+                                                        <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
+                                                    </button>
+                                                );
+                                            })}
                                         </div>
-                                        <p className="matched-problem-name">
-                                            <strong>{currentQuestion.matchedProblems[0].platform}:</strong>{' '}
-                                            {currentQuestion.matchedProblems[0].problemUrl ? (
-                                                <a
-                                                    href={currentQuestion.matchedProblems[0].problemUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="canonical-link"
-                                                >
-                                                    {currentQuestion.matchedProblems[0].problemName} ↗
-                                                </a>
-                                            ) : (
-                                                <span>{currentQuestion.matchedProblems[0].problemName}</span>
-                                            )}
-                                        </p>
+
+                                        {selectedOption && currentQuestion.explanation && (
+                                            <div className="explanation-card">
+                                                <div className="explanation-status">
+                                                    {selectedOption === currentQuestion.correctOption ? '🎉 Correct Answer!' : '❌ Incorrect Selection'}
+                                                </div>
+                                                <p className="explanation-detail">{currentQuestion.explanation}</p>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 
-                                {/* SOLVE IN IDE ACTION ROW */}
-                                {onOpenIDE && (
-                                    <div className="company-ide-action-row">
+                                {/* CASE 2: HR & TECHNICAL INTERVIEW STAR METHOD GUIDE */}
+                                {currentQuestion.category === 'Interview' && currentQuestion.answerTips && (
+                                    <div className="company-interview-guide">
                                         <button
                                             type="button"
-                                            className="solve-ide-btn company-solve-ide-btn"
-                                            onClick={() => onOpenIDE(currentQuestion)}
+                                            className="accordion-toggle-btn"
+                                            onClick={() => setShowAnswerTips(!showAnswerTips)}
                                         >
-                                            💻 Open & Solve in IDE
+                                            <span>💡 Recommended STAR Strategy & Key Talking Points</span>
+                                            <span>{showAnswerTips ? '▲ Hide' : '▼ View Strategy'}</span>
                                         </button>
+                                        {showAnswerTips && (
+                                            <div className="accordion-content">
+                                                <p className="answer-tips-text">{currentQuestion.answerTips}</p>
+                                            </div>
+                                        )}
                                     </div>
+                                )}
+
+                                {/* CASE 3: DSA CODING CONSTRAINTS, CANONICAL MATCH & IDE BUTTON */}
+                                {currentQuestion.category === 'DSA' && (
+                                    <>
+                                        {currentQuestion.constraints && currentQuestion.constraints.length > 0 && (
+                                            <div className="constraints-section">
+                                                <h5>⚡ Memory Constraints & Bounds</h5>
+                                                <ul>
+                                                    {currentQuestion.constraints.map((c, i) => (
+                                                        <li key={i}><code>{c}</code></li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+
+                                        {/* CLOSEST CANONICAL LEETCODE MATCH */}
+                                        {currentQuestion.matchedProblems && currentQuestion.matchedProblems.length > 0 && (
+                                            <div className="matched-problems-box">
+                                                <div className="matched-header">
+                                                    <span>✨ Closest Canonical Match</span>
+                                                    <span className="similarity-badge">
+                                                        {Math.round((currentQuestion.matchedProblems[0].similarityScore || 0.85) * 100)}% Match
+                                                    </span>
+                                                </div>
+                                                <p className="matched-problem-name">
+                                                    <strong>{currentQuestion.matchedProblems[0].platform}:</strong>{' '}
+                                                    {currentQuestion.matchedProblems[0].problemUrl ? (
+                                                        <a
+                                                            href={currentQuestion.matchedProblems[0].problemUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="canonical-link"
+                                                        >
+                                                            {currentQuestion.matchedProblems[0].problemName} ↗
+                                                        </a>
+                                                    ) : (
+                                                        <span>{currentQuestion.matchedProblems[0].problemName}</span>
+                                                    )}
+                                                </p>
+                                            </div>
+                                        )}
+
+                                        {/* SOLVE IN IDE ACTION ROW ONLY FOR DSA */}
+                                        {onOpenIDE && (
+                                            <div className="company-ide-action-row">
+                                                <button
+                                                    type="button"
+                                                    className="solve-ide-btn company-solve-ide-btn"
+                                                    onClick={() => onOpenIDE(currentQuestion)}
+                                                >
+                                                    💻 Open & Solve in IDE
+                                                </button>
+                                            </div>
+                                        )}
+                                    </>
                                 )}
 
                                 {/* QUESTION FOOTER WITH VERIFIED SOURCE & PREV/NEXT NAV */}
@@ -311,7 +433,7 @@ function Companies({ onOpenIDE }) {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="source-external-link"
-                                                title="View live candidate placement discussions on Reddit"
+                                                title={`View live candidate placement discussions for ${currentQuestion.company}`}
                                             >
                                                 {currentQuestion.source || 'Candidate Discussion'} ↗
                                             </a>
@@ -332,13 +454,13 @@ function Companies({ onOpenIDE }) {
                                         </button>
 
                                         <span className="nav-index-indicator">
-                                            {currentIndex + 1} / {questionsList.length}
+                                            {currentIndex + 1} / {filteredQuestions.length}
                                         </span>
 
                                         <button
                                             className="nav-btn next-btn"
                                             onClick={handleNextQuestion}
-                                            disabled={currentIndex === questionsList.length - 1}
+                                            disabled={currentIndex === filteredQuestions.length - 1}
                                             title="Go to next question"
                                         >
                                             Next Question →

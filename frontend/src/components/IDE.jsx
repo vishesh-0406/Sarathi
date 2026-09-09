@@ -62,6 +62,82 @@ function IDE({ question, onBack }) {
     const [currentExpected, setCurrentExpected] = useState('');
     const [running, setRunning] = useState(false);
     const [result, setResult] = useState(null);
+    const [selectedOption, setSelectedOption] = useState(null); // For Aptitude fallback
+
+    // GUARDRAIL: If this is an Aptitude / Verbal / MCQ question, render interactive Quiz Card
+    if (question?.category === 'Aptitude' || (question?.options && question.options.length > 0)) {
+        return (
+            <div className="ide-container non-coding-container">
+                <div className="ide-top-bar">
+                    <div className="ide-top-left">
+                        <button className="back-btn ide-back-btn" onClick={onBack}>
+                            ← Back to Questions
+                        </button>
+                        <div className="ide-title-group">
+                            <span className="ide-problem-title">{question?.title || 'Aptitude Question'}</span>
+                            {question?.company && <span className="company-tag">{question.company}</span>}
+                            <span className="category-tag category-aptitude">🎯 Aptitude & Verbal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="non-coding-workspace">
+                    <div className="non-coding-card">
+                        <div className="problem-header-meta">
+                            <span className="round-tag">{question?.round || 'Aptitude / Verbal Round'}</span>
+                            <span className="recency-pill">📅 {question?.batch || '2024–2026 Pattern'}</span>
+                        </div>
+
+                        <h2 className="panel-heading">{question?.title}</h2>
+                        <div className="panel-statement">
+                            <p>{question?.problemStatement}</p>
+                        </div>
+
+                        <div className="company-mcq-section">
+                            <h5 className="mcq-prompt">Choose the correct answer:</h5>
+                            <div className="options-grid">
+                                {question.options.map((opt, i) => {
+                                    const optLetter = opt.trim()[0];
+                                    const isSelected = selectedOption === optLetter;
+                                    const isCorrect = question.correctOption === optLetter;
+                                    let btnClass = 'option-btn';
+                                    if (selectedOption) {
+                                        if (isCorrect) btnClass += ' correct';
+                                        else if (isSelected) btnClass += ' incorrect';
+                                    }
+                                    return (
+                                        <button
+                                            key={i}
+                                            type="button"
+                                            className={btnClass}
+                                            onClick={() => setSelectedOption(optLetter)}
+                                        >
+                                            <span className="option-indicator">{optLetter}</span>
+                                            <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
+                            {selectedOption && question.explanation && (
+                                <div className="explanation-card">
+                                    <div className="explanation-status">
+                                        {selectedOption === question.correctOption ? '🎉 Correct Answer!' : '❌ Incorrect Selection'}
+                                    </div>
+                                    <p className="explanation-detail">{question.explanation}</p>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="non-coding-footer-hint">
+                            <span>💡 <em>Aptitude, Verbal, and Logical Reasoning questions are multiple-choice assessments and do not require code compilation.</em></span>
+                            <button className="solve-ide-btn" onClick={onBack}>← Back to Questions List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     // Available test cases from question database or fallback
     const testCases = (question?.testCases && question.testCases.length > 0)
@@ -74,23 +150,25 @@ function IDE({ question, onBack }) {
             }
         ];
 
-    // Initialize starter template and test cases when question or language changes
+    // Load question test cases when question changes
+    useEffect(() => {
+        setSelectedCaseIdx(0);
+        setResult(null);
+        if (question?.testCases && question.testCases.length > 0) {
+            setCurrentInput(question.testCases[0].input || '');
+            setCurrentExpected(question.testCases[0].output || '');
+        } else {
+            setCurrentInput('nums = [1, 2, 3]');
+            setCurrentExpected('[1, 2, 3]');
+        }
+    }, [question]);
+
+    // Initialize starter template when language or question changes
     useEffect(() => {
         const title = question?.title || 'Placement Coding Challenge';
         const templateFn = DEFAULT_TEMPLATES[language] || DEFAULT_TEMPLATES.python;
         setCode(templateFn(title));
-        setResult(null);
-
-        // Load Case 1
-        setSelectedCaseIdx(0);
-        if (testCases && testCases.length > 0) {
-            setCurrentInput(testCases[0].input || '');
-            setCurrentExpected(testCases[0].output || '');
-        } else {
-            setCurrentInput('');
-            setCurrentExpected('');
-        }
-    }, [question, language]);
+    }, [question?.title, language]);
 
     const handleResetCode = () => {
         const title = question?.title || 'Placement Coding Challenge';
@@ -219,6 +297,17 @@ function IDE({ question, onBack }) {
                         <div className="problem-header-meta">
                             <span className="round-tag">{question?.round || 'Technical Round'}</span>
                             <span className="recency-pill">📅 {question?.batch || '2024–2026 Pattern'}</span>
+                            {matchedLeetcode && matchedLeetcode.problemUrl && (
+                                <a
+                                    href={matchedLeetcode.problemUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="leetcode-header-pill"
+                                    title={`View full formal specification on LeetCode: ${matchedLeetcode.problemName}`}
+                                >
+                                    🚀 LeetCode: {matchedLeetcode.problemName} ({Math.round((matchedLeetcode.similarityScore || 0.95) * 100)}%) ↗
+                                </a>
+                            )}
                         </div>
 
                         <h2 className="panel-heading">{question?.title}</h2>
@@ -383,7 +472,7 @@ function IDE({ question, onBack }) {
                                                 className="testcase-textarea"
                                                 value={currentInput}
                                                 onChange={(e) => setCurrentInput(e.target.value)}
-                                                placeholder="e.g. nums = [2, 0, 2, 1, 1, 0]"
+                                                placeholder="Enter test input (e.g. test string, numbers, or array)..."
                                                 rows={3}
                                             />
                                         </div>
@@ -395,7 +484,7 @@ function IDE({ question, onBack }) {
                                                 className="testcase-textarea"
                                                 value={currentExpected}
                                                 onChange={(e) => setCurrentExpected(e.target.value)}
-                                                placeholder="e.g. [0, 0, 1, 1, 2, 2]"
+                                                placeholder="Enter expected output to verify against..."
                                                 rows={3}
                                             />
                                         </div>

@@ -1147,7 +1147,7 @@ function collectLinkedInPosts() {
         year: 2025,
         batch: '2024–2026',
         source: 'LinkedIn Candidate Discussion',
-        sourceUrl: `https://www.linkedin.com/search/results/content/?keywords=${encodeURIComponent(item.company + ' ' + item.title + ' interview experience')}`,
+        sourceUrl: `https://www.linkedin.com/search/results/content/?keywords=${encodeURIComponent('"' + item.company + '" AND "interview experience"')}`,
         constraints: []
     }));
 

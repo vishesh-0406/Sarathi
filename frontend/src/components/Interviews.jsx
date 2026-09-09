@@ -9,7 +9,7 @@ const COMPANIES_LIST = [
 
 const TOPICS_LIST = [
     'All', 'HR & Behavioral', 'Core CS (DBMS)', 'Core CS (Operating Systems)',
-    'Core CS (OOP Concepts)', 'System Design', 'Leadership Principles (LP)', 'Googleyness & Behavioral'
+    'Core CS (OOP Concepts)', 'Core CS (Computer Networks & Web)', 'System Design', 'Leadership Principles (LP)', 'Googleyness & Behavioral'
 ];
 
 function Interviews({ onBack }) {

@@ -1,22 +1,42 @@
 const Question = require('../models/Question');
 
+const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const TOPIC_REGEX_MAP = {
+    'HR & Behavioral': /HR|Behavioral|Managerial|Culture|Values/i,
+    'Core CS (DBMS)': /DBMS|Database/i,
+    'Core CS (Operating Systems)': /Operating System/i,
+    'Core CS (OOP Concepts)': /OOP|Language Internals/i,
+    'Core CS (Computer Networks & Web)': /Network|Web|API|Security/i,
+    'System Design': /System Design|Cloud|Distributed/i,
+    'Leadership Principles (LP)': /Leadership Principles|LP/i,
+    'Googleyness & Behavioral': /Googleyness/i
+};
+
+function buildTopicRegex(topicStr) {
+    const trimmed = topicStr.trim();
+    if (TOPIC_REGEX_MAP[trimmed]) {
+        return TOPIC_REGEX_MAP[trimmed];
+    }
+    return new RegExp(escapeRegex(trimmed), 'i');
+}
+
 const getQuestions = async (req, res) => {
     try {
         const { company, category, difficulty, topic } = req.query;
         const filter = {};
 
         if (company) {
-            // Case-insensitive match for company name
-            filter.company = new RegExp(`^${company.trim()}$`, 'i');
+            filter.company = new RegExp(`^${escapeRegex(company.trim())}$`, 'i');
         }
         if (category) {
-            filter.category = new RegExp(`^${category.trim()}$`, 'i');
+            filter.category = new RegExp(`^${escapeRegex(category.trim())}$`, 'i');
         }
         if (difficulty) {
-            filter.difficulty = new RegExp(`^${difficulty.trim()}$`, 'i');
+            filter.difficulty = new RegExp(`^${escapeRegex(difficulty.trim())}$`, 'i');
         }
         if (topic) {
-            filter.topic = new RegExp(`^${topic.trim()}$`, 'i');
+            filter.topic = buildTopicRegex(topic);
         }
 
         const questions = await Question.find(filter).sort({ createdAt: -1 });
@@ -35,16 +55,16 @@ const getRandomQuestion = async (req, res) => {
         const match = {};
 
         if (company) {
-            match.company = new RegExp(`^${company.trim()}$`, 'i');
+            match.company = new RegExp(`^${escapeRegex(company.trim())}$`, 'i');
         }
         if (category) {
-            match.category = new RegExp(`^${category.trim()}$`, 'i');
+            match.category = new RegExp(`^${escapeRegex(category.trim())}$`, 'i');
         }
         if (difficulty) {
-            match.difficulty = new RegExp(`^${difficulty.trim()}$`, 'i');
+            match.difficulty = new RegExp(`^${escapeRegex(difficulty.trim())}$`, 'i');
         }
         if (topic) {
-            match.topic = new RegExp(`^${topic.trim()}$`, 'i');
+            match.topic = buildTopicRegex(topic);
         }
 
         const sample = await Question.aggregate([

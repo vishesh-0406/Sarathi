@@ -185,24 +185,6 @@ function App() {
                                     </p>
                                     <button onClick={() => openSection('interviews')}>Prepare for Interviews</button>
                                 </div>
-
-                                <div className="preparation-card ide-sandbox-card">
-                                    <h3>Code IDE</h3>
-                                    <p>
-                                        Sandboxed code execution for Python, JavaScript, and Java
-                                        with real-time testcase verification and TLE detection.
-                                    </p>
-                                    <button onClick={() => handleOpenIDE({
-                                        title: 'Two Sum Problem',
-                                        problemStatement: 'Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.',
-                                        constraints: ['2 <= nums.length <= 10^4', '-10^9 <= nums[i] <= 10^9', '-10^9 <= target <= 10^9'],
-                                        difficulty: 'Easy',
-                                        company: 'Amazon / TCS Digital',
-                                        round: 'Coding Assessment'
-                                    })}>
-                                        Launch IDE
-                                    </button>
-                                </div>
                             </div>
                         </>
                     )}

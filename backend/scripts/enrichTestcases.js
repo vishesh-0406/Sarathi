@@ -672,6 +672,181 @@ const CANONICAL_TESTCASES = [
                 explanation: "No subarray sum is divisible by 9."
             }
         ]
+    },
+    {
+        pattern: /length\s*of\s*last\s*word/i,
+        testCases: [
+            {
+                input: 's = "Hello World"',
+                output: "5",
+                explanation: 'The last word is "World" with length 5.'
+            },
+            {
+                input: 's = "   fly me   to   the moon  "',
+                output: "4",
+                explanation: 'The last word is "moon" with length 4.'
+            },
+            {
+                input: 's = "luffy is still joyboy"',
+                output: "6",
+                explanation: 'The last word is "joyboy" with length 6.'
+            }
+        ]
+    },
+    {
+        pattern: /roman\s*to\s*integer/i,
+        testCases: [
+            {
+                input: 's = "III"',
+                output: "3",
+                explanation: 'III = 3.'
+            },
+            {
+                input: 's = "LVIII"',
+                output: "58",
+                explanation: 'L = 50, V = 5, III = 3.'
+            },
+            {
+                input: 's = "MCMXCIV"',
+                output: "1994",
+                explanation: 'M = 1000, CM = 900, XC = 90, IV = 4.'
+            }
+        ]
+    },
+    {
+        pattern: /pascal.*triangle/i,
+        testCases: [
+            {
+                input: "numRows = 5",
+                output: "[[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]",
+                explanation: "First 5 rows of Pascal's triangle."
+            },
+            {
+                input: "numRows = 1",
+                output: "[[1]]",
+                explanation: "Single row triangle."
+            }
+        ]
+    },
+    {
+        pattern: /contains\s*duplicate/i,
+        testCases: [
+            {
+                input: "nums = [1,2,3,1]",
+                output: "true",
+                explanation: "1 appears at indices 0 and 3."
+            },
+            {
+                input: "nums = [1,2,3,4]",
+                output: "false",
+                explanation: "All elements are distinct."
+            }
+        ]
+    },
+    {
+        pattern: /single\s*number/i,
+        testCases: [
+            {
+                input: "nums = [2,2,1]",
+                output: "1",
+                explanation: "Every element appears twice except for 1."
+            },
+            {
+                input: "nums = [4,1,2,1,2]",
+                output: "4",
+                explanation: "4 appears only once."
+            }
+        ]
+    },
+    {
+        pattern: /middle\s*of\s*(the\s*)?linked\s*list/i,
+        testCases: [
+            {
+                input: "head = [1,2,3,4,5]",
+                output: "[3,4,5]",
+                explanation: "Middle node is node 3."
+            },
+            {
+                input: "head = [1,2,3,4,5,6]",
+                output: "[4,5,6]",
+                explanation: "Since list has two middle nodes (3 and 4), return the second one."
+            }
+        ]
+    },
+    {
+        pattern: /intersection\s*of\s*two\s*arrays/i,
+        testCases: [
+            {
+                input: "nums1 = [1,2,2,1], nums2 = [2,2]",
+                output: "[2]",
+                explanation: "Each element in the result must be unique."
+            },
+            {
+                input: "nums1 = [4,9,5], nums2 = [9,4,9,8,4]",
+                output: "[9,4]",
+                explanation: "Intersection elements."
+            }
+        ]
+    },
+    {
+        pattern: /jewels\s*and\s*stones/i,
+        testCases: [
+            {
+                input: 'jewels = "aA", stones = "aAAbbbb"',
+                output: "3",
+                explanation: 'Stone "a" and two "A"s are jewels.'
+            },
+            {
+                input: 'jewels = "z", stones = "ZZ"',
+                output: "0",
+                explanation: "Letters are case sensitive."
+            }
+        ]
+    },
+    {
+        pattern: /min\s*cost\s*climbing\s*stairs/i,
+        testCases: [
+            {
+                input: "cost = [10,15,20]",
+                output: "15",
+                explanation: "Start at index 1, pay 15 and climb two steps to the top."
+            },
+            {
+                input: "cost = [1,100,1,1,1,100,1,1,100,1]",
+                output: "6",
+                explanation: "Pay 1 at each step skipping 100s."
+            }
+        ]
+    },
+    {
+        pattern: /find\s*peak\s*element/i,
+        testCases: [
+            {
+                input: "nums = [1,2,3,1]",
+                output: "2",
+                explanation: "3 is a peak element and its index is 2."
+            },
+            {
+                input: "nums = [1,2,1,3,5,6,4]",
+                output: "5",
+                explanation: "Element 6 at index 5 is a peak."
+            }
+        ]
+    },
+    {
+        pattern: /decode\s*string/i,
+        testCases: [
+            {
+                input: 's = "3[a]2[bc]"',
+                output: '"aaabcbc"',
+                explanation: "Decodes nested repeat sequences."
+            },
+            {
+                input: 's = "3[a2[c]]"',
+                output: '"accaccacc"',
+                explanation: "Inner repetition expanded first."
+            }
+        ]
     }
 ];
 
@@ -763,6 +938,13 @@ async function runEnrichment() {
         console.log('Connecting to MongoDB...');
         await mongoose.connect('mongodb://localhost:27017/sarathi');
         console.log('MongoDB connected.');
+
+        // Ensure Aptitude and Interview questions do not have code testcases
+        const unsetResult = await Question.updateMany(
+            { category: { $ne: 'DSA' } },
+            { $unset: { testCases: "" } }
+        );
+        console.log(`Cleaned testCases from ${unsetResult.modifiedCount} non-DSA questions.`);
 
         const dsaQuestions = await Question.find({ category: 'DSA' });
         console.log(`Found ${dsaQuestions.length} DSA questions to enrich.`);
