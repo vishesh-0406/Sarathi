@@ -1067,6 +1067,26 @@ main {
     color: #7dd3fc;
 }
 
+.reddit-link {
+    color: #fb923c;
+    background: rgba(251, 146, 60, 0.1);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reddit-link:hover {
+    background: rgba(251, 146, 60, 0.2);
+    color: #fdba74;
+}
+
 /* =========================
    APTITUDE ARENA SECTION
    ========================= */
