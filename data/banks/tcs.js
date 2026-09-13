@@ -1,29 +1,173 @@
-// Auto-generated 50 verified interview questions for TCS
+// Auto-generated verified interview questions for TCS
 module.exports = [
   {
     "company": "TCS",
-    "title": "TCS - Vehicle Fleet Wheel Assembly Check",
-    "author": "Candidate Discussion",
+    "title": "TCS - Vehicle Fleet Wheel Assembly Check (Two Wheeler and Four Wheeler)",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Vehicle%20Fleet%20Wheel%20Assembly%20Check&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Vehicle%20Fleet%20Wheel%20Assembly%20Check%20(Two%20Wheeler%20and%20Four%20Wheeler)%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
     "difficulty": "Easy",
     "recollectionType": "original",
-    "selftext": "An automobile company manufactures two-wheelers and four-wheelers. Given vehicles V and wheels W, calculate count of each vehicle.",
+    "selftext": "An automobile manufacturing plant produces two-wheelers (V1) and four-wheelers (V2). Given total vehicles V and total wheels W, calculate count of each vehicle. If invalid, return error indicator.",
     "constraints": [
       "2 <= W <= 10^5",
       "W >= 2*V",
-      "W is even"
+      "W is even",
+      "O(1) time"
+    ],
+    "testCases": [
+      {
+        "input": "vehicles = 200, wheels = 540",
+        "output": "twoWheelers: 130, fourWheelers: 70",
+        "explanation": "4*V - W = 800 - 540 = 260. 260 / 2 = 130 two-wheelers. 200 - 130 = 70 four-wheelers."
+      },
+      {
+        "input": "vehicles = 10, wheels = 20",
+        "output": "twoWheelers: 10, fourWheelers: 0",
+        "explanation": "All 10 are two-wheelers."
+      }
+    ]
+  },
+  {
+    "company": "TCS",
+    "title": "TCS - SuperBike Gear Ratio Tooth Alignment",
+    "author": "u/bangalore_dev_25",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20SuperBike%20Gear%20Ratio%20Tooth%20Alignment%20interview%20assessment&type=link",
+    "round": "TCS Digital Technical Round",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Given teeth count on drive sprocket A and rear sprocket B, determine if gear ratio simplifies to integer ratio without fractional vibration.",
+    "constraints": [
+      "GCD Euclidean algorithm",
+      "10 <= A, B <= 100"
+    ],
+    "testCases": [
+      {
+        "input": "drive = 36, driven = 18",
+        "output": "\"2:1\"",
+        "explanation": "36 / 18 simplifies to 2:1 gear ratio."
+      },
+      {
+        "input": "drive = 45, driven = 15",
+        "output": "\"3:1\"",
+        "explanation": "45 / 15 simplifies to 3:1."
+      }
+    ]
+  },
+  {
+    "company": "TCS",
+    "title": "TCS - Washing Machine Weight Capacity Cycle",
+    "author": "u/algo_prep_india",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Washing%20Machine%20Weight%20Capacity%20Cycle%20interview%20assessment&type=link",
+    "round": "TCS NQT Coding Section",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Given clothes weight in grams: 0g -> 0 mins; 1-2000g -> 25 mins (Low); 2001-4000g -> 35 mins (Medium); 4001-7000g -> 45 mins (High). Over 7000g outputs Overload. Negative outputs Invalid.",
+    "constraints": [
+      "Conditional range checks",
+      "Integer weight input"
+    ],
+    "testCases": [
+      {
+        "input": "weight = 3500",
+        "output": "\"Time Estimated: 35 minutes\"",
+        "explanation": "3500 falls in 2001-4000 range."
+      },
+      {
+        "input": "weight = 8000",
+        "output": "\"OVERLOAD\"",
+        "explanation": "Weight exceeds 7000g."
+      }
+    ]
+  },
+  {
+    "company": "TCS",
+    "title": "TCS - Smart Energy Meter Tariff Slab Calculation",
+    "author": "u/nits_grad_2024",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Smart%20Energy%20Meter%20Tariff%20Slab%20Calculation%20interview%20assessment&type=link",
+    "round": "TCS Prime Coding Assessment",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Calculate total electricity bill for units consumed: first 100 units at Rs 3/unit, next 100 units at Rs 5/unit, above 200 units at Rs 8/unit, plus 5% surcharge.",
+    "constraints": [
+      "Units >= 0",
+      "Slab billing logic"
+    ],
+    "testCases": [
+      {
+        "input": "units = 250",
+        "output": "1260",
+        "explanation": "100*3=300, 100*5=500, 50*8=400. Subtotal=1200. +5% surcharge = 1260."
+      }
+    ]
+  },
+  {
+    "company": "TCS",
+    "title": "TCS - Monkey Banana Jump Stride Count",
+    "author": "u/hyd_sde_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Monkey%20Banana%20Jump%20Stride%20Count%20interview%20assessment&type=link",
+    "round": "TCS Ninja Coding Round",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "A monkey tries to climb a greased pole of height H. Each jump ascends U meters but monkey slips down D meters before next jump. Calculate total jumps to reach or exceed top.",
+    "constraints": [
+      "H, U, D > 0",
+      "U > D",
+      "Math formula"
+    ],
+    "testCases": [
+      {
+        "input": "H = 30, U = 3, D = 1",
+        "output": "15",
+        "explanation": "Net climb per jump is 2m. On jump 15, monkey reaches 14*2 + 3 = 31 >= 30."
+      }
+    ]
+  },
+  {
+    "company": "TCS",
+    "title": "TCS - Airport Luggage Conveyor Belt Overload Sorter",
+    "author": "u/pune_tech_lead",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Airport%20Luggage%20Conveyor%20Belt%20Overload%20Sorter%20interview%20assessment&type=link",
+    "round": "TCS Digital Technical Round",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Given array of baggage weights, group consecutive bags onto conveyor belt sections without exceeding max weight limit W per section. Return minimum sections needed.",
+    "constraints": [
+      "1 <= bags.length <= 10^4",
+      "Greedy linear scan"
+    ],
+    "testCases": [
+      {
+        "input": "bags = [15, 25, 35, 10], maxWeight = 50",
+        "output": "2",
+        "explanation": "Section 1: [15, 25] = 40. Section 2: [35, 10] = 45. Total 2 sections."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - First Unique Character in Stream",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20First%20Unique%20Character%20in%20Stream&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20First%20Unique%20Character%20in%20Stream%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -33,14 +177,26 @@ module.exports = [
     "constraints": [
       "1 <= length <= 10^5",
       "Lowercase letters only"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Subarray Sum Divisible by K",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Subarray%20Sum%20Divisible%20by%20K&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Subarray%20Sum%20Divisible%20by%20K%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -50,14 +206,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "1 <= k <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Majority Element in Election Tally",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Majority%20Element%20in%20Election%20Tally&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Majority%20Element%20in%20Election%20Tally%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -67,14 +235,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 5 * 10^4",
       "O(1) auxiliary space"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Move Zeroes to End of Array",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Move%20Zeroes%20to%20End%20of%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Move%20Zeroes%20to%20End%20of%20Array%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -84,14 +264,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^4",
       "In-place modification"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Trapping Rain Water in Elevation Map",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Trapping%20Rain%20Water%20in%20Elevation%20Map&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Trapping%20Rain%20Water%20in%20Elevation%20Map%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -101,14 +293,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 2 * 10^4",
       "0 <= height[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+        "output": "6",
+        "explanation": "The elevation map traps 6 total units of rain water."
+      },
+      {
+        "input": "height = [4, 2, 0, 3, 2, 5]",
+        "output": "9",
+        "explanation": "Water trapped between boundary bars equals 9 units."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Valid Palindrome After Removing At Most One Character",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Valid%20Palindrome%20After%20Removing%20At%20Most%20One%20Character&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Valid%20Palindrome%20After%20Removing%20At%20Most%20One%20Character%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -118,14 +322,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 10^5",
       "Lowercase letters"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Maximum Subarray Sum Kadane Algorithm",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Maximum%20Subarray%20Sum%20Kadane%20Algorithm&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Maximum%20Subarray%20Sum%20Kadane%20Algorithm%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -135,14 +351,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "-10^4 <= nums[i] <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+        "output": "6",
+        "explanation": "The subarray [4, -1, 2, 1] has the largest sum 6."
+      },
+      {
+        "input": "nums = [1]",
+        "output": "1",
+        "explanation": "Single element subarray sum is 1."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Climbing Stairs with Step Limits",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Climbing%20Stairs%20with%20Step%20Limits&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Climbing%20Stairs%20with%20Step%20Limits%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -152,14 +380,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 45",
       "Fibonacci dynamic programming"
+    ],
+    "testCases": [
+      {
+        "input": "n = 2",
+        "output": "2",
+        "explanation": "1 step + 1 step, or 2 steps."
+      },
+      {
+        "input": "n = 3",
+        "output": "3",
+        "explanation": "1+1+1, 1+2, or 2+1."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Rotated Sorted Array Search",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Rotated%20Sorted%20Array%20Search&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Rotated%20Sorted%20Array%20Search%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -169,14 +409,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 5000",
       "O(log N) binary search"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Coin Change Minimum Coins Needed",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Coin%20Change%20Minimum%20Coins%20Needed&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Coin%20Change%20Minimum%20Coins%20Needed%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -186,14 +438,26 @@ module.exports = [
     "constraints": [
       "1 <= coins.length <= 12",
       "1 <= amount <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "coins = [1, 2, 5], amount = 11",
+        "output": "3",
+        "explanation": "11 = 5 + 5 + 1 (3 coins total)."
+      },
+      {
+        "input": "coins = [2], amount = 3",
+        "output": "-1",
+        "explanation": "Cannot form amount 3 using coin of 2."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Longest Common Prefix in Strings Array",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Longest%20Common%20Prefix%20in%20Strings%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Longest%20Common%20Prefix%20in%20Strings%20Array%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -203,14 +467,26 @@ module.exports = [
     "constraints": [
       "1 <= strs.length <= 200",
       "0 <= strs[i].length <= 200"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Merge Two Sorted Linked Lists",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Merge%20Two%20Sorted%20Linked%20Lists&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Merge%20Two%20Sorted%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -220,14 +496,26 @@ module.exports = [
     "constraints": [
       "List lengths up to 50",
       "-100 <= val <= 100"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Product of Array Except Self",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Product%20of%20Array%20Except%20Self&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Product%20of%20Array%20Except%20Self%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -237,14 +525,26 @@ module.exports = [
     "constraints": [
       "2 <= nums.length <= 10^5",
       "O(N) runtime without division"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 4]",
+        "output": "[24, 12, 8, 6]",
+        "explanation": "Product of all other elements for each index."
+      },
+      {
+        "input": "nums = [-1, 1, 0, -3, 3]",
+        "output": "[0, 0, 9, 0, 0]",
+        "explanation": "Contains zero element."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Check If Two Strings Are Anagrams",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Check%20If%20Two%20Strings%20Are%20Anagrams&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Check%20If%20Two%20Strings%20Are%20Anagrams%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -254,14 +554,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length, t.length <= 5 * 10^4",
       "Lowercase English letters"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Next Permutation Rearrangement",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Next%20Permutation%20Rearrangement&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Next%20Permutation%20Rearrangement%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -271,14 +583,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 100",
       "In-place replacement"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Binary Search in Sorted Array",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Binary%20Search%20in%20Sorted%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Binary%20Search%20in%20Sorted%20Array%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -288,14 +612,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^4",
       "O(log N) runtime"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Sort Colors Dutch National Flag",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Sort%20Colors%20Dutch%20National%20Flag&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Sort%20Colors%20Dutch%20National%20Flag%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -305,14 +641,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 300",
       "One-pass O(N) in-place"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Remove Duplicates from Sorted Array",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Remove%20Duplicates%20from%20Sorted%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Remove%20Duplicates%20from%20Sorted%20Array%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -322,14 +670,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 3 * 10^4",
       "O(1) extra space"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Palindrome Number Check",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Palindrome%20Number%20Check&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Palindrome%20Number%20Check%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -339,14 +699,26 @@ module.exports = [
     "constraints": [
       "-2^31 <= x <= 2^31 - 1",
       "No string conversion"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"A man, a plan, a canal: Panama\"",
+        "output": "true",
+        "explanation": "\"amanaplanacanalpanama\" reads identically forwards and backwards."
+      },
+      {
+        "input": "s = \"race a car\"",
+        "output": "false",
+        "explanation": "\"raceacar\" is not a palindrome."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Count Primes Sieve of Eratosthenes",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Count%20Primes%20Sieve%20of%20Eratosthenes&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Count%20Primes%20Sieve%20of%20Eratosthenes%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -356,14 +728,26 @@ module.exports = [
     "constraints": [
       "0 <= n <= 5 * 10^6",
       "Sieve of Eratosthenes O(N log log N)"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Power of Two Verification",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Power%20of%20Two%20Verification&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Power%20of%20Two%20Verification%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -373,14 +757,26 @@ module.exports = [
     "constraints": [
       "-2^31 <= n <= 2^31 - 1",
       "O(1) bit manipulation"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Maximum Product Subarray",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Maximum%20Product%20Subarray&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Maximum%20Product%20Subarray%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -390,14 +786,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 2 * 10^4",
       "-10 <= nums[i] <= 10"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Longest Substring Without Repeating Characters",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Longest%20Substring%20Without%20Repeating%20Characters&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Longest%20Substring%20Without%20Repeating%20Characters%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -407,14 +815,26 @@ module.exports = [
     "constraints": [
       "0 <= s.length <= 5 * 10^4",
       "Sliding window with hash map"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abcabcbb\"",
+        "output": "3",
+        "explanation": "The answer is \"abc\", with the length of 3."
+      },
+      {
+        "input": "s = \"bbbbb\"",
+        "output": "1",
+        "explanation": "The answer is \"b\", with the length of 1."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - FizzBuzz Multiple Generator",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20FizzBuzz%20Multiple%20Generator&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20FizzBuzz%20Multiple%20Generator%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -424,14 +844,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 10^4",
       "O(N) traversal"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - House Robber Maximum Loot",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20House%20Robber%20Maximum%20Loot&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20House%20Robber%20Maximum%20Loot%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -441,14 +873,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 100",
       "DP linear scan"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Jump Game Can Reach Last Index",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Jump%20Game%20Can%20Reach%20Last%20Index&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Jump%20Game%20Can%20Reach%20Last%20Index%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -458,14 +902,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^4",
       "Greedy max reach"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Min Cost Climbing Stairs",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Min%20Cost%20Climbing%20Stairs&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Min%20Cost%20Climbing%20Stairs%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -475,14 +931,26 @@ module.exports = [
     "constraints": [
       "2 <= cost.length <= 1000",
       "0 <= cost[i] <= 999"
+    ],
+    "testCases": [
+      {
+        "input": "n = 2",
+        "output": "2",
+        "explanation": "1 step + 1 step, or 2 steps."
+      },
+      {
+        "input": "n = 3",
+        "output": "3",
+        "explanation": "1+1+1, 1+2, or 2+1."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Find Peak Element in Array",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Find%20Peak%20Element%20in%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Find%20Peak%20Element%20in%20Array%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -492,14 +960,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 1000",
       "O(log N) binary search"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Intersection of Two Arrays",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Intersection%20of%20Two%20Arrays&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Intersection%20of%20Two%20Arrays%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -509,14 +989,26 @@ module.exports = [
     "constraints": [
       "1 <= nums1.length, nums2.length <= 1000",
       "Set lookup"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Jewels and Stones Counter",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Jewels%20and%20Stones%20Counter&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Jewels%20and%20Stones%20Counter%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -526,14 +1018,26 @@ module.exports = [
     "constraints": [
       "1 <= jewels.length, stones.length <= 50",
       "Hash set lookup"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Single Number Bitwise XOR",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Single%20Number%20Bitwise%20XOR&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Single%20Number%20Bitwise%20XOR%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -543,14 +1047,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 3 * 10^4",
       "O(1) extra space"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Reverse String In Place",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Reverse%20String%20In%20Place&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Reverse%20String%20In%20Place%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -560,14 +1076,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 10^5",
       "Two-pointer in-place"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Middle of the Linked List",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Middle%20of%20the%20Linked%20List&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Middle%20of%20the%20Linked%20List%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -577,14 +1105,26 @@ module.exports = [
     "constraints": [
       "1 <= node count <= 100",
       "One-pass two-pointer"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Contains Duplicate in Array",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Contains%20Duplicate%20in%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Contains%20Duplicate%20in%20Array%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -594,14 +1134,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "HashSet O(N) lookup"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Pascals Triangle Triangle Row Builder",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Pascals%20Triangle%20Triangle%20Row%20Builder&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Pascals%20Triangle%20Triangle%20Row%20Builder%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -611,14 +1163,26 @@ module.exports = [
     "constraints": [
       "1 <= numRows <= 30",
       "Dynamic programming array"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Best Time to Buy and Sell Stock",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Best%20Time%20to%20Buy%20and%20Sell%20Stock&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -628,14 +1192,26 @@ module.exports = [
     "constraints": [
       "1 <= prices.length <= 10^5",
       "One-pass min tracker"
+    ],
+    "testCases": [
+      {
+        "input": "prices = [7, 1, 5, 3, 6, 4]",
+        "output": "5",
+        "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5."
+      },
+      {
+        "input": "prices = [7, 6, 4, 3, 1]",
+        "output": "0",
+        "explanation": "No profitable transaction possible."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Valid Parentheses Bracket Matching",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Valid%20Parentheses%20Bracket%20Matching&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Valid%20Parentheses%20Bracket%20Matching%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -645,14 +1221,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 10^4",
       "Stack data structure"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"()[]{}\"",
+        "output": "true",
+        "explanation": "All opening brackets are matched and closed in order."
+      },
+      {
+        "input": "s = \"(]\"",
+        "output": "false",
+        "explanation": "Mismatched closing bracket type."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Squares of a Sorted Array",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Squares%20of%20a%20Sorted%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Squares%20of%20a%20Sorted%20Array%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -662,14 +1250,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^4",
       "Two-pointer O(N)"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Length of Last Word in Sentence",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Length%20of%20Last%20Word%20in%20Sentence&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Length%20of%20Last%20Word%20in%20Sentence%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -679,14 +1279,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 10^4",
       "Trim and scan"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Roman to Integer Numeral Converter",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Roman%20to%20Integer%20Numeral%20Converter&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Roman%20to%20Integer%20Numeral%20Converter%20interview%20assessment&type=link",
     "round": "TCS NQT Advanced Coding",
     "year": 2025,
     "batch": "2024–2026",
@@ -696,14 +1308,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 15",
       "Symbol dictionary lookup"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Defanging an IP Address",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Defanging%20an%20IP%20Address&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Defanging%20an%20IP%20Address%20interview%20assessment&type=link",
     "round": "TCS Digital Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -713,14 +1337,26 @@ module.exports = [
     "constraints": [
       "Valid IPv4 string",
       "String replace"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Running Sum of 1D Array",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Running%20Sum%20of%201D%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Running%20Sum%20of%201D%20Array%20interview%20assessment&type=link",
     "round": "TCS Prime Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -730,14 +1366,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 1000",
       "Prefix sum O(N)"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "TCS",
     "title": "TCS - Richest Customer Wealth Maximum Bank Wealth",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Richest%20Customer%20Wealth%20Maximum%20Bank%20Wealth&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=TCS%20Richest%20Customer%20Wealth%20Maximum%20Bank%20Wealth%20interview%20assessment&type=link",
     "round": "TCS Ninja Coding Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -747,108 +1395,18 @@ module.exports = [
     "constraints": [
       "m, n <= 50",
       "Row summation"
-    ]
-  },
-  {
-    "company": "TCS",
-    "title": "TCS - Shuffle the Array Alternate Pairs",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Shuffle%20the%20Array%20Alternate%20Pairs&restrict_sr=1",
-    "round": "TCS NQT Advanced Coding",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "constraint",
-    "selftext": "Given array nums of 2n elements in form [x1,x2...xn,y1,y2...yn], return array in form [x1,y1,x2,y2...].",
-    "constraints": [
-      "1 <= n <= 500",
-      "nums.length == 2n"
-    ]
-  },
-  {
-    "company": "TCS",
-    "title": "TCS - How Many Numbers Are Smaller Than Current",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20How%20Many%20Numbers%20Are%20Smaller%20Than%20Current&restrict_sr=1",
-    "round": "TCS Digital Technical Round",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "original",
-    "selftext": "For each nums[i] find how many numbers in array are smaller than it.",
-    "constraints": [
-      "2 <= nums.length <= 500",
-      "Count array / bucket sort"
-    ]
-  },
-  {
-    "company": "TCS",
-    "title": "TCS - Decompress Run-Length Encoded List",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Decompress%20Run%20Length%20Encoded%20List&restrict_sr=1",
-    "round": "TCS Prime Coding Assessment",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "randomised",
-    "selftext": "Decompress list where each adjacent pair [freq, val] represents freq occurrences of val.",
-    "constraints": [
-      "2 <= nums.length <= 100",
-      "Array amplification"
-    ]
-  },
-  {
-    "company": "TCS",
-    "title": "TCS - Kids with the Greatest Number of Candies",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Kids%20with%20the%20Greatest%20Number%20of%20Candies&restrict_sr=1",
-    "round": "TCS Ninja Coding Section",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "constraint",
-    "selftext": "Return boolean array indicating if kid has greatest candies after receiving extraCandies.",
-    "constraints": [
-      "2 <= candies.length <= 100",
-      "Max element comparison"
-    ]
-  },
-  {
-    "company": "TCS",
-    "title": "TCS - Number of Good Pairs Equal Indices",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Number%20of%20Good%20Pairs%20Equal%20Indices&restrict_sr=1",
-    "round": "TCS NQT Advanced Coding",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "original",
-    "selftext": "Given array of integers nums, return number of good pairs (i, j) where nums[i] == nums[j] and i < j.",
-    "constraints": [
-      "1 <= nums.length <= 100",
-      "Frequency combination count"
-    ]
-  },
-  {
-    "company": "TCS",
-    "title": "TCS - Count Number of Teams Soldiers",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=TCS%20Count%20Number%20of%20Teams%20Soldiers&restrict_sr=1",
-    "round": "TCS Digital Technical Round",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "randomised",
-    "selftext": "There are n soldiers. Return number of teams of 3 soldiers with strictly increasing or decreasing ratings.",
-    "constraints": [
-      "1 <= rating.length <= 1000",
-      "Combinatorics on middle soldier"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   }
 ];

@@ -126,6 +126,9 @@ function Companies({ onOpenIDE }) {
 
     const filteredQuestions = questionsList.filter((q) => {
         if (categoryFilter === 'ALL') return true;
+        if (categoryFilter === 'Novel') {
+            return q.category === 'DSA' && (!q.matchedProblems || q.matchedProblems.length === 0 || q.isNovel);
+        }
         return q.category?.toLowerCase() === categoryFilter.toLowerCase();
     });
 
@@ -238,6 +241,15 @@ function Companies({ onOpenIDE }) {
                                 >
                                     👔 HR & Interview ({questionsList.filter((q) => q.category === 'Interview').length})
                                 </button>
+                                {questionsList.some((q) => q.category === 'DSA' && (!q.matchedProblems || q.matchedProblems.length === 0 || q.isNovel)) && (
+                                    <button
+                                        type="button"
+                                        className={`filter-pill novel-filter-pill ${categoryFilter === 'Novel' ? 'active' : ''}`}
+                                        onClick={() => { setCategoryFilter('Novel'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
+                                    >
+                                        🆕 Exclusive / New ({questionsList.filter((q) => q.category === 'DSA' && (!q.matchedProblems || q.matchedProblems.length === 0 || q.isNovel)).length})
+                                    </button>
+                                )}
                             </div>
                         )}
 
@@ -299,6 +311,11 @@ function Companies({ onOpenIDE }) {
                                                 : currentQuestion.recollectionType === 'constraint'
                                                 ? 'Constraint Memory'
                                                 : 'Recalled Scenario'}
+                                        </span>
+                                    )}
+                                    {currentQuestion.category === 'DSA' && (!currentQuestion.matchedProblems || currentQuestion.matchedProblems.length === 0 || currentQuestion.isNovel) && (
+                                        <span className="novel-pill-tag" title="Authentic company-exclusive question with no LeetCode equivalent">
+                                            🆕 New Question (No LeetCode Match)
                                         </span>
                                     )}
                                 </div>
@@ -381,14 +398,21 @@ function Companies({ onOpenIDE }) {
                                             </div>
                                         )}
 
-                                        {/* CLOSEST CANONICAL LEETCODE MATCH */}
-                                        {currentQuestion.matchedProblems && currentQuestion.matchedProblems.length > 0 && (
+                                        {/* CLOSEST CANONICAL LEETCODE MATCH OR NOVEL QUESTION NOTICE */}
+                                        {currentQuestion.matchedProblems && currentQuestion.matchedProblems.length > 0 ? (
                                             <div className="matched-problems-box">
                                                 <div className="matched-header">
                                                     <span>✨ Closest Canonical Match</span>
-                                                    <span className="similarity-badge">
-                                                        {Math.round((currentQuestion.matchedProblems[0].similarityScore || 0.85) * 100)}% Match
-                                                    </span>
+                                                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                                        {currentQuestion.matchedProblems[0].isPremium && (
+                                                            <span className="premium-lock-badge" title="LeetCode Premium subscription required">
+                                                                🔒 LeetCode Premium
+                                                            </span>
+                                                        )}
+                                                        <span className="similarity-badge">
+                                                            {Math.round((currentQuestion.matchedProblems[0].similarityScore || 0.85) * 100)}% Match
+                                                        </span>
+                                                    </div>
                                                 </div>
                                                 <p className="matched-problem-name">
                                                     <strong>{currentQuestion.matchedProblems[0].platform}:</strong>{' '}
@@ -405,6 +429,21 @@ function Companies({ onOpenIDE }) {
                                                         <span>{currentQuestion.matchedProblems[0].problemName}</span>
                                                     )}
                                                 </p>
+                                                {currentQuestion.matchedProblems[0].isPremium && (
+                                                    <p className="premium-notice-text">
+                                                        ℹ️ <em>Note: This problem is locked behind a LeetCode Premium subscription. You can practice and verify your solution directly here in SARATHI for free!</em>
+                                                    </p>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <div className="matched-problems-box novel-problem-box">
+                                                <div className="matched-header">
+                                                    <span className="novel-box-title">🆕 New Question · No Match Found in LeetCode</span>
+                                                    <span className="novel-badge">Company Exclusive</span>
+                                                </div>
+                                                <p className="matched-problem-name novel-problem-text">
+                                                    ✨ <strong>Real Interview Experience:</strong> This question is an authentic candidate recollection exclusive to this company's assessment. It does not exist in standard LeetCode archives — practice it directly in SARATHI!
+                                                </p>
                                             </div>
                                         )}
 
@@ -413,10 +452,12 @@ function Companies({ onOpenIDE }) {
                                             <div className="company-ide-action-row">
                                                 <button
                                                     type="button"
-                                                    className="solve-ide-btn company-solve-ide-btn"
+                                                    className={`solve-ide-btn company-solve-ide-btn ${(!currentQuestion.matchedProblems || currentQuestion.matchedProblems.length === 0 || currentQuestion.isNovel) ? 'novel-solve-btn' : ''}`}
                                                     onClick={() => onOpenIDE(currentQuestion)}
                                                 >
-                                                    💻 Open & Solve in IDE
+                                                    {(!currentQuestion.matchedProblems || currentQuestion.matchedProblems.length === 0 || currentQuestion.isNovel)
+                                                        ? '💻 Solve New Question in IDE'
+                                                        : '💻 Open & Solve in IDE'}
                                                 </button>
                                             </div>
                                         )}

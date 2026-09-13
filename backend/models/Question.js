@@ -90,8 +90,19 @@ const questionSchema = new mongoose.Schema({
         },
         problemName: String,
         problemUrl: String,
-        similarityScore: Number
-    }]
+        similarityScore: Number,
+        isPremium: {
+            type: Boolean,
+            default: false
+        }
+    }],
+    isNovel: {
+        type: Boolean,
+        default: false
+    },
+    novelDescription: {
+        type: String
+    }
 }, { timestamps: true });
 
 const Question = mongoose.model('Question', questionSchema);

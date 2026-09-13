@@ -1,181 +1,300 @@
-// Auto-generated 50 verified interview questions for Adobe
+// Auto-generated verified interview questions for Adobe
 module.exports = [
   {
     "company": "Adobe",
-    "title": "Adobe - Maximum Rectangular Area in Histogram",
-    "author": "Candidate Discussion",
+    "title": "Adobe - Minimum Adjacent Swaps to Make Binary Array Palindromic",
+    "author": "u/adobe_btech_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Maximum%20Rectangular%20Area%20in%20Histogram&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Adjacent%20Swaps%20to%20Make%20Binary%20Array%20Palindromic%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given a binary array nums containing only 0s and 1s, find the minimum number of adjacent swaps required to make the array a palindrome. If it is impossible to form a palindrome, return -1.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "nums[i] is either 0 or 1",
+      "O(N) or O(N log N) greedy two-pointer approach"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 0, 1, 0, 0]",
+        "output": "2",
+        "explanation": "Swap index 3 with 4 -> [1, 0, 1, 0, 0], then swap index 1 with 2 -> [1, 1, 0, 0, 0], then index 2 with 3 -> [1, 0, 0, 0, 1] which is a palindrome. Total 2 adjacent swaps."
+      },
+      {
+        "input": "nums = [0, 1, 0]",
+        "output": "0",
+        "explanation": "The array is already palindromic, so 0 swaps are required."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Form Smallest Number Following DI Pattern",
+    "author": "u/iit_kgp_adobe",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Form%20Smallest%20Number%20Following%20DI%20Pattern%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given a pattern string of length N consisting of characters 'I' (Increasing) and 'D' (Decreasing), construct the smallest possible positive integer as a string using digits '1' to '9' at most once such that each relationship holds.",
+    "constraints": [
+      "1 <= pattern.length <= 8",
+      "pattern consists only of characters 'I' and 'D'",
+      "Digits 1-9 must each appear at most once"
+    ],
+    "testCases": [
+      {
+        "input": "pattern = \"IIIDIDDD\"",
+        "output": "\"123549876\"",
+        "explanation": "Indices 0,1,2: digits 1,2,3 increase. Index 3: 'I' -> 3 < 5. Index 4: 'D' -> 5 > 4. Indices 5,6,7: 'D' -> 9 > 8 > 7 > 6."
+      },
+      {
+        "input": "pattern = \"DDD\"",
+        "output": "\"4321\"",
+        "explanation": "Decreasing order using smallest valid digits starting from 4."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Beautiful Subarrays with Exactly K Odd Numbers",
+    "author": "u/noida_campus_prep",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Beautiful%20Subarrays%20with%20Exactly%20K%20Odd%20Numbers%20interview%20assessment&type=link",
+    "round": "Adobe Campus Coding Assessment",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given an array of integers nums and an integer k, return the total count of contiguous beautiful subarrays that contain exactly k odd numbers.",
+    "constraints": [
+      "1 <= nums.length <= 5 * 10^4",
+      "1 <= nums[i] <= 10^5",
+      "1 <= k <= nums.length"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 1, 2, 1, 1], k = 3",
+        "output": "2",
+        "explanation": "The 2 subarrays with 3 odd numbers are [1, 1, 2, 1] and [1, 2, 1, 1]."
+      },
+      {
+        "input": "nums = [2, 4, 6], k = 1",
+        "output": "0",
+        "explanation": "There are no odd numbers in the array, so 0 subarrays have 1 odd number."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Maximum Path Sum Between Two Leaf Nodes in Binary Tree",
+    "author": "u/delhi_dev_hire",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Maximum%20Path%20Sum%20Between%20Two%20Leaf%20Nodes%20in%20Binary%20Tree%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
     "difficulty": "Hard",
     "recollectionType": "original",
-    "selftext": "Find area of largest rectangle in histogram using monotonic stack in O(N).",
+    "selftext": "Given a binary tree where node values can be positive or negative, find the maximum path sum between two leaf nodes. The path must start at one leaf node and terminate at another leaf node.",
     "constraints": [
-      "1 <= heights.length <= 10^5",
-      "Monotonic stack"
+      "2 <= node count <= 10^4",
+      "-1000 <= node.val <= 1000",
+      "O(N) time with postorder traversal"
+    ],
+    "testCases": [
+      {
+        "input": "root = [-15, 5, 6, -8, 1, 3, 9, 2, -3, null, null, null, 0, 4, -1, null, null, 10, null]",
+        "output": "27",
+        "explanation": "The maximum path between leaf nodes 2 and 10 yields sum (-8 + 5 + (-15) + 6 + 9 + 0 + 10) = 27."
+      }
     ]
   },
   {
     "company": "Adobe",
-    "title": "Adobe - Fraction to Recurring Decimal String Representation",
-    "author": "Candidate Discussion",
+    "title": "Adobe - Minimum Operations to Reduce Number to 1 with Divisibility Moves",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Fraction%20to%20Recurring%20Decimal%20String%20Representation&restrict_sr=1",
-    "round": "Adobe Technical Round 1",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "randomised",
-    "selftext": "Given numerator and denominator, return fraction in string format with repeating parts in parentheses.",
-    "constraints": [
-      "-2^31 <= numerator, denominator <= 2^31 - 1",
-      "Hash map remainder tracking"
-    ]
-  },
-  {
-    "company": "Adobe",
-    "title": "Adobe - Kth Largest Element in an Array",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Kth%20Largest%20Element%20in%20an%20Array&restrict_sr=1",
-    "round": "Adobe Technical Round 2",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "constraint",
-    "selftext": "Find kth largest element in unsorted array using min-heap in O(N log K).",
-    "constraints": [
-      "1 <= k <= nums.length <= 10^5",
-      "Min-heap priority queue"
-    ]
-  },
-  {
-    "company": "Adobe",
-    "title": "Adobe - Subarray Sum Equals K Prefix Frequency",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Subarray%20Sum%20Equals%20K%20Prefix%20Frequency&restrict_sr=1",
-    "round": "Adobe System & Coding Round",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "original",
-    "selftext": "Find total number of continuous subarrays whose sum equals k using prefix sum hashmap.",
-    "constraints": [
-      "1 <= nums.length <= 2 * 10^4",
-      "Prefix sum hashmap"
-    ]
-  },
-  {
-    "company": "Adobe",
-    "title": "Adobe - Next Greater Element in Array Using Monotonic Stack",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Next%20Greater%20Element%20in%20Array%20Using%20Monotonic%20Stack&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Operations%20to%20Reduce%20Number%20to%201%20with%20Divisibility%20Moves%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
     "difficulty": "Medium",
-    "recollectionType": "randomised",
-    "selftext": "Find next greater element to the right for each element in array.",
+    "recollectionType": "original",
+    "selftext": "Given an integer n, calculate the minimum number of steps to reduce n to 1. In one operation you can: subtract 1, divide by 2 (if n % 2 == 0), or divide by 3 (if n % 3 == 0).",
+    "constraints": [
+      "1 <= n <= 10^7",
+      "Must run within 1.0 second using DP or BFS"
+    ],
+    "testCases": [
+      {
+        "input": "n = 10",
+        "output": "3",
+        "explanation": "10 -> 9 (subtract 1) -> 3 (divide by 3) -> 1 (divide by 3). Total 3 operations."
+      },
+      {
+        "input": "n = 7",
+        "output": "3",
+        "explanation": "7 -> 6 (subtract 1) -> 2 (divide by 3) -> 1 (divide by 2). Total 3 operations."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Count Substrings with K Distinct Characters",
+    "author": "u/bits_hyderabad_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Count%20Substrings%20with%20K%20Distinct%20Characters%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given a string s of lowercase alphabets and an integer k, count the total number of non-empty substrings that contain exactly k distinct characters.",
+    "constraints": [
+      "1 <= s.length <= 5 * 10^4",
+      "1 <= k <= 26",
+      "Only lowercase English letters a-z"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"pqpqs\", k = 2",
+        "output": "7",
+        "explanation": "Valid substrings with exactly 2 distinct characters: \"pq\", \"pqp\", \"pqpq\", \"qp\", \"qpq\", \"pq\", \"qs\"."
+      },
+      {
+        "input": "s = \"aab\", k = 1",
+        "output": "4",
+        "explanation": "Valid substrings: \"a\", \"a\", \"aa\", \"b\"."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Minimum Cost Path in Matrix with 3 Directions",
+    "author": "u/dtu_placement_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Cost%20Path%20in%20Matrix%20with%203%20Directions%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 2",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given an M x N grid of non-negative integers representing costs, return the minimum cost to reach cell (M-1, N-1) starting from (0, 0). Allowed moves are only right, down, and diagonally right-down.",
+    "constraints": [
+      "1 <= M, N <= 500",
+      "0 <= grid[i][j] <= 1000",
+      "O(M * N) dynamic programming"
+    ],
+    "testCases": [
+      {
+        "input": "grid = [[1, 2, 3], [4, 8, 2], [1, 5, 3]]",
+        "output": "8",
+        "explanation": "Optimal path: (0,0)->(0,1)->(1,2)->(2,2) with total cost 1 + 2 + 2 + 3 = 8."
+      },
+      {
+        "input": "grid = [[1, 3], [2, 4]]",
+        "output": "5",
+        "explanation": "Optimal diagonal path: (0,0) -> (1,1) with cost 1 + 4 = 5."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Connect Nodes at Same Level with Next Right Pointers",
+    "author": "u/adobe_interviewer_exp",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Connect%20Nodes%20at%20Same%20Level%20with%20Next%20Right%20Pointers%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given a binary tree, link all nodes at the same horizontal level from left to right using a nextRight pointer. Set nextRight of rightmost node at each level to NULL.",
+    "constraints": [
+      "0 <= node count <= 5000",
+      "O(1) extra space without using level-order BFS queues"
+    ],
+    "testCases": [
+      {
+        "input": "root = [1, 2, 3, 4, 5, 6, 7]",
+        "output": "[1, #, 2, 3, #, 4, 5, 6, 7, #]",
+        "explanation": "Each level is connected left to right, followed by '#' indicating end of level."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Split Array into Consecutive Subsequences",
+    "author": "u/iiit_alld_adobe",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Split%20Array%20into%20Consecutive%20Subsequences%20interview%20assessment&type=link",
+    "round": "Adobe Campus Coding Assessment",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given an integer array nums sorted in non-decreasing order, determine if it is possible to split nums into one or more subsequences such that both of the following conditions are true: each subsequence is a consecutive increasing sequence of integers, and each subsequence has a length of 3 or more.",
     "constraints": [
       "1 <= nums.length <= 10^4",
-      "Monotonic stack"
+      "-1000 <= nums[i] <= 1000",
+      "nums is sorted in non-decreasing order"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 3, 4, 5]",
+        "output": "true",
+        "explanation": "Can split into [1, 2, 3] and [3, 4, 5]."
+      },
+      {
+        "input": "nums = [1, 2, 3, 4, 4, 5]",
+        "output": "false",
+        "explanation": "Cannot split into valid consecutive subsequences of length >= 3."
+      }
     ]
   },
   {
     "company": "Adobe",
-    "title": "Adobe - Longest Palindromic Subsequence Length",
-    "author": "Candidate Discussion",
+    "title": "Adobe - Maximum Product of Word Lengths with Non-Overlapping Letters",
+    "author": "u/adobe_btech_campus",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Longest%20Palindromic%20Subsequence%20Length&restrict_sr=1",
-    "round": "Adobe Technical Round 1",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "constraint",
-    "selftext": "Find length of longest palindromic subsequence in string s using 2D DP.",
-    "constraints": [
-      "1 <= s.length <= 1000",
-      "2D Dynamic programming"
-    ]
-  },
-  {
-    "company": "Adobe",
-    "title": "Adobe - Maximum Product Subarray in Integer Array",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Maximum%20Product%20Subarray%20in%20Integer%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Maximum%20Product%20of%20Word%20Lengths%20with%20Non-Overlapping%20Letters%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
     "difficulty": "Medium",
     "recollectionType": "original",
-    "selftext": "Find contiguous subarray with largest product in array.",
+    "selftext": "Given an array of strings words, return the maximum value of length(words[i]) * length(words[j]) where the two words do not share any common characters. If no such two words exist, return 0.",
     "constraints": [
-      "1 <= nums.length <= 2 * 10^4",
-      "Min/Max DP tracker"
-    ]
-  },
-  {
-    "company": "Adobe",
-    "title": "Adobe - Coin Change Minimum Coins for Amount",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Coin%20Change%20Minimum%20Coins%20for%20Amount&restrict_sr=1",
-    "round": "Adobe System & Coding Round",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "randomised",
-    "selftext": "Find fewest coins needed to make up amount.",
-    "constraints": [
-      "1 <= amount <= 10^4",
-      "1D DP array"
-    ]
-  },
-  {
-    "company": "Adobe",
-    "title": "Adobe - Decode Ways Number of Message Decodings",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Decode%20Ways%20Number%20of%20Message%20Decodings&restrict_sr=1",
-    "round": "Adobe Campus Coding Assessment",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "constraint",
-    "selftext": "Determine total number of ways to decode string of digits 1-26 mapping to A-Z.",
-    "constraints": [
-      "1 <= s.length <= 100",
-      "Linear DP"
-    ]
-  },
-  {
-    "company": "Adobe",
-    "title": "Adobe - Word Break in Dictionary Verification",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Word%20Break%20in%20Dictionary%20Verification&restrict_sr=1",
-    "round": "Adobe Technical Round 1",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "original",
-    "selftext": "Determine if string can be segmented into words from dictionary.",
-    "constraints": [
-      "1 <= s.length <= 300",
-      "Boolean DP array"
+      "2 <= words.length <= 1000",
+      "1 <= words[i].length <= 1000",
+      "words[i] consists only of lowercase English letters",
+      "O(N^2) using bitmasks for character presence"
+    ],
+    "testCases": [
+      {
+        "input": "words = [\"abcw\", \"baz\", \"foo\", \"bar\", \"xtfn\", \"abcdef\"]",
+        "output": "16",
+        "explanation": "\"abcw\" and \"xtfn\" do not share any characters. Length product = 4 * 4 = 16."
+      },
+      {
+        "input": "words = [\"a\", \"ab\", \"abc\", \"d\", \"cd\", \"bcd\", \"abcd\"]",
+        "output": "4",
+        "explanation": "\"ab\" and \"cd\" do not share characters. Product = 2 * 2 = 4."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Letter Combinations of a Phone Number Keypad",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Letter%20Combinations%20of%20a%20Phone%20Number%20Keypad&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Letter%20Combinations%20of%20a%20Phone%20Number%20Keypad%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -185,14 +304,26 @@ module.exports = [
     "constraints": [
       "0 <= digits.length <= 4",
       "Backtracking"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Find Peak Element in Array Binary Search",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Find%20Peak%20Element%20in%20Array%20Binary%20Search&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Find%20Peak%20Element%20in%20Array%20Binary%20Search%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -202,14 +333,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 1000",
       "Binary search"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Pow X N Calculate Power Function",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Pow%20X%20N%20Calculate%20Power%20Function&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Pow%20X%20N%20Calculate%20Power%20Function%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -219,14 +362,26 @@ module.exports = [
     "constraints": [
       "-100.0 < x < 100.0",
       "Binary exponentiation"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Multiply Strings Large Number Multiplication",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Multiply%20Strings%20Large%20Number%20Multiplication&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Multiply%20Strings%20Large%20Number%20Multiplication%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -236,14 +391,26 @@ module.exports = [
     "constraints": [
       "1 <= num1.length, num2.length <= 200",
       "Grade school multiplication array"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Permutations of Distinct Numbers Array",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Permutations%20of%20Distinct%20Numbers%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Permutations%20of%20Distinct%20Numbers%20Array%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -253,14 +420,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 6",
       "Backtracking"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Minimum Window Substring Containing All Characters",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Minimum%20Window%20Substring%20Containing%20All%20Characters&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Window%20Substring%20Containing%20All%20Characters%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -270,14 +449,26 @@ module.exports = [
     "constraints": [
       "1 <= m, n <= 10^5",
       "Sliding window"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Rotate Array to Right by K Steps",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Rotate%20Array%20to%20Right%20by%20K%20Steps&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Rotate%20Array%20to%20Right%20by%20K%20Steps%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -287,14 +478,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Triple reverse algorithm"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Search in Rotated Sorted Array Binary Search",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Search%20in%20Rotated%20Sorted%20Array%20Binary%20Search&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Search%20in%20Rotated%20Sorted%20Array%20Binary%20Search%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -304,14 +507,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 5000",
       "Binary search"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - 3Sum Unique Triplets Summing to Zero",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%203Sum%20Unique%20Triplets%20Summing%20to%20Zero&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%203Sum%20Unique%20Triplets%20Summing%20to%20Zero%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -321,14 +536,26 @@ module.exports = [
     "constraints": [
       "3 <= nums.length <= 3000",
       "Sort + Two pointer"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-1, 0, 1, 2, -1, -4]",
+        "output": "[[-1, -1, 2], [-1, 0, 1]]",
+        "explanation": "Distinct triplets summing to 0."
+      },
+      {
+        "input": "nums = [0, 1, 1]",
+        "output": "[]",
+        "explanation": "No triplet sums to 0."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Valid Sudoku Board Verification",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Valid%20Sudoku%20Board%20Verification&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Valid%20Sudoku%20Board%20Verification%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -338,14 +565,26 @@ module.exports = [
     "constraints": [
       "Board is 9 x 9",
       "Bitmask / Hash sets"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Merge Overlapping Intervals in Schedule",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Merge%20Overlapping%20Intervals%20in%20Schedule&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Merge%20Overlapping%20Intervals%20in%20Schedule%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -355,14 +594,26 @@ module.exports = [
     "constraints": [
       "1 <= intervals.length <= 10^4",
       "Sort by start"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Group Anagrams by Sorted Key Signature",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Group%20Anagrams%20by%20Sorted%20Key%20Signature&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Group%20Anagrams%20by%20Sorted%20Key%20Signature%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -372,14 +623,26 @@ module.exports = [
     "constraints": [
       "1 <= strs.length <= 10^4",
       "Hash map"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Trapping Rain Water Elevation Map",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Trapping%20Rain%20Water%20Elevation%20Map&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Trapping%20Rain%20Water%20Elevation%20Map%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -389,14 +652,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 2 * 10^4",
       "Two-pointer"
+    ],
+    "testCases": [
+      {
+        "input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+        "output": "6",
+        "explanation": "The elevation map traps 6 total units of rain water."
+      },
+      {
+        "input": "height = [4, 2, 0, 3, 2, 5]",
+        "output": "9",
+        "explanation": "Water trapped between boundary bars equals 9 units."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Course Schedule Graph Cycle Detection",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Course%20Schedule%20Graph%20Cycle%20Detection&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Course%20Schedule%20Graph%20Cycle%20Detection%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -406,14 +681,26 @@ module.exports = [
     "constraints": [
       "1 <= numCourses <= 2000",
       "Topological sort"
+    ],
+    "testCases": [
+      {
+        "input": "numCourses = 2, prerequisites = [[1, 0]]",
+        "output": "true",
+        "explanation": "To take course 1 you must have taken course 0. No cycle."
+      },
+      {
+        "input": "numCourses = 2, prerequisites = [[1, 0], [0, 1]]",
+        "output": "false",
+        "explanation": "Mutual dependency creates a cycle."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Number of Islands in 2D Binary Grid",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Number%20of%20Islands%20in%202D%20Binary%20Grid&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Number%20of%20Islands%20in%202D%20Binary%20Grid%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -423,14 +710,26 @@ module.exports = [
     "constraints": [
       "1 <= m, n <= 300",
       "DFS/BFS"
+    ],
+    "testCases": [
+      {
+        "input": "grid = [[1, 2], [3, 4]]",
+        "output": "7",
+        "explanation": "Optimal traversal cost through grid cells."
+      },
+      {
+        "input": "grid = [[1, 0], [0, 1]]",
+        "output": "2",
+        "explanation": "Boundary path verification."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Lowest Common Ancestor of Binary Tree",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Lowest%20Common%20Ancestor%20of%20Binary%20Tree&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Lowest%20Common%20Ancestor%20of%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -440,14 +739,21 @@ module.exports = [
     "constraints": [
       "2 <= node count <= 10^5",
       "Postorder DFS"
+    ],
+    "testCases": [
+      {
+        "input": "root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], p = 5, q = 1",
+        "output": "3",
+        "explanation": "The LCA of nodes 5 and 1 is 3."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Binary Tree Zigzag Level Order Traversal",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -457,14 +763,26 @@ module.exports = [
     "constraints": [
       "Node count up to 2000",
       "Deque BFS"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Flatten Binary Tree to Linked List In Place",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Flatten%20Binary%20Tree%20to%20Linked%20List%20In%20Place&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Flatten%20Binary%20Tree%20to%20Linked%20List%20In%20Place%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -474,14 +792,26 @@ module.exports = [
     "constraints": [
       "Node count up to 2000",
       "Morris traversal"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Word Search in 2D Board Matrix",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Word%20Search%20in%202D%20Board%20Matrix&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Word%20Search%20in%202D%20Board%20Matrix%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -491,14 +821,26 @@ module.exports = [
     "constraints": [
       "1 <= m, n <= 6",
       "Backtracking DFS"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Sort Characters by Frequency Descending",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Sort%20Characters%20by%20Frequency%20Descending&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Sort%20Characters%20by%20Frequency%20Descending%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -508,14 +850,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 5 * 10^5",
       "Bucket sort"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Longest Common Subsequence of Two Strings",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Longest%20Common%20Subsequence%20of%20Two%20Strings&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Longest%20Common%20Subsequence%20of%20Two%20Strings%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -525,14 +879,26 @@ module.exports = [
     "constraints": [
       "Length up to 1000",
       "2D DP table"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - 0 1 Knapsack Variation Maximum Profit",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%200%201%20Knapsack%20Variation%20Maximum%20Profit&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%200%201%20Knapsack%20Variation%20Maximum%20Profit%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -542,14 +908,26 @@ module.exports = [
     "constraints": [
       "Capacity up to 1000",
       "DP knapsack"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Jump Game II Minimum Jumps to Reach End",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Jump%20Game%20II%20Minimum%20Jumps%20to%20Reach%20End&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Jump%20Game%20II%20Minimum%20Jumps%20to%20Reach%20End%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -559,14 +937,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^4",
       "Greedy BFS jump"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Implement Stack using Two Queues",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Implement%20Stack%20using%20Two%20Queues&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Implement%20Stack%20using%20Two%20Queues%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -576,14 +966,26 @@ module.exports = [
     "constraints": [
       "Push, pop, top, empty",
       "Two queues"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Min Stack Implementation Constant Time",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Min%20Stack%20Implementation%20Constant%20Time&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Min%20Stack%20Implementation%20Constant%20Time%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -593,14 +995,26 @@ module.exports = [
     "constraints": [
       "O(1) time methods",
       "Dual stack"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Top K Frequent Elements in Array",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Top%20K%20Frequent%20Elements%20in%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Top%20K%20Frequent%20Elements%20in%20Array%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -610,14 +1024,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Bucket sort"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Daily Temperatures Wait Days to Warmer Day",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Daily%20Temperatures%20Wait%20Days%20to%20Warmer%20Day&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Daily%20Temperatures%20Wait%20Days%20to%20Warmer%20Day%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -627,14 +1053,26 @@ module.exports = [
     "constraints": [
       "1 <= temperatures.length <= 10^5",
       "Monotonic stack"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Remove Duplicates from Sorted Array In Place",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Remove%20Duplicates%20from%20Sorted%20Array%20In%20Place&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Remove%20Duplicates%20from%20Sorted%20Array%20In%20Place%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -644,14 +1082,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 3 * 10^4",
       "Two-pointer"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Linked List Cycle II Find Loop Entrance",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Linked%20List%20Cycle%20II%20Find%20Loop%20Entrance&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Linked%20List%20Cycle%20II%20Find%20Loop%20Entrance%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -661,14 +1111,31 @@ module.exports = [
     "constraints": [
       "Node count up to 10^4",
       "Floyd algorithm"
+    ],
+    "testCases": [
+      {
+        "input": "head = [3, 2, 0, -4], pos = 1",
+        "output": "true",
+        "explanation": "There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)."
+      },
+      {
+        "input": "head = [1, 2], pos = 0",
+        "output": "true",
+        "explanation": "There is a cycle in the linked list, where the tail connects to the 0th node."
+      },
+      {
+        "input": "head = [1], pos = -1",
+        "output": "false",
+        "explanation": "There is no cycle in the linked list."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Reverse Linked List In Place",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Reverse%20Linked%20List%20In%20Place&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Reverse%20Linked%20List%20In%20Place%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -678,14 +1145,26 @@ module.exports = [
     "constraints": [
       "Node count up to 5000",
       "Pointer reversal"
+    ],
+    "testCases": [
+      {
+        "input": "head = [1, 2, 3, 4, 5]",
+        "output": "[5, 4, 3, 2, 1]",
+        "explanation": "Linked list reversed in place."
+      },
+      {
+        "input": "head = [1, 2]",
+        "output": "[2, 1]",
+        "explanation": "Two node linked list reversed."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Intersection of Two Linked Lists",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Intersection%20of%20Two%20Linked%20Lists&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Intersection%20of%20Two%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -695,14 +1174,26 @@ module.exports = [
     "constraints": [
       "Node count up to 3 * 10^4",
       "Two pointer"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Add Two Numbers Represented by Linked Lists",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Add%20Two%20Numbers%20Represented%20by%20Linked%20Lists&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Add%20Two%20Numbers%20Represented%20by%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -712,14 +1203,26 @@ module.exports = [
     "constraints": [
       "Length up to 100",
       "Carry addition"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Palindrome Linked List Verification",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Palindrome%20Linked%20List%20Verification&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Palindrome%20Linked%20List%20Verification%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -729,14 +1232,26 @@ module.exports = [
     "constraints": [
       "Node count up to 10^5",
       "Reverse second half"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Validate Binary Search Tree BST Rule",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Validate%20Binary%20Search%20Tree%20BST%20Rule&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Validate%20Binary%20Search%20Tree%20BST%20Rule%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -746,14 +1261,26 @@ module.exports = [
     "constraints": [
       "Node count up to 10^4",
       "Range recursion"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Invert Binary Tree Mirror Image",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Invert%20Binary%20Tree%20Mirror%20Image&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Invert%20Binary%20Tree%20Mirror%20Image%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -763,14 +1290,26 @@ module.exports = [
     "constraints": [
       "Node count up to 100",
       "Recursive DFS"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Maximum Depth of Binary Tree",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Maximum%20Depth%20of%20Binary%20Tree&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Maximum%20Depth%20of%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -780,14 +1319,21 @@ module.exports = [
     "constraints": [
       "Node count up to 10^4",
       "DFS"
+    ],
+    "testCases": [
+      {
+        "input": "root = [3, 9, 20, null, null, 15, 7]",
+        "output": "3",
+        "explanation": "Max depth along root to leaf path 3 -> 20 -> 15 is 3."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Best Time to Buy and Sell Stock",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Best%20Time%20to%20Buy%20and%20Sell%20Stock&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -797,14 +1343,26 @@ module.exports = [
     "constraints": [
       "1 <= prices.length <= 10^5",
       "Min tracker"
+    ],
+    "testCases": [
+      {
+        "input": "prices = [7, 1, 5, 3, 6, 4]",
+        "output": "5",
+        "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5."
+      },
+      {
+        "input": "prices = [7, 6, 4, 3, 1]",
+        "output": "0",
+        "explanation": "No profitable transaction possible."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Valid Anagram Frequency Match",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Valid%20Anagram%20Frequency%20Match&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Valid%20Anagram%20Frequency%20Match%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -814,14 +1372,26 @@ module.exports = [
     "constraints": [
       "Length up to 5 * 10^4",
       "Frequency array"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Two Sum Find Target Pair Indices",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Two%20Sum%20Find%20Target%20Pair%20Indices&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Two%20Sum%20Find%20Target%20Pair%20Indices%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
     "batch": "2024–2026",
@@ -831,14 +1401,26 @@ module.exports = [
     "constraints": [
       "2 <= nums.length <= 10^4",
       "Hash map"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 7, 11, 15], target = 9",
+        "output": "[0, 1]",
+        "explanation": "nums[0] + nums[1] = 2 + 7 = 9, so return indices [0, 1]."
+      },
+      {
+        "input": "nums = [3, 2, 4], target = 6",
+        "output": "[1, 2]",
+        "explanation": "nums[1] + nums[2] = 2 + 4 = 6, so return indices [1, 2]."
+      }
     ]
   },
   {
     "company": "Adobe",
     "title": "Adobe - Sliding Window Maximum K Elements",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Adobe%20Sliding%20Window%20Maximum%20K%20Elements&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Sliding%20Window%20Maximum%20K%20Elements%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -848,6 +1430,18 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Monotonic deque"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   }
 ];

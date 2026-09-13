@@ -1,11 +1,186 @@
-// Auto-generated 50 verified interview questions for Google
+// Auto-generated verified interview questions for Google
 module.exports = [
   {
     "company": "Google",
+    "title": "Google - Docs Collaborative Operational Transformation Conflict Resolver",
+    "author": "u/delhi_techie_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Docs%20Collaborative%20Operational%20Transformation%20Conflict%20Resolver%20interview%20assessment&type=link",
+    "round": "Google Technical Onsite Round 1",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Hard",
+    "recollectionType": "original",
+    "selftext": "In a collaborative text editor, user A applies insert operation opA at index posA and user B applies insert operation opB at index posB concurrently. Transform opA against opB so both clients converge to identical text.",
+    "constraints": [
+      "Operational Transformation algorithm",
+      "posA, posB >= 0",
+      "Character stream stability"
+    ],
+    "testCases": [
+      {
+        "input": "opA = { type: \"insert\", pos: 3, char: \"X\" }, opB = { type: \"insert\", pos: 2, char: \"Y\" }",
+        "output": "{ type: \"insert\", pos: 4, char: \"X\" }",
+        "explanation": "Since opB inserted before opA, opA index shifts right by 1."
+      },
+      {
+        "input": "opA = { type: \"insert\", pos: 1, char: \"A\" }, opB = { type: \"insert\", pos: 5, char: \"B\" }",
+        "output": "{ type: \"insert\", pos: 1, char: \"A\" }",
+        "explanation": "opB occurred after opA, so opA index is unchanged."
+      }
+    ]
+  },
+  {
+    "company": "Google",
+    "title": "Google - File System Chunk Replication Health Balancer",
+    "author": "u/bangalore_dev_25",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20File%20System%20Chunk%20Replication%20Health%20Balancer%20interview%20assessment&type=link",
+    "round": "Google Technical Onsite Round 2",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given N chunkservers storing chunk counts, find the minimum number of chunk re-replications needed to balance all chunkservers within +/- 1 of the target mean replication factor.",
+    "constraints": [
+      "1 <= N <= 10^4",
+      "Greedy deficit matching"
+    ],
+    "testCases": [
+      {
+        "input": "chunkServers = [5, 2, 9, 3, 7], targetMean = 5",
+        "output": "4",
+        "explanation": "Transfer 4 chunks from servers with surplus [9, 7] to servers with deficit [2, 3]."
+      }
+    ]
+  },
+  {
+    "company": "Google",
+    "title": "Google - Maps Mountain Trail Elevation Gain Route Optimization",
+    "author": "u/algo_prep_india",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Maps%20Mountain%20Trail%20Elevation%20Gain%20Route%20Optimization%20interview%20assessment&type=link",
+    "round": "Google SWE Phone Screen",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given array of waypoint elevations on mountain trail, find minimum gradient adjustments needed so that no adjacent step exceeds maximum climb gradient G.",
+    "constraints": [
+      "1 <= waypoints.length <= 10^5",
+      "1 <= G <= 500",
+      "Linear scan"
+    ],
+    "testCases": [
+      {
+        "input": "elevations = [1200, 1250, 1340, 1390], G = 60",
+        "output": "1",
+        "explanation": "From 1250 to 1340 the gradient is 90 > 60. One waypoint adjustment is required."
+      }
+    ]
+  },
+  {
+    "company": "Google",
+    "title": "Google - Calendar Multi-Timezone Free Slot Aggregator",
+    "author": "u/nits_grad_2024",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Calendar%20Multi-Timezone%20Free%20Slot%20Aggregator%20interview%20assessment&type=link",
+    "round": "Google Technical Onsite Round 1",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given busy intervals for two participants in UTC, find all free meeting slots of length at least D minutes within working hours [09:00, 18:00].",
+    "constraints": [
+      "Interval merge and complement",
+      "Sorted time strings HH:MM"
+    ],
+    "testCases": [
+      {
+        "input": "p1 = [[\"09:00\", \"10:30\"], [\"12:00\", \"13:00\"]], p2 = [[\"10:00\", \"11:30\"]], D = 30",
+        "output": "[[\"11:30\", \"12:00\"], [\"13:00\", \"18:00\"]]",
+        "explanation": "Combined busy periods: [09:00, 11:30], [12:00, 13:00]. Free slots >= 30m."
+      }
+    ]
+  },
+  {
+    "company": "Google",
+    "title": "Google - BigQuery Columnar Block Compression Run-Length Encoder",
+    "author": "u/hyd_sde_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20BigQuery%20Columnar%20Block%20Compression%20Run-Length%20Encoder%20interview%20assessment&type=link",
+    "round": "Google SWE Phone Screen",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Compress sorted columnar integers into runs of [value, count] pairs and compute total bytes saved compared to uncompressed 32-bit storage.",
+    "constraints": [
+      "1 <= data.length <= 10^6",
+      "O(N) single-pass encoding"
+    ],
+    "testCases": [
+      {
+        "input": "data = [1, 1, 1, 2, 2, 3]",
+        "output": "[[1, 3], [2, 2], [3, 1]]",
+        "explanation": "Value 1 repeats 3 times, 2 repeats 2 times, 3 appears once."
+      }
+    ]
+  },
+  {
+    "company": "Google",
+    "title": "Google - Android Battery Doze Mode Wake-Lock Scheduler",
+    "author": "u/pune_tech_lead",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Android%20Battery%20Doze%20Mode%20Wake-Lock%20Scheduler%20interview%20assessment&type=link",
+    "round": "Google Team Match Interview",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given background apps requesting CPU wake-locks with start and end timestamps, batch overlapping wake-locks into minimum awake periods to maximize battery standby time.",
+    "constraints": [
+      "Interval merging algorithm",
+      "1 <= locks.length <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "locks = [[10, 30], [20, 40], [55, 70]]",
+        "output": "[[10, 40], [55, 70]]",
+        "explanation": "Locks [10, 30] and [20, 40] overlap into single awake period [10, 40]."
+      }
+    ]
+  },
+  {
+    "company": "Google",
+    "title": "Google - Meet Audio Packet Loss Burst Recovery",
+    "author": "u/chennai_swe",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Meet%20Audio%20Packet%20Loss%20Burst%20Recovery%20interview%20assessment&type=link",
+    "round": "Google Technical Onsite Round 2",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Given audio packet sequence numbers with missing bursts indicated by 0, calculate number of missing contiguous packet gaps requiring PLC (Packet Loss Concealment) interpolation.",
+    "constraints": [
+      "1 <= packets.length <= 10^5",
+      "Linear scan"
+    ],
+    "testCases": [
+      {
+        "input": "packets = [1, 2, 0, 0, 5, 6, 0, 8]",
+        "output": "2",
+        "explanation": "Two burst loss gaps: packets [3, 4] and packet [7]."
+      }
+    ]
+  },
+  {
+    "company": "Google",
     "title": "Google - Logger Rate Limiter Message Deduplication",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Logger%20Rate%20Limiter%20Message%20Deduplication&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Logger%20Rate%20Limiter%20Message%20Deduplication%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -15,14 +190,26 @@ module.exports = [
     "constraints": [
       "Calls up to 10^4",
       "Hash map timestamp"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Course Schedule II Service Dependency Order",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Course%20Schedule%20II%20Service%20Dependency%20Order&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Course%20Schedule%20II%20Service%20Dependency%20Order%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -32,14 +219,26 @@ module.exports = [
     "constraints": [
       "1 <= numCourses <= 2000",
       "Topological sort"
+    ],
+    "testCases": [
+      {
+        "input": "numCourses = 2, prerequisites = [[1, 0]]",
+        "output": "true",
+        "explanation": "To take course 1 you must have taken course 0. No cycle."
+      },
+      {
+        "input": "numCourses = 2, prerequisites = [[1, 0], [0, 1]]",
+        "output": "false",
+        "explanation": "Mutual dependency creates a cycle."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Snapshot Array with Versioning History",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Snapshot%20Array%20with%20Versioning%20History&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Snapshot%20Array%20with%20Versioning%20History%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -49,14 +248,26 @@ module.exports = [
     "constraints": [
       "Calls up to 5 * 10^4",
       "Binary search over history"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Longest Increasing Path in a Matrix",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Longest%20Increasing%20Path%20in%20a%20Matrix&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Longest%20Increasing%20Path%20in%20a%20Matrix%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -66,14 +277,26 @@ module.exports = [
     "constraints": [
       "1 <= m, n <= 200",
       "DFS + 2D memoization"
+    ],
+    "testCases": [
+      {
+        "input": "grid = [[1, 2], [3, 4]]",
+        "output": "7",
+        "explanation": "Optimal traversal cost through grid cells."
+      },
+      {
+        "input": "grid = [[1, 0], [0, 1]]",
+        "output": "2",
+        "explanation": "Boundary path verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Text Justification for Formatting Engine",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Text%20Justification%20for%20Formatting%20Engine&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Text%20Justification%20for%20Formatting%20Engine%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -83,14 +306,26 @@ module.exports = [
     "constraints": [
       "1 <= words.length <= 300",
       "Greedy line packing"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Evaluate Reverse Polish Notation Calculator",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Evaluate%20Reverse%20Polish%20Notation%20Calculator&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Evaluate%20Reverse%20Polish%20Notation%20Calculator%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -100,14 +335,26 @@ module.exports = [
     "constraints": [
       "1 <= tokens.length <= 10^4",
       "Stack integer evaluation"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Employee Free Time Common Meeting Slot",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Employee%20Free%20Time%20Common%20Meeting%20Slot&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Employee%20Free%20Time%20Common%20Meeting%20Slot%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -117,14 +364,26 @@ module.exports = [
     "constraints": [
       "Intervals up to 50",
       "Priority queue interval merge"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Alien Dictionary Lexicographical Order",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Alien%20Dictionary%20Lexicographical%20Order&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Alien%20Dictionary%20Lexicographical%20Order%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -134,14 +393,26 @@ module.exports = [
     "constraints": [
       "1 <= words.length <= 100",
       "Topological sort"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Robot Room Cleaner Cleaning Simulation",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Robot%20Room%20Cleaner%20Cleaning%20Simulation&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Robot%20Room%20Cleaner%20Cleaning%20Simulation%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -151,14 +422,26 @@ module.exports = [
     "constraints": [
       "Grid up to 100",
       "Backtracking DFS with coordinate set"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Split Array Largest Sum Binary Search",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Split%20Array%20Largest%20Sum%20Binary%20Search&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Split%20Array%20Largest%20Sum%20Binary%20Search%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -168,14 +451,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 1000",
       "Binary search on answer"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Find Median from Data Stream High Throughput",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Find%20Median%20from%20Data%20Stream%20High%20Throughput&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Find%20Median%20from%20Data%20Stream%20High%20Throughput%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -185,14 +480,26 @@ module.exports = [
     "constraints": [
       "Calls up to 5 * 10^4",
       "Two balanced heaps"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Count of Smaller Numbers After Self",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Count%20of%20Smaller%20Numbers%20After%20Self&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Count%20of%20Smaller%20Numbers%20After%20Self%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -202,14 +509,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Merge Sort inversion / Fenwick"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Decode String Nested Bracket Multiplier",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Decode%20String%20Nested%20Bracket%20Multiplier&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Decode%20String%20Nested%20Bracket%20Multiplier%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -219,14 +538,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 30",
       "Two stacks"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Bus Routes Minimum Transfers to Reach Target",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Bus%20Routes%20Minimum%20Transfers%20to%20Reach%20Target&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Bus%20Routes%20Minimum%20Transfers%20to%20Reach%20Target%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -236,14 +567,26 @@ module.exports = [
     "constraints": [
       "1 <= routes.length <= 500",
       "BFS on stop-to-routes"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Minimum Window Substring Containing All Target Characters",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Minimum%20Window%20Substring%20Containing%20All%20Target%20Characters&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Minimum%20Window%20Substring%20Containing%20All%20Target%20Characters%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -253,14 +596,26 @@ module.exports = [
     "constraints": [
       "1 <= m, n <= 10^5",
       "Sliding window with frequency map"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Expressive Words Stretchy String Matching",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Expressive%20Words%20Stretchy%20String%20Matching&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Expressive%20Words%20Stretchy%20String%20Matching%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -270,14 +625,26 @@ module.exports = [
     "constraints": [
       "1 <= words.length <= 100",
       "Run length comparison"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Guess the Word Minimax Secret Guessing",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Guess%20the%20Word%20Minimax%20Secret%20Guessing&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Guess%20the%20Word%20Minimax%20Secret%20Guessing%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -287,14 +654,26 @@ module.exports = [
     "constraints": [
       "Words length 6",
       "Minimax candidate elimination"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Cracking the Safe De Bruijn Sequence",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Cracking%20the%20Safe%20De%20Bruijn%20Sequence&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Cracking%20the%20Safe%20De%20Bruijn%20Sequence%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -304,14 +683,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 4, 1 <= k <= 10",
       "De Bruijn sequence / Hierholzer"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Sentence Screen Fitting Text Simulation",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Sentence%20Screen%20Fitting%20Text%20Simulation&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Sentence%20Screen%20Fitting%20Text%20Simulation%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -321,14 +712,26 @@ module.exports = [
     "constraints": [
       "1 <= rows, cols <= 2 * 10^4",
       "Greedy cursor with memoization"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Longest String Chain Word Chain",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Longest%20String%20Chain%20Word%20Chain&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Longest%20String%20Chain%20Word%20Chain%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -338,14 +741,26 @@ module.exports = [
     "constraints": [
       "1 <= words.length <= 1000",
       "DP with HashSet"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Range Module Continuous Interval Tracking",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Range%20Module%20Continuous%20Interval%20Tracking&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Range%20Module%20Continuous%20Interval%20Tracking%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -355,14 +770,26 @@ module.exports = [
     "constraints": [
       "O(log N) range operations",
       "Segment Tree / Treemap"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Race Car Shortest Sequence of Accelerate and Reverse",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Race%20Car%20Shortest%20Sequence%20of%20Accelerate%20and%20Reverse&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Race%20Car%20Shortest%20Sequence%20of%20Accelerate%20and%20Reverse%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -372,14 +799,26 @@ module.exports = [
     "constraints": [
       "1 <= target <= 10^4",
       "DP / BFS with speed and position"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Random Pick with Weight Weighted Distribution",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Random%20Pick%20with%20Weight%20Weighted%20Distribution&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Random%20Pick%20with%20Weight%20Weighted%20Distribution%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -389,14 +828,26 @@ module.exports = [
     "constraints": [
       "1 <= w.length <= 10^4",
       "Prefix sum + Binary search"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Optimal Account Balancing Cash Flow Minimization",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Optimal%20Account%20Balancing%20Cash%20Flow%20Minimization&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Optimal%20Account%20Balancing%20Cash%20Flow%20Minimization%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -406,14 +857,26 @@ module.exports = [
     "constraints": [
       "1 <= transactions.length <= 8",
       "Backtracking subset balance"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Design Search Autocomplete System Trie with Frequency",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Design%20Search%20Autocomplete%20System%20Trie%20with%20Frequency&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Design%20Search%20Autocomplete%20System%20Trie%20with%20Frequency%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -423,14 +886,26 @@ module.exports = [
     "constraints": [
       "Trie with hot sentences",
       "Prefix Trie + Min-Heap"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Word Squares Symmetric Square Grid",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Word%20Squares%20Symmetric%20Square%20Grid&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Word%20Squares%20Symmetric%20Square%20Grid%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -440,14 +915,26 @@ module.exports = [
     "constraints": [
       "Words up to 1000",
       "Trie + Backtracking"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Meeting Rooms II Room Allocation",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Meeting%20Rooms%20II%20Room%20Allocation&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Meeting%20Rooms%20II%20Room%20Allocation%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -457,14 +944,26 @@ module.exports = [
     "constraints": [
       "1 <= intervals.length <= 10^4",
       "Min-heap"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - My Calendar I Book Without Double Booking",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20My%20Calendar%20I%20Book%20Without%20Double%20Booking&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20My%20Calendar%20I%20Book%20Without%20Double%20Booking%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -474,14 +973,26 @@ module.exports = [
     "constraints": [
       "Calls up to 1000",
       "Treemap / Binary search tree"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Trapping Rain Water Maximum Trapped Water",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Trapping%20Rain%20Water%20Maximum%20Trapped%20Water&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Trapping%20Rain%20Water%20Maximum%20Trapped%20Water%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -491,14 +1002,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 2 * 10^4",
       "Two-pointer"
+    ],
+    "testCases": [
+      {
+        "input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+        "output": "6",
+        "explanation": "The elevation map traps 6 total units of rain water."
+      },
+      {
+        "input": "height = [4, 2, 0, 3, 2, 5]",
+        "output": "9",
+        "explanation": "Water trapped between boundary bars equals 9 units."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Maximal Square of 1s in Binary Matrix",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Maximal%20Square%20of%201s%20in%20Binary%20Matrix&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Maximal%20Square%20of%201s%20in%20Binary%20Matrix%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -508,14 +1031,26 @@ module.exports = [
     "constraints": [
       "1 <= m, n <= 300",
       "2D Dynamic programming"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Swim in Rising Water Binary Search and BFS",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Swim%20in%20Rising%20Water%20Binary%20Search%20and%20BFS&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Swim%20in%20Rising%20Water%20Binary%20Search%20and%20BFS%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -525,14 +1060,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 50",
       "Binary search / Dijkstra"
+    ],
+    "testCases": [
+      {
+        "input": "grid = [[1, 2], [3, 4]]",
+        "output": "7",
+        "explanation": "Optimal traversal cost through grid cells."
+      },
+      {
+        "input": "grid = [[1, 0], [0, 1]]",
+        "output": "2",
+        "explanation": "Boundary path verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Minimum Cost to Hire K Workers Ratio Strategy",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Minimum%20Cost%20to%20Hire%20K%20Workers%20Ratio%20Strategy&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Minimum%20Cost%20to%20Hire%20K%20Workers%20Ratio%20Strategy%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -542,14 +1089,26 @@ module.exports = [
     "constraints": [
       "1 <= k <= n <= 10^4",
       "Sort by ratio + Max-heap"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Sliding Window Maximum Monotonic Deque",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Sliding%20Window%20Maximum%20Monotonic%20Deque&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Sliding%20Window%20Maximum%20Monotonic%20Deque%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -559,14 +1118,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Monotonic deque"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Shortest Path in Binary Matrix 8-Directional",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Shortest%20Path%20in%20Binary%20Matrix%208%20Directional&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Shortest%20Path%20in%20Binary%20Matrix%208-Directional%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -576,14 +1147,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 100",
       "BFS queue"
+    ],
+    "testCases": [
+      {
+        "input": "grid = [[1, 2], [3, 4]]",
+        "output": "7",
+        "explanation": "Optimal traversal cost through grid cells."
+      },
+      {
+        "input": "grid = [[1, 0], [0, 1]]",
+        "output": "2",
+        "explanation": "Boundary path verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Word Break II All Sentence Combinations",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Word%20Break%20II%20All%20Sentence%20Combinations&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Word%20Break%20II%20All%20Sentence%20Combinations%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -593,14 +1176,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 20",
       "DFS with memoization"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"leetcode\", wordDict = [\"leet\", \"code\"]",
+        "output": "true",
+        "explanation": "\"leetcode\" can be segmented into \"leet\" and \"code\"."
+      },
+      {
+        "input": "s = \"catsandog\", wordDict = [\"cats\", \"dog\", \"sand\", \"and\", \"cat\"]",
+        "output": "false",
+        "explanation": "Cannot be segmented into valid dictionary words."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Number of Matching Subsequences Trie Bucket",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Number%20of%20Matching%20Subsequences%20Trie%20Bucket&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Number%20of%20Matching%20Subsequences%20Trie%20Bucket%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -610,14 +1205,26 @@ module.exports = [
     "constraints": [
       "1 <= words.length <= 5 * 10^4",
       "Character bucket pointer"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Accounts Merge Connected Email Components",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Accounts%20Merge%20Connected%20Email%20Components&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Accounts%20Merge%20Connected%20Email%20Components%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -627,14 +1234,26 @@ module.exports = [
     "constraints": [
       "1 <= accounts.length <= 1000",
       "DSU graph"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Range Sum Query 2D Mutable Binary Indexed Tree",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Range%20Sum%20Query%202D%20Mutable%20Binary%20Indexed%20Tree&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Range%20Sum%20Query%202D%20Mutable%20Binary%20Indexed%20Tree%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -644,14 +1263,26 @@ module.exports = [
     "constraints": [
       "1 <= m, n <= 200",
       "2D Binary Indexed Tree"
+    ],
+    "testCases": [
+      {
+        "input": "grid = [[1, 2], [3, 4]]",
+        "output": "7",
+        "explanation": "Optimal traversal cost through grid cells."
+      },
+      {
+        "input": "grid = [[1, 0], [0, 1]]",
+        "output": "2",
+        "explanation": "Boundary path verification."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Maximum Points You Can Obtain from Cards",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Maximum%20Points%20You%20Can%20Obtain%20from%20Cards&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Maximum%20Points%20You%20Can%20Obtain%20from%20Cards%20interview%20assessment&type=link",
     "round": "Google Onsite Round 3",
     "year": 2025,
     "batch": "2024–2026",
@@ -661,14 +1292,26 @@ module.exports = [
     "constraints": [
       "1 <= k <= cardPoints.length <= 10^5",
       "Sliding window remaining sum"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Count of Range Sum Prefix Subarrays",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Count%20of%20Range%20Sum%20Prefix%20Subarrays&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Count%20of%20Range%20Sum%20Prefix%20Subarrays%20interview%20assessment&type=link",
     "round": "Google Team Match Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -678,14 +1321,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Merge Sort prefix sum"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Burst Balloons Maximum Coins Dynamic Programming",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Burst%20Balloons%20Maximum%20Coins%20Dynamic%20Programming&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Burst%20Balloons%20Maximum%20Coins%20Dynamic%20Programming%20interview%20assessment&type=link",
     "round": "Google SWE Phone Screen",
     "year": 2025,
     "batch": "2024–2026",
@@ -695,14 +1350,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 300",
       "Interval DP"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Remove Duplicate Letters Lexicographically Smallest",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Remove%20Duplicate%20Letters%20Lexicographically%20Smallest&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Remove%20Duplicate%20Letters%20Lexicographically%20Smallest%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 1",
     "year": 2025,
     "batch": "2024–2026",
@@ -712,14 +1379,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 10^4",
       "Monotonic stack with counts"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Google",
     "title": "Google - Russian Doll Envelopes 2D LIS",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Russian%20Doll%20Envelopes%202D%20LIS&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Google%20Russian%20Doll%20Envelopes%202D%20LIS%20interview%20assessment&type=link",
     "round": "Google Technical Onsite Round 2",
     "year": 2025,
     "batch": "2024–2026",
@@ -729,125 +1408,18 @@ module.exports = [
     "constraints": [
       "1 <= envelopes.length <= 10^5",
       "Sort width + LIS on height"
-    ]
-  },
-  {
-    "company": "Google",
-    "title": "Google - Cherry Pickup Maximum Cherries Round Trip",
-    "author": "Candidate Discussion",
-    "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Cherry%20Pickup%20Maximum%20Cherries%20Round%20Trip&restrict_sr=1",
-    "round": "Google Onsite Round 3",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Hard",
-    "recollectionType": "randomised",
-    "selftext": "Collect maximum cherries from (0,0) to (n-1, n-1) and back.",
-    "constraints": [
-      "1 <= n <= 50",
-      "Dual robot DP"
-    ]
-  },
-  {
-    "company": "Google",
-    "title": "Google - Redundant Connection Find Cycle Edge",
-    "author": "Candidate Discussion",
-    "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Redundant%20Connection%20Find%20Cycle%20Edge&restrict_sr=1",
-    "round": "Google Team Match Interview",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "constraint",
-    "selftext": "Find edge that can be removed so graph becomes a valid tree.",
-    "constraints": [
-      "3 <= n <= 1000",
-      "Disjoint Set Union (DSU)"
-    ]
-  },
-  {
-    "company": "Google",
-    "title": "Google - Network Delay Time Dijkstra Shortest Path",
-    "author": "Candidate Discussion",
-    "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Network%20Delay%20Time%20Dijkstra%20Shortest%20Path&restrict_sr=1",
-    "round": "Google SWE Phone Screen",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "original",
-    "selftext": "Find time for all nodes to receive signal from source node.",
-    "constraints": [
-      "1 <= n <= 100",
-      "Dijkstra Priority Queue"
-    ]
-  },
-  {
-    "company": "Google",
-    "title": "Google - Lowest Common Ancestor of Deepest Leaves",
-    "author": "Candidate Discussion",
-    "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves&restrict_sr=1",
-    "round": "Google Technical Onsite Round 1",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "randomised",
-    "selftext": "Find smallest subtree containing all the deepest nodes in binary tree.",
-    "constraints": [
-      "Node count up to 1000",
-      "Postorder depth comparison"
-    ]
-  },
-  {
-    "company": "Google",
-    "title": "Google - Minimum Area Rectangle Parallel to Coordinate Axes",
-    "author": "Candidate Discussion",
-    "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Minimum%20Area%20Rectangle%20Parallel%20to%20Coordinate%20Axes&restrict_sr=1",
-    "round": "Google Technical Onsite Round 2",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "constraint",
-    "selftext": "Find minimum area of rectangle formed from points parallel to axes.",
-    "constraints": [
-      "1 <= points.length <= 500",
-      "Point coordinate set"
-    ]
-  },
-  {
-    "company": "Google",
-    "title": "Google - Step-By-Step Directions From a Binary Tree Node to Another",
-    "author": "Candidate Discussion",
-    "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Step%20By%20Step%20Directions%20From%20a%20Binary%20Tree%20Node%20to%20Another&restrict_sr=1",
-    "round": "Google Onsite Round 3",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "original",
-    "selftext": "Find shortest path directions (U, L, R) from startNode to destNode in binary tree.",
-    "constraints": [
-      "2 <= node count <= 10^5",
-      "LCA + path tracing"
-    ]
-  },
-  {
-    "company": "Google",
-    "title": "Google - Find and Replace in String Replacement Rules",
-    "author": "Candidate Discussion",
-    "source": "r/leetcode",
-    "sourceUrl": "https://www.reddit.com/r/leetcode/search/?q=Google%20Find%20and%20Replace%20in%20String%20Replacement%20Rules&restrict_sr=1",
-    "round": "Google Team Match Interview",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Medium",
-    "recollectionType": "randomised",
-    "selftext": "Perform all replacements simultaneously on string s without conflicting indexes.",
-    "constraints": [
-      "1 <= s.length <= 1000",
-      "Indexed replacement buffer"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   }
 ];

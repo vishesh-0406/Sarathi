@@ -610,6 +610,169 @@ main {
     color: #93c5fd;
 }
 
+/* LeetCode Premium Badges & Styling */
+.premium-lock-badge {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.25), rgba(245, 158, 11, 0.35));
+    border: 1px solid rgba(234, 179, 8, 0.6);
+    color: #fde047;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.premium-top-badge {
+    background: rgba(234, 179, 8, 0.2);
+    border: 1px solid rgba(234, 179, 8, 0.5);
+    color: #fde047;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    margin-left: 4px;
+}
+
+.solve-leetcode-btn.premium-leetcode-btn {
+    background: linear-gradient(135deg, #b45309, #d97706);
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid #f59e0b;
+}
+
+.solve-leetcode-btn.premium-leetcode-btn:hover {
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+    color: #fff;
+}
+
+.leetcode-header-pill.premium-header-pill {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.15), rgba(202, 138, 4, 0.25));
+    border: 1px solid rgba(234, 179, 8, 0.6);
+    color: #fde047;
+}
+
+.premium-notice-text {
+    margin: 8px 0 0 0;
+    font-size: 12px;
+    color: #fbbf24;
+    line-height: 1.4;
+}
+
+/* Novel Company-Exclusive Problem Box & Badges */
+.novel-problem-box {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(217, 119, 6, 0.08));
+    border: 1px dashed #f59e0b;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(245, 158, 11, 0.08);
+}
+
+.novel-box-title {
+    color: #fbbf24;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.novel-badge {
+    background-color: rgba(245, 158, 11, 0.25);
+    color: #fef08a;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.novel-problem-text {
+    color: #fef3c7 !important;
+    font-size: 13px !important;
+    line-height: 1.55;
+    margin-top: 6px;
+}
+
+.novel-pill-tag {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(217, 119, 6, 0.18));
+    color: #fde047;
+    border: 1px solid rgba(245, 158, 11, 0.55);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 1px 4px rgba(245, 158, 11, 0.15);
+}
+
+.novel-filter-pill {
+    border-color: rgba(245, 158, 11, 0.4) !important;
+    color: #fbbf24 !important;
+}
+
+.novel-filter-pill.active {
+    background: linear-gradient(135deg, #d97706, #b45309) !important;
+    color: #ffffff !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.4) !important;
+}
+
+.novel-top-badge {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fde047;
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    letter-spacing: 0.3px;
+}
+
+.novel-solve-btn {
+    background: linear-gradient(135deg, #d97706, #b45309) !important;
+    border-color: #f59e0b !important;
+}
+
+.novel-solve-btn:hover {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+}
+
+.novel-header-pill {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fde047;
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.novel-question-tag {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fde047;
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
 .question-card-footer {
     display: flex;
     justify-content: space-between;
@@ -1497,6 +1660,20 @@ main {
     background: #d97706;
 }
 
+.novel-question-tag {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+}
+
 /* Pagination Bar */
 .pagination-bar {
     display: flex;
@@ -1704,6 +1881,21 @@ main {
     color: #fde68a;
     border-color: #f59e0b;
     transform: translateY(-1px);
+}
+
+.novel-header-pill {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
 }
 
 .panel-heading {

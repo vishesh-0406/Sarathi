@@ -187,6 +187,12 @@ function DSA({ onBack, onOpenIDE }) {
                                 <span className={`difficulty-badge ${q.difficulty?.toLowerCase()}`}>
                                     {q.difficulty}
                                 </span>
+                                {matched?.isPremium && (
+                                    <span className="premium-top-badge" title="This problem requires a LeetCode Premium subscription">🔒 Premium</span>
+                                )}
+                                {(!matched || q.isNovel) && (
+                                    <span className="novel-top-badge">🆕 New Question</span>
+                                )}
                             </div>
 
                             <h3 className="dsa-title">{q.title}</h3>
@@ -211,23 +217,30 @@ function DSA({ onBack, onOpenIDE }) {
                                 {onOpenIDE && (
                                     <button
                                         type="button"
-                                        className="solve-ide-btn"
+                                        className={`solve-ide-btn ${(!matched || q.isNovel) ? 'novel-solve-btn' : ''}`}
                                         onClick={() => onOpenIDE(q)}
                                     >
-                                        💻 Solve in IDE
+                                        💻 {(!matched || q.isNovel) ? 'Solve New Question' : 'Solve in IDE'}
                                     </button>
                                 )}
 
-                                {matched && matched.problemUrl && (
+                                {matched && matched.problemUrl ? (
                                     <a
                                         href={matched.problemUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="solve-leetcode-btn"
-                                        title={matched.problemName}
+                                        className={`solve-leetcode-btn ${matched.isPremium ? 'premium-leetcode-btn' : ''}`}
+                                        title={matched.isPremium ? `${matched.problemName} (Requires LeetCode Premium)` : matched.problemName}
                                     >
-                                        🚀 LeetCode ({Math.round(matched.similarityScore * 100)}%) ↗
+                                        {matched.isPremium ? '🔒 LeetCode Premium' : '🚀 LeetCode'} ({Math.round(matched.similarityScore * 100)}%) ↗
                                     </a>
+                                ) : (
+                                    <span 
+                                        className="novel-question-tag" 
+                                        title="Authentic company-exclusive interview pattern with no LeetCode equivalent"
+                                    >
+                                        🆕 New Question (No LeetCode Match)
+                                    </span>
                                 )}
                             </div>
 

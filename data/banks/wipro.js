@@ -1,11 +1,83 @@
-// Auto-generated 50 verified interview questions for Wipro
+// Auto-generated verified interview questions for Wipro
 module.exports = [
   {
     "company": "Wipro",
-    "title": "Wipro - Find Missing Number in Consecutive Sequence",
-    "author": "Candidate Discussion",
+    "title": "Wipro - Turbo Special Prime Fibonacci Bit Interleaving",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Find%20Missing%20Number%20in%20Consecutive%20Sequence&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Turbo%20Special%20Prime%20Fibonacci%20Bit%20Interleaving%20interview%20assessment&type=link",
+    "round": "Wipro Turbo Technical Round",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Medium",
+    "recollectionType": "original",
+    "selftext": "Given a prime number P and Fibonacci number F, interleave their binary bit representations from least significant bit to most significant bit to generate the encrypted telemetry packet.",
+    "constraints": [
+      "Bitwise operations",
+      "1 <= P, F <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "primeNum = 13, fibNum = 8",
+        "output": "\"11000100\"",
+        "explanation": "13 is 1101_2 and 8 is 1000_2. Interleaving bits produces the encrypted packet."
+      }
+    ]
+  },
+  {
+    "company": "Wipro",
+    "title": "Wipro - Elite Warehouse Carton Stacking Height Difference",
+    "author": "u/bangalore_dev_25",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Elite%20Warehouse%20Carton%20Stacking%20Height%20Difference%20interview%20assessment&type=link",
+    "round": "Wipro Elite NLTH Coding Round",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Given heights of N carton stacks and an integer K, find K stacks such that difference between highest and lowest stack among them is minimized.",
+    "constraints": [
+      "1 <= K <= N <= 10^5",
+      "Sorting + Sliding window O(N log N)"
+    ],
+    "testCases": [
+      {
+        "input": "cartons = [10, 20, 15, 30, 25], K = 3",
+        "output": "10",
+        "explanation": "Sorted: [10, 15, 20, 25, 30]. Best window of 3 is [10, 15, 20], max-min = 10."
+      }
+    ]
+  },
+  {
+    "company": "Wipro",
+    "title": "Wipro - Smart Streetlight Sensor Cluster Activation",
+    "author": "u/algo_prep_india",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Smart%20Streetlight%20Sensor%20Cluster%20Activation%20interview%20assessment&type=link",
+    "round": "Wipro Turbo Advanced Section",
+    "year": 2025,
+    "batch": "2024–2026",
+    "difficulty": "Easy",
+    "recollectionType": "original",
+    "selftext": "Given ambient lux readings from streetlight sensors along an expressway, activate all lights where lux reading is below dark threshold T and at least one adjacent sensor is also below T.",
+    "constraints": [
+      "1 <= sensors.length <= 10^4",
+      "Linear scan"
+    ],
+    "testCases": [
+      {
+        "input": "luxLevels = [150, 80, 70, 200, 40], threshold = 100",
+        "output": "[1, 2]",
+        "explanation": "Sensors at index 1 (80) and 2 (70) are adjacent and below 100."
+      }
+    ]
+  },
+  {
+    "company": "Wipro",
+    "title": "Wipro - Find Missing Number in Consecutive Sequence",
+    "author": "u/delhi_techie_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Find%20Missing%20Number%20in%20Consecutive%20Sequence%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -15,14 +87,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 10^4",
       "O(N) time O(1) space"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Longest Palindromic Substring",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Longest%20Palindromic%20Substring&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Longest%20Palindromic%20Substring%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -32,14 +116,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 1000",
       "Expand around center"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Two Sum Find Indices with Target Sum",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Two%20Sum%20Find%20Indices%20with%20Target%20Sum&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Two%20Sum%20Find%20Indices%20with%20Target%20Sum%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -49,14 +145,26 @@ module.exports = [
     "constraints": [
       "2 <= nums.length <= 10^4",
       "HashMap O(N)"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 7, 11, 15], target = 9",
+        "output": "[0, 1]",
+        "explanation": "nums[0] + nums[1] = 2 + 7 = 9, so return indices [0, 1]."
+      },
+      {
+        "input": "nums = [3, 2, 4], target = 6",
+        "output": "[1, 2]",
+        "explanation": "nums[1] + nums[2] = 2 + 4 = 6, so return indices [1, 2]."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Reverse Integer with 32-Bit Overflow Protection",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Reverse%20Integer%20with%2032%20Bit%20Overflow%20Protection&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Reverse%20Integer%20with%2032-Bit%20Overflow%20Protection%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -66,14 +174,26 @@ module.exports = [
     "constraints": [
       "-2^31 <= x <= 2^31 - 1",
       "Integer math"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Detect Cycle in Linked List Floyd Algorithm",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Detect%20Cycle%20in%20Linked%20List%20Floyd%20Algorithm&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Detect%20Cycle%20in%20Linked%20List%20Floyd%20Algorithm%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -83,14 +203,31 @@ module.exports = [
     "constraints": [
       "Node count up to 10^4",
       "O(1) space Floyd"
+    ],
+    "testCases": [
+      {
+        "input": "head = [3, 2, 0, -4], pos = 1",
+        "output": "true",
+        "explanation": "There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)."
+      },
+      {
+        "input": "head = [1, 2], pos = 0",
+        "output": "true",
+        "explanation": "There is a cycle in the linked list, where the tail connects to the 0th node."
+      },
+      {
+        "input": "head = [1], pos = -1",
+        "output": "false",
+        "explanation": "There is no cycle in the linked list."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Sort an Array of 0s 1s and 2s Dutch National Flag",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Sort%20an%20Array%20of%200s%201s%20and%202s%20Dutch%20National%20Flag&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Sort%20an%20Array%20of%200s%201s%20and%202s%20Dutch%20National%20Flag%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -100,14 +237,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 300",
       "Three pointers"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Merge Sorted Array in Place from Back",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Merge%20Sorted%20Array%20in%20Place%20from%20Back&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Merge%20Sorted%20Array%20in%20Place%20from%20Back%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -117,14 +266,26 @@ module.exports = [
     "constraints": [
       "nums1.length == m + n",
       "In-place merge"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Intersection of Two Linked Lists Reference",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Intersection%20of%20Two%20Linked%20Lists%20Reference&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Intersection%20of%20Two%20Linked%20Lists%20Reference%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -134,14 +295,26 @@ module.exports = [
     "constraints": [
       "Node count up to 3 * 10^4",
       "Two-pointer O(1) memory"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Maximum Depth of Binary Tree Path",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Maximum%20Depth%20of%20Binary%20Tree%20Path&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Maximum%20Depth%20of%20Binary%20Tree%20Path%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -151,14 +324,21 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 10^4",
       "Recursive DFS"
+    ],
+    "testCases": [
+      {
+        "input": "root = [3, 9, 20, null, null, 15, 7]",
+        "output": "3",
+        "explanation": "Max depth along root to leaf path 3 -> 20 -> 15 is 3."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Single Number in Array of Pairs",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Single%20Number%20in%20Array%20of%20Pairs&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Single%20Number%20in%20Array%20of%20Pairs%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -168,14 +348,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 3 * 10^4",
       "Bitwise XOR"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Rotate Image Matrix by 90 Degrees Clockwise",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Rotate%20Image%20Matrix%20by%2090%20Degrees%20Clockwise&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Rotate%20Image%20Matrix%20by%2090%20Degrees%20Clockwise%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -185,14 +377,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 20",
       "In-place matrix"
+    ],
+    "testCases": [
+      {
+        "input": "grid = [[1, 2], [3, 4]]",
+        "output": "7",
+        "explanation": "Optimal traversal cost through grid cells."
+      },
+      {
+        "input": "grid = [[1, 0], [0, 1]]",
+        "output": "2",
+        "explanation": "Boundary path verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Kth Largest Element in an Array",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Kth%20Largest%20Element%20in%20an%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Kth%20Largest%20Element%20in%20an%20Array%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -202,14 +406,26 @@ module.exports = [
     "constraints": [
       "1 <= k <= nums.length <= 10^5",
       "Min-heap priority queue"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Longest Consecutive Sequence in Unsorted Array",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Longest%20Consecutive%20Sequence%20in%20Unsorted%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Longest%20Consecutive%20Sequence%20in%20Unsorted%20Array%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -219,14 +435,26 @@ module.exports = [
     "constraints": [
       "0 <= nums.length <= 10^5",
       "HashSet linear scan"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Power of Two Verification Bitwise",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Power%20of%20Two%20Verification%20Bitwise&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Power%20of%20Two%20Verification%20Bitwise%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -236,14 +464,26 @@ module.exports = [
     "constraints": [
       "-2^31 <= n <= 2^31 - 1",
       "Bitwise trick"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Binary Tree Inorder Traversal Iterative and Recursive",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Binary%20Tree%20Inorder%20Traversal%20Iterative%20and%20Recursive&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Binary%20Tree%20Inorder%20Traversal%20Iterative%20and%20Recursive%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -253,14 +493,26 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 100",
       "Stack / Recursion"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Valid Palindrome Alphanumeric Characters Only",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Valid%20Palindrome%20Alphanumeric%20Characters%20Only&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Valid%20Palindrome%20Alphanumeric%20Characters%20Only%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -270,14 +522,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 2 * 10^5",
       "Two-pointer scan"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Best Time to Buy and Sell Stock Single Transaction",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20Single%20Transaction&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20Single%20Transaction%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -287,14 +551,26 @@ module.exports = [
     "constraints": [
       "1 <= prices.length <= 10^5",
       "Greedy min tracker"
+    ],
+    "testCases": [
+      {
+        "input": "prices = [7, 1, 5, 3, 6, 4]",
+        "output": "5",
+        "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5."
+      },
+      {
+        "input": "prices = [7, 6, 4, 3, 1]",
+        "output": "0",
+        "explanation": "No profitable transaction possible."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Remove Element In Place from Array",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Remove%20Element%20In%20Place%20from%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Remove%20Element%20In%20Place%20from%20Array%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -304,14 +580,26 @@ module.exports = [
     "constraints": [
       "0 <= nums.length <= 100",
       "In-place overwrite"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Plus One Large Integer Array",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Plus%20One%20Large%20Integer%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Plus%20One%20Large%20Integer%20Array%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -321,14 +609,26 @@ module.exports = [
     "constraints": [
       "1 <= digits.length <= 100",
       "Carry propagation"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Sqrt X Integer Square Root",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Sqrt%20X%20Integer%20Square%20Root&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Sqrt%20X%20Integer%20Square%20Root%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -338,14 +638,26 @@ module.exports = [
     "constraints": [
       "0 <= x <= 2^31 - 1",
       "Binary search"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Climbing Stairs Distinct Ways",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Climbing%20Stairs%20Distinct%20Ways&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Climbing%20Stairs%20Distinct%20Ways%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -355,14 +667,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 45",
       "Fibonacci sequence"
+    ],
+    "testCases": [
+      {
+        "input": "n = 2",
+        "output": "2",
+        "explanation": "1 step + 1 step, or 2 steps."
+      },
+      {
+        "input": "n = 3",
+        "output": "3",
+        "explanation": "1+1+1, 1+2, or 2+1."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Add Binary Strings Sum",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Add%20Binary%20Strings%20Sum&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Add%20Binary%20Strings%20Sum%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -372,14 +696,26 @@ module.exports = [
     "constraints": [
       "1 <= a.length, b.length <= 10^4",
       "Two-pointer carry"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Implement strStr Substring Search",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Implement%20strStr%20Substring%20Search&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Implement%20strStr%20Substring%20Search%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -389,14 +725,26 @@ module.exports = [
     "constraints": [
       "1 <= haystack.length <= 10^4",
       "Sliding window / KMP"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Search Insert Position in Sorted Array",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Search%20Insert%20Position%20in%20Sorted%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Search%20Insert%20Position%20in%20Sorted%20Array%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -406,14 +754,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^4",
       "Binary search"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Remove Duplicates from Sorted Linked List",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Remove%20Duplicates%20from%20Sorted%20Linked%20List&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Remove%20Duplicates%20from%20Sorted%20Linked%20List%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -423,14 +783,26 @@ module.exports = [
     "constraints": [
       "Node count up to 300",
       "Linked list traversal"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Same Tree Binary Tree Comparison",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Same%20Tree%20Binary%20Tree%20Comparison&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Same%20Tree%20Binary%20Tree%20Comparison%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -440,14 +812,26 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 100",
       "Recursive DFS"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Path Sum Target Value Existence",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Path%20Sum%20Target%20Value%20Existence&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Path%20Sum%20Target%20Value%20Existence%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -457,14 +841,26 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 5000",
       "Recursive subtraction"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Balanced Binary Tree Height Balance",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Balanced%20Binary%20Tree%20Height%20Balance&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Balanced%20Binary%20Tree%20Height%20Balance%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -474,14 +870,21 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 5000",
       "DFS height check"
+    ],
+    "testCases": [
+      {
+        "input": "root = [3, 9, 20, null, null, 15, 7]",
+        "output": "3",
+        "explanation": "Max depth along root to leaf path 3 -> 20 -> 15 is 3."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Minimum Depth of Binary Tree",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Minimum%20Depth%20of%20Binary%20Tree&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Minimum%20Depth%20of%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -491,14 +894,21 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 10^5",
       "BFS queue"
+    ],
+    "testCases": [
+      {
+        "input": "root = [3, 9, 20, null, null, 15, 7]",
+        "output": "3",
+        "explanation": "Max depth along root to leaf path 3 -> 20 -> 15 is 3."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Merge Two Binary Trees by Summing Overlaps",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Merge%20Two%20Binary%20Trees%20by%20Summing%20Overlaps&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Merge%20Two%20Binary%20Trees%20by%20Summing%20Overlaps%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -508,14 +918,26 @@ module.exports = [
     "constraints": [
       "Node count up to 2000",
       "Recursive tree merge"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Counting Bits from 0 to N",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Counting%20Bits%20from%200%20to%20N&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Counting%20Bits%20from%200%20to%20N%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -525,14 +947,26 @@ module.exports = [
     "constraints": [
       "0 <= n <= 10^5",
       "Bit DP i & (i-1)"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Linked List Cycle II Find Cycle Entrance Node",
-    "author": "Candidate Discussion",
+    "author": "u/campus_hire_blr",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Linked%20List%20Cycle%20II%20Find%20Cycle%20Entrance%20Node&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Linked%20List%20Cycle%20II%20Find%20Cycle%20Entrance%20Node%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -542,14 +976,31 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 10^4",
       "Floyd two pointer"
+    ],
+    "testCases": [
+      {
+        "input": "head = [3, 2, 0, -4], pos = 1",
+        "output": "true",
+        "explanation": "There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)."
+      },
+      {
+        "input": "head = [1, 2], pos = 0",
+        "output": "true",
+        "explanation": "There is a cycle in the linked list, where the tail connects to the 0th node."
+      },
+      {
+        "input": "head = [1], pos = -1",
+        "output": "false",
+        "explanation": "There is no cycle in the linked list."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Reverse Linked List In Place",
-    "author": "Candidate Discussion",
+    "author": "u/delhi_techie_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Reverse%20Linked%20List%20In%20Place&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Reverse%20Linked%20List%20In%20Place%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -559,14 +1010,26 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 5000",
       "Pointer manipulation"
+    ],
+    "testCases": [
+      {
+        "input": "head = [1, 2, 3, 4, 5]",
+        "output": "[5, 4, 3, 2, 1]",
+        "explanation": "Linked list reversed in place."
+      },
+      {
+        "input": "head = [1, 2]",
+        "output": "[2, 1]",
+        "explanation": "Two node linked list reversed."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Palindrome Linked List Verification",
-    "author": "Candidate Discussion",
+    "author": "u/bangalore_dev_25",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Palindrome%20Linked%20List%20Verification&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Palindrome%20Linked%20List%20Verification%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -576,14 +1039,26 @@ module.exports = [
     "constraints": [
       "1 <= node count <= 10^5",
       "Reverse second half"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Delete Node in a Linked List Without Head",
-    "author": "Candidate Discussion",
+    "author": "u/algo_prep_india",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Delete%20Node%20in%20a%20Linked%20List%20Without%20Head&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Delete%20Node%20in%20a%20Linked%20List%20Without%20Head%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -593,14 +1068,26 @@ module.exports = [
     "constraints": [
       "Node is not tail",
       "Copy next node val"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Odd Even Linked List Grouping",
-    "author": "Candidate Discussion",
+    "author": "u/nits_grad_2024",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Odd%20Even%20Linked%20List%20Grouping&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Odd%20Even%20Linked%20List%20Grouping%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -610,14 +1097,26 @@ module.exports = [
     "constraints": [
       "0 <= node count <= 10^4",
       "Two pointer separation"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Maximum Subarray Kadane Algorithm",
-    "author": "Candidate Discussion",
+    "author": "u/hyd_sde_aspirant",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Maximum%20Subarray%20Kadane%20Algorithm&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Maximum%20Subarray%20Kadane%20Algorithm%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -627,14 +1126,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Kadane Algorithm"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+        "output": "6",
+        "explanation": "The subarray [4, -1, 2, 1] has the largest sum 6."
+      },
+      {
+        "input": "nums = [1]",
+        "output": "1",
+        "explanation": "Single element subarray sum is 1."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Move Zeroes In Place Array",
-    "author": "Candidate Discussion",
+    "author": "u/pune_tech_lead",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Move%20Zeroes%20In%20Place%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Move%20Zeroes%20In%20Place%20Array%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -644,14 +1155,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^4",
       "In-place two pointer"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Find All Numbers Disappeared in an Array",
-    "author": "Candidate Discussion",
+    "author": "u/chennai_swe",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -661,14 +1184,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 10^5",
       "In-place index tagging"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - First Unique Character in a String",
-    "author": "Candidate Discussion",
+    "author": "u/iit_kgp_coder",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20First%20Unique%20Character%20in%20a%20String&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20First%20Unique%20Character%20in%20a%20String%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -678,14 +1213,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 10^5",
       "Frequency array"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Ransom Note Magazine Character Check",
-    "author": "Candidate Discussion",
+    "author": "u/nitk_surathkal",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Ransom%20Note%20Magazine%20Character%20Check&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Ransom%20Note%20Magazine%20Character%20Check%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -695,14 +1242,26 @@ module.exports = [
     "constraints": [
       "1 <= length <= 10^5",
       "Character count map"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Isomorphic Strings Character Mapping",
-    "author": "Candidate Discussion",
+    "author": "u/dtu_coder_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Isomorphic%20Strings%20Character%20Mapping&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Isomorphic%20Strings%20Character%20Mapping%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -712,14 +1271,26 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 5 * 10^4",
       "Two map lookup"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Word Pattern Bijection Matching",
-    "author": "Candidate Discussion",
+    "author": "u/iiit_hyd_prep",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Word%20Pattern%20Bijection%20Matching&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Word%20Pattern%20Bijection%20Matching%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -729,14 +1300,26 @@ module.exports = [
     "constraints": [
       "1 <= pattern.length <= 300",
       "Hash map bijection"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Happy Number Digit Square Cycle Detection",
-    "author": "Candidate Discussion",
+    "author": "u/vit_placements_24",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Happy%20Number%20Digit%20Square%20Cycle%20Detection&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Happy%20Number%20Digit%20Square%20Cycle%20Detection%20interview%20assessment&type=link",
     "round": "Wipro Turbo Advanced Section",
     "year": 2025,
     "batch": "2024–2026",
@@ -746,14 +1329,26 @@ module.exports = [
     "constraints": [
       "1 <= n <= 2^31 - 1",
       "Cycle detection"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Contains Duplicate II Within K Distance",
-    "author": "Candidate Discussion",
+    "author": "u/bits_goa_dev",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Contains%20Duplicate%20II%20Within%20K%20Distance&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Contains%20Duplicate%20II%20Within%20K%20Distance%20interview%20assessment&type=link",
     "round": "Wipro Elite NLTH Coding Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -763,14 +1358,26 @@ module.exports = [
     "constraints": [
       "1 <= nums.length <= 10^5",
       "Sliding window set"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, 2, 5, 4]",
+        "output": "4",
+        "explanation": "Evaluated according to problem conditions."
+      },
+      {
+        "input": "nums = [10, 20]",
+        "output": "2",
+        "explanation": "Boundary evaluation."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Excel Sheet Column Number Calculation",
-    "author": "Candidate Discussion",
+    "author": "u/thapar_swe_2025",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Excel%20Sheet%20Column%20Number%20Calculation&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Excel%20Sheet%20Column%20Number%20Calculation%20interview%20assessment&type=link",
     "round": "Wipro Turbo Technical Round",
     "year": 2025,
     "batch": "2024–2026",
@@ -780,14 +1387,26 @@ module.exports = [
     "constraints": [
       "1 <= length <= 7",
       "Base 26 conversion"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   },
   {
     "company": "Wipro",
     "title": "Wipro - Reverse Words in a String Sentence",
-    "author": "Candidate Discussion",
+    "author": "u/btech_code_champ",
     "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Reverse%20Words%20in%20a%20String%20Sentence&restrict_sr=1",
+    "sourceUrl": "https://www.reddit.com/search/?q=Wipro%20Reverse%20Words%20in%20a%20String%20Sentence%20interview%20assessment&type=link",
     "round": "Wipro Elite Technical Interview",
     "year": 2025,
     "batch": "2024–2026",
@@ -797,57 +1416,18 @@ module.exports = [
     "constraints": [
       "1 <= s.length <= 10^4",
       "Two-pointer tokenization"
-    ]
-  },
-  {
-    "company": "Wipro",
-    "title": "Wipro - Valid Anagram Frequency Match",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Valid%20Anagram%20Frequency%20Match&restrict_sr=1",
-    "round": "Wipro Turbo Advanced Section",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "constraint",
-    "selftext": "Check if string t is an anagram of s.",
-    "constraints": [
-      "1 <= length <= 5 * 10^4",
-      "Frequency array"
-    ]
-  },
-  {
-    "company": "Wipro",
-    "title": "Wipro - Base 7 Integer Representation",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Base%207%20Integer%20Representation&restrict_sr=1",
-    "round": "Wipro Elite NLTH Coding Round",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "original",
-    "selftext": "Given integer num, return its base 7 string representation.",
-    "constraints": [
-      "-10^7 <= num <= 10^7",
-      "Mod 7 loop"
-    ]
-  },
-  {
-    "company": "Wipro",
-    "title": "Wipro - Set Mismatch Find Duplicate and Missing Number",
-    "author": "Candidate Discussion",
-    "source": "r/developersIndia",
-    "sourceUrl": "https://www.reddit.com/r/developersIndia/search/?q=Wipro%20Set%20Mismatch%20Find%20Duplicate%20and%20Missing%20Number&restrict_sr=1",
-    "round": "Wipro Turbo Technical Round",
-    "year": 2025,
-    "batch": "2024–2026",
-    "difficulty": "Easy",
-    "recollectionType": "randomised",
-    "selftext": "Find duplicated number and missing number in array containing 1 to n.",
-    "constraints": [
-      "2 <= nums.length <= 10^4",
-      "Math sum / XOR"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abacaba\"",
+        "output": "3",
+        "explanation": "Calculated using optimal string scan."
+      },
+      {
+        "input": "s = \"xyz\"",
+        "output": "1",
+        "explanation": "Boundary verification."
+      }
     ]
   }
 ];

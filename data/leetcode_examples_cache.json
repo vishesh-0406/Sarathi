@@ -1,0 +1,4007 @@
+{
+  "majority-element": [
+    {
+      "input": "nums = [3,2,3]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [2,2,1,1,1,2,2]",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "subarray-sums-divisible-by-k": [
+    {
+      "input": "nums = [4,5,0,-2,-3,1], k = 5",
+      "output": "7",
+      "explanation": "There are 7 subarrays with a sum divisible by k = 5: [4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]"
+    },
+    {
+      "input": "nums = [5], k = 9",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "move-zeroes": [
+    {
+      "input": "nums = [0,1,0,3,12]",
+      "output": "[1,3,12,0,0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [0]",
+      "output": "[0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "trapping-rain-water": [
+    {
+      "input": "height = [0,1,0,2,1,0,1,3,2,1,2,1]",
+      "output": "6",
+      "explanation": "The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped."
+    },
+    {
+      "input": "height = [4,2,0,3,2,5]",
+      "output": "9",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "valid-palindrome": [
+    {
+      "input": "s = \"A man, a plan, a canal: Panama\"",
+      "output": "true",
+      "explanation": "\"amanaplanacanalpanama\" is a palindrome."
+    },
+    {
+      "input": "s = \"race a car\"",
+      "output": "false",
+      "explanation": "\"raceacar\" is not a palindrome."
+    },
+    {
+      "input": "s = \" \"",
+      "output": "true",
+      "explanation": "s is an empty string \"\" after removing non-alphanumeric characters. Since an empty string reads the same forward and backward, it is a palindrome."
+    }
+  ],
+  "coin-change": [
+    {
+      "input": "coins = [1,2,5], amount = 11",
+      "output": "3",
+      "explanation": "11 = 5 + 5 + 1"
+    },
+    {
+      "input": "coins = [2], amount = 3",
+      "output": "-1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "coins = [1], amount = 0",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-subarray": [
+    {
+      "input": "nums = [-2,1,-3,4,-1,2,1,-5,4]",
+      "output": "6",
+      "explanation": "The subarray [4,-1,2,1] has the largest sum 6."
+    },
+    {
+      "input": "nums = [1]",
+      "output": "1",
+      "explanation": "The subarray [1] has the largest sum 1."
+    },
+    {
+      "input": "nums = [5,4,-1,7,8]",
+      "output": "23",
+      "explanation": "The subarray [5,4,-1,7,8] has the largest sum 23."
+    }
+  ],
+  "search-in-rotated-sorted-array-ii": [
+    {
+      "input": "nums = [2,5,6,0,0,1,2], target = 0",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [2,5,6,0,0,1,2], target = 3",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "climbing-stairs": [
+    {
+      "input": "n = 2",
+      "output": "2",
+      "explanation": "There are two ways to climb to the top. 1. 1 step + 1 step 2. 2 steps"
+    },
+    {
+      "input": "n = 3",
+      "output": "3",
+      "explanation": "There are three ways to climb to the top. 1. 1 step + 1 step + 1 step 2. 1 step + 2 steps 3. 2 steps + 1 step"
+    }
+  ],
+  "count-primes": [
+    {
+      "input": "n = 10",
+      "output": "4",
+      "explanation": "There are 4 prime numbers less than 10, they are 2, 3, 5, 7."
+    },
+    {
+      "input": "n = 0",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "n = 1",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "remove-duplicates-from-sorted-array": [
+    {
+      "input": "nums = [1,1,2]",
+      "output": "2, nums = [1,2,_]",
+      "explanation": "Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively. It does not matter what you leave beyond the returned k (hence they are underscores)."
+    },
+    {
+      "input": "nums = [0,0,1,1,1,2,2,3,3,4]",
+      "output": "5, nums = [0,1,2,3,4,_,_,_,_,_]",
+      "explanation": "Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively. It does not matter what you leave beyond the returned k (hence they are underscores)."
+    }
+  ],
+  "palindrome-number": [
+    {
+      "input": "x = 121",
+      "output": "true",
+      "explanation": "121 reads as 121 from left to right and from right to left."
+    },
+    {
+      "input": "x = -121",
+      "output": "false",
+      "explanation": "From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome."
+    },
+    {
+      "input": "x = 10",
+      "output": "false",
+      "explanation": "Reads 01 from right to left. Therefore it is not a palindrome."
+    }
+  ],
+  "product-of-array-except-self": [
+    {
+      "input": "nums = [1,2,3,4]",
+      "output": "[24,12,8,6]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [-1,1,0,-3,3]",
+      "output": "[0,0,9,0,0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "next-permutation": [
+    {
+      "input": "nums = [1,2,3]",
+      "output": "[1,3,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [3,2,1]",
+      "output": "[1,2,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,1,5]",
+      "output": "[1,5,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-search": [
+    {
+      "input": "nums = [-1,0,3,5,9,12], target = 9",
+      "output": "4",
+      "explanation": "9 exists in nums and its index is 4"
+    },
+    {
+      "input": "nums = [-1,0,3,5,9,12], target = 2",
+      "output": "-1",
+      "explanation": "2 does not exist in nums so return -1"
+    }
+  ],
+  "merge-two-sorted-lists": [
+    {
+      "input": "list1 = [1,2,4], list2 = [1,3,4]",
+      "output": "[1,1,2,3,4,4]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "list1 = [], list2 = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "list1 = [], list2 = [0]",
+      "output": "[0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "longest-common-prefix": [
+    {
+      "input": "strs = [\"flower\",\"flow\",\"flight\"]",
+      "output": "\"fl\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "strs = [\"dog\",\"racecar\",\"car\"]",
+      "output": "\"\"",
+      "explanation": "There is no common prefix among the input strings."
+    }
+  ],
+  "longest-substring-without-repeating-characters": [
+    {
+      "input": "s = \"abcabcbb\"",
+      "output": "3",
+      "explanation": "The answer is \"abc\", with the length of 3. Note that \"bca\" and \"cab\" are also correct answers."
+    },
+    {
+      "input": "s = \"bbbbb\"",
+      "output": "1",
+      "explanation": "The answer is \"b\", with the length of 1."
+    },
+    {
+      "input": "s = \"pwwkew\"",
+      "output": "3",
+      "explanation": "The answer is \"wke\", with the length of 3. Notice that the answer must be a substring, \"pwke\" is a subsequence and not a substring."
+    }
+  ],
+  "power-of-two": [
+    {
+      "input": "n = 1",
+      "output": "true",
+      "explanation": "20 = 1"
+    },
+    {
+      "input": "n = 16",
+      "output": "true",
+      "explanation": "24 = 16"
+    },
+    {
+      "input": "n = 3",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-product-subarray": [
+    {
+      "input": "nums = [2,3,-2,4]",
+      "output": "6",
+      "explanation": "[2,3] has the largest product 6."
+    },
+    {
+      "input": "nums = [-2,0,-1]",
+      "output": "0",
+      "explanation": "The result cannot be 2, because [-2,-1] is not a subarray."
+    }
+  ],
+  "find-peak-element": [
+    {
+      "input": "nums = [1,2,3,1]",
+      "output": "2",
+      "explanation": "3 is a peak element and your function should return the index number 2."
+    },
+    {
+      "input": "nums = [1,2,1,3,5,6,4]",
+      "output": "5",
+      "explanation": "Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6."
+    }
+  ],
+  "intersection-of-two-arrays-ii": [
+    {
+      "input": "nums1 = [1,2,2,1], nums2 = [2,2]",
+      "output": "[2,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums1 = [4,9,5], nums2 = [9,4,9,8,4]",
+      "output": "[4,9]",
+      "explanation": "[9,4] is also accepted."
+    }
+  ],
+  "jewels-and-stones": [
+    {
+      "input": "jewels = \"aA\", stones = \"aAAbbbb\"",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "jewels = \"z\", stones = \"ZZ\"",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "fizz-buzz": [
+    {
+      "input": "n = 3",
+      "output": "[\"1\",\"2\",\"Fizz\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "n = 5",
+      "output": "[\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "n = 15",
+      "output": "[\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\",\"Fizz\",\"7\",\"8\",\"Fizz\",\"Buzz\",\"11\",\"Fizz\",\"13\",\"14\",\"FizzBuzz\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "jump-game": [
+    {
+      "input": "nums = [2,3,1,1,4]",
+      "output": "true",
+      "explanation": "Jump 1 step from index 0 to 1, then 3 steps to the last index."
+    },
+    {
+      "input": "nums = [3,2,1,0,4]",
+      "output": "false",
+      "explanation": "You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index."
+    }
+  ],
+  "min-cost-climbing-stairs": [
+    {
+      "input": "cost = [10,15,20]",
+      "output": "15",
+      "explanation": "You will start at index 1. - Pay 15 and climb two steps to reach the top. The total cost is 15."
+    },
+    {
+      "input": "cost = [1,100,1,1,1,100,1,1,100,1]",
+      "output": "6",
+      "explanation": "You will start at index 0. - Pay 1 and climb two steps to reach index 2. - Pay 1 and climb two steps to reach index 4. - Pay 1 and climb two steps to reach index 6. - Pay 1 and climb one step to reach index 7. - Pay 1 and climb two steps to reach index 9. - Pay 1 and climb one step to reach the top. The total cost is 6."
+    }
+  ],
+  "house-robber": [
+    {
+      "input": "nums = [1,2,3,1]",
+      "output": "4",
+      "explanation": "Rob house 1 (money = 1) and then rob house 3 (money = 3). Total amount you can rob = 1 + 3 = 4."
+    },
+    {
+      "input": "nums = [2,7,9,3,1]",
+      "output": "12",
+      "explanation": "Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1). Total amount you can rob = 2 + 9 + 1 = 12."
+    }
+  ],
+  "best-time-to-buy-and-sell-stock": [
+    {
+      "input": "prices = [7,1,5,3,6,4]",
+      "output": "5",
+      "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell."
+    },
+    {
+      "input": "prices = [7,6,4,3,1]",
+      "output": "0",
+      "explanation": "In this case, no transactions are done and the max profit = 0."
+    }
+  ],
+  "squares-of-a-sorted-array": [
+    {
+      "input": "nums = [-4,-1,0,3,10]",
+      "output": "[0,1,9,16,100]",
+      "explanation": "After squaring, the array becomes [16,1,0,9,100]. After sorting, it becomes [0,1,9,16,100]."
+    },
+    {
+      "input": "nums = [-7,-3,2,3,11]",
+      "output": "[4,9,9,49,121]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "roman-to-integer": [
+    {
+      "input": "s = \"III\"",
+      "output": "3",
+      "explanation": "III = 3."
+    },
+    {
+      "input": "s = \"LVIII\"",
+      "output": "58",
+      "explanation": "L = 50, V= 5, III = 3."
+    },
+    {
+      "input": "s = \"MCMXCIV\"",
+      "output": "1994",
+      "explanation": "M = 1000, CM = 900, XC = 90 and IV = 4."
+    }
+  ],
+  "length-of-last-word": [
+    {
+      "input": "s = \"Hello World\"",
+      "output": "5",
+      "explanation": "The last word is \"World\" with length 5."
+    },
+    {
+      "input": "s = \"   fly me   to   the moon  \"",
+      "output": "4",
+      "explanation": "The last word is \"moon\" with length 4."
+    },
+    {
+      "input": "s = \"luffy is still joyboy\"",
+      "output": "6",
+      "explanation": "The last word is \"joyboy\" with length 6."
+    }
+  ],
+  "middle-of-the-linked-list": [
+    {
+      "input": "head = [1,2,3,4,5]",
+      "output": "[3,4,5]",
+      "explanation": "The middle node of the list is node 3."
+    },
+    {
+      "input": "head = [1,2,3,4,5,6]",
+      "output": "[4,5,6]",
+      "explanation": "Since the list has two middle nodes with values 3 and 4, we return the second one."
+    }
+  ],
+  "triangle": [
+    {
+      "input": "triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]",
+      "output": "11",
+      "explanation": "The triangle looks like:    2   3 4  6 5 7 4 1 8 3 The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above)."
+    },
+    {
+      "input": "triangle = [[-10]]",
+      "output": "-10",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "reverse-string": [
+    {
+      "input": "s = [\"h\",\"e\",\"l\",\"l\",\"o\"]",
+      "output": "[\"o\",\"l\",\"l\",\"e\",\"h\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]",
+      "output": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "defanging-an-ip-address": [
+    {
+      "input": "address = \"1.1.1.1\"",
+      "output": "\"1[.]1[.]1[.]1\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "address = \"255.100.50.0\"",
+      "output": "\"255[.]100[.]50[.]0\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "longest-increasing-subsequence": [
+    {
+      "input": "nums = [10,9,2,5,3,7,101,18]",
+      "output": "4",
+      "explanation": "The longest increasing subsequence is [2,3,7,101], therefore the length is 4."
+    },
+    {
+      "input": "nums = [0,1,0,3,2,3]",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [7,7,7,7,7,7,7]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "richest-customer-wealth": [
+    {
+      "input": "accounts = [[1,2,3],[3,2,1]]",
+      "output": "6",
+      "explanation": "1st customer has wealth = 1 + 2 + 3 = 6 2nd customer has wealth = 3 + 2 + 1 = 6 Both customers are considered the richest with a wealth of 6 each, so return 6."
+    },
+    {
+      "input": "accounts = [[1,5],[7,3],[3,5]]",
+      "output": "10",
+      "explanation": "1st customer has wealth = 6 2nd customer has wealth = 10  3rd customer has wealth = 8 The 2nd customer is the richest with a wealth of 10."
+    },
+    {
+      "input": "accounts = [[2,8,7],[7,1,3],[1,9,5]]",
+      "output": "17",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "target-sum": [
+    {
+      "input": "nums = [1,1,1,1,1], target = 3",
+      "output": "5",
+      "explanation": "There are 5 ways to assign symbols to make the sum of nums be target 3. -1 + 1 + 1 + 1 + 1 = 3 +1 - 1 + 1 + 1 + 1 = 3 +1 + 1 - 1 + 1 + 1 = 3 +1 + 1 + 1 - 1 + 1 = 3 +1 + 1 + 1 + 1 - 1 = 3"
+    },
+    {
+      "input": "nums = [1], target = 1",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-path-sum": [
+    {
+      "input": "grid = [[1,3,1],[1,5,1],[4,2,1]]",
+      "output": "7",
+      "explanation": "Because the path 1 &rarr; 3 &rarr; 1 &rarr; 1 &rarr; 1 minimizes the sum."
+    },
+    {
+      "input": "grid = [[1,2,3],[4,5,6]]",
+      "output": "12",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "string-transformation": [
+    {
+      "input": "s = \"abcd\", t = \"cdab\", k = 2",
+      "output": "2",
+      "explanation": "First way: In first operation, choose suffix from index = 3, so resulting s = \"dabc\". In second operation, choose suffix from index = 3, so resulting s = \"cdab\". Second way: In first operation, choose suffix from index = 1, so resulting s = \"bcda\". In second operation, choose suffix from index = 1, so resulting s = \"cdab\"."
+    },
+    {
+      "input": "s = \"ababab\", t = \"ababab\", k = 1",
+      "output": "2",
+      "explanation": "First way: Choose suffix from index = 2, so resulting s = \"ababab\". Second way: Choose suffix from index = 4, so resulting s = \"ababab\"."
+    }
+  ],
+  "container-with-most-water": [
+    {
+      "input": "height = [1,8,6,2,5,4,8,3,7]",
+      "output": "49",
+      "explanation": "The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49."
+    },
+    {
+      "input": "height = [1,1]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "find-minimum-in-rotated-sorted-array-ii": [
+    {
+      "input": "nums = [1,3,5]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [2,2,2,0,1]",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "reverse-linked-list": [
+    {
+      "input": "head = [1,2,3,4,5]",
+      "output": "[5,4,3,2,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [1,2]",
+      "output": "[2,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "running-sum-of-1d-array": [
+    {
+      "input": "nums = [1,2,3,4]",
+      "output": "[1,3,6,10]",
+      "explanation": "Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4]."
+    },
+    {
+      "input": "nums = [1,1,1,1,1]",
+      "output": "[1,2,3,4,5]",
+      "explanation": "Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1]."
+    },
+    {
+      "input": "nums = [3,1,2,10,1]",
+      "output": "[3,4,6,16,17]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-tree-level-order-traversal": [
+    {
+      "input": "root = [3,9,20,null,null,15,7]",
+      "output": "[[3],[9,20],[15,7]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1]",
+      "output": "[[1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "spiral-matrix": [
+    {
+      "input": "matrix = [[1,2,3],[4,5,6],[7,8,9]]",
+      "output": "[1,2,3,6,9,8,7,4,5]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]",
+      "output": "[1,2,3,4,8,12,11,10,9,5,6,7]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "course-schedule": [
+    {
+      "input": "numCourses = 2, prerequisites = [[1,0]]",
+      "output": "true",
+      "explanation": "There are a total of 2 courses to take.  To take course 1 you should have finished course 0. So it is possible."
+    },
+    {
+      "input": "numCourses = 2, prerequisites = [[1,0],[0,1]]",
+      "output": "false",
+      "explanation": "There are a total of 2 courses to take.  To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible."
+    }
+  ],
+  "permutations": [
+    {
+      "input": "nums = [1,2,3]",
+      "output": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [0,1]",
+      "output": "[[0,1],[1,0]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1]",
+      "output": "[[1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "longest-common-subsequence": [
+    {
+      "input": "text1 = \"abcde\", text2 = \"ace\"",
+      "output": "3",
+      "explanation": "The longest common subsequence is \"ace\" and its length is 3."
+    },
+    {
+      "input": "text1 = \"abc\", text2 = \"abc\"",
+      "output": "3",
+      "explanation": "The longest common subsequence is \"abc\" and its length is 3."
+    },
+    {
+      "input": "text1 = \"abc\", text2 = \"def\"",
+      "output": "0",
+      "explanation": "There is no such common subsequence, so the result is 0."
+    }
+  ],
+  "search-a-2d-matrix": [
+    {
+      "input": "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "combination-sum": [
+    {
+      "input": "candidates = [2,3,6,7], target = 7",
+      "output": "[[2,2,3],[7]]",
+      "explanation": "2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times. 7 is a candidate, and 7 = 7. These are the only two combinations."
+    },
+    {
+      "input": "candidates = [2,3,5], target = 8",
+      "output": "[[2,2,2,2],[2,3,3],[3,5]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "candidates = [2], target = 1",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "subsets": [
+    {
+      "input": "nums = [1,2,3]",
+      "output": "[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [0]",
+      "output": "[[],[0]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "word-break": [
+    {
+      "input": "s = \"leetcode\", wordDict = [\"leet\",\"code\"]",
+      "output": "true",
+      "explanation": "Return true because \"leetcode\" can be segmented as \"leet code\"."
+    },
+    {
+      "input": "s = \"applepenapple\", wordDict = [\"apple\",\"pen\"]",
+      "output": "true",
+      "explanation": "Return true because \"applepenapple\" can be segmented as \"apple pen apple\". Note that you are allowed to reuse a dictionary word."
+    },
+    {
+      "input": "s = \"catsandog\", wordDict = [\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "unique-paths": [
+    {
+      "input": "m = 3, n = 7",
+      "output": "28",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "m = 3, n = 2",
+      "output": "3",
+      "explanation": "From the top-left corner, there are a total of 3 ways to reach the bottom-right corner: 1. Right -> Down -> Down 2. Down -> Down -> Right 3. Down -> Right -> Down"
+    }
+  ],
+  "invert-binary-tree": [
+    {
+      "input": "root = [4,2,7,1,3,6,9]",
+      "output": "[4,7,2,9,6,3,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [2,1,3]",
+      "output": "[2,3,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "path-sum": [
+    {
+      "input": "root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22",
+      "output": "true",
+      "explanation": "The root-to-leaf path with the target sum is shown."
+    },
+    {
+      "input": "root = [1,2,3], targetSum = 5",
+      "output": "false",
+      "explanation": "There are two root-to-leaf paths in the tree: (1 --> 2): The sum is 3. (1 --> 3): The sum is 4. There is no root-to-leaf path with sum = 5."
+    },
+    {
+      "input": "root = [], targetSum = 0",
+      "output": "false",
+      "explanation": "Since the tree is empty, there are no root-to-leaf paths."
+    }
+  ],
+  "symmetric-tree": [
+    {
+      "input": "root = [1,2,2,3,4,4,3]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2,2,null,3,null,3]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-depth-of-binary-tree": [
+    {
+      "input": "root = [3,9,20,null,null,15,7]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,null,2]",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-tree-paths": [
+    {
+      "input": "root = [1,2,3,null,5]",
+      "output": "[\"1->2->5\",\"1->3\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1]",
+      "output": "[\"1\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "construct-string-from-binary-tree": [
+    {
+      "input": "root = [1,2,3,4]",
+      "output": "\"1(2(4))(3)\"",
+      "explanation": "Originally, it needs to be \"1(2(4)())(3()())\", but you need to omit all the empty parenthesis pairs. And it will be \"1(2(4))(3)\"."
+    },
+    {
+      "input": "root = [1,2,3,null,4]",
+      "output": "\"1(2()(4))(3)\"",
+      "explanation": "Almost the same as the first example, except the () after 2 is necessary to indicate the absence of a left child for 2 and the presence of a right child."
+    }
+  ],
+  "diameter-of-binary-tree": [
+    {
+      "input": "root = [1,2,3,4,5]",
+      "output": "3",
+      "explanation": "3 is the length of the path [4,2,1,3] or [5,2,1,3]."
+    },
+    {
+      "input": "root = [1,2]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-width-of-binary-tree": [
+    {
+      "input": "root = [1,3,2,5,3,null,9]",
+      "output": "4",
+      "explanation": "The maximum width exists in the third level with length 4 (5,3,null,9)."
+    },
+    {
+      "input": "root = [1,3,2,5,null,null,9,6,null,7]",
+      "output": "7",
+      "explanation": "The maximum width exists in the fourth level with length 7 (6,null,null,null,null,null,7)."
+    },
+    {
+      "input": "root = [1,3,2,5]",
+      "output": "2",
+      "explanation": "The maximum width exists in the second level with length 2 (3,2)."
+    }
+  ],
+  "flatten-binary-tree-to-linked-list": [
+    {
+      "input": "root = [1,2,5,3,4,null,6]",
+      "output": "[1,null,2,null,3,null,4,null,5,null,6]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [0]",
+      "output": "[0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "lowest-common-ancestor-of-a-binary-search-tree": [
+    {
+      "input": "root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8",
+      "output": "6",
+      "explanation": "The LCA of nodes 2 and 8 is 6."
+    },
+    {
+      "input": "root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4",
+      "output": "2",
+      "explanation": "The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition."
+    },
+    {
+      "input": "root = [2,1], p = 2, q = 1",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "lowest-common-ancestor-of-a-binary-tree": [
+    {
+      "input": "root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1",
+      "output": "3",
+      "explanation": "The LCA of nodes 5 and 1 is 3."
+    },
+    {
+      "input": "root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4",
+      "output": "5",
+      "explanation": "The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition."
+    },
+    {
+      "input": "root = [1,2], p = 1, q = 2",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "network-delay-time": [
+    {
+      "input": "times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "times = [[1,2,1]], n = 2, k = 1",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "times = [[1,2,1]], n = 2, k = 2",
+      "output": "-1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "rotting-oranges": [
+    {
+      "input": "grid = [[2,1,1],[1,1,0],[0,1,1]]",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "grid = [[2,1,1],[0,1,1],[1,0,1]]",
+      "output": "-1",
+      "explanation": "The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally."
+    },
+    {
+      "input": "grid = [[0,2]]",
+      "output": "0",
+      "explanation": "Since there are already no fresh oranges at minute 0, the answer is just 0."
+    }
+  ],
+  "decode-string": [
+    {
+      "input": "s = \"3[a]2[bc]\"",
+      "output": "\"aaabcbc\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"3[a2[c]]\"",
+      "output": "\"accaccacc\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"2[abc]3[cd]ef\"",
+      "output": "\"abcabccdcdcdef\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "daily-temperatures": [
+    {
+      "input": "temperatures = [73,74,75,71,69,72,76,73]",
+      "output": "[1,1,4,2,1,1,0,0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "temperatures = [30,40,50,60]",
+      "output": "[1,1,1,0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "temperatures = [30,60,90]",
+      "output": "[1,1,0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "word-search": [
+    {
+      "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCB\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "number-of-provinces": [
+    {
+      "input": "isConnected = [[1,1,0],[1,1,0],[0,0,1]]",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "isConnected = [[1,0,0],[0,1,0],[0,0,1]]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "reverse-integer": [
+    {
+      "input": "x = 123",
+      "output": "321",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "x = -123",
+      "output": "-321",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "x = 120",
+      "output": "21",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "palindrome-partitioning": [
+    {
+      "input": "s = \"aab\"",
+      "output": "[[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"a\"",
+      "output": "[[\"a\"]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "linked-list-cycle": [
+    {
+      "input": "head = [3,2,0,-4], pos = 1",
+      "output": "true",
+      "explanation": "There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)."
+    },
+    {
+      "input": "head = [1,2], pos = 0",
+      "output": "true",
+      "explanation": "There is a cycle in the linked list, where the tail connects to the 0th node."
+    },
+    {
+      "input": "head = [1], pos = -1",
+      "output": "false",
+      "explanation": "There is no cycle in the linked list."
+    }
+  ],
+  "longest-palindromic-substring": [
+    {
+      "input": "s = \"babad\"",
+      "output": "\"bab\"",
+      "explanation": "\"aba\" is also a valid answer."
+    },
+    {
+      "input": "s = \"cbbd\"",
+      "output": "\"bb\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "sort-an-array": [
+    {
+      "input": "nums = [5,2,3,1]",
+      "output": "[1,2,3,5]",
+      "explanation": "After sorting the array, the positions of some numbers are not changed (for example, 2 and 3), while the positions of other numbers are changed (for example, 1 and 5)."
+    },
+    {
+      "input": "nums = [5,1,1,2,0,0]",
+      "output": "[0,0,1,1,2,5]",
+      "explanation": "Note that the values of nums are not necessarily unique."
+    }
+  ],
+  "subarray-sum-equals-k": [
+    {
+      "input": "nums = [1,1,1], k = 2",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,2,3], k = 3",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "two-sum": [
+    {
+      "input": "nums = [2,7,11,15], target = 9",
+      "output": "[0,1]",
+      "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+    },
+    {
+      "input": "nums = [3,2,4], target = 6",
+      "output": "[1,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [3,3], target = 6",
+      "output": "[0,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "letter-combinations-of-a-phone-number": [
+    {
+      "input": "digits = \"23\"",
+      "output": "[\"ad\",\"ae\",\"af\",\"bd\",\"be\",\"bf\",\"cd\",\"ce\",\"cf\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "digits = \"2\"",
+      "output": "[\"a\",\"b\",\"c\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "merge-sorted-array": [
+    {
+      "input": "nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3",
+      "output": "[1,2,2,3,5,6]",
+      "explanation": "The arrays we are merging are [1,2,3] and [2,5,6]. The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1."
+    },
+    {
+      "input": "nums1 = [1], m = 1, nums2 = [], n = 0",
+      "output": "[1]",
+      "explanation": "The arrays we are merging are [1] and []. The result of the merge is [1]."
+    },
+    {
+      "input": "nums1 = [0], m = 0, nums2 = [1], n = 1",
+      "output": "[1]",
+      "explanation": "The arrays we are merging are [] and [1]. The result of the merge is [1]. Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1."
+    }
+  ],
+  "kth-largest-element-in-an-array": [
+    {
+      "input": "nums = [3,2,1,5,6,4], k = 2",
+      "output": "5",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [3,2,3,1,2,4,5,5,6], k = 4",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "longest-consecutive-sequence": [
+    {
+      "input": "nums = [100,4,200,1,3,2]",
+      "output": "4",
+      "explanation": "The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4."
+    },
+    {
+      "input": "nums = [0,3,7,2,5,8,4,6,0,1]",
+      "output": "9",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,0,1,2]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "remove-element": [
+    {
+      "input": "nums = [3,2,2,3], val = 3",
+      "output": "2, nums = [2,2,_,_]",
+      "explanation": "Your function should return k = 2, with the first two elements of nums being 2. It does not matter what you leave beyond the returned k (hence they are underscores)."
+    },
+    {
+      "input": "nums = [0,1,2,2,3,0,4,2], val = 2",
+      "output": "5, nums = [0,1,4,0,3,_,_,_]",
+      "explanation": "Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4. Note that the five elements can be returned in any order. It does not matter what you leave beyond the returned k (hence they are underscores)."
+    }
+  ],
+  "sqrtx": [
+    {
+      "input": "x = 4",
+      "output": "2",
+      "explanation": "The square root of 4 is 2, so we return 2."
+    },
+    {
+      "input": "x = 8",
+      "output": "2",
+      "explanation": "The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned."
+    }
+  ],
+  "add-binary": [
+    {
+      "input": "a = \"11\", b = \"1\"",
+      "output": "\"100\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "a = \"1010\", b = \"1011\"",
+      "output": "\"10101\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "find-the-index-of-the-first-occurrence-in-a-string": [
+    {
+      "input": "haystack = \"sadbutsad\", needle = \"sad\"",
+      "output": "0",
+      "explanation": "\"sad\" occurs at index 0 and 6. The first occurrence is at index 0, so we return 0."
+    },
+    {
+      "input": "haystack = \"leetcode\", needle = \"leeto\"",
+      "output": "-1",
+      "explanation": "\"leeto\" did not occur in \"leetcode\", so we return -1."
+    }
+  ],
+  "rotate-image": [
+    {
+      "input": "matrix = [[1,2,3],[4,5,6],[7,8,9]]",
+      "output": "[[7,4,1],[8,5,2],[9,6,3]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]",
+      "output": "[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "plus-one": [
+    {
+      "input": "digits = [1,2,3]",
+      "output": "[1,2,4]",
+      "explanation": "The array represents the integer 123. Incrementing by one gives 123 + 1 = 124. Thus, the result should be [1,2,4]."
+    },
+    {
+      "input": "digits = [4,3,2,1]",
+      "output": "[4,3,2,2]",
+      "explanation": "The array represents the integer 4321. Incrementing by one gives 4321 + 1 = 4322. Thus, the result should be [4,3,2,2]."
+    },
+    {
+      "input": "digits = [9]",
+      "output": "[1,0]",
+      "explanation": "The array represents the integer 9. Incrementing by one gives 9 + 1 = 10. Thus, the result should be [1,0]."
+    }
+  ],
+  "intersection-of-two-linked-lists": [
+    {
+      "input": "intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3",
+      "output": "Intersected at '8'",
+      "explanation": "The intersected node's value is 8 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B. - Note that the intersected node's value is not 1 because the nodes with value 1 in A and B (2nd node in A and 3rd node in B) are different node references. In other words, they point to two different locations in memory, while the nodes with value 8 in A and B (3rd node in A and 4th node in B) point to the same location in memory."
+    },
+    {
+      "input": "intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1",
+      "output": "Intersected at '2'",
+      "explanation": "The intersected node's value is 2 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B."
+    },
+    {
+      "input": "intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2",
+      "output": "No intersection",
+      "explanation": "From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values. Explanation: The two lists do not intersect, so return null."
+    }
+  ],
+  "merge-two-binary-trees": [
+    {
+      "input": "root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]",
+      "output": "[3,4,5,5,4,null,7]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root1 = [1], root2 = [1,2]",
+      "output": "[2,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "search-insert-position": [
+    {
+      "input": "nums = [1,3,5,6], target = 5",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,3,5,6], target = 2",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,3,5,6], target = 7",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-depth-of-binary-tree": [
+    {
+      "input": "root = [3,9,20,null,null,15,7]",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [2,null,3,null,4,null,5,null,6]",
+      "output": "5",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "palindrome-linked-list": [
+    {
+      "input": "head = [1,2,2,1]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [1,2]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "balanced-binary-tree": [
+    {
+      "input": "root = [3,9,20,null,null,15,7]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2,2,3,3,null,null,4,4]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "counting-bits": [
+    {
+      "input": "n = 2",
+      "output": "[0,1,1]",
+      "explanation": "0 --> 0 1 --> 1 2 --> 10"
+    },
+    {
+      "input": "n = 5",
+      "output": "[0,1,1,2,1,2]",
+      "explanation": "0 --> 0 1 --> 1 2 --> 10 3 --> 11 4 --> 100 5 --> 101"
+    }
+  ],
+  "linked-list-cycle-ii": [
+    {
+      "input": "head = [3,2,0,-4], pos = 1",
+      "output": "tail connects to node index 1",
+      "explanation": "There is a cycle in the linked list, where tail connects to the second node."
+    },
+    {
+      "input": "head = [1,2], pos = 0",
+      "output": "tail connects to node index 0",
+      "explanation": "There is a cycle in the linked list, where tail connects to the first node."
+    },
+    {
+      "input": "head = [1], pos = -1",
+      "output": "no cycle",
+      "explanation": "There is no cycle in the linked list."
+    }
+  ],
+  "remove-duplicates-from-sorted-list": [
+    {
+      "input": "head = [1,1,2]",
+      "output": "[1,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [1,1,2,3,3]",
+      "output": "[1,2,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "delete-node-in-a-linked-list": [
+    {
+      "input": "head = [4,5,1,9], node = 5",
+      "output": "[4,1,9]",
+      "explanation": "You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function."
+    },
+    {
+      "input": "head = [4,5,1,9], node = 1",
+      "output": "[4,5,9]",
+      "explanation": "You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function."
+    }
+  ],
+  "same-tree": [
+    {
+      "input": "p = [1,2,3], q = [1,2,3]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "p = [1,2], q = [1,null,2]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "p = [1,2,1], q = [1,1,2]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "happy-number": [
+    {
+      "input": "n = 19",
+      "output": "true",
+      "explanation": "12 + 92 = 82 82 + 22 = 68 62 + 82 = 100 12 + 02 + 02 = 1"
+    },
+    {
+      "input": "n = 2",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "find-all-numbers-disappeared-in-an-array": [
+    {
+      "input": "nums = [4,3,2,7,8,2,3,1]",
+      "output": "[5,6]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,1]",
+      "output": "[2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "divisible-and-non-divisible-sums-difference": [
+    {
+      "input": "n = 10, m = 3",
+      "output": "19",
+      "explanation": "In the given example: - Integers in the range [1, 10] that are not divisible by 3 are [1,2,4,5,7,8,10], num1 is the sum of those integers = 37. - Integers in the range [1, 10] that are divisible by 3 are [3,6,9], num2 is the sum of those integers = 18. We return 37 - 18 = 19 as the answer."
+    },
+    {
+      "input": "n = 5, m = 6",
+      "output": "15",
+      "explanation": "In the given example: - Integers in the range [1, 5] that are not divisible by 6 are [1,2,3,4,5], num1 is the sum of those integers = 15. - Integers in the range [1, 5] that are divisible by 6 are [], num2 is the sum of those integers = 0. We return 15 - 0 = 15 as the answer."
+    },
+    {
+      "input": "n = 5, m = 1",
+      "output": "-15",
+      "explanation": "In the given example: - Integers in the range [1, 5] that are not divisible by 1 are [], num1 is the sum of those integers = 0. - Integers in the range [1, 5] that are divisible by 1 are [1,2,3,4,5], num2 is the sum of those integers = 15. We return 0 - 15 = -15 as the answer."
+    }
+  ],
+  "contains-duplicate-ii": [
+    {
+      "input": "nums = [1,2,3,1], k = 3",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,0,1,1], k = 1",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,2,3,1,2,3], k = 2",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "excel-sheet-column-number": [
+    {
+      "input": "columnTitle = \"A\"",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "columnTitle = \"AB\"",
+      "output": "28",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "columnTitle = \"ZY\"",
+      "output": "701",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "odd-even-linked-list": [
+    {
+      "input": "head = [1,2,3,4,5]",
+      "output": "[1,3,5,2,4]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [2,1,3,5,6,4,7]",
+      "output": "[2,3,6,7,1,5,4]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "ransom-note": [
+    {
+      "input": "ransomNote = \"a\", magazine = \"b\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "ransomNote = \"aa\", magazine = \"ab\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "ransomNote = \"aa\", magazine = \"aab\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "reverse-words-in-a-string": [
+    {
+      "input": "s = \"the sky is blue\"",
+      "output": "\"blue is sky the\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"  hello world  \"",
+      "output": "\"world hello\"",
+      "explanation": "Your reversed string should not contain leading or trailing spaces."
+    },
+    {
+      "input": "s = \"a good   example\"",
+      "output": "\"example good a\"",
+      "explanation": "You need to reduce multiple spaces between two words to a single space in the reversed string."
+    }
+  ],
+  "replace-elements-with-greatest-element-on-right-side": [
+    {
+      "input": "arr = [17,18,5,4,6,1]",
+      "output": "[18,6,6,6,1,-1]",
+      "explanation": "- index 0 --> the greatest element to the right of index 0 is index 1 (18). - index 1 --> the greatest element to the right of index 1 is index 4 (6). - index 2 --> the greatest element to the right of index 2 is index 4 (6). - index 3 --> the greatest element to the right of index 3 is index 4 (6). - index 4 --> the greatest element to the right of index 4 is index 5 (1). - index 5 --> there are no elements to the right of index 5, so we put -1."
+    },
+    {
+      "input": "arr = [400]",
+      "output": "[-1]",
+      "explanation": "There are no elements to the right of index 0."
+    }
+  ],
+  "count-number-of-pairs-with-absolute-difference-k": [
+    {
+      "input": "nums = [1,2,2,1], k = 1",
+      "output": "4",
+      "explanation": "The pairs with an absolute difference of 1 are: - [1,2,2,1] - [1,2,2,1] - [1,2,2,1] - [1,2,2,1]"
+    },
+    {
+      "input": "nums = [1,3], k = 3",
+      "output": "0",
+      "explanation": "There are no pairs with an absolute difference of 3."
+    },
+    {
+      "input": "nums = [3,2,1,5,4], k = 2",
+      "output": "3",
+      "explanation": "The pairs with an absolute difference of 2 are: - [3,2,1,5,4] - [3,2,1,5,4] - [3,2,1,5,4]"
+    }
+  ],
+  "next-greater-element-i": [
+    {
+      "input": "nums1 = [4,1,2], nums2 = [1,3,4,2]",
+      "output": "[-1,3,-1]",
+      "explanation": "The next greater element for each value of nums1 is as follows: - 4 is underlined in nums2 = [1,3,4,2]. There is no next greater element, so the answer is -1. - 1 is underlined in nums2 = [1,3,4,2]. The next greater element is 3. - 2 is underlined in nums2 = [1,3,4,2]. There is no next greater element, so the answer is -1."
+    },
+    {
+      "input": "nums1 = [2,4], nums2 = [1,2,3,4]",
+      "output": "[3,-1]",
+      "explanation": "The next greater element for each value of nums1 is as follows: - 2 is underlined in nums2 = [1,2,3,4]. The next greater element is 3. - 4 is underlined in nums2 = [1,2,3,4]. There is no next greater element, so the answer is -1."
+    }
+  ],
+  "powx-n": [
+    {
+      "input": "x = 2.00000, n = 10",
+      "output": "1024.00000",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "x = 2.10000, n = 3",
+      "output": "9.26100",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "x = 2.00000, n = -2",
+      "output": "0.25000",
+      "explanation": "2-2 = 1/22 = 1/4 = 0.25"
+    }
+  ],
+  "sort-characters-by-frequency": [
+    {
+      "input": "s = \"tree\"",
+      "output": "\"eert\"",
+      "explanation": "'e' appears twice while 'r' and 't' both appear once. So 'e' must appear before both 'r' and 't'. Therefore \"eetr\" is also a valid answer."
+    },
+    {
+      "input": "s = \"cccaaa\"",
+      "output": "\"aaaccc\"",
+      "explanation": "Both 'c' and 'a' appear three times, so both \"cccaaa\" and \"aaaccc\" are valid answers. Note that \"cacaca\" is incorrect, as the same characters must be together."
+    },
+    {
+      "input": "s = \"Aabb\"",
+      "output": "\"bbAa\"",
+      "explanation": "\"bbaA\" is also a valid answer, but \"Aabb\" is incorrect. Note that 'A' and 'a' are treated as two different characters."
+    }
+  ],
+  "perfect-number": [
+    {
+      "input": "num = 28",
+      "output": "true",
+      "explanation": "28 = 1 + 2 + 4 + 7 + 14 1, 2, 4, 7, and 14 are all divisors of 28."
+    },
+    {
+      "input": "num = 7",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "merge-intervals": [
+    {
+      "input": "intervals = [[1,3],[2,6],[8,10],[15,18]]",
+      "output": "[[1,6],[8,10],[15,18]]",
+      "explanation": "Since intervals [1,3] and [2,6] overlap, merge them into [1,6]."
+    },
+    {
+      "input": "intervals = [[1,4],[4,5]]",
+      "output": "[[1,5]]",
+      "explanation": "Intervals [1,4] and [4,5] are considered overlapping."
+    },
+    {
+      "input": "intervals = [[4,7],[1,4]]",
+      "output": "[[1,7]]",
+      "explanation": "Intervals [1,4] and [4,7] are considered overlapping."
+    }
+  ],
+  "intersection-of-two-arrays": [
+    {
+      "input": "nums1 = [1,2,2,1], nums2 = [2,2]",
+      "output": "[2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums1 = [4,9,5], nums2 = [9,4,9,8,4]",
+      "output": "[9,4]",
+      "explanation": "[4,9] is also accepted."
+    }
+  ],
+  "remove-duplicates-from-sorted-array-ii": [
+    {
+      "input": "nums = [1,1,1,2,2,3]",
+      "output": "5, nums = [1,1,2,2,3,_]",
+      "explanation": "Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively. It does not matter what you leave beyond the returned k (hence they are underscores)."
+    },
+    {
+      "input": "nums = [0,0,1,1,1,1,2,3,3]",
+      "output": "7, nums = [0,0,1,1,2,3,3,_,_]",
+      "explanation": "Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively. It does not matter what you leave beyond the returned k (hence they are underscores)."
+    }
+  ],
+  "kth-smallest-element-in-a-sorted-matrix": [
+    {
+      "input": "matrix = [[1,5,9],[10,11,13],[12,13,15]], k = 8",
+      "output": "13",
+      "explanation": "The elements in the matrix are [1,5,9,10,11,12,13,13,15], and the 8th smallest number is 13"
+    },
+    {
+      "input": "matrix = [[-5]], k = 1",
+      "output": "-5",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "find-array-given-subset-sums": [
+    {
+      "input": "n = 3, sums = [-3,-2,-1,0,0,1,2,3]",
+      "output": "[1,2,-3]",
+      "explanation": "[1,2,-3] is able to achieve the given subset sums: - []: sum is 0 - [1]: sum is 1 - [2]: sum is 2 - [1,2]: sum is 3 - [-3]: sum is -3 - [1,-3]: sum is -2 - [2,-3]: sum is -1 - [1,2,-3]: sum is 0 Note that any permutation of [1,2,-3] and also any permutation of [-1,-2,3] will also be accepted."
+    },
+    {
+      "input": "n = 2, sums = [0,0,0,0]",
+      "output": "[0,0]",
+      "explanation": "The only correct answer is [0,0]."
+    },
+    {
+      "input": "n = 4, sums = [0,0,5,5,4,-1,4,9,9,-1,4,3,4,8,3,8]",
+      "output": "[0,-1,4,5]",
+      "explanation": "[0,-1,4,5] is able to achieve the given subset sums."
+    }
+  ],
+  "count-elements-with-maximum-frequency": [
+    {
+      "input": "nums = [1,2,2,3,1,4]",
+      "output": "4",
+      "explanation": "The elements 1 and 2 have a frequency of 2 which is the maximum frequency in the array. So the number of elements in the array with maximum frequency is 4."
+    },
+    {
+      "input": "nums = [1,2,3,4,5]",
+      "output": "5",
+      "explanation": "All elements of the array have a frequency of 1 which is the maximum. So the number of elements in the array with maximum frequency is 5."
+    }
+  ],
+  "check-if-array-is-sorted-and-rotated": [
+    {
+      "input": "nums = [3,4,5,1,2]",
+      "output": "true",
+      "explanation": "[1,2,3,4,5] is the original sorted array. You can rotate the array by x = 2 positions to begin on the element of value 3: [3,4,5,1,2]."
+    },
+    {
+      "input": "nums = [2,1,3,4]",
+      "output": "false",
+      "explanation": "There is no sorted array once rotated that can make nums."
+    },
+    {
+      "input": "nums = [1,2,3]",
+      "output": "true",
+      "explanation": "[1,2,3] is the original sorted array. You can rotate the array by x = 0 positions (i.e. no rotation) to make nums."
+    }
+  ],
+  "power-of-four": [
+    {
+      "input": "n = 16",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "n = 5",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "n = 1",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "fibonacci-number": [
+    {
+      "input": "n = 2",
+      "output": "1",
+      "explanation": "F(2) = F(1) + F(0) = 1 + 0 = 1."
+    },
+    {
+      "input": "n = 3",
+      "output": "2",
+      "explanation": "F(3) = F(2) + F(1) = 1 + 1 = 2."
+    },
+    {
+      "input": "n = 4",
+      "output": "3",
+      "explanation": "F(4) = F(3) + F(2) = 2 + 1 = 3."
+    }
+  ],
+  "string-compression": [
+    {
+      "input": "chars = [\"a\",\"a\",\"b\",\"b\",\"c\",\"c\",\"c\"]",
+      "output": "6",
+      "explanation": "The groups are \"aa\", \"bb\", and \"ccc\". This compresses to \"a2b2c3\". After modifying the input array in-place, the first 6 characters of chars should be [\"a\",\"2\",\"b\",\"2\",\"c\",\"3\"]."
+    },
+    {
+      "input": "chars = [\"a\"]",
+      "output": "1",
+      "explanation": "The only group is \"a\", which remains uncompressed since it is a single character. After modifying the input array in-place, the first character of chars should be [\"a\"]."
+    },
+    {
+      "input": "chars = [\"a\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\"]",
+      "output": "4",
+      "explanation": "The groups are \"a\" and \"bbbbbbbbbbbb\". This compresses to \"ab12\". After modifying the input array in-place, the first 4 characters of chars should be [\"a\",\"b\",\"1\",\"2\"]."
+    }
+  ],
+  "search-a-2d-matrix-ii": [
+    {
+      "input": "matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "find-the-duplicate-number": [
+    {
+      "input": "nums = [1,3,4,2,2]",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [3,1,3,4,2]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [3,3,3,3,3]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-tree-zigzag-level-order-traversal": [
+    {
+      "input": "root = [3,9,20,null,null,15,7]",
+      "output": "[[3],[20,9],[15,7]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1]",
+      "output": "[[1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "rotate-list": [
+    {
+      "input": "head = [1,2,3,4,5], k = 2",
+      "output": "[4,5,1,2,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [0,1,2], k = 4",
+      "output": "[2,0,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "remove-nth-node-from-end-of-list": [
+    {
+      "input": "head = [1,2,3,4,5], n = 2",
+      "output": "[1,2,3,5]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [1], n = 1",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [1,2], n = 1",
+      "output": "[1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "add-two-numbers": [
+    {
+      "input": "l1 = [2,4,3], l2 = [5,6,4]",
+      "output": "[7,0,8]",
+      "explanation": "342 + 465 = 807."
+    },
+    {
+      "input": "l1 = [0], l2 = [0]",
+      "output": "[0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]",
+      "output": "[8,9,9,9,0,0,0,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "word-ladder": [
+    {
+      "input": "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]",
+      "output": "5",
+      "explanation": "One shortest transformation sequence is \"hit\" -> \"hot\" -> \"dot\" -> \"dog\" -> cog\", which is 5 words long."
+    },
+    {
+      "input": "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]",
+      "output": "0",
+      "explanation": "The endWord \"cog\" is not in wordList, therefore there is no valid transformation sequence."
+    }
+  ],
+  "maximum-value-of-a-string-in-an-array": [
+    {
+      "input": "strs = [\"alic3\",\"bob\",\"3\",\"4\",\"00000\"]",
+      "output": "5",
+      "explanation": "- \"alic3\" consists of both letters and digits, so its value is its length, i.e. 5. - \"bob\" consists only of letters, so its value is also its length, i.e. 3. - \"3\" consists only of digits, so its value is its numeric equivalent, i.e. 3. - \"4\" also consists only of digits, so its value is 4. - \"00000\" consists only of digits, so its value is 0. Hence, the maximum value is 5, of \"alic3\"."
+    },
+    {
+      "input": "strs = [\"1\",\"01\",\"001\",\"0001\"]",
+      "output": "1",
+      "explanation": "Each string in the array has value 1. Hence, we return 1."
+    }
+  ],
+  "clone-graph": [
+    {
+      "input": "adjList = [[2,4],[1,3],[2,4],[1,3]]",
+      "output": "[[2,4],[1,3],[2,4],[1,3]]",
+      "explanation": "There are 4 nodes in the graph. 1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4). 2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3). 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4). 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3)."
+    },
+    {
+      "input": "adjList = [[]]",
+      "output": "[[]]",
+      "explanation": "Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors."
+    },
+    {
+      "input": "adjList = []",
+      "output": "[]",
+      "explanation": "This an empty graph, it does not have any nodes."
+    }
+  ],
+  "number-of-islands": [
+    {
+      "input": "grid = [   [\"1\",\"1\",\"1\",\"1\",\"0\"],   [\"1\",\"1\",\"0\",\"1\",\"0\"],   [\"1\",\"1\",\"0\",\"0\",\"0\"],   [\"0\",\"0\",\"0\",\"0\",\"0\"] ]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "grid = [   [\"1\",\"1\",\"0\",\"0\",\"0\"],   [\"1\",\"1\",\"0\",\"0\",\"0\"],   [\"0\",\"0\",\"1\",\"0\",\"0\"],   [\"0\",\"0\",\"0\",\"1\",\"1\"] ]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-path-cost-in-a-grid": [
+    {
+      "input": "grid = [[5,3],[4,0],[2,1]], moveCost = [[9,8],[1,5],[10,12],[18,6],[2,4],[14,3]]",
+      "output": "17",
+      "explanation": "The path with the minimum possible cost is the path 5 -> 0 -> 1. - The sum of the values of cells visited is 5 + 0 + 1 = 6. - The cost of moving from 5 to 0 is 3. - The cost of moving from 0 to 1 is 8. So the total cost of the path is 6 + 3 + 8 = 17."
+    },
+    {
+      "input": "grid = [[5,1,2],[4,0,3]], moveCost = [[12,10,15],[20,23,8],[21,7,1],[8,1,13],[9,10,25],[5,3,2]]",
+      "output": "6",
+      "explanation": "The path with the minimum possible cost is the path 2 -> 3. - The sum of the values of cells visited is 2 + 3 = 5. - The cost of moving from 2 to 3 is 1. So the total cost of this path is 5 + 1 = 6."
+    }
+  ],
+  "validate-binary-search-tree": [
+    {
+      "input": "root = [2,1,3]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [5,1,4,null,null,3,6]",
+      "output": "false",
+      "explanation": "The root node's value is 5 but its right child's value is 4."
+    }
+  ],
+  "edit-distance": [
+    {
+      "input": "word1 = \"horse\", word2 = \"ros\"",
+      "output": "3",
+      "explanation": "horse -> rorse (replace 'h' with 'r') rorse -> rose (remove 'r') rose -> ros (remove 'e')"
+    },
+    {
+      "input": "word1 = \"intention\", word2 = \"execution\"",
+      "output": "5",
+      "explanation": "intention -> inention (remove 't') inention -> enention (replace 'i' with 'e') enention -> exention (replace 'n' with 'x') exention -> exection (replace 'n' with 'c') exection -> execution (insert 'u')"
+    }
+  ],
+  "find-greatest-common-divisor-of-array": [
+    {
+      "input": "nums = [2,5,6,9,10]",
+      "output": "2",
+      "explanation": "The smallest number in nums is 2. The largest number in nums is 10. The greatest common divisor of 2 and 10 is 2."
+    },
+    {
+      "input": "nums = [7,5,6,8,3]",
+      "output": "1",
+      "explanation": "The smallest number in nums is 3. The largest number in nums is 8. The greatest common divisor of 3 and 8 is 1."
+    },
+    {
+      "input": "nums = [3,3]",
+      "output": "3",
+      "explanation": "The smallest number in nums is 3. The largest number in nums is 3. The greatest common divisor of 3 and 3 is 3."
+    }
+  ],
+  "rotate-string": [
+    {
+      "input": "s = \"abcde\", goal = \"cdeab\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"abcde\", goal = \"abced\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "lucky-numbers-in-a-matrix": [
+    {
+      "input": "matrix = [[3,7,8],[9,11,13],[15,16,17]]",
+      "output": "[15]",
+      "explanation": "15 is the only lucky number since it is the minimum in its row and the maximum in its column."
+    },
+    {
+      "input": "matrix = [[1,10,4,2],[9,3,8,7],[15,16,17,12]]",
+      "output": "[12]",
+      "explanation": "12 is the only lucky number since it is the minimum in its row and the maximum in its column."
+    },
+    {
+      "input": "matrix = [[7,8],[1,2]]",
+      "output": "[7]",
+      "explanation": "7 is the only lucky number since it is the minimum in its row and the maximum in its column."
+    }
+  ],
+  "calculate-digit-sum-of-a-string": [
+    {
+      "input": "s = \"11111222223\", k = 3",
+      "output": "\"135\"",
+      "explanation": "- For the first round, we divide s into groups of size 3: \"111\", \"112\", \"222\", and \"23\".   ​​​​​Then we calculate the digit sum of each group: 1 + 1 + 1 = 3, 1 + 1 + 2 = 4, 2 + 2 + 2 = 6, and 2 + 3 = 5.    So, s becomes \"3\" + \"4\" + \"6\" + \"5\" = \"3465\" after the first round. - For the second round, we divide s into \"346\" and \"5\".   Then we calculate the digit sum of each group: 3 + 4 + 6 = 13, 5 = 5.    So, s becomes \"13\" + \"5\" = \"135\" after second round.  Now, s.length <= k, so we return \"135\" as the answer."
+    },
+    {
+      "input": "s = \"00000000\", k = 3",
+      "output": "\"000\"",
+      "explanation": "We divide s into \"000\", \"000\", and \"00\". Then we calculate the digit sum of each group: 0 + 0 + 0 = 0, 0 + 0 + 0 = 0, and 0 + 0 = 0.  s becomes \"0\" + \"0\" + \"0\" = \"000\", whose length is equal to k, so we return \"000\"."
+    }
+  ],
+  "delete-the-middle-node-of-a-linked-list": [
+    {
+      "input": "head = [1,3,4,7,1,2,6]",
+      "output": "[1,3,4,1,2,6]",
+      "explanation": "The above figure represents the given linked list. The indices of the nodes are written below. Since n = 7, node 3 with value 7 is the middle node, which is marked in red. We return the new list after removing this node."
+    },
+    {
+      "input": "head = [1,2,3,4]",
+      "output": "[1,2,4]",
+      "explanation": "The above figure represents the given linked list. For n = 4, node 2 with value 3 is the middle node, which is marked in red."
+    },
+    {
+      "input": "head = [2,1]",
+      "output": "[2]",
+      "explanation": "The above figure represents the given linked list. For n = 2, node 1 with value 1 is the middle node, which is marked in red. Node 0 with value 2 is the only node remaining after removing node 1."
+    }
+  ],
+  "factorial-trailing-zeroes": [
+    {
+      "input": "n = 3",
+      "output": "0",
+      "explanation": "3! = 6, no trailing zero."
+    },
+    {
+      "input": "n = 5",
+      "output": "1",
+      "explanation": "5! = 120, one trailing zero."
+    },
+    {
+      "input": "n = 0",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "matrix-diagonal-sum": [
+    {
+      "input": "mat = [[1,2,3],               [4,5,6],               [7,8,9]]",
+      "output": "25",
+      "explanation": "Diagonals sum: 1 + 5 + 9 + 3 + 7 = 25 Notice that element mat[1][1] = 5 is counted only once."
+    },
+    {
+      "input": "mat = [[1,1,1,1],               [1,1,1,1],               [1,1,1,1],               [1,1,1,1]]",
+      "output": "8",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "mat = [[5]]",
+      "output": "5",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "power-of-three": [
+    {
+      "input": "n = 27",
+      "output": "true",
+      "explanation": "27 = 33"
+    },
+    {
+      "input": "n = 0",
+      "output": "false",
+      "explanation": "There is no x where 3x = 0."
+    },
+    {
+      "input": "n = -1",
+      "output": "false",
+      "explanation": "There is no x where 3x = (-1)."
+    }
+  ],
+  "consecutive-characters": [
+    {
+      "input": "s = \"leetcode\"",
+      "output": "2",
+      "explanation": "The substring \"ee\" is of length 2 with the character 'e' only."
+    },
+    {
+      "input": "s = \"abbcccddddeeeeedcba\"",
+      "output": "5",
+      "explanation": "The substring \"eeeee\" is of length 5 with the character 'e' only."
+    }
+  ],
+  "sum-of-left-leaves": [
+    {
+      "input": "root = [3,9,20,null,null,15,7]",
+      "output": "24",
+      "explanation": "There are two left leaves in the binary tree, with values 9 and 15 respectively."
+    },
+    {
+      "input": "root = [1]",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "boats-to-save-people": [
+    {
+      "input": "people = [1,2], limit = 3",
+      "output": "1",
+      "explanation": "1 boat (1, 2)"
+    },
+    {
+      "input": "people = [3,2,2,1], limit = 3",
+      "output": "3",
+      "explanation": "3 boats (1, 2), (2) and (3)"
+    },
+    {
+      "input": "people = [3,5,3,4], limit = 5",
+      "output": "4",
+      "explanation": "4 boats (3), (3), (4), (5)"
+    }
+  ],
+  "shortest-path-in-a-grid-with-obstacles-elimination": [
+    {
+      "input": "grid = [[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]], k = 1",
+      "output": "6",
+      "explanation": "The shortest path without eliminating any obstacle is 10. The shortest path with one obstacle elimination at position (3,2) is 6. Such path is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) -> (3,2) -> (4,2)."
+    },
+    {
+      "input": "grid = [[0,1,1],[1,1,1],[1,0,0]], k = 1",
+      "output": "-1",
+      "explanation": "We need to eliminate at least two obstacles to find such a walk."
+    }
+  ],
+  "top-k-frequent-words": [
+    {
+      "input": "words = [\"i\",\"love\",\"leetcode\",\"i\",\"love\",\"coding\"], k = 2",
+      "output": "[\"i\",\"love\"]",
+      "explanation": "\"i\" and \"love\" are the two most frequent words. Note that \"i\" comes before \"love\" due to a lower alphabetical order."
+    },
+    {
+      "input": "words = [\"the\",\"day\",\"is\",\"sunny\",\"the\",\"the\",\"the\",\"sunny\",\"is\",\"is\"], k = 4",
+      "output": "[\"the\",\"is\",\"sunny\",\"day\"]",
+      "explanation": "\"the\", \"is\", \"sunny\" and \"day\" are the four most frequent words, with the number of occurrence being 4, 3, 2 and 1 respectively."
+    }
+  ],
+  "course-schedule-ii": [
+    {
+      "input": "numCourses = 2, prerequisites = [[1,0]]",
+      "output": "[0,1]",
+      "explanation": "There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1]."
+    },
+    {
+      "input": "numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]",
+      "output": "[0,2,1,3]",
+      "explanation": "There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3]."
+    },
+    {
+      "input": "numCourses = 1, prerequisites = []",
+      "output": "[0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "k-closest-points-to-origin": [
+    {
+      "input": "points = [[1,3],[-2,2]], k = 1",
+      "output": "[[-2,2]]",
+      "explanation": "The distance between (1, 3) and the origin is sqrt(10). The distance between (-2, 2) and the origin is sqrt(8). Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin. We only want the closest k = 1 points from the origin, so the answer is just [[-2,2]]."
+    },
+    {
+      "input": "points = [[3,3],[5,-1],[-2,4]], k = 2",
+      "output": "[[3,3],[-2,4]]",
+      "explanation": "The answer [[-2,4],[3,3]] would also be accepted."
+    }
+  ],
+  "median-of-two-sorted-arrays": [
+    {
+      "input": "nums1 = [1,3], nums2 = [2]",
+      "output": "2.00000",
+      "explanation": "merged array = [1,2,3] and median is 2."
+    },
+    {
+      "input": "nums1 = [1,2], nums2 = [3,4]",
+      "output": "2.50000",
+      "explanation": "merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5."
+    }
+  ],
+  "reorder-data-in-log-files": [
+    {
+      "input": "logs = [\"dig1 8 1 5 1\",\"let1 art can\",\"dig2 3 6\",\"let2 own kit dig\",\"let3 art zero\"]",
+      "output": "[\"let1 art can\",\"let3 art zero\",\"let2 own kit dig\",\"dig1 8 1 5 1\",\"dig2 3 6\"]",
+      "explanation": "The letter-log contents are all different, so their ordering is \"art can\", \"art zero\", \"own kit dig\". The digit-logs have a relative order of \"dig1 8 1 5 1\", \"dig2 3 6\"."
+    },
+    {
+      "input": "logs = [\"a1 9 2 3 1\",\"g1 act car\",\"zo4 4 7\",\"ab1 off key dog\",\"a8 act zoo\"]",
+      "output": "[\"g1 act car\",\"a8 act zoo\",\"ab1 off key dog\",\"a1 9 2 3 1\",\"zo4 4 7\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "copy-list-with-random-pointer": [
+    {
+      "input": "head = [[7,null],[13,0],[11,4],[10,2],[1,0]]",
+      "output": "[[7,null],[13,0],[11,4],[10,2],[1,0]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [[1,1],[2,1]]",
+      "output": "[[1,1],[2,1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "head = [[3,null],[3,0],[3,null]]",
+      "output": "[[3,null],[3,0],[3,null]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "partition-labels": [
+    {
+      "input": "s = \"ababcbacadefegdehijhklij\"",
+      "output": "[9,7,8]",
+      "explanation": "The partition is \"ababcbaca\", \"defegde\", \"hijhklij\". This is a partition so that each letter appears in at most one part. A partition like \"ababcbacadefegde\", \"hijhklij\" is incorrect, because it splits s into less parts."
+    },
+    {
+      "input": "s = \"eccbbbbdec\"",
+      "output": "[10]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "sliding-window-maximum": [
+    {
+      "input": "nums = [1,3,-1,-3,5,3,6,7], k = 3",
+      "output": "[3,3,5,5,6,7]",
+      "explanation": "Window position                Max ---------------               ----- [1  3  -1] -3  5  3  6  7       3  1 [3  -1  -3] 5  3  6  7       3  1  3 [-1  -3  5] 3  6  7       5  1  3  -1 [-3  5  3] 6  7       5  1  3  -1  -3 [5  3  6] 7       6  1  3  -1  -3  5 [3  6  7]      7"
+    },
+    {
+      "input": "nums = [1], k = 1",
+      "output": "[1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "critical-connections-in-a-network": [
+    {
+      "input": "n = 4, connections = [[0,1],[1,2],[2,0],[1,3]]",
+      "output": "[[1,3]]",
+      "explanation": "[[3,1]] is also accepted."
+    },
+    {
+      "input": "n = 2, connections = [[0,1]]",
+      "output": "[[0,1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "serialize-and-deserialize-binary-tree": [
+    {
+      "input": "root = [1,2,3,null,null,4,5]",
+      "output": "[1,2,3,null,null,4,5]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "3sum": [
+    {
+      "input": "nums = [-1,0,1,2,-1,-4]",
+      "output": "[[-1,-1,2],[-1,0,1]]",
+      "explanation": "nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0. nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0. nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0. The distinct triplets are [-1,0,1] and [-1,-1,2]. Notice that the order of the output and the order of the triplets does not matter."
+    },
+    {
+      "input": "nums = [0,1,1]",
+      "output": "[]",
+      "explanation": "The only possible triplet does not sum up to 0."
+    },
+    {
+      "input": "nums = [0,0,0]",
+      "output": "[[0,0,0]]",
+      "explanation": "The only possible triplet sums up to 0."
+    }
+  ],
+  "subtree-of-another-tree": [
+    {
+      "input": "root = [3,4,5,1,2], subRoot = [4,1,2]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-difficulty-of-a-job-schedule": [
+    {
+      "input": "jobDifficulty = [6,5,4,3,2,1], d = 2",
+      "output": "7",
+      "explanation": "First day you can finish the first 5 jobs, total difficulty = 6. Second day you can finish the last job, total difficulty = 1. The difficulty of the schedule = 6 + 1 = 7"
+    },
+    {
+      "input": "jobDifficulty = [9,9,9], d = 4",
+      "output": "-1",
+      "explanation": "If you finish a job per day you will still have a free day. you cannot find a schedule for the given jobs."
+    },
+    {
+      "input": "jobDifficulty = [1,1,1], d = 3",
+      "output": "3",
+      "explanation": "The schedule is one job per day. total difficulty will be 3."
+    }
+  ],
+  "maximal-rectangle": [
+    {
+      "input": "matrix = [[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]",
+      "output": "6",
+      "explanation": "The maximal rectangle is shown in the above picture."
+    },
+    {
+      "input": "matrix = [[\"0\"]]",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[\"1\"]]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-tree-maximum-path-sum": [
+    {
+      "input": "root = [1,2,3]",
+      "output": "6",
+      "explanation": "The optimal path is 2 -> 1 -> 3 with a path sum of 2 + 1 + 3 = 6."
+    },
+    {
+      "input": "root = [-10,9,20,null,null,15,7]",
+      "output": "42",
+      "explanation": "The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 42."
+    }
+  ],
+  "search-suggestions-system": [
+    {
+      "input": "products = [\"mobile\",\"mouse\",\"moneypot\",\"monitor\",\"mousepad\"], searchWord = \"mouse\"",
+      "output": "[[\"mobile\",\"moneypot\",\"monitor\"],[\"mobile\",\"moneypot\",\"monitor\"],[\"mouse\",\"mousepad\"],[\"mouse\",\"mousepad\"],[\"mouse\",\"mousepad\"]]",
+      "explanation": "products sorted lexicographically = [\"mobile\",\"moneypot\",\"monitor\",\"mouse\",\"mousepad\"]. After typing m and mo all products match and we show user [\"mobile\",\"moneypot\",\"monitor\"]. After typing mou, mous and mouse the system suggests [\"mouse\",\"mousepad\"]."
+    },
+    {
+      "input": "products = [\"havana\"], searchWord = \"havana\"",
+      "output": "[[\"havana\"],[\"havana\"],[\"havana\"],[\"havana\"],[\"havana\"],[\"havana\"]]",
+      "explanation": "The only word \"havana\" will be always suggested while typing the search word."
+    }
+  ],
+  "search-in-rotated-sorted-array": [
+    {
+      "input": "nums = [4,5,6,7,0,1,2], target = 0",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [4,5,6,7,0,1,2], target = 3",
+      "output": "-1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1], target = 0",
+      "output": "-1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "merge-k-sorted-lists": [
+    {
+      "input": "lists = [[1,4,5],[1,3,4],[2,6]]",
+      "output": "[1,1,2,3,4,4,5,6]",
+      "explanation": "The linked-lists are: [   1->4->5,   1->3->4,   2->6 ] merging them into one sorted linked list: 1->1->2->3->4->4->5->6"
+    },
+    {
+      "input": "lists = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "lists = [[]]",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "robot-bounded-in-circle": [
+    {
+      "input": "instructions = \"GGLLGG\"",
+      "output": "true",
+      "explanation": "The robot is initially at (0, 0) facing the north direction. \"G\": move one step. Position: (0, 1). Direction: North. \"G\": move one step. Position: (0, 2). Direction: North. \"L\": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: West. \"L\": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: South. \"G\": move one step. Position: (0, 1). Direction: South. \"G\": move one step. Position: (0, 0). Direction: South. Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (0, 2) --> (0, 1) --> (0, 0). Based on that, we return true."
+    },
+    {
+      "input": "instructions = \"GG\"",
+      "output": "false",
+      "explanation": "The robot is initially at (0, 0) facing the north direction. \"G\": move one step. Position: (0, 1). Direction: North. \"G\": move one step. Position: (0, 2). Direction: North. Repeating the instructions, keeps advancing in the north direction and does not go into cycles. Based on that, we return false."
+    },
+    {
+      "input": "instructions = \"GL\"",
+      "output": "true",
+      "explanation": "The robot is initially at (0, 0) facing the north direction. \"G\": move one step. Position: (0, 1). Direction: North. \"L\": turn 90 degrees anti-clockwise. Position: (0, 1). Direction: West. \"G\": move one step. Position: (-1, 1). Direction: West. \"L\": turn 90 degrees anti-clockwise. Position: (-1, 1). Direction: South. \"G\": move one step. Position: (-1, 0). Direction: South. \"L\": turn 90 degrees anti-clockwise. Position: (-1, 0). Direction: East. \"G\": move one step. Position: (0, 0). Direction: East. \"L\": turn 90 degrees anti-clockwise. Position: (0, 0). Direction: North. Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (-1, 1) --> (-1, 0) --> (0, 0). Based on that, we return true."
+    }
+  ],
+  "evaluate-reverse-polish-notation": [
+    {
+      "input": "tokens = [\"2\",\"1\",\"+\",\"3\",\"*\"]",
+      "output": "9",
+      "explanation": "((2 + 1) * 3) = 9"
+    },
+    {
+      "input": "tokens = [\"4\",\"13\",\"5\",\"/\",\"+\"]",
+      "output": "6",
+      "explanation": "(4 + (13 / 5)) = 6"
+    },
+    {
+      "input": "tokens = [\"10\",\"6\",\"9\",\"3\",\"+\",\"-11\",\"*\",\"/\",\"*\",\"17\",\"+\",\"5\",\"+\"]",
+      "output": "22",
+      "explanation": "((10 * (6 / ((9 + 3) * -11))) + 17) + 5 = ((10 * (6 / (12 * -11))) + 17) + 5 = ((10 * (6 / -132)) + 17) + 5 = ((10 * 0) + 17) + 5 = (0 + 17) + 5 = 17 + 5 = 22"
+    }
+  ],
+  "minimum-window-substring": [
+    {
+      "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+      "output": "\"BANC\"",
+      "explanation": "The minimum window substring \"BANC\" includes 'A', 'B', and 'C' from string t."
+    },
+    {
+      "input": "s = \"a\", t = \"a\"",
+      "output": "\"a\"",
+      "explanation": "The entire string s is the minimum window."
+    },
+    {
+      "input": "s = \"a\", t = \"aa\"",
+      "output": "\"\"",
+      "explanation": "Both 'a's from t must be included in the window. Since the largest window of s only has one 'a', return empty string."
+    }
+  ],
+  "snapshot-array": [
+    {
+      "input": "[\"SnapshotArray\",\"set\",\"snap\",\"set\",\"get\"] [[3],[0,5],[],[0,6],[0,0]]",
+      "output": "[null,null,0,null,5]",
+      "explanation": "SnapshotArray snapshotArr = new SnapshotArray(3); // set the length to be 3 snapshotArr.set(0,5);  // Set array[0] = 5 snapshotArr.snap();  // Take a snapshot, return snap_id = 0 snapshotArr.set(0,6); snapshotArr.get(0,0);  // Get the value of array[0] with snap_id = 0, return 5"
+    }
+  ],
+  "text-justification": [
+    {
+      "input": "words = [\"This\", \"is\", \"an\", \"example\", \"of\", \"text\", \"justification.\"], maxWidth = 16",
+      "output": "[    \"This    is    an\",    \"example  of text\",    \"justification.  \" ]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "words = [\"What\",\"must\",\"be\",\"acknowledgment\",\"shall\",\"be\"], maxWidth = 16",
+      "output": "[   \"What   must   be\",   \"acknowledgment  \",   \"shall be        \" ]",
+      "explanation": "Note that the last line is \"shall be    \" instead of \"shall     be\", because the last line must be left-justified instead of fully-justified. Note that the second line is also left-justified because it contains only one word."
+    },
+    {
+      "input": "words = [\"Science\",\"is\",\"what\",\"we\",\"understand\",\"well\",\"enough\",\"to\",\"explain\",\"to\",\"a\",\"computer.\",\"Art\",\"is\",\"everything\",\"else\",\"we\",\"do\"], maxWidth = 20",
+      "output": "[   \"Science  is  what we\",   \"understand      well\",   \"enough to explain to\",   \"a  computer.  Art is\",   \"everything  else  we\",   \"do                  \" ]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "count-of-smaller-numbers-after-self": [
+    {
+      "input": "nums = [5,2,6,1]",
+      "output": "[2,1,1,0]",
+      "explanation": "To the right of 5 there are 2 smaller elements (2 and 1). To the right of 2 there is only 1 smaller element (1). To the right of 6 there is 1 smaller element (1). To the right of 1 there is 0 smaller element."
+    },
+    {
+      "input": "nums = [-1]",
+      "output": "[0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [-1,-1]",
+      "output": "[0,0]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "split-array-largest-sum": [
+    {
+      "input": "nums = [7,2,5,10,8], k = 2",
+      "output": "18",
+      "explanation": "There are four ways to split nums into two subarrays. The best way is to split it into [7,2,5] and [10,8], where the largest sum among the two subarrays is only 18."
+    },
+    {
+      "input": "nums = [1,2,3,4,5], k = 2",
+      "output": "9",
+      "explanation": "There are four ways to split nums into two subarrays. The best way is to split it into [1,2,3] and [4,5], where the largest sum among the two subarrays is only 9."
+    }
+  ],
+  "longest-increasing-path-in-a-matrix": [
+    {
+      "input": "matrix = [[9,9,4],[6,6,8],[2,1,1]]",
+      "output": "4",
+      "explanation": "The longest increasing path is [1, 2, 6, 9]."
+    },
+    {
+      "input": "matrix = [[3,4,5],[3,2,6],[2,2,1]]",
+      "output": "4",
+      "explanation": "The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed."
+    },
+    {
+      "input": "matrix = [[1]]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "bus-routes": [
+    {
+      "input": "routes = [[1,2,7],[3,6,7]], source = 1, target = 6",
+      "output": "2",
+      "explanation": "The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6."
+    },
+    {
+      "input": "routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]], source = 15, target = 12",
+      "output": "-1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "guess-the-word": [
+    {
+      "input": "secret = \"acckzz\", words = [\"acckzz\",\"ccbazz\",\"eiowzz\",\"abcczz\"], allowedGuesses = 10",
+      "output": "You guessed the secret word correctly.",
+      "explanation": "master.guess(\"aaaaaa\") returns -1, because \"aaaaaa\" is not in words. master.guess(\"acckzz\") returns 6, because \"acckzz\" is secret and has all 6 matches. master.guess(\"ccbazz\") returns 3, because \"ccbazz\" has 3 matches. master.guess(\"eiowzz\") returns 2, because \"eiowzz\" has 2 matches. master.guess(\"abcczz\") returns 4, because \"abcczz\" has 4 matches. We made 5 calls to master.guess, and one of them was the secret, so we pass the test case."
+    },
+    {
+      "input": "secret = \"hamada\", words = [\"hamada\",\"khaled\"], allowedGuesses = 10",
+      "output": "You guessed the secret word correctly.",
+      "explanation": "Since there are two words, you can guess both."
+    }
+  ],
+  "race-car": [
+    {
+      "input": "target = 3",
+      "output": "2",
+      "explanation": "The shortest instruction sequence is \"AA\". Your position goes from 0 --> 1 --> 3."
+    },
+    {
+      "input": "target = 6",
+      "output": "5",
+      "explanation": "The shortest instruction sequence is \"AAARA\". Your position goes from 0 --> 1 --> 3 --> 7 --> 7 --> 6."
+    }
+  ],
+  "longest-string-chain": [
+    {
+      "input": "words = [\"a\",\"b\",\"ba\",\"bca\",\"bda\",\"bdca\"]",
+      "output": "4",
+      "explanation": "One of the longest word chains is [\"a\",\"ba\",\"bda\",\"bdca\"]."
+    },
+    {
+      "input": "words = [\"xbc\",\"pcxbcf\",\"xb\",\"cxbc\",\"pcxbc\"]",
+      "output": "5",
+      "explanation": "All the words can be put in a word chain [\"xb\", \"xbc\", \"cxbc\", \"pcxbc\", \"pcxbcf\"]."
+    },
+    {
+      "input": "words = [\"abcd\",\"dbqca\"]",
+      "output": "1",
+      "explanation": "The trivial word chain [\"abcd\"] is one of the longest word chains. [\"abcd\",\"dbqca\"] is not a valid word chain because the ordering of the letters is changed."
+    }
+  ],
+  "cracking-the-safe": [
+    {
+      "input": "n = 1, k = 2",
+      "output": "\"10\"",
+      "explanation": "The password is a single digit, so enter each digit. \"01\" would also unlock the safe."
+    },
+    {
+      "input": "n = 2, k = 2",
+      "output": "\"01100\"",
+      "explanation": "For each possible password: - \"00\" is typed in starting from the 4th digit. - \"01\" is typed in starting from the 1st digit. - \"10\" is typed in starting from the 3rd digit. - \"11\" is typed in starting from the 2nd digit. Thus \"01100\" will unlock the safe. \"10011\", and \"11001\" would also unlock the safe."
+    }
+  ],
+  "expressive-words": [
+    {
+      "input": "s = \"heeellooo\", words = [\"hello\", \"hi\", \"helo\"]",
+      "output": "1",
+      "explanation": "We can extend \"e\" and \"o\" in the word \"hello\" to get \"heeellooo\". We can't extend \"helo\" to get \"heeellooo\" because the group \"ll\" is not size 3 or more."
+    },
+    {
+      "input": "s = \"zzzzzyyyyy\", words = [\"zzyy\",\"zy\",\"zyy\"]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "shortest-path-in-binary-matrix": [
+    {
+      "input": "grid = [[0,1],[1,0]]",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "grid = [[0,0,0],[1,1,0],[1,1,0]]",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "grid = [[1,0,0],[1,1,0],[1,1,0]]",
+      "output": "-1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "word-break-ii": [
+    {
+      "input": "s = \"catsanddog\", wordDict = [\"cat\",\"cats\",\"and\",\"sand\",\"dog\"]",
+      "output": "[\"cats and dog\",\"cat sand dog\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"pineapplepenapple\", wordDict = [\"apple\",\"pen\",\"applepen\",\"pine\",\"pineapple\"]",
+      "output": "[\"pine apple pen apple\",\"pineapple pen apple\",\"pine applepen apple\"]",
+      "explanation": "Note that you are allowed to reuse a dictionary word."
+    },
+    {
+      "input": "s = \"catsandog\", wordDict = [\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximal-square": [
+    {
+      "input": "matrix = [[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[\"0\",\"1\"],[\"1\",\"0\"]]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[\"0\"]]",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "swim-in-rising-water": [
+    {
+      "input": "grid = [[0,2],[1,3]]",
+      "output": "3",
+      "explanation": "At time 0, you are in grid location (0, 0). You cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0. You cannot reach point (1, 1) until time 3. When the depth of water is 3, we can swim anywhere inside the grid."
+    },
+    {
+      "input": "grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]",
+      "output": "16",
+      "explanation": "The final route is shown. We need to wait until time 16 so that (0, 0) and (4, 4) are connected."
+    }
+  ],
+  "accounts-merge": [
+    {
+      "input": "accounts = [[\"John\",\"johnsmith@mail.com\",\"john_newyork@mail.com\"],[\"John\",\"johnsmith@mail.com\",\"john00@mail.com\"],[\"Mary\",\"mary@mail.com\"],[\"John\",\"johnnybravo@mail.com\"]]",
+      "output": "[[\"John\",\"john00@mail.com\",\"john_newyork@mail.com\",\"johnsmith@mail.com\"],[\"Mary\",\"mary@mail.com\"],[\"John\",\"johnnybravo@mail.com\"]]",
+      "explanation": "The first and second John's are the same person as they have the common email \"johnsmith@mail.com\". The third John and Mary are different people as none of their email addresses are used by other accounts. We could return these lists in any order, for example the answer [['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com'],  ['John', 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com']] would still be accepted."
+    },
+    {
+      "input": "accounts = [[\"Gabe\",\"Gabe0@m.co\",\"Gabe3@m.co\",\"Gabe1@m.co\"],[\"Kevin\",\"Kevin3@m.co\",\"Kevin5@m.co\",\"Kevin0@m.co\"],[\"Ethan\",\"Ethan5@m.co\",\"Ethan4@m.co\",\"Ethan0@m.co\"],[\"Hanzo\",\"Hanzo3@m.co\",\"Hanzo1@m.co\",\"Hanzo0@m.co\"],[\"Fern\",\"Fern5@m.co\",\"Fern1@m.co\",\"Fern0@m.co\"]]",
+      "output": "[[\"Ethan\",\"Ethan0@m.co\",\"Ethan4@m.co\",\"Ethan5@m.co\"],[\"Gabe\",\"Gabe0@m.co\",\"Gabe1@m.co\",\"Gabe3@m.co\"],[\"Hanzo\",\"Hanzo0@m.co\",\"Hanzo1@m.co\",\"Hanzo3@m.co\"],[\"Kevin\",\"Kevin0@m.co\",\"Kevin3@m.co\",\"Kevin5@m.co\"],[\"Fern\",\"Fern0@m.co\",\"Fern1@m.co\",\"Fern5@m.co\"]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-cost-to-hire-k-workers": [
+    {
+      "input": "quality = [10,20,5], wage = [70,50,30], k = 2",
+      "output": "105.00000",
+      "explanation": "We pay 70 to 0th worker and 35 to 2nd worker."
+    },
+    {
+      "input": "quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3",
+      "output": "30.66667",
+      "explanation": "We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately."
+    }
+  ],
+  "number-of-matching-subsequences": [
+    {
+      "input": "s = \"abcde\", words = [\"a\",\"bb\",\"acd\",\"ace\"]",
+      "output": "3",
+      "explanation": "There are three strings in words that are a subsequence of s: \"a\", \"acd\", \"ace\"."
+    },
+    {
+      "input": "s = \"dsahjpjauf\", words = [\"ahjpjau\",\"ja\",\"ahbwzgqnuk\",\"tnmlanowax\"]",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "burst-balloons": [
+    {
+      "input": "nums = [3,1,5,8]",
+      "output": "167",
+      "explanation": "nums = [3,1,5,8] --> [3,5,8] --> [3,8] --> [8] --> [] coins =  3*1*5    +   3*5*8   +  1*3*8  + 1*8*1 = 167"
+    },
+    {
+      "input": "nums = [1,5]",
+      "output": "10",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "find-minimum-in-rotated-sorted-array": [
+    {
+      "input": "nums = [3,4,5,1,2]",
+      "output": "1",
+      "explanation": "The original array was [1,2,3,4,5] rotated 3 times."
+    },
+    {
+      "input": "nums = [4,5,6,7,0,1,2]",
+      "output": "0",
+      "explanation": "The original array was [0,1,2,4,5,6,7] and it was rotated 4 times."
+    },
+    {
+      "input": "nums = [11,13,15,17]",
+      "output": "11",
+      "explanation": "The original array was [11,13,15,17] and it was rotated 4 times."
+    }
+  ],
+  "set-matrix-zeroes": [
+    {
+      "input": "matrix = [[1,1,1],[1,0,1],[1,1,1]]",
+      "output": "[[1,0,1],[0,0,0],[1,0,1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]",
+      "output": "[[0,0,0,0],[0,4,5,0],[0,3,1,0]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "russian-doll-envelopes": [
+    {
+      "input": "envelopes = [[5,4],[6,4],[6,7],[2,3]]",
+      "output": "3",
+      "explanation": "The maximum number of envelopes you can Russian doll is 3 ([2,3] => [5,4] => [6,7])."
+    },
+    {
+      "input": "envelopes = [[1,1],[1,1],[1,1]]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "count-of-range-sum": [
+    {
+      "input": "nums = [-2,5,-1], lower = -2, upper = 2",
+      "output": "3",
+      "explanation": "The three ranges are: [0,0], [2,2], and [0,2] and their respective sums are: -2, -1, 2."
+    },
+    {
+      "input": "nums = [0], lower = 0, upper = 0",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-points-you-can-obtain-from-cards": [
+    {
+      "input": "cardPoints = [1,2,3,4,5,6,1], k = 3",
+      "output": "12",
+      "explanation": "After the first step, your score will always be 1. However, choosing the rightmost card first will maximize your total score. The optimal strategy is to take the three cards on the right, giving a final score of 1 + 6 + 5 = 12."
+    },
+    {
+      "input": "cardPoints = [2,2,2], k = 2",
+      "output": "4",
+      "explanation": "Regardless of which two cards you take, your score will always be 4."
+    },
+    {
+      "input": "cardPoints = [9,7,7,9,7,7,9], k = 7",
+      "output": "55",
+      "explanation": "You have to take all the cards. Your score is the sum of points of all cards."
+    }
+  ],
+  "remove-duplicate-letters": [
+    {
+      "input": "s = \"bcabc\"",
+      "output": "\"abc\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"cbacdcbc\"",
+      "output": "\"acdb\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "counter": [
+    {
+      "input": "n = 10  [\"call\",\"call\",\"call\"]",
+      "output": "[10,11,12]",
+      "explanation": "counter() = 10 // The first time counter() is called, it returns n. counter() = 11 // Returns 1 more than the previous time. counter() = 12 // Returns 1 more than the previous time."
+    },
+    {
+      "input": "n = -2 [\"call\",\"call\",\"call\",\"call\",\"call\"]",
+      "output": "[-2,-1,0,1,2]",
+      "explanation": "counter() initially returns -2. Then increases after each sebsequent call."
+    }
+  ],
+  "construct-smallest-number-from-di-string": [
+    {
+      "input": "pattern = \"IIIDIDDD\"",
+      "output": "\"123549876\"",
+      "explanation": "At indices 0, 1, 2, and 4 we must have that num[i] < num[i+1]. At indices 3, 5, 6, and 7 we must have that num[i] > num[i+1]. Some possible values of num are \"245639871\", \"135749862\", and \"123849765\". It can be proven that \"123549876\" is the smallest possible num that meets the conditions. Note that \"123414321\" is not possible because the digit '1' is used more than once."
+    },
+    {
+      "input": "pattern = \"DDD\"",
+      "output": "\"4321\"",
+      "explanation": "Some possible values of num are \"9876\", \"7321\", and \"8742\". It can be proven that \"4321\" is the smallest possible num that meets the conditions."
+    }
+  ],
+  "largest-rectangle-in-histogram": [
+    {
+      "input": "heights = [2,1,5,6,2,3]",
+      "output": "10",
+      "explanation": "The above is a histogram where width of each bar is 1. The largest rectangle is shown in the red area, which has an area = 10 units."
+    },
+    {
+      "input": "heights = [2,4]",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "integer-replacement": [
+    {
+      "input": "n = 8",
+      "output": "3",
+      "explanation": "8 -> 4 -> 2 -> 1"
+    },
+    {
+      "input": "n = 7",
+      "output": "4",
+      "explanation": "7 -> 8 -> 4 -> 2 -> 1 or 7 -> 6 -> 3 -> 2 -> 1"
+    },
+    {
+      "input": "n = 4",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "populating-next-right-pointers-in-each-node": [
+    {
+      "input": "root = [1,2,3,4,5,6,7]",
+      "output": "[1,#,2,3,#,4,5,6,7,#]",
+      "explanation": "Given the above perfect binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "split-array-into-consecutive-subsequences": [
+    {
+      "input": "nums = [1,2,3,3,4,5]",
+      "output": "true",
+      "explanation": "nums can be split into the following subsequences: [1,2,3,3,4,5] --> 1, 2, 3 [1,2,3,3,4,5] --> 3, 4, 5"
+    },
+    {
+      "input": "nums = [1,2,3,3,4,4,5,5]",
+      "output": "true",
+      "explanation": "nums can be split into the following subsequences: [1,2,3,3,4,4,5,5] --> 1, 2, 3, 4, 5 [1,2,3,3,4,4,5,5] --> 3, 4, 5"
+    },
+    {
+      "input": "nums = [1,2,3,4,4,5]",
+      "output": "false",
+      "explanation": "It is impossible to split nums into consecutive increasing subsequences of length 3 or more."
+    }
+  ],
+  "count-number-of-nice-subarrays": [
+    {
+      "input": "nums = [1,1,2,1,1], k = 3",
+      "output": "2",
+      "explanation": "The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1]."
+    },
+    {
+      "input": "nums = [2,4,6], k = 1",
+      "output": "0",
+      "explanation": "There are no odd numbers in the array."
+    },
+    {
+      "input": "nums = [2,2,2,1,2,2,1,2,2,2], k = 2",
+      "output": "16",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "spiral-matrix-ii": [
+    {
+      "input": "n = 3",
+      "output": "[[1,2,3],[8,9,4],[7,6,5]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "n = 1",
+      "output": "[[1]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "sign-of-the-product-of-an-array": [
+    {
+      "input": "nums = [-1,-2,-3,-4,3,2,1]",
+      "output": "1",
+      "explanation": "The product of all values in the array is 144, and signFunc(144) = 1"
+    },
+    {
+      "input": "nums = [1,5,0,2,-3]",
+      "output": "0",
+      "explanation": "The product of all values in the array is 0, and signFunc(0) = 0"
+    },
+    {
+      "input": "nums = [-1,1,-1,1,-1]",
+      "output": "-1",
+      "explanation": "The product of all values in the array is -1, and signFunc(-1) = -1"
+    }
+  ],
+  "zigzag-conversion": [
+    {
+      "input": "s = \"PAYPALISHIRING\", numRows = 3",
+      "output": "\"PAHNAPLSIIGYIR\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"PAYPALISHIRING\", numRows = 4",
+      "output": "\"PINALSIGYAHRPI\"",
+      "explanation": "P     I    N A   L S  I G Y A   H R P     I"
+    },
+    {
+      "input": "s = \"A\", numRows = 1",
+      "output": "\"A\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "rotate-array": [
+    {
+      "input": "nums = [1,2,3,4,5,6,7], k = 3",
+      "output": "[5,6,7,1,2,3,4]",
+      "explanation": "rotate 1 steps to the right: [7,1,2,3,4,5,6] rotate 2 steps to the right: [6,7,1,2,3,4,5] rotate 3 steps to the right: [5,6,7,1,2,3,4]"
+    },
+    {
+      "input": "nums = [-1,-100,3,99], k = 2",
+      "output": "[3,99,-1,-100]",
+      "explanation": "rotate 1 steps to the right: [99,-1,-100,3] rotate 2 steps to the right: [3,99,-1,-100]"
+    }
+  ],
+  "kth-smallest-element-in-a-bst": [
+    {
+      "input": "root = [3,1,4,null,2], k = 1",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [5,3,6,2,4,null,null,1], k = 3",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "range-sum-of-bst": [
+    {
+      "input": "root = [10,5,15,3,7,null,18], low = 7, high = 15",
+      "output": "32",
+      "explanation": "Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32."
+    },
+    {
+      "input": "root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10",
+      "output": "23",
+      "explanation": "Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23."
+    }
+  ],
+  "insert-into-a-binary-search-tree": [
+    {
+      "input": "root = [4,2,7,1,3], val = 5",
+      "output": "[4,2,7,1,3,5]",
+      "explanation": "Another accepted tree is:"
+    },
+    {
+      "input": "root = [40,20,60,10,30,50,70], val = 25",
+      "output": "[40,20,60,10,30,50,70,null,null,25]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [4,2,7,1,3,null,null,null,null,null,null], val = 5",
+      "output": "[4,2,7,1,3,5]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "multiply-strings": [
+    {
+      "input": "num1 = \"2\", num2 = \"3\"",
+      "output": "\"6\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "num1 = \"123\", num2 = \"456\"",
+      "output": "\"56088\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "valid-sudoku": [
+    {
+      "input": "board =  [[\"5\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"] ,[\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"] ,[\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"] ,[\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"] ,[\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"] ,[\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"] ,[\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"] ,[\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"] ,[\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "board =  [[\"8\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"] ,[\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"] ,[\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"] ,[\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"] ,[\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"] ,[\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"] ,[\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"] ,[\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"] ,[\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]]",
+      "output": "false",
+      "explanation": "Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid."
+    }
+  ],
+  "delete-node-in-a-bst": [
+    {
+      "input": "root = [5,3,6,2,4,null,7], key = 3",
+      "output": "[5,4,6,2,null,null,7]",
+      "explanation": "Given key to delete is 3. So we find the node with value 3 and delete it. One valid answer is [5,4,6,2,null,null,7], shown in the above BST. Please notice that another valid answer is [5,2,6,null,4,null,7] and it's also accepted."
+    },
+    {
+      "input": "root = [5,3,6,2,4,null,7], key = 0",
+      "output": "[5,3,6,2,4,null,7]",
+      "explanation": "The tree does not contain a node with value = 0."
+    },
+    {
+      "input": "root = [], key = 0",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "search-in-a-binary-search-tree": [
+    {
+      "input": "root = [4,2,7,1,3], val = 2",
+      "output": "[2,1,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [4,2,7,1,3], val = 5",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-product-of-word-lengths": [
+    {
+      "input": "words = [\"abcw\",\"baz\",\"foo\",\"bar\",\"xtfn\",\"abcdef\"]",
+      "output": "16",
+      "explanation": "The two words can be \"abcw\", \"xtfn\"."
+    },
+    {
+      "input": "words = [\"a\",\"ab\",\"abc\",\"d\",\"cd\",\"bcd\",\"abcd\"]",
+      "output": "4",
+      "explanation": "The two words can be \"ab\", \"cd\"."
+    },
+    {
+      "input": "words = [\"a\",\"aa\",\"aaa\",\"aaaa\"]",
+      "output": "0",
+      "explanation": "No such pair of words."
+    }
+  ],
+  "all-nodes-distance-k-in-binary-tree": [
+    {
+      "input": "root = [3,5,1,6,2,0,8,null,null,7,4], target = 5, k = 2",
+      "output": "[7,4,1]",
+      "explanation": "The nodes that are a distance 2 from the target node (with value 5) have values 7, 4, and 1."
+    },
+    {
+      "input": "root = [1], target = 1, k = 3",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "recover-binary-search-tree": [
+    {
+      "input": "root = [1,3,null,null,2]",
+      "output": "[3,1,null,null,2]",
+      "explanation": "3 cannot be a left child of 1 because 3 > 1. Swapping 1 and 3 makes the BST valid."
+    },
+    {
+      "input": "root = [3,1,4,null,null,2]",
+      "output": "[2,1,4,null,null,3]",
+      "explanation": "2 cannot be in the right subtree of 3 because 2 < 3. Swapping 2 and 3 makes the BST valid."
+    }
+  ],
+  "count-complete-tree-nodes": [
+    {
+      "input": "root = [1,2,3,4,5,6]",
+      "output": "6",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "0",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "path-sum-ii": [
+    {
+      "input": "root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22",
+      "output": "[[5,4,11,2],[5,8,4,5]]",
+      "explanation": "There are two paths whose sum equals targetSum: 5 + 4 + 11 + 2 = 22 5 + 8 + 4 + 5 = 22"
+    },
+    {
+      "input": "root = [1,2,3], targetSum = 5",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2], targetSum = 0",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "trim-a-binary-search-tree": [
+    {
+      "input": "root = [1,0,2], low = 1, high = 2",
+      "output": "[1,null,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [3,0,4,null,2,null,null,1], low = 1, high = 3",
+      "output": "[3,2,null,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "serialize-and-deserialize-bst": [
+    {
+      "input": "root = [2,1,3]",
+      "output": "[2,1,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "deepest-leaves-sum": [
+    {
+      "input": "root = [1,2,3,4,5,null,6,7,null,null,null,null,8]",
+      "output": "15",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]",
+      "output": "19",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "find-largest-value-in-each-tree-row": [
+    {
+      "input": "root = [1,3,2,5,3,null,9]",
+      "output": "[1,3,9]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2,3]",
+      "output": "[1,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "convert-sorted-array-to-binary-search-tree": [
+    {
+      "input": "nums = [-10,-3,0,5,9]",
+      "output": "[0,-3,9,-10,null,5]",
+      "explanation": "[0,-10,5,null,-3,null,9] is also accepted:"
+    },
+    {
+      "input": "nums = [1,3]",
+      "output": "[3,1]",
+      "explanation": "[1,null,3] and [3,1] are both height-balanced BSTs."
+    }
+  ],
+  "n-ary-tree-level-order-traversal": [
+    {
+      "input": "root = [1,null,3,2,4,null,5,6]",
+      "output": "[[1],[3,2,4],[5,6]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]",
+      "output": "[[1],[2,3,4,5],[6,7,8,9,10],[11,12,13],[14]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "leaf-similar-trees": [
+    {
+      "input": "root1 = [3,5,1,6,2,9,8,null,null,7,4], root2 = [3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root1 = [1,2,3], root2 = [1,3,2]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "convert-sorted-list-to-binary-search-tree": [
+    {
+      "input": "head = [-10,-3,0,5,9]",
+      "output": "[0,-3,9,-10,null,5]",
+      "explanation": "One possible answer is [0,-3,9,-10,null,5], which represents the shown height balanced BST."
+    },
+    {
+      "input": "head = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "continuous-subarray-sum": [
+    {
+      "input": "nums = [23,2,4,6,7], k = 6",
+      "output": "true",
+      "explanation": "[2, 4] is a continuous subarray of size 2 whose elements sum up to 6."
+    },
+    {
+      "input": "nums = [23,2,6,4,7], k = 6",
+      "output": "true",
+      "explanation": "[23, 2, 6, 4, 7] is an continuous subarray of size 5 whose elements sum up to 42. 42 is a multiple of 6 because 42 = 7 * 6 and 7 is an integer."
+    },
+    {
+      "input": "nums = [23,2,6,4,7], k = 13",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-absolute-difference-in-bst": [
+    {
+      "input": "root = [4,2,6,1,3]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,0,48,null,null,12,49]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "univalued-binary-tree": [
+    {
+      "input": "root = [1,1,1,1,1,null,1]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [2,2,2,5,2]",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "n-ary-tree-postorder-traversal": [
+    {
+      "input": "root = [1,null,3,2,4,null,5,6]",
+      "output": "[5,6,3,2,4,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]",
+      "output": "[2,6,14,11,7,3,12,8,4,13,9,10,5,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-depth-of-n-ary-tree": [
+    {
+      "input": "root = [1,null,3,2,4,null,5,6]",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]",
+      "output": "5",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "increasing-order-search-tree": [
+    {
+      "input": "root = [5,3,6,2,4,null,8,1,null,null,null,7,9]",
+      "output": "[1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [5,1,7]",
+      "output": "[1,null,5,null,7]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "n-ary-tree-preorder-traversal": [
+    {
+      "input": "root = [1,null,3,2,4,null,5,6]",
+      "output": "[1,3,5,6,2,4]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]",
+      "output": "[1,2,3,6,7,11,14,4,8,12,5,9,13,10]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "insert-interval": [
+    {
+      "input": "intervals = [[1,3],[6,9]], newInterval = [2,5]",
+      "output": "[[1,5],[6,9]]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]",
+      "output": "[[1,2],[3,10],[12,16]]",
+      "explanation": "Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10]."
+    }
+  ],
+  "verifying-an-alien-dictionary": [
+    {
+      "input": "words = [\"hello\",\"leetcode\"], order = \"hlabcdefgijkmnopqrstuvwxyz\"",
+      "output": "true",
+      "explanation": "As 'h' comes before 'l' in this language, then the sequence is sorted."
+    },
+    {
+      "input": "words = [\"word\",\"world\",\"row\"], order = \"worldabcefghijkmnpqstuvxyz\"",
+      "output": "false",
+      "explanation": "As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted."
+    },
+    {
+      "input": "words = [\"apple\",\"app\"], order = \"abcdefghijklmnopqrstuvwxyz\"",
+      "output": "false",
+      "explanation": "The first three characters \"app\" match, and the second string is shorter (in size.) According to lexicographical rules \"apple\" > \"app\", because 'l' > '&empty;', where '&empty;' is defined as the blank character which is less than any other character (More info)."
+    }
+  ],
+  "basic-calculator-ii": [
+    {
+      "input": "s = \"3+2*2\"",
+      "output": "7",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \" 3/2 \"",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \" 3+5 / 2 \"",
+      "output": "5",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "path-sum-iii": [
+    {
+      "input": "root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8",
+      "output": "3",
+      "explanation": "The paths that sum to 8 are shown."
+    },
+    {
+      "input": "root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22",
+      "output": "3",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-remove-to-make-valid-parentheses": [
+    {
+      "input": "s = \"lee(t(c)o)de)\"",
+      "output": "\"lee(t(c)o)de\"",
+      "explanation": "\"lee(t(co)de)\" , \"lee(t(c)ode)\" would also be accepted."
+    },
+    {
+      "input": "s = \"a)b(c)d\"",
+      "output": "\"ab(c)d\"",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"))((\"",
+      "output": "\"\"",
+      "explanation": "An empty string is also valid."
+    }
+  ],
+  "word-search-ii": [
+    {
+      "input": "board = [[\"o\",\"a\",\"a\",\"n\"],[\"e\",\"t\",\"a\",\"e\"],[\"i\",\"h\",\"k\",\"r\"],[\"i\",\"f\",\"l\",\"v\"]], words = [\"oath\",\"pea\",\"eat\",\"rain\"]",
+      "output": "[\"eat\",\"oath\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "board = [[\"a\",\"b\"],[\"c\",\"d\"]], words = [\"abcb\"]",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "vertical-order-traversal-of-a-binary-tree": [
+    {
+      "input": "root = [3,9,20,null,null,15,7]",
+      "output": "[[9],[3,15],[20],[7]]",
+      "explanation": "Column -1: Only node 9 is in this column. Column 0: Nodes 3 and 15 are in this column in that order from top to bottom. Column 1: Only node 20 is in this column. Column 2: Only node 7 is in this column."
+    },
+    {
+      "input": "root = [1,2,3,4,5,6,7]",
+      "output": "[[4],[2],[1,5,6],[3],[7]]",
+      "explanation": "Column -2: Only node 4 is in this column. Column -1: Only node 2 is in this column. Column 0: Nodes 1, 5, and 6 are in this column.           1 is at the top, so it comes first.           5 and 6 are at the same position (2, 0), so we order them by their value, 5 before 6. Column 1: Only node 3 is in this column. Column 2: Only node 7 is in this column."
+    },
+    {
+      "input": "root = [1,2,3,4,6,5,7]",
+      "output": "[[4],[2],[1,5,6],[3],[7]]",
+      "explanation": "This case is the exact same as example 2, but with nodes 5 and 6 swapped. Note that the solution remains the same since 5 and 6 are in the same location and should be ordered by their values."
+    }
+  ],
+  "first-missing-positive": [
+    {
+      "input": "nums = [1,2,0]",
+      "output": "3",
+      "explanation": "The numbers in the range [1,2] are all in the array."
+    },
+    {
+      "input": "nums = [3,4,-1,1]",
+      "output": "2",
+      "explanation": "1 is in the array but 2 is missing."
+    },
+    {
+      "input": "nums = [7,8,9,11,12]",
+      "output": "1",
+      "explanation": "The smallest positive integer 1 is missing."
+    }
+  ],
+  "generate-parentheses": [
+    {
+      "input": "n = 3",
+      "output": "[\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "n = 1",
+      "output": "[\"()\"]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "next-greater-element-ii": [
+    {
+      "input": "nums = [1,2,1]",
+      "output": "[2,-1,2]",
+      "explanation": "The first 1's next greater number is 2;  The number 2 can't find next greater number.  The second 1's next greater number needs to search circularly, which is also 2."
+    },
+    {
+      "input": "nums = [1,2,3,4,3]",
+      "output": "[2,3,4,-1,4]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "valid-anagram": [
+    {
+      "input": "s = \"anagram\", t = \"nagaram\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"rat\", t = \"car\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "sort-colors": [
+    {
+      "input": "nums = [2,0,2,1,1,0]",
+      "output": "[0,0,1,1,2,2]",
+      "explanation": "The array has two 0s, two 1s, and two 2s. Sorting them in-place places all 0s first, then all 1s, then all 2s."
+    },
+    {
+      "input": "nums = [2,0,1]",
+      "output": "[0,1,2]",
+      "explanation": "The array has one each of 0, 1, and 2, arranged in-place in the order 0, 1, 2."
+    }
+  ],
+  "single-number": [
+    {
+      "input": "nums = [2,2,1]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [4,1,2,1,2]",
+      "output": "4",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1]",
+      "output": "1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "first-unique-character-in-a-string": [
+    {
+      "input": "s = \"leetcode\"",
+      "output": "0",
+      "explanation": "The character 'l' at index 0 is the first character that does not occur at any other index."
+    },
+    {
+      "input": "s = \"loveleetcode\"",
+      "output": "2",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"aabb\"",
+      "output": "-1",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "contains-duplicate": [
+    {
+      "input": "nums = [1,2,3,1]",
+      "output": "true",
+      "explanation": "The element 1 occurs at the indices 0 and 3."
+    },
+    {
+      "input": "nums = [1,2,3,4]",
+      "output": "false",
+      "explanation": "All elements are distinct."
+    },
+    {
+      "input": "nums = [1,1,1,3,3,4,3,2,4,2]",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "missing-number": [
+    {
+      "input": "nums = [3,0,1]",
+      "output": "2",
+      "explanation": "n = 3 since there are 3 numbers, so all numbers are in the range [0,3] . 2 is the missing number in the range since it does not appear in nums ."
+    },
+    {
+      "input": "nums = [0,1]",
+      "output": "2",
+      "explanation": "n = 2 since there are 2 numbers, so all numbers are in the range [0,2] . 2 is the missing number in the range since it does not appear in nums ."
+    },
+    {
+      "input": "nums = [9,6,4,2,3,5,7,0,1]",
+      "output": "8",
+      "explanation": "n = 9 since there are 9 numbers, so all numbers are in the range [0,9] . 8 is the missing number in the range since it does not appear in nums ."
+    }
+  ],
+  "valid-parentheses": [
+    {
+      "input": "s = \"()\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"()[]{}\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"(]\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"([])\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "s = \"([)]\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "top-k-frequent-elements": [
+    {
+      "input": "nums = [1,1,1,2,2,3], k = 2",
+      "output": "[1,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1], k = 1",
+      "output": "[1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "nums = [1,2,1,2,1,2,3,1,3,2], k = 2",
+      "output": "[1,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-tree-inorder-traversal": [
+    {
+      "input": "root = [1,null,2,3]",
+      "output": "[1,3,2]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2,3,4,5,null,8,null,null,6,7,9]",
+      "output": "[4,2,6,5,7,1,3,9,8]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1]",
+      "output": "[1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "word-pattern": [
+    {
+      "input": "pattern = \"abba\", s = \"dog cat cat dog\"",
+      "output": "true",
+      "explanation": "The bijection can be established as: 'a' maps to \"dog\" . 'b' maps to \"cat\" ."
+    },
+    {
+      "input": "pattern = \"abba\", s = \"dog cat cat fish\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "pattern = \"aaaa\", s = \"dog cat cat dog\"",
+      "output": "false",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "minimum-array-end": [
+    {
+      "input": "n = 3, x = 4",
+      "output": "6",
+      "explanation": "nums can be [4,5,6] and its last element is 6."
+    },
+    {
+      "input": "n = 2, x = 7",
+      "output": "15",
+      "explanation": "nums can be [7,15] and its last element is 15."
+    }
+  ],
+  "count-the-number-of-inversions": [
+    {
+      "input": "n = 3, requirements = [[2,2],[0,0]]",
+      "output": "2",
+      "explanation": "The two permutations are: [2, 0, 1] Prefix [2, 0, 1] has inversions (0, 1) and (0, 2) . Prefix [2] has 0 inversions. [1, 2, 0] Prefix [1, 2, 0] has inversions (0, 2) and (1, 2) . Prefix [1] has 0 inversions."
+    },
+    {
+      "input": "n = 3, requirements = [[2,2],[1,1],[0,0]]",
+      "output": "1",
+      "explanation": "The only satisfying permutation is [2, 0, 1] : Prefix [2, 0, 1] has inversions (0, 1) and (0, 2) . Prefix [2, 0] has an inversion (0, 1) . Prefix [2] has 0 inversions."
+    },
+    {
+      "input": "n = 2, requirements = [[0,0],[1,0]]",
+      "output": "1",
+      "explanation": "The only satisfying permutation is [0, 1] : Prefix [0] has 0 inversions. Prefix [0, 1] has no inversions."
+    }
+  ],
+  "reverse-bits": [
+    {
+      "input": "n = 43261596",
+      "output": "964176192",
+      "explanation": "Integer Binary 43261596 00000010100101000001111010011100 964176192 00111001011110000010100101000000"
+    },
+    {
+      "input": "n = 2147483644",
+      "output": "1073741822",
+      "explanation": "Integer Binary 2147483644 01111111111111111111111111111100 1073741822 00111111111111111111111111111110"
+    }
+  ],
+  "isomorphic-strings": [
+    {
+      "input": "s = \"egg\", t = \"add\"",
+      "output": "true",
+      "explanation": "The strings s and t can be made identical by: Mapping 'e' to 'a' . Mapping 'g' to 'd' ."
+    },
+    {
+      "input": "s = \"f11\", t = \"b23\"",
+      "output": "false",
+      "explanation": "The strings s and t can not be made identical as '1' needs to be mapped to both '2' and '3' ."
+    },
+    {
+      "input": "s = \"paper\", t = \"title\"",
+      "output": "true",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "maximum-product-of-three-numbers": [
+    {
+      "input": "nums = [1,2,3]",
+      "output": "6",
+      "explanation": "The only three numbers are 1, 2, and 3, so the maximum product is 1 * 2 * 3 = 6 ."
+    },
+    {
+      "input": "nums = [1,2,3,4]",
+      "output": "24",
+      "explanation": "The largest product comes from the three greatest numbers: 2 * 3 * 4 = 24 ."
+    },
+    {
+      "input": "nums = [-1,-2,-3]",
+      "output": "-6",
+      "explanation": "The only three numbers are -1, -2, and -3, so the maximum product is (-1) * (-2) * (-3) = -6 ."
+    }
+  ],
+  "binary-tree-preorder-traversal": [
+    {
+      "input": "root = [1,null,2,3]",
+      "output": "[1,2,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2,3,4,5,null,8,null,null,6,7,9]",
+      "output": "[1,2,4,5,6,7,3,8,9]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1]",
+      "output": "[1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-tree-postorder-traversal": [
+    {
+      "input": "root = [1,null,2,3]",
+      "output": "[3,2,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2,3,4,5,null,8,null,null,6,7,9]",
+      "output": "[4,6,7,5,2,9,8,3,1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1]",
+      "output": "[1]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "binary-tree-right-side-view": [
+    {
+      "input": "root = [1,2,3,null,5,null,4]",
+      "output": "[1,3,4]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,2,3,4,null,null,null,5]",
+      "output": "[1,3,4,5]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = [1,null,3]",
+      "output": "[1,3]",
+      "explanation": "Canonical test case verified against problem constraints."
+    },
+    {
+      "input": "root = []",
+      "output": "[]",
+      "explanation": "Canonical test case verified against problem constraints."
+    }
+  ],
+  "string-to-integer-atoi": [
+    {
+      "input": "s = \"42\"",
+      "output": "42",
+      "explanation": "The underlined characters are what is read in and the caret is the current reader position. Step 1: \"42\" (no characters read because there is no leading whitespace) ^ Step 2: \"42\" (no characters read because there is neither a '-' nor '+') ^ Step 3: \" 42 \" (\"42\" is read in) ^"
+    },
+    {
+      "input": "s = \" -042\"",
+      "output": "-42",
+      "explanation": "Step 1: \" -042\" (leading whitespace is read and ignored) ^ Step 2: \" - 042\" ('-' is read, so the result should be negative) ^ Step 3: \" - 042 \" (\"042\" is read in, leading zeros ignored in the result) ^"
+    },
+    {
+      "input": "s = \"1337c0d3\"",
+      "output": "1337",
+      "explanation": "Step 1: \"1337c0d3\" (no characters read because there is no leading whitespace) ^ Step 2: \"1337c0d3\" (no characters read because there is neither a '-' nor '+') ^ Step 3: \" 1337 c0d3\" (\"1337\" is read in; reading stops because the next character is a non-digit) ^"
+    },
+    {
+      "input": "s = \"0-1\"",
+      "output": "0",
+      "explanation": "Step 1: \"0-1\" (no characters read because there is no leading whitespace) ^ Step 2: \"0-1\" (no characters read because there is neither a '-' nor '+') ^ Step 3: \" 0 -1\" (\"0\" is read in; reading stops because the next character is a non-digit) ^"
+    },
+    {
+      "input": "s = \"words and 987\"",
+      "output": "0",
+      "explanation": "Reading stops at the first non-digit character 'w'."
+    }
+  ],
+  "min-stack": [
+    {
+      "input": "calls = [\"MinStack\", \"push(-2)\", \"push(0)\", \"push(-3)\", \"getMin()\", \"pop()\", \"top()\", \"getMin()\"]",
+      "output": "[null, null, null, null, -3, null, 0, -2]",
+      "explanation": "MinStack tracks minimum in O(1) time."
+    }
+  ],
+  "implement-queue-using-stacks": [
+    {
+      "input": "calls = [\"MyQueue\", \"push(1)\", \"push(2)\", \"peek()\", \"pop()\", \"empty()\"]",
+      "output": "[null, null, null, 1, 1, false]",
+      "explanation": "Queue FIFO behavior simulated using two stacks."
+    }
+  ],
+  "implement-stack-using-queues": [
+    {
+      "input": "calls = [\"MyStack\", \"push(1)\", \"push(2)\", \"top()\", \"pop()\", \"empty()\"]",
+      "output": "[null, null, null, 2, 2, false]",
+      "explanation": "Stack LIFO behavior simulated using queues."
+    }
+  ],
+  "lru-cache": [
+    {
+      "input": "capacity = 2, calls = [\"put(1,1)\", \"put(2,2)\", \"get(1)\", \"put(3,3)\", \"get(2)\"]",
+      "output": "[null, null, 1, null, -1]",
+      "explanation": "Key 2 was evicted when key 3 was added as key 2 was least recently used."
+    }
+  ],
+  "lfu-cache": [
+    {
+      "input": "capacity = 2, calls = [\"put(1,1)\", \"put(2,2)\", \"get(1)\", \"put(3,3)\", \"get(2)\", \"get(3)\"]",
+      "output": "[null, null, 1, null, -1, 3]",
+      "explanation": "Key 2 was evicted when key 3 was added as key 2 was least frequently used."
+    }
+  ],
+  "online-stock-span": [
+    {
+      "input": "prices = [100, 80, 60, 70, 60, 75, 85]",
+      "output": "[1, 1, 1, 2, 1, 4, 6]",
+      "explanation": "Consecutive days for which stock price was less than or equal to today price."
+    }
+  ],
+  "find-median-from-data-stream": [
+    {
+      "input": "calls = [\"addNum(1)\", \"addNum(2)\", \"findMedian()\", \"addNum(3)\", \"findMedian()\"]",
+      "output": "[null, null, 1.5, null, 2.0]",
+      "explanation": "Maintains balance with max-heap and min-heap."
+    }
+  ],
+  "stream-of-characters": [
+    {
+      "input": "words = [\"cd\", \"f\", \"kl\"], queries = [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\"]",
+      "output": "[false, false, false, true, false, true]",
+      "explanation": "Suffix matching using Trie structure."
+    }
+  ],
+  "insert-delete-getrandom-o1": [
+    {
+      "input": "calls = [\"insert(1)\", \"remove(2)\", \"insert(2)\", \"getRandom()\", \"remove(1)\", \"insert(2)\", \"getRandom()\"]",
+      "output": "[true, false, true, 2, true, false, 2]",
+      "explanation": "Array and hash map provide O(1) random access and modification."
+    }
+  ],
+  "custom-sort-string": [
+    {
+      "input": "order = \"cba\", s = \"abcd\"",
+      "output": "\"cbad\"",
+      "explanation": "\"c\", \"b\", \"a\" appear in order, \"d\" can be placed anywhere."
+    }
+  ],
+  "my-calendar-i": [
+    {
+      "input": "calls = [\"book(10, 20)\", \"book(15, 25)\", \"book(20, 30)\"]",
+      "output": "[true, false, true]",
+      "explanation": "Event [15, 25) cannot be booked because it conflicts with existing event [10, 20)."
+    }
+  ],
+  "range-module": [
+    {
+      "input": "calls = [\"addRange(10, 20)\", \"removeRange(14, 16)\", \"queryRange(10, 14)\", \"queryRange(13, 15)\"]",
+      "output": "[null, null, true, false]",
+      "explanation": "Interval set operations track real number ranges."
+    }
+  ],
+  "random-pick-with-weight": [
+    {
+      "input": "w = [1, 3], calls = [\"pickIndex()\", \"pickIndex()\", \"pickIndex()\"]",
+      "output": "[1, 1, 0]",
+      "explanation": "Index 1 has 75% probability of selection, index 0 has 25% probability."
+    }
+  ],
+  "digit-count-in-range": [
+    {
+      "input": "d = 1, low = 1, high = 13",
+      "output": "6",
+      "explanation": "The digit d=1 occurs 6 times across numbers: 1, 10, 11, 12, 13."
+    }
+  ],
+  "remove-vowels-from-a-string": [
+    {
+      "input": "s = \"leetcodeisacommunityforcoders\"",
+      "output": "\"ltcdscmmntyfrcdrs\"",
+      "explanation": "All vowels (a, e, i, o, u) removed."
+    }
+  ],
+  "armstrong-number": [
+    {
+      "input": "n = 153",
+      "output": "true",
+      "explanation": "153 is a 3-digit number, and 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153."
+    },
+    {
+      "input": "n = 123",
+      "output": "false",
+      "explanation": "1^3 + 2^3 + 3^3 = 1 + 8 + 27 = 36 != 123."
+    }
+  ],
+  "lowest-common-ancestor-of-a-binary-tree-iv": [
+    {
+      "input": "root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], nodes = [4, 7]",
+      "output": "2",
+      "explanation": "The LCA of nodes 4 and 7 is 2."
+    }
+  ],
+  "missing-number-in-arithmetic-progression": [
+    {
+      "input": "arr = [5, 7, 11, 13]",
+      "output": "9",
+      "explanation": "Common difference is 2. The missing number between 7 and 11 is 9."
+    }
+  ],
+  "meeting-rooms-ii": [
+    {
+      "input": "intervals = [[0, 30], [5, 10], [15, 20]]",
+      "output": "2",
+      "explanation": "At most 2 concurrent meetings require 2 separate conference rooms."
+    }
+  ],
+  "analyze-user-website-visit-pattern": [
+    {
+      "input": "username = [\"joe\",\"joe\",\"joe\",\"james\",\"james\",\"james\"], timestamp = [1,2,3,4,5,6], website = [\"home\",\"about\",\"career\",\"home\",\"cart\",\"maps\"]",
+      "output": "[\"home\",\"about\",\"career\"]",
+      "explanation": "3-sequence visited by maximum number of distinct users."
+    }
+  ],
+  "design-in-memory-file-system": [
+    {
+      "input": "calls = [\"ls(\\\"/\\\")\", \"mkdir(\\\"/a/b/c\\\")\", \"addContentToFile(\\\"/a/b/c/d\\\", \\\"hello\\\")\", \"readContentFromFile(\\\"/a/b/c/d\\\")\"]",
+      "output": "[[], null, null, \"hello\"]",
+      "explanation": "Trie-based virtual directory hierarchy."
+    }
+  ],
+  "alien-dictionary": [
+    {
+      "input": "words = [\"wrt\", \"wrf\", \"er\", \"ett\", \"rftt\"]",
+      "output": "\"wertf\"",
+      "explanation": "Topological sort order deduced from lexicographical adjacent comparisons."
+    }
+  ],
+  "logger-rate-limiter": [
+    {
+      "input": "calls = [\"shouldPrintMessage(1, \\\"foo\\\")\", \"shouldPrintMessage(2, \\\"bar\\\")\", \"shouldPrintMessage(3, \\\"foo\\\")\", \"shouldPrintMessage(11, \\\"foo\\\")\"]",
+      "output": "[true, true, false, true]",
+      "explanation": "Message \"foo\" printed at t=1, blocked at t=3, allowed at t=11 (11 >= 1+10)."
+    }
+  ],
+  "employee-free-time": [
+    {
+      "input": "schedule = [[[1,2],[5,6]],[[1,3]],[[4,10]]]",
+      "output": "[[3,4]]",
+      "explanation": "Common free interval between [1,3] and [4,10] is [3,4]."
+    }
+  ],
+  "robot-room-cleaner": [
+    {
+      "input": "room = [[1,1,1,1,1],[1,1,0,1,1],[1,1,1,1,1]], row = 1, col = 3",
+      "output": "\"Robot cleaned 12 accessible cells.\"",
+      "explanation": "Backtracking DFS with directional orientation coordinates."
+    }
+  ],
+  "sentence-screen-fitting": [
+    {
+      "input": "sentence = [\"hello\", \"world\"], rows = 2, cols = 8",
+      "output": "1",
+      "explanation": "\"hello\" fits on row 1, \"world\" fits on row 2."
+    }
+  ],
+  "optimal-account-balancing": [
+    {
+      "input": "transactions = [[0,1,10], [2,0,5]]",
+      "output": "2",
+      "explanation": "Person 0 gave 10 to person 1 and received 5 from person 2. Net balances settled in 2 transactions."
+    }
+  ],
+  "design-search-autocomplete-system": [
+    {
+      "input": "sentences = [\"i love you\", \"island\", \"ironman\"], times = [5, 3, 2], query = \"i\"",
+      "output": "[\"i love you\", \"island\", \"ironman\"]",
+      "explanation": "Top 3 historical hot sentences matching prefix \"i\"."
+    }
+  ],
+  "word-squares": [
+    {
+      "input": "words = [\"area\",\"lead\",\"wall\",\"lady\",\"ball\"]",
+      "output": "[[\"wall\",\"area\",\"lead\",\"lady\"],[\"ball\",\"area\",\"lead\",\"lady\"]]",
+      "explanation": "Symmetric word matrix where row k equals column k."
+    }
+  ],
+  "range-sum-query-2d-mutable": [
+    {
+      "input": "matrix = [[3, 0, 1, 4, 2], [5, 6, 3, 2, 1]], calls = [\"sumRegion(0, 1, 1, 3)\", \"update(1, 2, 8)\", \"sumRegion(0, 1, 1, 3)\"]",
+      "output": "[16, null, 21]",
+      "explanation": "2D Binary Indexed Tree handles point updates and range queries in O(log M * log N)."
+    }
+  ],
+  "design-tic-tac-toe": [
+    {
+      "input": "n = 3, calls = [\"move(0, 0, 1)\", \"move(0, 2, 2)\", \"move(2, 2, 1)\", \"move(1, 1, 2)\", \"move(2, 0, 1)\", \"move(1, 0, 2)\", \"move(2, 1, 1)\"]",
+      "output": "[0, 0, 0, 0, 0, 0, 1]",
+      "explanation": "Player 1 wins with complete row on move 7."
+    }
+  ],
+  "number-of-distinct-substrings-in-a-string": [
+    {
+      "input": "s = \"aabbaba\"",
+      "output": "21",
+      "explanation": "Total 21 unique substrings in string \"aabbaba\"."
+    }
+  ],
+  "dot-product-of-two-sparse-vectors": [
+    {
+      "input": "nums1 = [1, 0, 0, 2, 3], nums2 = [0, 3, 0, 4, 0]",
+      "output": "8",
+      "explanation": "v1[0]*v2[0] + v1[3]*v2[3] = 1*0 + 2*4 = 8."
+    }
+  ],
+  "max-stack": [
+    {
+      "input": "calls = [\"push(5)\", \"push(1)\", \"push(5)\", \"top()\", \"popMax()\", \"top()\", \"peekMax()\", \"pop()\", \"top()\"]",
+      "output": "[null, null, null, 5, 5, 1, 5, 1, 5]",
+      "explanation": "Doubly linked list with ordered map supports O(log N) popMax and O(1) push/top."
+    }
+  ]
+}

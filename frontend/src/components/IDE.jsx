@@ -297,16 +297,24 @@ function IDE({ question, onBack }) {
                         <div className="problem-header-meta">
                             <span className="round-tag">{question?.round || 'Technical Round'}</span>
                             <span className="recency-pill">📅 {question?.batch || '2024–2026 Pattern'}</span>
-                            {matchedLeetcode && matchedLeetcode.problemUrl && (
+                            {matchedLeetcode && matchedLeetcode.problemUrl ? (
                                 <a
                                     href={matchedLeetcode.problemUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="leetcode-header-pill"
-                                    title={`View full formal specification on LeetCode: ${matchedLeetcode.problemName}`}
+                                    className={`leetcode-header-pill ${matchedLeetcode.isPremium ? 'premium-header-pill' : ''}`}
+                                    title={`View formal specification on LeetCode: ${matchedLeetcode.problemName}${matchedLeetcode.isPremium ? ' (Requires LeetCode Premium)' : ''}`}
                                 >
-                                    🚀 LeetCode: {matchedLeetcode.problemName} ({Math.round((matchedLeetcode.similarityScore || 0.95) * 100)}%) ↗
+                                    {matchedLeetcode.isPremium ? '🔒 LeetCode Premium: ' : '🚀 LeetCode: '}
+                                    {matchedLeetcode.problemName} ({Math.round((matchedLeetcode.similarityScore || 0.95) * 100)}%) ↗
                                 </a>
+                            ) : (
+                                <span
+                                    className="novel-header-pill"
+                                    title="Authentic company-exclusive interview question with no LeetCode equivalent"
+                                >
+                                    🆕 New Question · No Match Found in LeetCode
+                                </span>
                             )}
                         </div>
 
@@ -368,26 +376,34 @@ function IDE({ question, onBack }) {
                             </div>
                         )}
 
-                        {/* LeetCode Reference Box */}
-                        {matchedLeetcode && (
+                        {/* LeetCode Reference Box OR Novel Question Notice */}
+                        {matchedLeetcode && matchedLeetcode.problemUrl ? (
                             <div className="matched-leetcode-box ide-leetcode-box">
                                 <div className="match-info">
                                     <span className="platform-tag">LeetCode</span>
                                     <span className="match-name">{matchedLeetcode.problemName}</span>
                                     <span className="similarity-badge">
-                                        {Math.round(matchedLeetcode.similarityScore * 100)}% Match
+                                        {Math.round((matchedLeetcode.similarityScore || 0.85) * 100)}% Match
                                     </span>
                                 </div>
-                                {matchedLeetcode.problemUrl && (
-                                    <a
-                                        href={matchedLeetcode.problemUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="solve-leetcode-btn"
-                                    >
-                                        Verify on LeetCode ↗
-                                    </a>
-                                )}
+                                <a
+                                    href={matchedLeetcode.problemUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="solve-leetcode-btn"
+                                >
+                                    Verify on LeetCode ↗
+                                </a>
+                            </div>
+                        ) : (
+                            <div className="matched-leetcode-box ide-leetcode-box novel-problem-box">
+                                <div className="match-info">
+                                    <span className="novel-badge">Company Exclusive</span>
+                                    <span className="match-name">⭐ Novel Campus Question</span>
+                                </div>
+                                <p className="novel-problem-text" style={{ margin: '8px 0 0 0' }}>
+                                    ✨ Direct candidate memory question — no direct standard LeetCode equivalent.
+                                </p>
                             </div>
                         )}
                     </div>
