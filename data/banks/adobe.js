@@ -8,7 +8,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Adjacent%20Swaps%20to%20Make%20Binary%20Array%20Palindromic%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given a binary array nums containing only 0s and 1s, find the minimum number of adjacent swaps required to make the array a palindrome. If it is impossible to form a palindrome, return -1.",
@@ -38,7 +38,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Form%20Smallest%20Number%20Following%20DI%20Pattern%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given a pattern string of length N consisting of characters 'I' (Increasing) and 'D' (Decreasing), construct the smallest possible positive integer as a string using digits '1' to '9' at most once such that each relationship holds.",
@@ -68,7 +68,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Beautiful%20Subarrays%20with%20Exactly%20K%20Odd%20Numbers%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given an array of integers nums and an integer k, return the total count of contiguous beautiful subarrays that contain exactly k odd numbers.",
@@ -98,7 +98,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Maximum%20Path%20Sum%20Between%20Two%20Leaf%20Nodes%20in%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Given a binary tree where node values can be positive or negative, find the maximum path sum between two leaf nodes. The path must start at one leaf node and terminate at another leaf node.",
@@ -123,7 +123,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Operations%20to%20Reduce%20Number%20to%201%20with%20Divisibility%20Moves%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given an integer n, calculate the minimum number of steps to reduce n to 1. In one operation you can: subtract 1, divide by 2 (if n % 2 == 0), or divide by 3 (if n % 3 == 0).",
@@ -152,7 +152,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Count%20Substrings%20with%20K%20Distinct%20Characters%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given a string s of lowercase alphabets and an integer k, count the total number of non-empty substrings that contain exactly k distinct characters.",
@@ -182,7 +182,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Cost%20Path%20in%20Matrix%20with%203%20Directions%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given an M x N grid of non-negative integers representing costs, return the minimum cost to reach cell (M-1, N-1) starting from (0, 0). Allowed moves are only right, down, and diagonally right-down.",
@@ -212,7 +212,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Connect%20Nodes%20at%20Same%20Level%20with%20Next%20Right%20Pointers%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given a binary tree, link all nodes at the same horizontal level from left to right using a nextRight pointer. Set nextRight of rightmost node at each level to NULL.",
@@ -236,7 +236,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Split%20Array%20into%20Consecutive%20Subsequences%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given an integer array nums sorted in non-decreasing order, determine if it is possible to split nums into one or more subsequences such that both of the following conditions are true: each subsequence is a consecutive increasing sequence of integers, and each subsequence has a length of 3 or more.",
@@ -266,7 +266,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Maximum%20Product%20of%20Word%20Lengths%20with%20Non-Overlapping%20Letters%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given an array of strings words, return the maximum value of length(words[i]) * length(words[j]) where the two words do not share any common characters. If no such two words exist, return 0.",
@@ -297,7 +297,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Letter%20Combinations%20of%20a%20Phone%20Number%20Keypad%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Return all possible letter combinations that number could represent.",
@@ -326,7 +326,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Find%20Peak%20Element%20in%20Array%20Binary%20Search%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find peak element strictly greater than neighbors in O(log N).",
@@ -355,7 +355,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Pow%20X%20N%20Calculate%20Power%20Function%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Implement pow(x, n) which calculates x raised to power n in O(log N).",
@@ -384,7 +384,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Multiply%20Strings%20Large%20Number%20Multiplication%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Given two non-negative integers num1 and num2 represented as strings, return their product as string without BigInteger.",
@@ -413,7 +413,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Permutations%20of%20Distinct%20Numbers%20Array%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Generate all permutations of distinct integers.",
@@ -442,7 +442,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Window%20Substring%20Containing%20All%20Characters%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Find minimum window in s containing all characters of t.",
@@ -471,7 +471,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Rotate%20Array%20to%20Right%20by%20K%20Steps%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Rotate array to the right by k steps in-place with O(1) extra space.",
@@ -500,7 +500,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Search%20in%20Rotated%20Sorted%20Array%20Binary%20Search%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Search target in sorted rotated array in O(log N).",
@@ -529,7 +529,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%203Sum%20Unique%20Triplets%20Summing%20to%20Zero%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find all unique triplets in array summing to 0.",
@@ -558,7 +558,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Valid%20Sudoku%20Board%20Verification%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Determine if 9 x 9 Sudoku board is valid according to row, column, and 3x3 box rules.",
@@ -587,7 +587,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Merge%20Overlapping%20Intervals%20in%20Schedule%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Merge all overlapping intervals.",
@@ -616,7 +616,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Group%20Anagrams%20by%20Sorted%20Key%20Signature%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Group strings that are anagrams of each other.",
@@ -645,7 +645,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Trapping%20Rain%20Water%20Elevation%20Map%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Compute trapped water volume between bars after rain.",
@@ -674,7 +674,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Course%20Schedule%20Graph%20Cycle%20Detection%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Determine if all courses can be finished using topological sort.",
@@ -703,7 +703,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Number%20of%20Islands%20in%202D%20Binary%20Grid%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Count connected components of 1s in binary grid.",
@@ -732,7 +732,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Lowest%20Common%20Ancestor%20of%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find lowest common ancestor of two nodes in binary tree.",
@@ -756,7 +756,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Traverse binary tree in alternating zigzag level order.",
@@ -785,7 +785,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Flatten%20Binary%20Tree%20to%20Linked%20List%20In%20Place%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Flatten binary tree into singly linked list in-place.",
@@ -814,7 +814,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Word%20Search%20in%202D%20Board%20Matrix%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Check if word exists in 2D character grid using backtracking.",
@@ -843,7 +843,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Sort%20Characters%20by%20Frequency%20Descending%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Sort string characters by frequency in descending order.",
@@ -872,7 +872,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Longest%20Common%20Subsequence%20of%20Two%20Strings%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find length of longest common subsequence.",
@@ -901,7 +901,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%200%201%20Knapsack%20Variation%20Maximum%20Profit%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Maximize profit from items within weight capacity.",
@@ -930,7 +930,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Jump%20Game%20II%20Minimum%20Jumps%20to%20Reach%20End%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find minimum jumps to reach last index where nums[i] is jump capability.",
@@ -959,7 +959,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Implement%20Stack%20using%20Two%20Queues%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Implement LIFO stack using standard FIFO queues.",
@@ -988,7 +988,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Min%20Stack%20Implementation%20Constant%20Time%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Design stack supporting getMin in O(1) time.",
@@ -1017,7 +1017,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Top%20K%20Frequent%20Elements%20in%20Array%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find k most frequent elements in array.",
@@ -1046,7 +1046,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Daily%20Temperatures%20Wait%20Days%20to%20Warmer%20Day%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find days until warmer temperature for each day.",
@@ -1075,7 +1075,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Remove%20Duplicates%20from%20Sorted%20Array%20In%20Place%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Remove duplicates in sorted array in-place.",
@@ -1104,7 +1104,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Linked%20List%20Cycle%20II%20Find%20Loop%20Entrance%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find entrance node of cycle in linked list.",
@@ -1138,7 +1138,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Reverse%20Linked%20List%20In%20Place%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Reverse singly linked list in-place.",
@@ -1167,7 +1167,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Intersection%20of%20Two%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Find node where two linked lists intersect.",
@@ -1196,7 +1196,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Add%20Two%20Numbers%20Represented%20by%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Add two numbers stored in reverse order as linked list digits.",
@@ -1225,7 +1225,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Palindrome%20Linked%20List%20Verification%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Check if linked list is palindrome in O(1) space.",
@@ -1254,7 +1254,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Validate%20Binary%20Search%20Tree%20BST%20Rule%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Check if binary tree is valid BST.",
@@ -1283,7 +1283,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Invert%20Binary%20Tree%20Mirror%20Image%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Invert binary tree left and right children.",
@@ -1312,7 +1312,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Maximum%20Depth%20of%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Find height of binary tree.",
@@ -1336,7 +1336,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Maximize profit with single stock transaction.",
@@ -1365,7 +1365,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Valid%20Anagram%20Frequency%20Match%20interview%20assessment&type=link",
     "round": "Adobe System & Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Check if string t is anagram of s.",
@@ -1394,7 +1394,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Two%20Sum%20Find%20Target%20Pair%20Indices%20interview%20assessment&type=link",
     "round": "Adobe Campus Coding Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Find indices of two numbers summing to target.",
@@ -1423,7 +1423,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Sliding%20Window%20Maximum%20K%20Elements%20interview%20assessment&type=link",
     "round": "Adobe Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Find maximum in sliding window of size k.",
@@ -1441,6 +1441,481 @@ module.exports = [
         "input": "nums = [10, 20]",
         "output": "2",
         "explanation": "Boundary evaluation."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Two Sum Target Pair Indices",
+    "author": "u/iiit_hyd_prep",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Two%20Sum%20Target%20Pair%20Indices%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+    "constraints": [
+      "2 <= nums.length <= 10^4",
+      "-10^9 <= nums[i] <= 10^9",
+      "-10^9 <= target <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 7, 11, 15], target = 9",
+        "output": "[0, 1]",
+        "explanation": "nums[0] + nums[1] = 2 + 7 = 9."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - 3Sum Triplets Summing to Zero",
+    "author": "u/vit_placements_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%203Sum%20Triplets%20Summing%20to%20Zero%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. The solution set must not contain duplicate triplets.",
+    "constraints": [
+      "3 <= nums.length <= 3000",
+      "-10^5 <= nums[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-1, 0, 1, 2, -1, -4]",
+        "output": "[[-1, -1, 2], [-1, 0, 1]]",
+        "explanation": "Triplets sum to zero."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Container With Most Water Area",
+    "author": "u/bits_goa_dev",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Container%20With%20Most%20Water%20Area%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container, such that the container contains the most water.",
+    "constraints": [
+      "2 <= n <= 10^5",
+      "0 <= height[i] <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "height = [1, 8, 6, 2, 5, 4, 8, 3, 7]",
+        "output": "49",
+        "explanation": "Maximum area is 49."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Trapping Rain Water Elevation Chamber",
+    "author": "u/thapar_swe_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Trapping%20Rain%20Water%20Elevation%20Chamber%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+    "constraints": [
+      "1 <= n <= 2 * 10^4",
+      "0 <= height[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+        "output": "6",
+        "explanation": "6 units of rain water are trapped."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Maximum Subarray Kadane Algorithm",
+    "author": "u/btech_code_champ",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Maximum%20Subarray%20Kadane%20Algorithm%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, find the subarray with the largest sum, and return its sum.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "-10^4 <= nums[i] <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+        "output": "6",
+        "explanation": "Subarray [4, -1, 2, 1] has largest sum 6."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Sliding Window Maximum Monotonic Deque",
+    "author": "u/campus_hire_blr",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Sliding%20Window%20Maximum%20Monotonic%20Deque%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "1 <= k <= nums.length"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3",
+        "output": "[3, 3, 5, 5, 6, 7]",
+        "explanation": "Window maximums tracked monotonically."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Subarray Sum Equals K Prefix Frequency",
+    "author": "u/srm_dev_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Subarray%20Sum%20Equals%20K%20Prefix%20Frequency%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.",
+    "constraints": [
+      "1 <= nums.length <= 2 * 10^4",
+      "-1000 <= nums[i] <= 1000"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 1, 1], k = 2",
+        "output": "2",
+        "explanation": "Subarrays [1, 1] sum to 2."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Product of Array Except Self Without Division",
+    "author": "u/manipal_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Product%20of%20Array%20Except%20Self%20Without%20Division%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. You must solve it without using division.",
+    "constraints": [
+      "2 <= nums.length <= 10^5",
+      "-30 <= nums[i] <= 30"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 4]",
+        "output": "[24, 12, 8, 6]",
+        "explanation": "Product of all other elements."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Sort Colors Dutch National Flag 0s 1s 2s",
+    "author": "u/rvce_swe_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Sort%20Colors%20Dutch%20National%20Flag%200s%201s%202s%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.",
+    "constraints": [
+      "1 <= n <= 300",
+      "nums[i] is either 0, 1, or 2"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 0, 2, 1, 1, 0]",
+        "output": "[0, 0, 1, 1, 2, 2]",
+        "explanation": "Partitioned in-place."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Rotate Array by K Positions Right",
+    "author": "u/pesit_hack_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Rotate%20Array%20by%20K%20Positions%20Right%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "0 <= k <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 4, 5, 6, 7], k = 3",
+        "output": "[5, 6, 7, 1, 2, 3, 4]",
+        "explanation": "Rotated right by 3 positions."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Move Zeroes to End of Array",
+    "author": "u/delhi_techie_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Move%20Zeroes%20to%20End%20of%20Array%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements in-place.",
+    "constraints": [
+      "1 <= nums.length <= 10^4",
+      "-2^31 <= nums[i] <= 2^31 - 1"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [0, 1, 0, 3, 12]",
+        "output": "[1, 3, 12, 0, 0]",
+        "explanation": "Zeroes shifted to end."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Majority Element in Election Tally",
+    "author": "u/bangalore_dev_25",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Majority%20Element%20in%20Election%20Tally%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums of size n, return the majority element. The majority element is the element that appears more than floor(n / 2) times. You may assume that the majority element always exists in the array.",
+    "constraints": [
+      "n == nums.length",
+      "1 <= n <= 5 * 10^4",
+      "-10^9 <= nums[i] <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [3, 2, 3]",
+        "output": "3",
+        "explanation": "3 appears twice in array of length 3."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Next Permutation Lexicographical Order",
+    "author": "u/algo_prep_india",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Next%20Permutation%20Lexicographical%20Order%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "A permutation of an array of integers is an arrangement of its members into a sequence or linear order. Find the next lexicographically greater permutation in-place.",
+    "constraints": [
+      "1 <= nums.length <= 100",
+      "0 <= nums[i] <= 100"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3]",
+        "output": "[1, 3, 2]",
+        "explanation": "Next permutation is [1, 3, 2]."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Valid Palindrome String Check",
+    "author": "u/nits_grad_2024",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Valid%20Palindrome%20String%20Check%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, return true if it is a palindrome, or false otherwise. Ignore non-alphanumeric characters and case.",
+    "constraints": [
+      "1 <= s.length <= 2 * 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"A man, a plan, a canal: Panama\"",
+        "output": "true",
+        "explanation": "\"amanaplanacanalpanama\" is a palindrome."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Longest Palindromic Substring Expand Centers",
+    "author": "u/hyd_sde_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Longest%20Palindromic%20Substring%20Expand%20Centers%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, return the longest palindromic substring in s.",
+    "constraints": [
+      "1 <= s.length <= 1000"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"babad\"",
+        "output": "\"bab\"",
+        "explanation": "\"aba\" is also acceptable."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Group Anagrams by Character Signature",
+    "author": "u/pune_tech_lead",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Group%20Anagrams%20by%20Character%20Signature%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of strings strs, group the anagrams together. You can return the answer in any order.",
+    "constraints": [
+      "1 <= strs.length <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]",
+        "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]",
+        "explanation": "Grouped by character count signature."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Longest Substring Without Repeating Characters Window",
+    "author": "u/chennai_swe",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Longest%20Substring%20Without%20Repeating%20Characters%20Window%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, find the length of the longest substring without repeating characters.",
+    "constraints": [
+      "0 <= s.length <= 5 * 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abcabcbb\"",
+        "output": "3",
+        "explanation": "Length 3 (\"abc\")."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Minimum Window Substring Character Frequency",
+    "author": "u/iit_kgp_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Minimum%20Window%20Substring%20Character%20Frequency%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given two strings s and t, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.",
+    "constraints": [
+      "1 <= s.length, t.length <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+        "output": "\"BANC\"",
+        "explanation": "Minimum window substring is \"BANC\"."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - String to Integer Atoi Parsing",
+    "author": "u/nitk_surathkal",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20String%20to%20Integer%20Atoi%20Parsing%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer.",
+    "constraints": [
+      "0 <= s.length <= 200"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"42\"",
+        "output": "42",
+        "explanation": "Parsed as 42."
+      }
+    ]
+  },
+  {
+    "company": "Adobe",
+    "title": "Adobe - Valid Parentheses Bracket Matching",
+    "author": "u/dtu_coder_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Adobe%20Valid%20Parentheses%20Bracket%20Matching%20interview%20assessment&type=link",
+    "round": "Adobe Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+    "constraints": [
+      "1 <= s.length <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"()[]{}\"",
+        "output": "true",
+        "explanation": "All brackets matched."
       }
     ]
   }

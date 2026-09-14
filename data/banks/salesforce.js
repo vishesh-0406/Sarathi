@@ -8,7 +8,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Multi-Tenant%20Governor%20Limit%20Rate%20Allocator%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "In a multi-tenant cloud environment, each tenant has a max API call quota per hour. Process incoming API request batches and mark whether each request is allowed or rejected due to governor limits.",
@@ -32,7 +32,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Apex%20Trigger%20Batch%20Execution%20Order%20Resolver%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given Apex triggers registered on an SObject, resolve and validate execution sequence according to Salesforce execution governors (BeforeInsert -> System Validations -> AfterInsert).",
@@ -56,7 +56,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Subarray%20Sum%20Equals%20K%20Prefix%20Frequency%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find total number of continuous subarrays whose sum equals k using prefix sum hashmap.",
@@ -85,7 +85,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Continuous%20Subarray%20Sum%20Multiple%20of%20K%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Determine if array has good subarray of length >= 2 whose sum is multiple of k.",
@@ -114,7 +114,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Valid%20Palindrome%20String%20Check%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Check if string is palindrome considering only alphanumeric characters.",
@@ -143,7 +143,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Merge%20Intervals%20for%20Calendar%20Scheduling%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Merge all overlapping intervals.",
@@ -172,7 +172,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Insert%20Interval%20into%20Non-Overlapping%20Set%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Insert new interval into sorted non-overlapping intervals and merge if necessary.",
@@ -201,7 +201,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Remove minimum number of parentheses so resulting string is valid.",
@@ -230,7 +230,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Basic%20Calculator%20II%20String%20Arithmetic%20Parser%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Implement basic calculator evaluating string containing +, -, *, / with precedence.",
@@ -259,7 +259,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Decode%20String%20Nested%20Multiplier%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Decode string in format k[string] with nested brackets.",
@@ -288,7 +288,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Dot%20Product%20of%20Two%20Sparse%20Vectors%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Implement SparseVector class computing dot product efficiently avoiding multiplying zeroes.",
@@ -317,7 +317,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Find%20All%20Anagrams%20in%20a%20String%20Sliding%20Window%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find all start indices of p's anagrams in s using fixed size sliding window.",
@@ -346,7 +346,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Group%20Anagrams%20by%20Character%20Signature%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Group strings that are anagrams of each other.",
@@ -375,7 +375,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Top%20K%20Frequent%20Elements%20in%20Array%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find k most frequent elements in array.",
@@ -404,7 +404,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Custom%20Sort%20String%20Specific%20Character%20Order%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Permute characters of s so that they match the order in which characters appear in order string.",
@@ -433,7 +433,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Verifying%20an%20Alien%20Dictionary%20Order%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Given sequence of words and alien alphabet order, return true if words are sorted lexicographically.",
@@ -462,7 +462,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Lowest%20Common%20Ancestor%20of%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find lowest common ancestor in generic binary tree.",
@@ -486,7 +486,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Vertical%20Order%20Traversal%20of%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Return vertical order traversal of binary tree nodes grouped by column coordinate.",
@@ -515,7 +515,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Binary%20Tree%20Right%20Side%20View%20Visible%20Nodes%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Return values of nodes visible from right side of tree.",
@@ -544,7 +544,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Diameter%20of%20Binary%20Tree%20Path%20Length%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Find length of diameter of binary tree.",
@@ -573,7 +573,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Path%20Sum%20III%20Paths%20Summing%20to%20Target%20Anywhere%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find number of paths in binary tree that sum to targetSum starting and ending at any node.",
@@ -602,7 +602,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Binary%20Tree%20Maximum%20Path%20Sum%20Any%20Node%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Find path in binary tree with maximum sum.",
@@ -631,7 +631,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20All%20Nodes%20Distance%20K%20in%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Return all nodes that have distance k from target node in binary tree.",
@@ -660,7 +660,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Accounts%20Merge%20Connected%20Email%20Components%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Merge accounts with overlapping email addresses using Disjoint Set Union.",
@@ -689,7 +689,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Number%20of%20Islands%20Grid%20Connected%20Lands%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Count connected islands in 2D binary grid.",
@@ -718,7 +718,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Shortest%20Path%20in%20Binary%20Matrix%208-Directional%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find shortest clear path from top-left to bottom-right in 8-directionally connected grid.",
@@ -747,7 +747,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Word%20Search%20in%202D%20Board%20Matrix%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Check if word exists in 2D character grid using backtracking.",
@@ -776,7 +776,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Word%20Search%20II%20Boggle%20Board%20with%20Trie%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Find all words from dictionary that exist in 2D character board using Prefix Trie.",
@@ -805,7 +805,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Course%20Schedule%20Graph%20Cycle%20Detection%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Determine if you can finish all courses given prerequisite graph.",
@@ -834,7 +834,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Course%20Schedule%20II%20Ordering%20of%20Courses%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find valid topological ordering of courses given prerequisite graph.",
@@ -863,7 +863,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Alien%20Dictionary%20Character%20Order%20Derivation%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Derive letter ordering of alien language from sorted words dictionary.",
@@ -892,7 +892,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20LRU%20Cache%20Design%20Fast%20Key%20Value%20Storage%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Implement LRU cache with get and put in O(1) time complexity.",
@@ -916,7 +916,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20LFU%20Cache%20Least%20Frequently%20Used%20Cache%20Design%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Implement Least Frequently Used (LFU) cache with get and put in O(1) runtime.",
@@ -945,7 +945,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Design%20In-Memory%20File%20System%20Directory%20Engine%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Design in-memory file system with mkdir, ls, addContentToFile, readContentFromFile.",
@@ -974,7 +974,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Insert%20Delete%20GetRandom%20O1%20Set%20Design%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Implement RandomizedSet class supporting insert, remove, getRandom in O(1) average time.",
@@ -1003,7 +1003,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Max%20Stack%20Supporting%20Push%20Pop%20Top%20PeekMax%20PopMax%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Design max stack that supports push, pop, top, peekMax, popMax in O(log N) or O(1).",
@@ -1032,7 +1032,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Next%20Greater%20Element%20II%20Circular%20Array%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find next greater element for each element in circular integer array.",
@@ -1061,7 +1061,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Daily%20Temperatures%20Wait%20Days%20to%20Warmer%20Day%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find days until warmer temperature for each day.",
@@ -1090,7 +1090,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Trapping%20Rain%20Water%20Elevation%20Chart%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Calculate trapped water volume between bars after rain.",
@@ -1119,7 +1119,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Sliding%20Window%20Maximum%20Monotonic%20Deque%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Find maximum in sliding window of size k moving across array.",
@@ -1148,7 +1148,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Median%20of%20Two%20Sorted%20Arrays%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "constraint",
     "selftext": "Find median of two sorted arrays in O(log(m+n)).",
@@ -1177,7 +1177,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Product%20of%20Array%20Except%20Self%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Return array of product of all elements except self in O(N).",
@@ -1206,7 +1206,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%203Sum%20Triplets%20Summing%20to%20Zero%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find all unique triplets in array that sum to zero.",
@@ -1235,7 +1235,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Container%20with%20Most%20Water%20Area%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find two lines that together with x-axis store the most water.",
@@ -1264,7 +1264,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Letter%20Combinations%20of%20a%20Phone%20Number%20Keypad%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Return all possible letter combinations for keypad digits.",
@@ -1293,7 +1293,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Generate%20Parentheses%20All%20Valid%20Combinations%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Generate all combinations of n pairs of valid parentheses.",
@@ -1322,7 +1322,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20First%20Missing%20Positive%20Smallest%20Positive%20Integer%20interview%20assessment&type=link",
     "round": "Salesforce HackerRank OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "constraint",
     "selftext": "Find smallest missing positive integer in unsorted array in O(N) time and O(1) space.",
@@ -1351,7 +1351,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Jump%20Game%20Can%20Reach%20Target%20Index%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Determine if last index is reachable with jump lengths.",
@@ -1380,7 +1380,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Jump%20Game%20II%20Minimum%20Jumps%20to%20Reach%20End%20interview%20assessment&type=link",
     "round": "Salesforce Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find minimum jumps to reach last index where nums[i] is jump capability.",
@@ -1409,7 +1409,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Longest%20Increasing%20Subsequence%20Length%20interview%20assessment&type=link",
     "round": "Salesforce Systems & Architecture Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find length of longest strictly increasing subsequence.",
@@ -1427,6 +1427,481 @@ module.exports = [
         "input": "nums = [10, 20]",
         "output": "2",
         "explanation": "Boundary evaluation."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Two Sum Target Pair Indices",
+    "author": "u/iiit_hyd_prep",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Two%20Sum%20Target%20Pair%20Indices%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+    "constraints": [
+      "2 <= nums.length <= 10^4",
+      "-10^9 <= nums[i] <= 10^9",
+      "-10^9 <= target <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 7, 11, 15], target = 9",
+        "output": "[0, 1]",
+        "explanation": "nums[0] + nums[1] = 2 + 7 = 9."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Trapping Rain Water Elevation Chamber",
+    "author": "u/vit_placements_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Trapping%20Rain%20Water%20Elevation%20Chamber%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+    "constraints": [
+      "1 <= n <= 2 * 10^4",
+      "0 <= height[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+        "output": "6",
+        "explanation": "6 units of rain water are trapped."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Maximum Subarray Kadane Algorithm",
+    "author": "u/bits_goa_dev",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Maximum%20Subarray%20Kadane%20Algorithm%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, find the subarray with the largest sum, and return its sum.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "-10^4 <= nums[i] <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+        "output": "6",
+        "explanation": "Subarray [4, -1, 2, 1] has largest sum 6."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Sort Colors Dutch National Flag 0s 1s 2s",
+    "author": "u/thapar_swe_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Sort%20Colors%20Dutch%20National%20Flag%200s%201s%202s%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.",
+    "constraints": [
+      "1 <= n <= 300",
+      "nums[i] is either 0, 1, or 2"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 0, 2, 1, 1, 0]",
+        "output": "[0, 0, 1, 1, 2, 2]",
+        "explanation": "Partitioned in-place."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Rotate Array by K Positions Right",
+    "author": "u/btech_code_champ",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Rotate%20Array%20by%20K%20Positions%20Right%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "0 <= k <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 4, 5, 6, 7], k = 3",
+        "output": "[5, 6, 7, 1, 2, 3, 4]",
+        "explanation": "Rotated right by 3 positions."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Move Zeroes to End of Array",
+    "author": "u/campus_hire_blr",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Move%20Zeroes%20to%20End%20of%20Array%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements in-place.",
+    "constraints": [
+      "1 <= nums.length <= 10^4",
+      "-2^31 <= nums[i] <= 2^31 - 1"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [0, 1, 0, 3, 12]",
+        "output": "[1, 3, 12, 0, 0]",
+        "explanation": "Zeroes shifted to end."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Majority Element in Election Tally",
+    "author": "u/srm_dev_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Majority%20Element%20in%20Election%20Tally%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums of size n, return the majority element. The majority element is the element that appears more than floor(n / 2) times. You may assume that the majority element always exists in the array.",
+    "constraints": [
+      "n == nums.length",
+      "1 <= n <= 5 * 10^4",
+      "-10^9 <= nums[i] <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [3, 2, 3]",
+        "output": "3",
+        "explanation": "3 appears twice in array of length 3."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Next Permutation Lexicographical Order",
+    "author": "u/manipal_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Next%20Permutation%20Lexicographical%20Order%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "A permutation of an array of integers is an arrangement of its members into a sequence or linear order. Find the next lexicographically greater permutation in-place.",
+    "constraints": [
+      "1 <= nums.length <= 100",
+      "0 <= nums[i] <= 100"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3]",
+        "output": "[1, 3, 2]",
+        "explanation": "Next permutation is [1, 3, 2]."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Search in Rotated Sorted Array",
+    "author": "u/rvce_swe_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Search%20in%20Rotated%20Sorted%20Array%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums. You must write an algorithm with O(log n) runtime complexity.",
+    "constraints": [
+      "1 <= nums.length <= 5000",
+      "-10^4 <= nums[i], target <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 0",
+        "output": "4",
+        "explanation": "0 is at index 4."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Longest Palindromic Substring Expand Centers",
+    "author": "u/pesit_hack_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Longest%20Palindromic%20Substring%20Expand%20Centers%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, return the longest palindromic substring in s.",
+    "constraints": [
+      "1 <= s.length <= 1000"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"babad\"",
+        "output": "\"bab\"",
+        "explanation": "\"aba\" is also acceptable."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Longest Substring Without Repeating Characters Window",
+    "author": "u/delhi_techie_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Longest%20Substring%20Without%20Repeating%20Characters%20Window%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, find the length of the longest substring without repeating characters.",
+    "constraints": [
+      "0 <= s.length <= 5 * 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"abcabcbb\"",
+        "output": "3",
+        "explanation": "Length 3 (\"abc\")."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Minimum Window Substring Character Frequency",
+    "author": "u/bangalore_dev_25",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Minimum%20Window%20Substring%20Character%20Frequency%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given two strings s and t, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.",
+    "constraints": [
+      "1 <= s.length, t.length <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+        "output": "\"BANC\"",
+        "explanation": "Minimum window substring is \"BANC\"."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - String to Integer Atoi Parsing",
+    "author": "u/algo_prep_india",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20String%20to%20Integer%20Atoi%20Parsing%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer.",
+    "constraints": [
+      "0 <= s.length <= 200"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"42\"",
+        "output": "42",
+        "explanation": "Parsed as 42."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Valid Parentheses Bracket Matching",
+    "author": "u/nits_grad_2024",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Valid%20Parentheses%20Bracket%20Matching%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+    "constraints": [
+      "1 <= s.length <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"()[]{}\"",
+        "output": "true",
+        "explanation": "All brackets matched."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Custom Sort String Character Priority",
+    "author": "u/hyd_sde_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Custom%20Sort%20String%20Character%20Priority%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "You are given two strings order and s. All the characters of order are unique and were sorted in some custom order previously. Permute the characters of s so that they match the order that order was sorted.",
+    "constraints": [
+      "1 <= order.length <= 26",
+      "1 <= s.length <= 200"
+    ],
+    "testCases": [
+      {
+        "input": "order = \"cba\", s = \"abcd\"",
+        "output": "\"cbad\"",
+        "explanation": "\"c\", \"b\", \"a\" sorted according to order."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Palindromic Substrings Total Count",
+    "author": "u/pune_tech_lead",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Palindromic%20Substrings%20Total%20Count%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, return the number of palindromic substrings in it. A string is a palindrome when it reads the same backward as forward.",
+    "constraints": [
+      "1 <= s.length <= 1000"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"aaa\"",
+        "output": "6",
+        "explanation": "Six palindromic substrings: \"a\", \"a\", \"a\", \"aa\", \"aa\", \"aaa\"."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Reverse Singly Linked List In-Place",
+    "author": "u/chennai_swe",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Reverse%20Singly%20Linked%20List%20In-Place%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+    "constraints": [
+      "The number of nodes in the list is the range [0, 5000]"
+    ],
+    "testCases": [
+      {
+        "input": "head = [1, 2, 3, 4, 5]",
+        "output": "[5, 4, 3, 2, 1]",
+        "explanation": "Reversed in place."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Linked List Cycle Detection Fast Slow Pointers",
+    "author": "u/iit_kgp_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Linked%20List%20Cycle%20Detection%20Fast%20Slow%20Pointers%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given head, the head of a linked list, determine if the linked list has a cycle in it using O(1) memory.",
+    "constraints": [
+      "0 <= Node.val <= 10^4",
+      "Floyd cycle finding"
+    ],
+    "testCases": [
+      {
+        "input": "head = [3, 2, 0, -4], pos = 1",
+        "output": "true",
+        "explanation": "Cycle connects to 1st node."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Merge Two Sorted Lists Splice Order",
+    "author": "u/nitk_surathkal",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Merge%20Two%20Sorted%20Lists%20Splice%20Order%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted list.",
+    "constraints": [
+      "0 <= nodes <= 50",
+      "Sorted order"
+    ],
+    "testCases": [
+      {
+        "input": "list1 = [1, 2, 4], list2 = [1, 3, 4]",
+        "output": "[1, 1, 2, 3, 4, 4]",
+        "explanation": "Merged into non-decreasing order."
+      }
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "title": "Salesforce - Remove Nth Node From End of List Two Pointers",
+    "author": "u/dtu_coder_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Salesforce%20Remove%20Nth%20Node%20From%20End%20of%20List%20Two%20Pointers%20interview%20assessment&type=link",
+    "round": "Salesforce Technical Round 1",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given the head of a linked list, remove the nth node from the end of the list and return its head.",
+    "constraints": [
+      "1 <= sz <= 30",
+      "1 <= n <= sz"
+    ],
+    "testCases": [
+      {
+        "input": "head = [1, 2, 3, 4, 5], n = 2",
+        "output": "[1, 2, 3, 5]",
+        "explanation": "Removed 2nd node from end."
       }
     ]
   }

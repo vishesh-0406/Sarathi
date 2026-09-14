@@ -15,12 +15,20 @@ const TARGET_COMPANIES = [
     { name: 'Accenture', type: 'service' },
     { name: 'Cognizant', type: 'service' },
     { name: 'Capgemini', type: 'service' },
+    { name: 'HCLTech', type: 'service' },
+    { name: 'Tech Mahindra', type: 'service' },
+    { name: 'LTIMindtree', type: 'service' },
+    { name: 'Genpact', type: 'service' },
     { name: 'Amazon', type: 'product' },
     { name: 'Google', type: 'product' },
     { name: 'Microsoft', type: 'product' },
     { name: 'Adobe', type: 'product' },
     { name: 'Oracle', type: 'product' },
-    { name: 'Salesforce', type: 'product' }
+    { name: 'Salesforce', type: 'product' },
+    { name: 'Uber', type: 'product' },
+    { name: 'Zoho', type: 'product' },
+    { name: 'Flipkart', type: 'product' },
+    { name: 'Goldman Sachs', type: 'product' }
 ];
 
 /**

@@ -8,7 +8,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20GenC%20Next%20Encrypted%20String%20Character%20Shift%20by%20Prime%20Keys%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given string S and an array of first N prime keys, rotate each character S[i] forward in the alphabet by primeKeys[i % N] positions.",
@@ -32,7 +32,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Multi-Vendor%20Inventory%20Discrepancy%20Reconciliation%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Given two sorted inventory item logs from warehouse A and warehouse B, find all item IDs present in one warehouse but missing or having stock mismatch in the other.",
@@ -56,7 +56,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Frequency%20Count%20of%20Array%20Elements%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Count frequency of each element in integer array and output elements in descending order of frequency.",
@@ -85,7 +85,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Palindrome%20Partitioning%20of%20String%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find all ways to partition string into substrings where each substring is a palindrome.",
@@ -114,7 +114,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Merge%20Overlapping%20Intervals%20in%20Meeting%20Schedule%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Merge overlapping intervals in list of time intervals.",
@@ -143,7 +143,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Rotate%20Matrix%20by%2090%20Degrees%20Clockwise%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Rotate 2D square matrix by 90 degrees clockwise in-place.",
@@ -172,7 +172,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Longest%20Substring%20Without%20Repeating%20Characters%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find length of longest substring without duplicate characters.",
@@ -201,7 +201,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Balanced%20Parentheses%20Expression%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Verify if brackets string is properly balanced.",
@@ -230,7 +230,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Kth%20Smallest%20Element%20in%20Sorted%20Matrix%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find kth smallest element in n x n matrix where each row and column is sorted.",
@@ -259,7 +259,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Traverse binary tree level by level in alternating left-to-right and right-to-left directions.",
@@ -288,7 +288,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Subarray%20with%20Given%20Target%20Sum%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Find continuous subarray that adds to given sum S in non-negative array.",
@@ -317,7 +317,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Reverse%20Words%20in%20Given%20Sentence%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Reverse words in sentence keeping punctuation intact.",
@@ -346,7 +346,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Remove%20All%20Vowel%20Characters%20from%20String%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Remove all vowels (a, e, i, o, u) from string and return resulting string.",
@@ -375,7 +375,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Second%20Largest%20Element%20Without%20Sorting%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Find second largest element in array in single pass O(N) without sorting.",
@@ -404,7 +404,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Check%20Armstrong%20Number%20of%20N%20Digits%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Check if sum of each digit raised to power of number of digits equals original number.",
@@ -433,7 +433,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Prime%20Factorization%20of%20Number%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Find all prime factors of integer n.",
@@ -462,7 +462,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Fibonacci%20Sequence%20Nth%20Term%20DP%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Compute nth Fibonacci number in linear time and constant space.",
@@ -491,7 +491,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Check%20Anagram%20Strings%20with%20Hash%20Table%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Check if string t is anagram of s.",
@@ -520,7 +520,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Run%20Length%20String%20Compression%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Compress string s by replacing consecutive repeated characters with character and count.",
@@ -549,7 +549,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Find%20Duplicate%20Number%20in%20Array%20Floyd%20Cycle%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Given array containing n+1 integers where each is between 1 and n, find duplicate in O(1) space.",
@@ -578,7 +578,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Trapping%20Rain%20Water%20Elevation%20Bars%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Calculate water trapped in bar elevation chart.",
@@ -607,7 +607,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Maximum%20Product%20of%20Three%20Numbers%20in%20Array%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Find three numbers in array whose product is maximum.",
@@ -636,7 +636,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Search%20in%20Row%20and%20Column%20Sorted%20Matrix%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Search target value in matrix where rows and columns are sorted ascending.",
@@ -665,7 +665,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Spiral%20Matrix%20Traversal%20Grid%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Traverse matrix in spiral order.",
@@ -694,7 +694,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Middle%20Node%20of%20Singly%20Linked%20List%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Find middle node of linked list using fast and slow pointer.",
@@ -723,7 +723,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Remove%20Nth%20Node%20from%20End%20of%20Linked%20List%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Remove nth node from end of linked list in one pass.",
@@ -752,7 +752,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Rotate%20Linked%20List%20by%20K%20Places%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Rotate linked list to the right by k places.",
@@ -781,7 +781,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Add%20Two%20Numbers%20Represented%20by%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Add two numbers stored in reverse order as linked list digits.",
@@ -810,7 +810,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Intersection%20Point%20of%20Two%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Find intersection node of two singly linked lists.",
@@ -839,7 +839,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Invert%20Binary%20Tree%20Mirror%20Image%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Invert left and right children of binary tree.",
@@ -868,7 +868,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Diameter%20of%20Binary%20Tree%20Longest%20Path%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Find diameter of binary tree.",
@@ -897,7 +897,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Level%20Order%20Traversal%20Queue%20BFS%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Traverse binary tree level by level.",
@@ -926,7 +926,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Lowest%20Common%20Ancestor%20in%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find lowest common ancestor of two nodes in binary tree.",
@@ -950,7 +950,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Validate%20Binary%20Search%20Tree%20BST%20Rule%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Check if binary tree satisfies BST ordering properties.",
@@ -979,7 +979,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Clone%20Undirected%20Graph%20Deep%20Copy%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Given reference of node in connected undirected graph, return deep copy (clone).",
@@ -1008,7 +1008,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Number%20of%20Islands%20Grid%20Connected%20Lands%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Count number of connected land components in binary grid.",
@@ -1037,7 +1037,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Course%20Schedule%20Topological%20Sort%20BFS%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Determine if courses can be finished using topological sort.",
@@ -1066,7 +1066,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Word%20Ladder%20Shortest%20Word%20Transformation%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "constraint",
     "selftext": "Find length of shortest transformation sequence from beginWord to endWord.",
@@ -1095,7 +1095,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Coin%20Change%20Minimum%20Denominations%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Calculate minimum coins needed to make up amount.",
@@ -1124,7 +1124,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%200%201%20Knapsack%20Maximum%20Value%20with%20Weight%20Limit%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Maximize total value of items fitting into knapsack of capacity W.",
@@ -1153,7 +1153,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Longest%20Common%20Subsequence%20of%20Two%20Strings%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find length of longest common subsequence.",
@@ -1182,7 +1182,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Edit%20Distance%20String%20Conversion%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Calculate minimum operations to transform word1 into word2.",
@@ -1206,7 +1206,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Minimum%20Cost%20Path%20in%20Matrix%20Grid%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find path from (0,0) to (m-1, n-1) with minimum sum.",
@@ -1235,7 +1235,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Climbing%20Stairs%20with%201%20or%202%20Steps%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Count ways to climb n stairs.",
@@ -1264,7 +1264,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20House%20Robber%20Maximum%20Loot%20Without%20Adjacent%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Rob non-adjacent houses for maximum profit.",
@@ -1293,7 +1293,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Jump%20Game%20Can%20Reach%20Target%20Index%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Determine if last index is reachable with jump lengths.",
@@ -1322,7 +1322,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20Single%20Day%20interview%20assessment&type=link",
     "round": "Cognizant GenC Coding Round",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Maximize profit with single stock buy and sell.",
@@ -1351,7 +1351,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Maximum%20Subarray%20Sum%20Kadane%20interview%20assessment&type=link",
     "round": "Cognizant GenC Next Technical Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find maximum sum of contiguous subarray.",
@@ -1380,7 +1380,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Product%20of%20Array%20Except%20Self%20Without%20Division%20interview%20assessment&type=link",
     "round": "Cognizant Elevate Interview",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Compute product of array except self in O(N).",
@@ -1409,7 +1409,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Daily%20Temperatures%20Next%20Warmer%20Day%20interview%20assessment&type=link",
     "round": "Cognizant Advanced Coding",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find days until warmer temperature for each day.",
@@ -1427,6 +1427,481 @@ module.exports = [
         "input": "nums = [10, 20]",
         "output": "2",
         "explanation": "Boundary evaluation."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Two Sum Target Pair Indices",
+    "author": "u/iiit_hyd_prep",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Two%20Sum%20Target%20Pair%20Indices%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+    "constraints": [
+      "2 <= nums.length <= 10^4",
+      "-10^9 <= nums[i] <= 10^9",
+      "-10^9 <= target <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 7, 11, 15], target = 9",
+        "output": "[0, 1]",
+        "explanation": "nums[0] + nums[1] = 2 + 7 = 9."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - 3Sum Triplets Summing to Zero",
+    "author": "u/vit_placements_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%203Sum%20Triplets%20Summing%20to%20Zero%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. The solution set must not contain duplicate triplets.",
+    "constraints": [
+      "3 <= nums.length <= 3000",
+      "-10^5 <= nums[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-1, 0, 1, 2, -1, -4]",
+        "output": "[[-1, -1, 2], [-1, 0, 1]]",
+        "explanation": "Triplets sum to zero."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Container With Most Water Area",
+    "author": "u/bits_goa_dev",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Container%20With%20Most%20Water%20Area%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container, such that the container contains the most water.",
+    "constraints": [
+      "2 <= n <= 10^5",
+      "0 <= height[i] <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "height = [1, 8, 6, 2, 5, 4, 8, 3, 7]",
+        "output": "49",
+        "explanation": "Maximum area is 49."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Trapping Rain Water Elevation Chamber",
+    "author": "u/thapar_swe_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Trapping%20Rain%20Water%20Elevation%20Chamber%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+    "constraints": [
+      "1 <= n <= 2 * 10^4",
+      "0 <= height[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+        "output": "6",
+        "explanation": "6 units of rain water are trapped."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Maximum Subarray Kadane Algorithm",
+    "author": "u/btech_code_champ",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Maximum%20Subarray%20Kadane%20Algorithm%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, find the subarray with the largest sum, and return its sum.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "-10^4 <= nums[i] <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+        "output": "6",
+        "explanation": "Subarray [4, -1, 2, 1] has largest sum 6."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Sliding Window Maximum Monotonic Deque",
+    "author": "u/campus_hire_blr",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Sliding%20Window%20Maximum%20Monotonic%20Deque%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "1 <= k <= nums.length"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3",
+        "output": "[3, 3, 5, 5, 6, 7]",
+        "explanation": "Window maximums tracked monotonically."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Subarray Sum Equals K Prefix Frequency",
+    "author": "u/srm_dev_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Subarray%20Sum%20Equals%20K%20Prefix%20Frequency%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.",
+    "constraints": [
+      "1 <= nums.length <= 2 * 10^4",
+      "-1000 <= nums[i] <= 1000"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 1, 1], k = 2",
+        "output": "2",
+        "explanation": "Subarrays [1, 1] sum to 2."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Sort Colors Dutch National Flag 0s 1s 2s",
+    "author": "u/manipal_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Sort%20Colors%20Dutch%20National%20Flag%200s%201s%202s%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.",
+    "constraints": [
+      "1 <= n <= 300",
+      "nums[i] is either 0, 1, or 2"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 0, 2, 1, 1, 0]",
+        "output": "[0, 0, 1, 1, 2, 2]",
+        "explanation": "Partitioned in-place."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Rotate Array by K Positions Right",
+    "author": "u/rvce_swe_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Rotate%20Array%20by%20K%20Positions%20Right%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "0 <= k <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 4, 5, 6, 7], k = 3",
+        "output": "[5, 6, 7, 1, 2, 3, 4]",
+        "explanation": "Rotated right by 3 positions."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Move Zeroes to End of Array",
+    "author": "u/pesit_hack_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Move%20Zeroes%20to%20End%20of%20Array%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements in-place.",
+    "constraints": [
+      "1 <= nums.length <= 10^4",
+      "-2^31 <= nums[i] <= 2^31 - 1"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [0, 1, 0, 3, 12]",
+        "output": "[1, 3, 12, 0, 0]",
+        "explanation": "Zeroes shifted to end."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Majority Element in Election Tally",
+    "author": "u/delhi_techie_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Majority%20Element%20in%20Election%20Tally%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums of size n, return the majority element. The majority element is the element that appears more than floor(n / 2) times. You may assume that the majority element always exists in the array.",
+    "constraints": [
+      "n == nums.length",
+      "1 <= n <= 5 * 10^4",
+      "-10^9 <= nums[i] <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [3, 2, 3]",
+        "output": "3",
+        "explanation": "3 appears twice in array of length 3."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Next Permutation Lexicographical Order",
+    "author": "u/bangalore_dev_25",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Next%20Permutation%20Lexicographical%20Order%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "A permutation of an array of integers is an arrangement of its members into a sequence or linear order. Find the next lexicographically greater permutation in-place.",
+    "constraints": [
+      "1 <= nums.length <= 100",
+      "0 <= nums[i] <= 100"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3]",
+        "output": "[1, 3, 2]",
+        "explanation": "Next permutation is [1, 3, 2]."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Search in Rotated Sorted Array",
+    "author": "u/algo_prep_india",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Search%20in%20Rotated%20Sorted%20Array%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums. You must write an algorithm with O(log n) runtime complexity.",
+    "constraints": [
+      "1 <= nums.length <= 5000",
+      "-10^4 <= nums[i], target <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 0",
+        "output": "4",
+        "explanation": "0 is at index 4."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Valid Palindrome String Check",
+    "author": "u/nits_grad_2024",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Valid%20Palindrome%20String%20Check%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, return true if it is a palindrome, or false otherwise. Ignore non-alphanumeric characters and case.",
+    "constraints": [
+      "1 <= s.length <= 2 * 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"A man, a plan, a canal: Panama\"",
+        "output": "true",
+        "explanation": "\"amanaplanacanalpanama\" is a palindrome."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Longest Palindromic Substring Expand Centers",
+    "author": "u/hyd_sde_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Longest%20Palindromic%20Substring%20Expand%20Centers%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, return the longest palindromic substring in s.",
+    "constraints": [
+      "1 <= s.length <= 1000"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"babad\"",
+        "output": "\"bab\"",
+        "explanation": "\"aba\" is also acceptable."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Group Anagrams by Character Signature",
+    "author": "u/pune_tech_lead",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Group%20Anagrams%20by%20Character%20Signature%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of strings strs, group the anagrams together. You can return the answer in any order.",
+    "constraints": [
+      "1 <= strs.length <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]",
+        "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]",
+        "explanation": "Grouped by character count signature."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Minimum Window Substring Character Frequency",
+    "author": "u/chennai_swe",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Minimum%20Window%20Substring%20Character%20Frequency%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given two strings s and t, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.",
+    "constraints": [
+      "1 <= s.length, t.length <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+        "output": "\"BANC\"",
+        "explanation": "Minimum window substring is \"BANC\"."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - String to Integer Atoi Parsing",
+    "author": "u/iit_kgp_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20String%20to%20Integer%20Atoi%20Parsing%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer.",
+    "constraints": [
+      "0 <= s.length <= 200"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"42\"",
+        "output": "42",
+        "explanation": "Parsed as 42."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Valid Parentheses Bracket Matching",
+    "author": "u/nitk_surathkal",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Valid%20Parentheses%20Bracket%20Matching%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+    "constraints": [
+      "1 <= s.length <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"()[]{}\"",
+        "output": "true",
+        "explanation": "All brackets matched."
+      }
+    ]
+  },
+  {
+    "company": "Cognizant",
+    "title": "Cognizant - Minimum Remove to Make Valid Parentheses Balance",
+    "author": "u/dtu_coder_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Cognizant%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses%20Balance%20interview%20assessment&type=link",
+    "round": "Cognizant GenC Next Assessment",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s of '(' , ')' and lowercase English characters, remove the minimum number of parentheses so that the resulting parentheses string is valid.",
+    "constraints": [
+      "1 <= s.length <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"lee(t(c)o)de)\"",
+        "output": "\"lee(t(c)o)de\"",
+        "explanation": "Valid parenthesis string."
       }
     ]
   }

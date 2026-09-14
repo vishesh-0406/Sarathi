@@ -11,7 +11,9 @@ const TOPICS = [
 
 const COMPANIES_LIST = [
     'All', 'TCS', 'Infosys', 'Accenture', 'Wipro', 'Cognizant', 'Capgemini',
-    'Amazon', 'Google', 'Microsoft', 'Adobe', 'Oracle', 'Salesforce'
+    'HCLTech', 'Tech Mahindra', 'LTIMindtree', 'Genpact',
+    'Amazon', 'Google', 'Microsoft', 'Adobe', 'Oracle', 'Salesforce',
+    'Uber', 'Zoho', 'Flipkart', 'Goldman Sachs'
 ];
 
 function Aptitude({ onBack }) {

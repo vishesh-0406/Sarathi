@@ -4,18 +4,28 @@ const Question = require('./models/Question');
 const Company = require('./models/Company');
 
 const sampleCompanies = [
+    // 10 Service
     { name: 'TCS', type: 'service' },
     { name: 'Infosys', type: 'service' },
-    { name: 'Accenture', type: 'service' },
     { name: 'Wipro', type: 'service' },
+    { name: 'Accenture', type: 'service' },
     { name: 'Cognizant', type: 'service' },
     { name: 'Capgemini', type: 'service' },
+    { name: 'HCLTech', type: 'service' },
+    { name: 'Tech Mahindra', type: 'service' },
+    { name: 'LTIMindtree', type: 'service' },
+    { name: 'Genpact', type: 'service' },
+    // 10 Product
     { name: 'Amazon', type: 'product' },
     { name: 'Google', type: 'product' },
     { name: 'Microsoft', type: 'product' },
     { name: 'Adobe', type: 'product' },
     { name: 'Oracle', type: 'product' },
-    { name: 'Salesforce', type: 'product' }
+    { name: 'Salesforce', type: 'product' },
+    { name: 'Uber', type: 'product' },
+    { name: 'Zoho', type: 'product' },
+    { name: 'Flipkart', type: 'product' },
+    { name: 'Goldman Sachs', type: 'product' }
 ];
 
 const sampleQuestions = [
@@ -374,7 +384,7 @@ async function seed() {
 
         await Question.deleteMany({});
         const inserted = await Question.insertMany(allQuestions);
-        console.log(`Successfully seeded ${inserted.length} questions (DSA, Interview, Aptitude) across all 12 companies into MongoDB!`);
+        console.log(`Successfully seeded ${inserted.length} questions (DSA, Interview, Aptitude) across all 20 companies into MongoDB!`);
 
         process.exit(0);
     } catch (err) {

@@ -27,6 +27,22 @@ const companies = {
         {
             name: 'Capgemini',
             description: 'Explore Capgemini placement process, pseudo-code questions, and interviews.'
+        },
+        {
+            name: 'HCLTech',
+            description: 'Explore HCLTech First Careers program, technical assessments, and core engineering interviews.'
+        },
+        {
+            name: 'Tech Mahindra',
+            description: 'Explore Tech Mahindra Conversant rounds, Mindcraft assessments, and telecom engineering questions.'
+        },
+        {
+            name: 'LTIMindtree',
+            description: 'Explore LTIMindtree Ignition & Spark hiring, cloud architecture rounds, and coding interviews.'
+        },
+        {
+            name: 'Genpact',
+            description: 'Explore Genpact digital transformation assessments, analytics rounds, and domain consulting interviews.'
         }
     ],
 
@@ -54,6 +70,22 @@ const companies = {
         {
             name: 'Salesforce',
             description: 'Explore Salesforce developer hiring, HackerRank rounds, and system design.'
+        },
+        {
+            name: 'Uber',
+            description: 'Explore Uber SDE-1 OA patterns, high-scale system design, and algorithms rounds.'
+        },
+        {
+            name: 'Zoho',
+            description: 'Explore Zoho machine coding, advanced programming without libraries, and craft-first design rounds.'
+        },
+        {
+            name: 'Flipkart',
+            description: 'Explore Flipkart machine coding, SDE OA patterns, and high-concurrency e-commerce challenges.'
+        },
+        {
+            name: 'Goldman Sachs',
+            description: 'Explore Goldman Sachs CoderPad technical rounds, quantitative puzzles, and low-latency systems.'
         }
     ]
 };

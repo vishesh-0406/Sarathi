@@ -4,7 +4,9 @@ const API_BASE_URL = 'http://localhost:5000/api';
 
 const COMPANIES_LIST = [
     'All', 'TCS', 'Infosys', 'Accenture', 'Wipro', 'Cognizant', 'Capgemini',
-    'Amazon', 'Google', 'Microsoft', 'Adobe', 'Oracle', 'Salesforce'
+    'HCLTech', 'Tech Mahindra', 'LTIMindtree', 'Genpact',
+    'Amazon', 'Google', 'Microsoft', 'Adobe', 'Oracle', 'Salesforce',
+    'Uber', 'Zoho', 'Flipkart', 'Goldman Sachs'
 ];
 
 const TOPICS_LIST = [

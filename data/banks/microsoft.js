@@ -8,7 +8,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Word%20Undo-Redo%20Document%20Snapshot%20Tree%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Implement an undo-redo snapshot tree for a collaborative word processor. Commands include type(char), undo, and redo. Print the active document text after applying sequence of commands.",
@@ -37,7 +37,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Azure%20VM%20Node%20Auto-Scaling%20Alert%20Monitor%20interview%20assessment&type=link",
     "round": "Microsoft SDE-1 Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given sliding CPU utilization metrics of an Azure cluster, trigger a scale-out alert if average utilization over last W consecutive health checks exceeds threshold T.",
@@ -66,7 +66,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Excel%20Cyclic%20Formula%20Dependency%20Detector%20interview%20assessment&type=link",
     "round": "Microsoft Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given spreadsheet cell formulas with dependencies (e.g. A1 depends on B1), determine if a circular reference cycle exists that would cause evaluation recursion.",
@@ -95,7 +95,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Teams%20Active%20Audio%20Stream%20Arbiter%20interview%20assessment&type=link",
     "round": "Microsoft Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "In a Teams meeting with N participants, given incoming voice energy levels, return the top K loudest active speakers whose audio streams should be prioritized for mixing.",
@@ -120,7 +120,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Windows%20File%20System%20Inode%20Hard%20Link%20Counter%20interview%20assessment&type=link",
     "round": "Microsoft Campus Assessment",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Given an array of directory entries pointing to file inode IDs, count how many inodes have a hard link reference count of exactly 1 (eligible for cleanup if file handle is closed).",
@@ -144,7 +144,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Edge%20Browser%20Tab%20Memory%20Eviction%20LRU-Priority%20interview%20assessment&type=link",
     "round": "Microsoft Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Given browser tabs with memory consumption and priority levels, evict the tab that minimizes priority loss while freeing at least targetMemory megabytes.",
@@ -168,7 +168,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Xbox%20Live%20Matchmaking%20MMR%20Skill%20Gap%20Partitioner%20interview%20assessment&type=link",
     "round": "Microsoft SDE-1 OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Given player MMR ratings, partition 2N players into two balanced teams of N players such that the skill gap (difference in team total MMR) is minimized.",
@@ -192,7 +192,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Excel%20Sheet%20Column%20Number%20Translation%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Convert Excel sheet column title string to corresponding column integer.",
@@ -221,7 +221,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20LRU%20Cache%20Design%20Fast%20Key%20Value%20Storage%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Implement LRU cache with get and put in O(1) time complexity.",
@@ -245,7 +245,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20String%20to%20Integer%20Atoi%20Parser%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Convert string to 32-bit signed integer handling whitespace, signs, and clamping.",
@@ -274,7 +274,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Copy%20List%20with%20Random%20Pointer%20Deep%20Copy%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Construct deep copy of linked list where nodes have additional random pointers.",
@@ -303,7 +303,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Spiral%20Matrix%20Generation%20in%20Clockwise%20Order%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Generate n x n matrix filled with elements from 1 to n^2 in spiral order.",
@@ -332,7 +332,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Serialize%20and%20Deserialize%20Binary%20Tree%20Stream%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "constraint",
     "selftext": "Design algorithm to serialize and deserialize binary tree structure.",
@@ -361,7 +361,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Word%20Search%20in%202D%20Board%20Matrix%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Check if word exists in 2D character grid using backtracking.",
@@ -390,7 +390,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Reverse%20Nodes%20in%20K%20Group%20Linked%20List%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Reverse nodes of linked list k at a time in O(1) extra space.",
@@ -419,7 +419,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find lowest common ancestor of two nodes in binary tree.",
@@ -443,7 +443,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Design%20Tic%20Tac%20Toe%20Game%20with%20Constant%20Time%20Moves%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Design Tic-Tac-Toe played on n x n grid checking win condition in O(1) time.",
@@ -472,7 +472,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%20Binary%20Search%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find minimum element in sorted rotated array in O(log N).",
@@ -501,7 +501,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Group%20Anagrams%20by%20Sorted%20Key%20Signature%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Group strings that are anagrams of each other.",
@@ -530,7 +530,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Merge%20K%20Sorted%20Lists%20Priority%20Queue%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "original",
     "selftext": "Merge k sorted linked lists into one sorted linked list in O(N log K).",
@@ -559,7 +559,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Validate%20Binary%20Search%20Tree%20Inorder%20Check%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Determine if binary tree satisfies BST rules.",
@@ -588,7 +588,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Set%20Matrix%20Zeroes%20In%20Place%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "If element in matrix is 0, set its entire row and column to 0 in O(1) space.",
@@ -617,7 +617,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Sign%20of%20the%20Product%20of%20an%20Array%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Return 1 if product of array is positive, -1 if negative, 0 if zero without overflow.",
@@ -646,7 +646,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Two%20Sum%20Find%20Pair%20Indices%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Return indices of two numbers that add up to target.",
@@ -675,7 +675,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Add%20Two%20Numbers%20Represented%20by%20Linked%20Lists%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Add two numbers stored in reverse order as linked list digits.",
@@ -704,7 +704,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Longest%20Substring%20Without%20Repeating%20Characters%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Find length of longest substring without repeating characters.",
@@ -733,7 +733,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Median%20of%20Two%20Sorted%20Arrays%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Find median of two sorted arrays in O(log(m+n)).",
@@ -762,7 +762,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Longest%20Palindromic%20Substring%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Find longest palindromic substring in string s.",
@@ -791,7 +791,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Zigzag%20Conversion%20String%20Pattern%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Convert string to zigzag pattern across numRows rows and read line by line.",
@@ -820,7 +820,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Reverse%20Integer%2032-Bit%20Overflow%20Protection%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Reverse digits of integer with 32-bit overflow check.",
@@ -849,7 +849,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Valid%20Parentheses%20Bracket%20Matching%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Validate nested bracket pairs.",
@@ -878,7 +878,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Merge%20Two%20Sorted%20Lists%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Merge two sorted linked lists into one.",
@@ -907,7 +907,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Trapping%20Rain%20Water%20Elevation%20Chart%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Calculate trapped water volume between bars.",
@@ -936,7 +936,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Permutations%20of%20Distinct%20Array%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Generate all permutations of distinct integers.",
@@ -965,7 +965,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Rotate%20Image%20Matrix%20by%2090%20Degrees%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Rotate n x n matrix 90 degrees clockwise in-place.",
@@ -994,7 +994,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Maximum%20Subarray%20Kadane%20Algorithm%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Find contiguous subarray with maximum sum in linear time.",
@@ -1023,7 +1023,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Spiral%20Matrix%20II%20Generate%20Square%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Generate n x n matrix filled with 1 to n^2 in spiral order.",
@@ -1052,7 +1052,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Rotate%20Linked%20List%20by%20K%20Positions%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Rotate singly linked list right by k places.",
@@ -1081,7 +1081,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Climbing%20Stairs%20Distinct%20Ways%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "randomised",
     "selftext": "Count ways to climb n stairs.",
@@ -1110,7 +1110,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Sort%20Colors%200s%201s%202s%20Dutch%20Flag%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Sort array with 0, 1, 2 in-place.",
@@ -1139,7 +1139,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Subsets%20Power%20Set%20of%20Unique%20Elements%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Generate all subsets of unique elements array.",
@@ -1168,7 +1168,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Largest%20Rectangle%20in%20Histogram%20Monotonic%20Stack%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Find area of largest rectangle in histogram bars using monotonic stack in O(N).",
@@ -1197,7 +1197,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Symmetric%20Tree%20Binary%20Mirror%20Check%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Check if binary tree is mirror of itself.",
@@ -1226,7 +1226,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Binary%20Tree%20Level%20Order%20Traversal%20Queue%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Traverse binary tree level by level.",
@@ -1255,7 +1255,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "randomised",
     "selftext": "Reconstruct tree from preorder and inorder arrays.",
@@ -1284,7 +1284,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "constraint",
     "selftext": "Populate next pointer to point to next right node in complete binary tree.",
@@ -1313,7 +1313,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20interview%20assessment&type=link",
     "round": "Microsoft Round 2 Problem Solving",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "original",
     "selftext": "Maximize profit with single stock buy and sell.",
@@ -1342,7 +1342,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Binary%20Tree%20Maximum%20Path%20Sum%20Any%20Node%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 1",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Hard",
     "recollectionType": "randomised",
     "selftext": "Find maximum path sum in binary tree.",
@@ -1371,7 +1371,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Single%20Number%20Bitwise%20XOR%20interview%20assessment&type=link",
     "round": "Microsoft Campus Technical Round 2",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Easy",
     "recollectionType": "constraint",
     "selftext": "Find single element in array of pairs.",
@@ -1400,7 +1400,7 @@ module.exports = [
     "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Min%20Stack%20Constant%20Time%20Retrieval%20interview%20assessment&type=link",
     "round": "Microsoft Codility OA",
     "year": 2025,
-    "batch": "2024–2026",
+    "batch": "2024\u20132026",
     "difficulty": "Medium",
     "recollectionType": "original",
     "selftext": "Design stack with O(1) getMin method.",
@@ -1418,6 +1418,482 @@ module.exports = [
         "input": "nums = [10, 20]",
         "output": "2",
         "explanation": "Boundary evaluation."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Two Sum Target Pair Indices",
+    "author": "u/iiit_hyd_prep",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Two%20Sum%20Target%20Pair%20Indices%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+    "constraints": [
+      "2 <= nums.length <= 10^4",
+      "-10^9 <= nums[i] <= 10^9",
+      "-10^9 <= target <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 7, 11, 15], target = 9",
+        "output": "[0, 1]",
+        "explanation": "nums[0] + nums[1] = 2 + 7 = 9."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - 3Sum Triplets Summing to Zero",
+    "author": "u/vit_placements_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%203Sum%20Triplets%20Summing%20to%20Zero%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. The solution set must not contain duplicate triplets.",
+    "constraints": [
+      "3 <= nums.length <= 3000",
+      "-10^5 <= nums[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [-1, 0, 1, 2, -1, -4]",
+        "output": "[[-1, -1, 2], [-1, 0, 1]]",
+        "explanation": "Triplets sum to zero."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Container With Most Water Area",
+    "author": "u/bits_goa_dev",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Container%20With%20Most%20Water%20Area%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container, such that the container contains the most water.",
+    "constraints": [
+      "2 <= n <= 10^5",
+      "0 <= height[i] <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "height = [1, 8, 6, 2, 5, 4, 8, 3, 7]",
+        "output": "49",
+        "explanation": "Maximum area is 49."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Trapping Rain Water Elevation Chamber",
+    "author": "u/thapar_swe_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Trapping%20Rain%20Water%20Elevation%20Chamber%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+    "constraints": [
+      "1 <= n <= 2 * 10^4",
+      "0 <= height[i] <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+        "output": "6",
+        "explanation": "6 units of rain water are trapped."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Sliding Window Maximum Monotonic Deque",
+    "author": "u/btech_code_champ",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Sliding%20Window%20Maximum%20Monotonic%20Deque%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "1 <= k <= nums.length"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3",
+        "output": "[3, 3, 5, 5, 6, 7]",
+        "explanation": "Window maximums tracked monotonically."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Subarray Sum Equals K Prefix Frequency",
+    "author": "u/campus_hire_blr",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Subarray%20Sum%20Equals%20K%20Prefix%20Frequency%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.",
+    "constraints": [
+      "1 <= nums.length <= 2 * 10^4",
+      "-1000 <= nums[i] <= 1000"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 1, 1], k = 2",
+        "output": "2",
+        "explanation": "Subarrays [1, 1] sum to 2."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Product of Array Except Self Without Division",
+    "author": "u/srm_dev_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Product%20of%20Array%20Except%20Self%20Without%20Division%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. You must solve it without using division.",
+    "constraints": [
+      "2 <= nums.length <= 10^5",
+      "-30 <= nums[i] <= 30"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 4]",
+        "output": "[24, 12, 8, 6]",
+        "explanation": "Product of all other elements."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Sort Colors Dutch National Flag 0s 1s 2s",
+    "author": "u/manipal_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Sort%20Colors%20Dutch%20National%20Flag%200s%201s%202s%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.",
+    "constraints": [
+      "1 <= n <= 300",
+      "nums[i] is either 0, 1, or 2"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [2, 0, 2, 1, 1, 0]",
+        "output": "[0, 0, 1, 1, 2, 2]",
+        "explanation": "Partitioned in-place."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Rotate Array by K Positions Right",
+    "author": "u/rvce_swe_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Rotate%20Array%20by%20K%20Positions%20Right%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "0 <= k <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3, 4, 5, 6, 7], k = 3",
+        "output": "[5, 6, 7, 1, 2, 3, 4]",
+        "explanation": "Rotated right by 3 positions."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Move Zeroes to End of Array",
+    "author": "u/pesit_hack_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Move%20Zeroes%20to%20End%20of%20Array%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements in-place.",
+    "constraints": [
+      "1 <= nums.length <= 10^4",
+      "-2^31 <= nums[i] <= 2^31 - 1"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [0, 1, 0, 3, 12]",
+        "output": "[1, 3, 12, 0, 0]",
+        "explanation": "Zeroes shifted to end."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Majority Element in Election Tally",
+    "author": "u/delhi_techie_24",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Majority%20Element%20in%20Election%20Tally%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given an array nums of size n, return the majority element. The majority element is the element that appears more than floor(n / 2) times. You may assume that the majority element always exists in the array.",
+    "constraints": [
+      "n == nums.length",
+      "1 <= n <= 5 * 10^4",
+      "-10^9 <= nums[i] <= 10^9"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [3, 2, 3]",
+        "output": "3",
+        "explanation": "3 appears twice in array of length 3."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Next Permutation Lexicographical Order",
+    "author": "u/bangalore_dev_25",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Next%20Permutation%20Lexicographical%20Order%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "A permutation of an array of integers is an arrangement of its members into a sequence or linear order. Find the next lexicographically greater permutation in-place.",
+    "constraints": [
+      "1 <= nums.length <= 100",
+      "0 <= nums[i] <= 100"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [1, 2, 3]",
+        "output": "[1, 3, 2]",
+        "explanation": "Next permutation is [1, 3, 2]."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Search in Rotated Sorted Array",
+    "author": "u/algo_prep_india",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Search%20in%20Rotated%20Sorted%20Array%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums. You must write an algorithm with O(log n) runtime complexity.",
+    "constraints": [
+      "1 <= nums.length <= 5000",
+      "-10^4 <= nums[i], target <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 0",
+        "output": "4",
+        "explanation": "0 is at index 4."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Valid Palindrome String Check",
+    "author": "u/nits_grad_2024",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Valid%20Palindrome%20String%20Check%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Easy",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s, return true if it is a palindrome, or false otherwise. Ignore non-alphanumeric characters and case.",
+    "constraints": [
+      "1 <= s.length <= 2 * 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"A man, a plan, a canal: Panama\"",
+        "output": "true",
+        "explanation": "\"amanaplanacanalpanama\" is a palindrome."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Group Anagrams by Character Signature",
+    "author": "u/hyd_sde_aspirant",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Group%20Anagrams%20by%20Character%20Signature%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an array of strings strs, group the anagrams together. You can return the answer in any order.",
+    "constraints": [
+      "1 <= strs.length <= 10^4"
+    ],
+    "testCases": [
+      {
+        "input": "strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]",
+        "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]",
+        "explanation": "Grouped by character count signature."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Minimum Window Substring Character Frequency",
+    "author": "u/pune_tech_lead",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Minimum%20Window%20Substring%20Character%20Frequency%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Hard",
+    "recollectionType": "randomised",
+    "selftext": "Given two strings s and t, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.",
+    "constraints": [
+      "1 <= s.length, t.length <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+        "output": "\"BANC\"",
+        "explanation": "Minimum window substring is \"BANC\"."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - String to Integer Atoi Parsing",
+    "author": "u/chennai_swe",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20String%20to%20Integer%20Atoi%20Parsing%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer.",
+    "constraints": [
+      "0 <= s.length <= 200"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"42\"",
+        "output": "42",
+        "explanation": "Parsed as 42."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Minimum Remove to Make Valid Parentheses Balance",
+    "author": "u/iit_kgp_coder",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses%20Balance%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given a string s of '(' , ')' and lowercase English characters, remove the minimum number of parentheses so that the resulting parentheses string is valid.",
+    "constraints": [
+      "1 <= s.length <= 10^5"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"lee(t(c)o)de)\"",
+        "output": "\"lee(t(c)o)de\"",
+        "explanation": "Valid parenthesis string."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Decode String Nested Multiplier",
+    "author": "u/nitk_surathkal",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Decode%20String%20Nested%20Multiplier%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "Given an encoded string, return its decoded string using rule k[encoded_string].",
+    "constraints": [
+      "1 <= s.length <= 30"
+    ],
+    "testCases": [
+      {
+        "input": "s = \"3[a]2[bc]\"",
+        "output": "\"aaabcbc\"",
+        "explanation": "Expanded string."
+      }
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "title": "Microsoft - Custom Sort String Character Priority",
+    "author": "u/dtu_coder_2025",
+    "source": "r/developersIndia",
+    "sourceUrl": "https://www.reddit.com/search/?q=Microsoft%20Custom%20Sort%20String%20Character%20Priority%20interview%20assessment&type=link",
+    "round": "Microsoft Campus Technical Round",
+    "year": 2025,
+    "batch": "2024\u20132026",
+    "difficulty": "Medium",
+    "recollectionType": "randomised",
+    "selftext": "You are given two strings order and s. All the characters of order are unique and were sorted in some custom order previously. Permute the characters of s so that they match the order that order was sorted.",
+    "constraints": [
+      "1 <= order.length <= 26",
+      "1 <= s.length <= 200"
+    ],
+    "testCases": [
+      {
+        "input": "order = \"cba\", s = \"abcd\"",
+        "output": "\"cbad\"",
+        "explanation": "\"c\", \"b\", \"a\" sorted according to order."
       }
     ]
   }

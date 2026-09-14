@@ -375,6 +375,191 @@ function generateTestCaseForTitle(title, selftext) {
         ];
     }
 
+    // --- HCLTech Novel Problems ---
+    if (t.includes('network packet latency router') || t.includes('packet latency')) {
+        return [
+            { input: 'router = [12, 45, 23, 67, 34], threshold = 40', output: '[1, 3]', explanation: 'Packets at index 1 (45ms) and index 3 (67ms) exceed 40ms.' },
+            { input: 'router = [10, 20, 30], threshold = 50', output: '[]', explanation: 'No router latency exceeds threshold.' }
+        ];
+    }
+    if (t.includes('employee skill matrix level partitioner') || t.includes('skill matrix')) {
+        return [
+            { input: 'skills = [4, 3, 2, 3, 5, 2, 1], k = 4', output: 'true', explanation: 'Can be partitioned into 4 subsets each summing to 5: [5], [1, 4], [2, 3], [2, 3].' },
+            { input: 'skills = [1, 2, 3, 4], k = 3', output: 'false', explanation: 'Total sum 10 is not divisible by 3.' }
+        ];
+    }
+    if (t.includes('it service desk ticket dispatch priority queue') || t.includes('ticket dispatch')) {
+        return [
+            { input: 'tickets = [{"id": 1, "pri": 3, "t": 10}, {"id": 2, "pri": 1, "t": 15}, {"id": 3, "pri": 1, "t": 12}]', output: '[3, 2, 1]', explanation: 'Ticket 3 and 2 have highest priority (1); Ticket 3 arrived earlier at t=12, so processed first.' }
+        ];
+    }
+    if (t.includes('warehouse rack slot dimensional optimization') || t.includes('rack slot')) {
+        return [
+            { input: 'items = [3, 5, 8, 2], racks = [4, 6, 2, 10]', output: '4', explanation: 'Box 2 -> Rack 2, Box 3 -> Rack 4, Box 5 -> Rack 6, Box 8 -> Rack 10. All 4 fit.' },
+            { input: 'items = [10, 20], racks = [5, 15]', output: '1', explanation: 'Only box 10 fits into rack 15.' }
+        ];
+    }
+
+    // --- Tech Mahindra Novel Problems ---
+    if (t.includes('telecom call detail record') || t.includes('cdr drop rate')) {
+        return [
+            { input: 'calls = [0, 1, 0, 0, 1, 1], k = 3', output: '[0.33, 0.33, 0.33, 0.67]', explanation: 'Windows: [0,1,0]->1/3=0.33; [1,0,0]->1/3=0.33; [0,0,1]->1/3=0.33; [0,1,1]->2/3=0.67.' }
+        ];
+    }
+    if (t.includes('cell tower signal coverage overlap') || t.includes('cell tower')) {
+        return [
+            { input: 'towers = [[1, 4], [3, 6], [8, 10]]', output: '7', explanation: 'Merged intervals: [1, 6] (length 5) and [8, 10] (length 2). Total covered distance = 5 + 2 = 7.' }
+        ];
+    }
+    if (t.includes('sms gateway flood rate throttler') || t.includes('sms gateway')) {
+        return [
+            { input: 'timestamps = [100, 300, 500, 900, 1050, 1100], maxPerSec = 3', output: '[true, true, true, false, true, true]', explanation: 'At t=900, 4 messages arrived in [0, 1000ms], so 4th is throttled. At t=1050, t=100 has expired.' }
+        ];
+    }
+    if (t.includes('smart grid meter tariff peak shifter') || t.includes('meter tariff peak')) {
+        return [
+            { input: 'load = [12, 18, 25, 30, 22, 15], peakThreshold = 20', output: '17', explanation: 'Overflows: [0, 0, 5, 10, 2, 0]. Max contiguous overflow = 5 + 10 + 2 = 17.' }
+        ];
+    }
+
+    // --- LTIMindtree Novel Problems ---
+    if (t.includes('ignition supply chain container stacking load') || t.includes('container stacking')) {
+        return [
+            { input: 'containers = [{"w": 3, "c": 4}, {"w": 2, "c": 2}, {"w": 7, "c": 6}]', output: '3', explanation: 'Stack order top to bottom: (w:2,c:2) on (w:3,c:4) on (w:7,c:6). Valid height is 3.' }
+        ];
+    }
+    if (t.includes('oil and gas pipeline sensor delta compression') || t.includes('pipeline sensor delta')) {
+        return [
+            { input: 'readings = [100, 102, 101, 105, 104]', output: '[100, 2, -1, 4, -1]', explanation: 'Initial value 100, then 102-100=+2, 101-102=-1, 105-101=+4, 104-105=-1.' }
+        ];
+    }
+    if (t.includes('smart campus badge access audit trail') || t.includes('badge access audit')) {
+        return [
+            { input: 'events = [["A", "ENTRY"], ["B", "ENTRY"], ["A", "EXIT"]]', output: '["B"]', explanation: 'Employee B entered but never exited the secured area.' }
+        ];
+    }
+    if (t.includes('cloud microservice resource lease time expiry') || t.includes('resource lease time')) {
+        return [
+            { input: 'leases = [[1, 4], [2, 6], [5, 8]]', output: '2', explanation: 'At time 2.5, leases [1,4] and [2,6] overlap. At time 5.5, [2,6] and [5,8] overlap. Max concurrency = 2.' }
+        ];
+    }
+
+    // --- Genpact Novel Problems ---
+    if (t.includes('invoice reconciliation line item matcher') || t.includes('invoice reconciliation')) {
+        return [
+            { input: 'poItems = [100, 250, 400], invoiceItems = [250, 100, 400]', output: 'true', explanation: 'Both multisets have identical elements and frequencies.' },
+            { input: 'poItems = [100, 200], invoiceItems = [100, 300]', output: 'false', explanation: 'Invoice item 300 does not match PO item 200.' }
+        ];
+    }
+    if (t.includes('financial fraud transaction velocity detector') || t.includes('transaction velocity')) {
+        return [
+            { input: 'txns = [{"acc": "X", "amt": 20000, "t": 60}, {"acc": "X", "amt": 25000, "t": 120}, {"acc": "X", "amt": 15000, "t": 200}]', output: '["X"]', explanation: 'Account X had 3 txns in 140s (< 300s) totaling 60000 (> 50000), triggering velocity alert.' }
+        ];
+    }
+    if (t.includes('loan emi amortization schedule verifier') || t.includes('loan emi amortization')) {
+        return [
+            { input: 'P = 100000, R = 12, N = 12, emi = 8885', output: 'true', explanation: 'Monthly rate r = 0.01. EMI = 100000 * 0.01 * (1.01^12) / (1.01^12 - 1) = 8884.88 ~ 8885.' }
+        ];
+    }
+    if (t.includes('insurance claims adjudication risk scorer') || t.includes('insurance claims adjudication')) {
+        return [
+            { input: 'claim = {"amount": 75000, "priors": 3}', output: '"SPECIAL_INVESTIGATION"', explanation: 'High value claim with repeated historical claims triggers fraud investigation.' },
+            { input: 'claim = {"amount": 12000, "priors": 0}', output: '"FAST_TRACK"', explanation: 'Standard low-risk claim routed to fast-track settlement.' }
+        ];
+    }
+
+    // --- Uber Novel Problems ---
+    if (t.includes('dynamic surge multiplier geohash grid') || t.includes('surge multiplier')) {
+        return [
+            { input: 'grid = [[1.2, 1.5], [2.0, 1.0]], query = [0, 0, 1, 1]', output: '1.425', explanation: 'Sum = 1.2 + 1.5 + 2.0 + 1.0 = 5.7. Average across 4 cells = 1.425.' }
+        ];
+    }
+    if (t.includes('ride match mutual proximity nearest driver') || t.includes('nearest driver')) {
+        return [
+            { input: 'rider = [0, 0], drivers = [[1, 2], [3, 4], [-1, 1]], k = 2', output: '[[-1, 1], [1, 2]]', explanation: 'Distances: [-1,1] is 2, [1,2] is 3, [3,4] is 7. Closest 2 are [[-1,1], [1,2]].' }
+        ];
+    }
+    if (t.includes('multi-stop fare split optimizer') || t.includes('fare split optimizer')) {
+        return [
+            { input: 'rides = [{"id": 1, "s": 0, "e": 10}, {"id": 2, "s": 5, "e": 10}], ratePerKm = 2', output: '{"1": 15, "2": 5}', explanation: '0-5km: only passenger 1 (cost 10). 5-10km: both passengers split 10 equally (5 each). Total: 1 gets 15, 2 gets 5.' }
+        ];
+    }
+    if (t.includes('driver dispatch shift rest regulation') || t.includes('shift rest regulation')) {
+        return [
+            { input: 'shifts = [[0, 6], [8, 14], [16, 19]]', output: 'true', explanation: 'Within window [0, 24], total driving hours = 6 + 6 + 3 = 15 > 12. Violation flagged.' },
+            { input: 'shifts = [[0, 5], [10, 15]]', output: 'false', explanation: 'Total driving hours = 10 <= 12. Compliant.' }
+        ];
+    }
+
+    // --- Zoho Novel Problems ---
+    if (t.includes('custom regex wildcard pattern matcher') || t.includes('wildcard pattern matcher without library')) {
+        return [
+            { input: 's = "aa", p = "*"', output: 'true', explanation: "'*' matches any sequence." },
+            { input: 's = "cb", p = "?a"', output: 'false', explanation: "'?' matches 'c', but second char 'b' != 'a'." }
+        ];
+    }
+    if (t.includes('railway berths seat allocation engine') || t.includes('railway berths')) {
+        return [
+            { input: 'passengers = [{"name": "Ram", "age": 65, "gender": "M"}, {"name": "Kumar", "age": 25, "gender": "M"}]', output: '[{"name": "Ram", "berth": "LB"}, {"name": "Kumar", "berth": "MB"}]', explanation: 'Senior citizen Ram is prioritized for Lower Berth (LB).' }
+        ];
+    }
+    if (t.includes('snake and ladder minimum dice throws') || t.includes('snake and ladder')) {
+        return [
+            { input: 'ladders = [[2, 38], [9, 34]], snakes = [[98, 78], [95, 56]]', output: '3', explanation: 'Throw 1: 1->2 (climb to 38). Throw 2: roll 6 to 44. Optimal moves reach 100 in 3 throws.' }
+        ];
+    }
+    if (t.includes('matrix word search boggle path') || t.includes('word search boggle')) {
+        return [
+            { input: 'board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"', output: 'true', explanation: 'Path: (0,0)->(0,1)->(0,2)->(1,2)->(2,2)->(2,1).' },
+            { input: 'board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"', output: 'false', explanation: "Cannot reuse cell (0,1) 'B'." }
+        ];
+    }
+
+    // --- Flipkart Novel Problems ---
+    if (t.includes('flash sale cart reservation lock timeout') || t.includes('cart reservation lock')) {
+        return [
+            { input: 'cart = [{"user": "U1", "t": 100}], checkout = [{"user": "U1", "t": 650}]', output: '["U1"]', explanation: '650 - 100 = 550 <= 600 seconds. Checkout successful.' },
+            { input: 'cart = [{"user": "U2", "t": 100}], checkout = [{"user": "U2", "t": 750}]', output: '[]', explanation: '750 - 100 = 650 > 600 seconds. Reservation timed out.' }
+        ];
+    }
+    if (t.includes('warehouse aisle order picking route minimizer') || t.includes('aisle order picking')) {
+        return [
+            { input: 'aisles = [[1, 1], [1, 3], [3, 1]]', output: '8', explanation: 'Manhattan cycle: (0,0)->(1,1)->(1,3)->(3,1)->(0,0) = 2 + 2 + 4 = 8.' }
+        ];
+    }
+    if (t.includes('supercoin loyalty redemption knapsack') || t.includes('supercoin loyalty')) {
+        return [
+            { input: 'coins = [50, 100, 150], discount = [100, 250, 350], C = 200', output: '450', explanation: 'Take reward 1 (50 coins for 100) and reward 3 (150 coins for 350) = 200 coins for 450 discount.' }
+        ];
+    }
+    if (t.includes('bulk package dimensional weight surcharge') || t.includes('dimensional weight surcharge')) {
+        return [
+            { input: 'packages = [{"l": 50, "w": 40, "h": 30, "wgt": 8}]', output: '12', explanation: 'Dim weight = 50*40*30/5000 = 12 kg. Actual weight = 8 kg. Billable weight = max(8, 12) = 12.' }
+        ];
+    }
+
+    // --- Goldman Sachs Novel Problems ---
+    if (t.includes('high-frequency order book matching engine') || t.includes('order book matching')) {
+        return [
+            { input: 'bids = [{"p": 100, "q": 10}], asks = [{"p": 99, "q": 6}]', output: '[{"execPrice": 99, "execQty": 6, "remainBidQty": 4}]', explanation: 'Trade matches at ask price 99 for 6 units. Bid remains with 4 units at 100.' }
+        ];
+    }
+    if (t.includes('currency arbitrage bellman-ford cycle') || t.includes('currency arbitrage')) {
+        return [
+            { input: 'rates = [[1.0, 0.85, 110.0], [1.18, 1.0, 130.0], [0.009, 0.0076, 1.0]]', output: 'true', explanation: 'Conversion sequence EUR->USD->JPY->EUR yields positive multiplication profit > 1.0.' }
+        ];
+    }
+    if (t.includes('stock option volatility surface interpolator') || t.includes('volatility surface')) {
+        return [
+            { input: 'strikes = [90, 100, 110], vols = [0.25, 0.20, 0.22], target = 95', output: '0.225', explanation: 'Target 95 is midway between 90 and 100: vol = (0.25 + 0.20) / 2 = 0.225.' }
+        ];
+    }
+    if (t.includes('net trade settlement cash flow clearing') || t.includes('cash flow clearing')) {
+        return [
+            { input: 'debts = [["A", "B", 10], ["B", "C", 10]]', output: '1', explanation: 'Bank A can pay 10 directly to Bank C, settling all balances in 1 transaction instead of 2.' }
+        ];
+    }
+
     // Default fallback based on whether it looks like array, string, or matrix
     if (selftext && (selftext.includes('string') || selftext.includes('character') || selftext.includes('word'))) {
         return [
