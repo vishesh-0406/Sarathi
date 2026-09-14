@@ -90,7 +90,7 @@ const companies = {
     ]
 };
 
-function Companies({ onOpenIDE }) {
+function Companies({ onOpenIDE, onSelectRoadmap }) {
     const [selectedType, setSelectedType] = useState(null);
     const [selectedCompany, setSelectedCompany] = useState(null);
     const [questionsList, setQuestionsList] = useState([]);
@@ -615,13 +615,23 @@ function Companies({ onOpenIDE }) {
                                 {company.description}
                             </p>
 
-                            <button
-                                onClick={() =>
-                                    handleSelectCompany(company)
-                                }
-                            >
-                                View Details
-                            </button>
+                            <div style={{ display: 'flex', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
+                                <button
+                                    onClick={() =>
+                                        handleSelectCompany(company)
+                                    }
+                                >
+                                    View Details
+                                </button>
+                                {onSelectRoadmap && (
+                                    <button
+                                        onClick={() => onSelectRoadmap(company.name)}
+                                        style={{ background: '#0284c7', color: '#fff', border: 'none' }}
+                                    >
+                                        🎯 Roadmap
+                                    </button>
+                                )}
+                            </div>
 
                         </div>
                     ))}

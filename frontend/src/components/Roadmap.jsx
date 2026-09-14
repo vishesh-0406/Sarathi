@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './Roadmap.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -28,8 +28,8 @@ const ALL_COMPANIES = [
     { name: 'Goldman Sachs', type: 'product' }
 ];
 
-function Roadmap({ onBack, onOpenIDE }) {
-    const [selectedCompany, setSelectedCompany] = useState('Amazon');
+function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
+    const [selectedCompany, setSelectedCompany] = useState(initialCompany);
     const [companyTypeFilter, setCompanyTypeFilter] = useState('all'); // 'all' | 'product' | 'service'
     const [roadmapData, setRoadmapData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -38,6 +38,12 @@ function Roadmap({ onBack, onOpenIDE }) {
     const [activeCategoryFilter, setActiveCategoryFilter] = useState('All'); // 'All' | 'DSA' | 'Aptitude' | 'Interview'
     const [expandedQuestionDetails, setExpandedQuestionDetails] = useState({});
     const [quizAnswers, setQuizAnswers] = useState({});
+
+    useEffect(() => {
+        if (initialCompany) {
+            setSelectedCompany(initialCompany);
+        }
+    }, [initialCompany]);
 
     const fetchRoadmap = useCallback(async (companyName) => {
         setLoading(true);

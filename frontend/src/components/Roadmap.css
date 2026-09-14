@@ -1,53 +1,52 @@
 ﻿/* ============================================================
-   ROADMAP CONTAINER & GENERAL LAYOUT
+   ROADMAP CONTAINER & THEMED LAYOUT
    ============================================================ */
 .roadmap-page {
-    max-width: 1280px;
+    max-width: 1360px;
     margin: 0 auto;
-    padding: 24px 20px 80px 20px;
-    color: #f1f5f9;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 10px 0 80px 0;
+    color: var(--text-primary);
+    font-family: inherit;
 }
 
 /* Topbar Navigation */
 .roadmap-topbar {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     margin-bottom: 24px;
 }
 
 .back-btn {
     align-self: flex-start;
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    color: #94a3b8;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
+    box-shadow: var(--card-shadow);
     transition: all 0.2s ease;
 }
 
 .back-btn:hover {
-    background: rgba(51, 65, 85, 0.9);
-    color: #38bdf8;
-    border-color: #38bdf8;
+    background: var(--bg-subtle);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
 }
 
 .roadmap-title-box h1 {
     font-size: 2.1rem;
     font-weight: 800;
     margin: 0 0 8px 0;
-    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-primary);
 }
 
 .roadmap-title-box p {
-    color: #94a3b8;
-    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-size: 1.02rem;
     margin: 0;
     line-height: 1.5;
 }
@@ -56,12 +55,12 @@
    COMPANY SELECTION CARD
    ============================================================ */
 .company-selection-card {
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
-    border: 1px solid rgba(148, 163, 184, 0.15);
-    border-radius: 16px;
-    padding: 20px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 20px 24px;
     margin-bottom: 28px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--card-shadow);
 }
 
 .company-type-tabs {
@@ -73,17 +72,17 @@
 }
 
 .filter-label {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9rem;
-    color: #94a3b8;
+    color: var(--text-muted);
 }
 
 .type-tab {
-    background: rgba(51, 65, 85, 0.5);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    color: #cbd5e1;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 9999px;
     font-size: 0.85rem;
     cursor: pointer;
     font-weight: 600;
@@ -91,15 +90,15 @@
 }
 
 .type-tab:hover {
-    background: rgba(71, 85, 105, 0.7);
-    color: #fff;
+    background: var(--border-hover);
+    color: var(--text-primary);
 }
 
 .type-tab.active {
-    background: #0284c7;
-    border-color: #38bdf8;
-    color: #fff;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
 }
 
 .company-chips-grid {
@@ -114,8 +113,8 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.15);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
     padding: 10px 8px;
     border-radius: 10px;
     cursor: pointer;
@@ -124,51 +123,52 @@
 }
 
 .company-chip:hover {
-    background: rgba(30, 41, 59, 0.9);
-    border-color: #64748b;
+    background: var(--bg-surface);
+    border-color: var(--border-hover);
     transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
 }
 
 .company-chip.selected {
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(99, 102, 241, 0.25) 100%);
-    border-color: #38bdf8;
-    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+    background: var(--accent-primary-light);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 1px var(--accent-primary);
 }
 
 .chip-name {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #f8fafc;
+    color: var(--text-primary);
 }
 
 .chip-badge {
     font-size: 0.68rem;
-    font-weight: 600;
+    font-weight: 700;
     padding: 2px 6px;
     border-radius: 12px;
     text-transform: uppercase;
 }
 
 .chip-badge.product {
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
+    background: var(--accent-primary-light);
+    color: var(--accent-primary);
 }
 
 .chip-badge.service {
-    background: rgba(168, 85, 247, 0.15);
-    color: #c084fc;
+    background: var(--accent-purple-light);
+    color: var(--accent-purple);
 }
 
 /* ============================================================
    COMPANY INTELLIGENCE BLUEPRINT CARD
    ============================================================ */
 .company-blueprint-card {
-    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 18px;
+    background-color: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
     padding: 28px;
     margin-bottom: 32px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .blueprint-header {
@@ -178,14 +178,14 @@
     flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 24px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 20px;
 }
 
 .company-tier-tag {
     font-size: 0.8rem;
     font-weight: 700;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -194,21 +194,22 @@
 }
 
 .company-tier-tag.product {
-    background: rgba(14, 165, 233, 0.2);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.4);
+    background: var(--accent-primary-light);
+    color: var(--accent-primary);
+    border: 1px solid rgba(2, 132, 199, 0.3);
 }
 
 .company-tier-tag.service {
-    background: rgba(168, 85, 247, 0.2);
-    color: #c084fc;
-    border: 1px solid rgba(192, 132, 252, 0.4);
+    background: var(--accent-purple-light);
+    color: var(--accent-purple);
+    border: 1px solid rgba(124, 58, 237, 0.3);
 }
 
 .blueprint-header h2 {
     font-size: 1.8rem;
+    font-weight: 800;
     margin: 0;
-    color: #f8fafc;
+    color: var(--text-primary);
 }
 
 .blueprint-meta-stats {
@@ -218,26 +219,27 @@
 }
 
 .meta-stat-pill {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 0.85rem;
-    color: #cbd5e1;
+    color: var(--text-secondary);
 }
 
 .meta-stat-pill strong {
-    color: #38bdf8;
+    color: var(--accent-primary);
     font-size: 0.95rem;
 }
 
 .meta-stat-pill.novel {
-    border-color: #f59e0b;
-    color: #fde047;
+    background: var(--accent-amber-light);
+    border-color: rgba(217, 119, 6, 0.3);
+    color: var(--accent-amber);
 }
 
 .meta-stat-pill.novel strong {
-    color: #fde047;
+    color: var(--accent-amber);
 }
 
 /* Hiring Pipeline Section */
@@ -246,11 +248,12 @@
 }
 
 .hiring-pipeline-section h3 {
-    font-size: 1.1rem;
-    color: #94a3b8;
+    font-size: 1.05rem;
+    color: var(--text-muted);
     margin: 0 0 14px 0;
     text-transform: uppercase;
     letter-spacing: 0.6px;
+    font-weight: 700;
 }
 
 .pipeline-steps {
@@ -260,22 +263,22 @@
 }
 
 .pipeline-step-card {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.15);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 16px;
-    position: relative;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    box-shadow: var(--card-shadow);
 }
 
 .step-indicator {
     align-self: flex-start;
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
+    background: var(--accent-primary-light);
+    color: var(--accent-primary);
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     padding: 2px 8px;
     border-radius: 6px;
     text-transform: uppercase;
@@ -284,14 +287,14 @@
 .pipeline-step-card h4 {
     margin: 4px 0 2px 0;
     font-size: 0.98rem;
-    color: #f1f5f9;
+    color: var(--text-primary);
     font-weight: 700;
 }
 
 .pipeline-step-card p {
     margin: 0;
     font-size: 0.82rem;
-    color: #94a3b8;
+    color: var(--text-secondary);
     line-height: 1.45;
 }
 
@@ -302,10 +305,10 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
-    background: rgba(15, 23, 42, 0.4);
+    background: var(--bg-subtle);
     padding: 14px 18px;
     border-radius: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 .focus-pillars-box, .difficulty-distribution-box {
@@ -317,8 +320,8 @@
 
 .box-title {
     font-size: 0.85rem;
-    font-weight: 600;
-    color: #94a3b8;
+    font-weight: 700;
+    color: var(--text-muted);
 }
 
 .pill-tags {
@@ -328,13 +331,13 @@
 }
 
 .focus-tag {
-    background: rgba(99, 102, 241, 0.15);
-    color: #a5b4fc;
-    border: 1px solid rgba(129, 140, 248, 0.3);
+    background: var(--accent-purple-light);
+    color: var(--accent-purple);
+    border: 1px solid rgba(124, 58, 237, 0.25);
     font-size: 0.78rem;
     padding: 3px 8px;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .diff-bar-container {
@@ -344,31 +347,28 @@
 
 .diff-count {
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     padding: 3px 8px;
     border-radius: 6px;
 }
 
 .diff-count.easy {
-    background: rgba(34, 197, 94, 0.15);
-    color: #4ade80;
-    border: 1px solid rgba(34, 197, 94, 0.3);
+    background: var(--accent-emerald-light);
+    color: var(--accent-emerald);
 }
 
 .diff-count.medium {
-    background: rgba(234, 179, 8, 0.15);
-    color: #facc15;
-    border: 1px solid rgba(234, 179, 8, 0.3);
+    background: var(--accent-amber-light);
+    color: var(--accent-amber);
 }
 
 .diff-count.hard {
-    background: rgba(239, 68, 68, 0.15);
-    color: #f87171;
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: var(--accent-rose-light);
+    color: var(--accent-rose);
 }
 
 /* ============================================================
-   MILESTONE CONTROLS BAR
+   ROUNDS TIMELINE & CARDS
    ============================================================ */
 .milestone-controls-bar {
     display: flex;
@@ -387,14 +387,14 @@
 
 .filter-title {
     font-size: 0.88rem;
-    font-weight: 600;
-    color: #94a3b8;
+    font-weight: 700;
+    color: var(--text-muted);
 }
 
 .cat-btn {
-    background: rgba(30, 41, 59, 0.7);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    color: #cbd5e1;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
     padding: 6px 14px;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -404,36 +404,34 @@
 }
 
 .cat-btn:hover {
-    background: rgba(51, 65, 85, 0.8);
-    color: #fff;
+    background: var(--bg-subtle);
+    color: var(--text-primary);
 }
 
 .cat-btn.active {
-    background: #6366f1;
-    border-color: #818cf8;
-    color: #fff;
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #ffffff;
 }
 
 .expand-controls button {
-    background: transparent;
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    color: #94a3b8;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.8rem;
+    font-weight: 600;
     cursor: pointer;
     margin-left: 8px;
     transition: all 0.2s ease;
 }
 
 .expand-controls button:hover {
-    color: #f1f5f9;
-    border-color: #cbd5e1;
+    color: var(--text-primary);
+    border-color: var(--border-hover);
 }
 
-/* ============================================================
-   MILESTONE ACCORDION & TIMELINE
-   ============================================================ */
 .milestones-timeline {
     display: flex;
     flex-direction: column;
@@ -441,16 +439,17 @@
 }
 
 .milestone-container {
-    background: #0f172a;
-    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--card-shadow);
     transition: all 0.2s ease;
 }
 
 .milestone-container:hover {
-    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--border-hover);
 }
 
 .milestone-header-row {
@@ -458,14 +457,14 @@
     align-items: center;
     gap: 16px;
     padding: 20px 24px;
-    background: rgba(30, 41, 59, 0.5);
+    background: var(--bg-surface);
     cursor: pointer;
     user-select: none;
     transition: background 0.2s ease;
 }
 
 .milestone-header-row:hover {
-    background: rgba(30, 41, 59, 0.8);
+    background: var(--bg-subtle);
 }
 
 .milestone-badge-box {
@@ -473,8 +472,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #1e293b;
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 8px 12px;
     min-width: 75px;
@@ -483,13 +482,13 @@
 .level-number {
     font-size: 0.85rem;
     font-weight: 800;
-    color: #38bdf8;
+    color: var(--accent-primary);
     text-transform: uppercase;
 }
 
 .timeline-est {
     font-size: 0.72rem;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-weight: 600;
 }
 
@@ -499,14 +498,15 @@
 
 .milestone-headings h3 {
     margin: 0 0 4px 0;
-    font-size: 1.22rem;
-    color: #f8fafc;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 700;
 }
 
 .milestone-headings p {
     margin: 0 0 8px 0;
     font-size: 0.88rem;
-    color: #94a3b8;
+    color: var(--text-secondary);
     line-height: 1.4;
 }
 
@@ -518,10 +518,11 @@
 
 .focus-pill {
     font-size: 0.75rem;
-    background: rgba(148, 163, 184, 0.1);
-    color: #cbd5e1;
+    background: var(--bg-subtle);
+    color: var(--text-secondary);
     padding: 2px 8px;
     border-radius: 4px;
+    border: 1px solid var(--border-color);
 }
 
 .milestone-actions-meta {
@@ -531,9 +532,9 @@
 }
 
 .q-count-badge {
-    background: #1e293b;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    color: #38bdf8;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--accent-primary);
     font-size: 0.82rem;
     font-weight: 700;
     padding: 4px 10px;
@@ -542,15 +543,14 @@
 
 .accordion-arrow {
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: var(--text-muted);
 }
 
-/* ============================================================
-   QUESTIONS GRID & CARDS
-   ============================================================ */
+/* Questions Grid */
 .milestone-body {
     padding: 20px 24px;
-    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-subtle);
 }
 
 .questions-grid {
@@ -560,20 +560,21 @@
 }
 
 .roadmap-q-card {
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid rgba(148, 163, 184, 0.15);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 16px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: var(--card-shadow);
     transition: all 0.2s ease;
 }
 
 .roadmap-q-card:hover {
-    background: rgba(30, 41, 59, 0.65);
-    border-color: rgba(56, 189, 248, 0.4);
+    border-color: var(--border-hover);
     transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .card-top-row {
@@ -601,21 +602,18 @@
 }
 
 .badge-dsa {
-    background: rgba(14, 165, 233, 0.15);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: var(--accent-primary-light);
+    color: var(--accent-primary);
 }
 
 .badge-aptitude {
-    background: rgba(245, 158, 11, 0.15);
-    color: #fbbf24;
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    background: var(--accent-amber-light);
+    color: var(--accent-amber);
 }
 
 .badge-interview {
-    background: rgba(168, 85, 247, 0.15);
-    color: #c084fc;
-    border: 1px solid rgba(192, 132, 252, 0.3);
+    background: var(--accent-purple-light);
+    color: var(--accent-purple);
 }
 
 .diff-tag {
@@ -625,25 +623,10 @@
     border-radius: 4px;
 }
 
-.diff-easy {
-    background: rgba(34, 197, 94, 0.15);
-    color: #4ade80;
-}
-
-.diff-medium {
-    background: rgba(234, 179, 8, 0.15);
-    color: #facc15;
-}
-
-.diff-hard {
-    background: rgba(239, 68, 68, 0.15);
-    color: #f87171;
-}
-
 .novel-exclusive-tag {
-    background: rgba(234, 179, 8, 0.15);
-    color: #fef08a;
-    border: 1px solid rgba(234, 179, 8, 0.4);
+    background: var(--accent-amber-light);
+    color: var(--accent-amber);
+    border: 1px solid rgba(217, 119, 6, 0.3);
     font-size: 0.72rem;
     font-weight: 700;
     padding: 2px 6px;
@@ -653,27 +636,23 @@
 .canonical-lc-link {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #cbd5e1;
+    color: var(--text-secondary);
     text-decoration: none;
-    background: rgba(15, 23, 42, 0.6);
+    background: var(--bg-subtle);
     padding: 2px 6px;
     border-radius: 4px;
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: 1px solid var(--border-color);
     transition: all 0.2s ease;
 }
 
 .canonical-lc-link:hover {
-    color: #38bdf8;
-    border-color: #38bdf8;
-}
-
-.premium-lock {
-    color: #fbbf24;
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
 }
 
 .round-tag {
     font-size: 0.72rem;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-weight: 500;
 }
 
@@ -681,18 +660,17 @@
     margin: 6px 0 4px 0;
     font-size: 1.05rem;
     font-weight: 700;
-    color: #f8fafc;
+    color: var(--text-primary);
     line-height: 1.35;
 }
 
 .q-snippet {
-    font-size: 0.84rem;
-    color: #94a3b8;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
     line-height: 1.45;
     margin: 0 0 14px 0;
 }
 
-/* Card Action Row */
 .card-action-row {
     display: flex;
     gap: 8px;
@@ -701,60 +679,47 @@
 }
 
 .ide-btn {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    color: #fff;
+    background-color: var(--accent-primary);
+    color: #ffffff;
     border: none;
     padding: 7px 14px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .ide-btn:hover {
-    background: #0284c7;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    background-color: var(--accent-primary-hover);
 }
 
 .quiz-btn {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-    color: #fff;
+    background-color: var(--accent-amber);
+    color: #ffffff;
     border: none;
     padding: 7px 14px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.quiz-btn:hover {
-    background: #d97706;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
 }
 
 .star-btn {
-    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-    color: #fff;
+    background-color: var(--accent-purple);
+    color: #ffffff;
     border: none;
     padding: 7px 14px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.star-btn:hover {
-    background: #7c3aed;
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
 }
 
 .details-btn {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    color: #94a3b8;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
     padding: 7px 12px;
     border-radius: 6px;
     font-size: 0.82rem;
@@ -764,17 +729,15 @@
 }
 
 .details-btn:hover {
-    background: rgba(51, 65, 85, 0.6);
-    color: #f1f5f9;
+    color: var(--text-primary);
+    border-color: var(--border-hover);
 }
 
-/* ============================================================
-   QUESTION DETAIL DRAWER (ACCORDION)
-   ============================================================ */
+/* Detail Drawer */
 .q-detail-drawer {
     margin-top: 14px;
     padding-top: 14px;
-    border-top: 1px solid rgba(148, 163, 184, 0.15);
+    border-top: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -787,7 +750,7 @@
 .sample-tc-box strong {
     display: block;
     font-size: 0.82rem;
-    color: #38bdf8;
+    color: var(--accent-primary);
     margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -796,18 +759,18 @@
 .full-statement p {
     margin: 0;
     font-size: 0.88rem;
-    color: #cbd5e1;
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 
 .constraints-box ul {
     margin: 0;
     padding-left: 18px;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 0.82rem;
 }
 
-/* Aptitude Interactive Quiz inside Card */
+/* Quiz items */
 .quiz-options-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -817,9 +780,9 @@
 
 .quiz-opt {
     text-align: left;
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    color: #e2e8f0;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
     padding: 8px 12px;
     border-radius: 6px;
     font-size: 0.85rem;
@@ -828,39 +791,38 @@
 }
 
 .quiz-opt:hover {
-    background: rgba(51, 65, 85, 0.7);
-    border-color: #94a3b8;
+    background: var(--border-hover);
 }
 
 .quiz-opt.correct {
-    background: rgba(34, 197, 94, 0.2);
-    border-color: #22c55e;
-    color: #4ade80;
+    background: var(--accent-emerald-light);
+    border-color: var(--accent-emerald);
+    color: var(--accent-emerald);
     font-weight: 700;
 }
 
 .quiz-opt.wrong {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: #ef4444;
-    color: #f87171;
+    background: var(--accent-rose-light);
+    border-color: var(--accent-rose);
+    color: var(--accent-rose);
 }
 
 .quiz-feedback-box {
     margin-top: 8px;
     padding: 10px;
-    background: rgba(15, 23, 42, 0.8);
+    background: var(--bg-subtle);
     border-radius: 6px;
 }
 
 .feedback-correct {
-    color: #4ade80;
+    color: var(--accent-emerald);
     font-weight: 700;
     margin: 0 0 6px 0;
     font-size: 0.9rem;
 }
 
 .feedback-wrong {
-    color: #f87171;
+    color: var(--accent-rose);
     font-weight: 700;
     margin: 0 0 6px 0;
     font-size: 0.9rem;
@@ -868,21 +830,21 @@
 
 .math-explanation {
     font-size: 0.82rem;
-    color: #cbd5e1;
+    color: var(--text-secondary);
     line-height: 1.45;
 }
 
-/* STAR Model Box */
+/* STAR Model */
 .star-answer-box {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(168, 85, 247, 0.3);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 12px;
 }
 
 .star-content {
     font-size: 0.85rem;
-    color: #e2e8f0;
+    color: var(--text-secondary);
     line-height: 1.5;
     white-space: pre-wrap;
 }
@@ -891,36 +853,36 @@
     display: inline-block;
     margin-top: 8px;
     font-size: 0.75rem;
-    background: rgba(148, 163, 184, 0.15);
-    color: #94a3b8;
+    background: var(--accent-purple-light);
+    color: var(--accent-purple);
     padding: 2px 8px;
     border-radius: 4px;
 }
 
-/* Sample Test Case Box */
+/* Sample TC */
 .sample-tc-box pre {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(148, 163, 184, 0.15);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 6px 10px;
-    font-family: monospace;
+    font-family: var(--mono);
     font-size: 0.8rem;
-    color: #38bdf8;
+    color: var(--accent-primary);
     margin: 4px 0;
 }
 
-/* Loading & Error States */
+/* Loading & Error */
 .roadmap-loading {
     text-align: center;
     padding: 60px 20px;
-    color: #94a3b8;
+    color: var(--text-muted);
 }
 
 .spinner {
     width: 38px;
     height: 38px;
-    border: 4px solid rgba(56, 189, 248, 0.2);
-    border-top-color: #38bdf8;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--accent-primary);
     border-radius: 50%;
     animation: spin 0.9s linear infinite;
     margin: 0 auto 16px auto;
@@ -932,20 +894,9 @@
 
 .roadmap-error {
     text-align: center;
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: var(--accent-rose-light);
+    border: 1px solid var(--accent-rose);
     border-radius: 12px;
     padding: 24px;
-    color: #f87171;
-}
-
-.roadmap-error button {
-    background: #ef4444;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 12px;
+    color: var(--accent-rose);
 }

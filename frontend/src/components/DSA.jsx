@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import './DSA.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
@@ -97,69 +98,72 @@ function DSA({ onBack, onOpenIDE }) {
                 <div>
                     <h2>💻 Data Structures & Algorithms Practice</h2>
                     <p className="section-intro">
-                        Curated <strong>600 placement coding problems</strong> across 12 target companies.
+                        Curated <strong>1,400 placement coding problems</strong> across 20 target companies.
                         Dynamically linked with <strong>LeetCode problems</strong> for online practice and testcase validation.
                     </p>
                 </div>
             </div>
 
-            {/* Topic Pills */}
-            <div className="topic-pills-bar">
-                {TOPIC_PILLS.map(topic => (
-                    <button
-                        key={topic}
-                        className={`topic-pill-btn ${selectedTopic === topic ? 'active' : ''}`}
-                        onClick={() => {
-                            setSelectedTopic(topic);
-                            setPage(1);
-                        }}
-                    >
-                        {topic}
-                    </button>
-                ))}
-            </div>
-
-            {/* Filter Row */}
-            <div className="filters-container dsa-filters">
-                <div className="filter-group">
-                    <label>Company:</label>
-                    <select
-                        value={selectedCompany}
-                        onChange={(e) => setSelectedCompany(e.target.value)}
-                        className="filter-select"
-                    >
-                        {COMPANIES_LIST.map(c => (
-                            <option key={c} value={c}>{c === 'All' ? '🏢 All 12 Companies' : c}</option>
-                        ))}
-                    </select>
+            {/* Filter Panel Card */}
+            <div className="dsa-filter-panel">
+                {/* Topic Pills */}
+                <div className="topic-pills-bar">
+                    {TOPIC_PILLS.map(topic => (
+                        <button
+                            key={topic}
+                            className={`topic-pill-btn ${selectedTopic === topic ? 'active' : ''}`}
+                            onClick={() => {
+                                setSelectedTopic(topic);
+                                setPage(1);
+                            }}
+                        >
+                            {topic}
+                        </button>
+                    ))}
                 </div>
 
-                <div className="filter-group">
-                    <label>Difficulty:</label>
-                    <select
-                        value={selectedDifficulty}
-                        onChange={(e) => setSelectedDifficulty(e.target.value)}
-                        className="filter-select"
-                    >
-                        <option value="All">⚡ All Difficulties</option>
-                        <option value="Easy">🟢 Easy</option>
-                        <option value="Medium">🟡 Medium</option>
-                        <option value="Hard">🔴 Hard</option>
-                    </select>
-                </div>
+                {/* Filter Row */}
+                <div className="filters-container dsa-filters">
+                    <div className="filter-group">
+                        <label>Company:</label>
+                        <select
+                            value={selectedCompany}
+                            onChange={(e) => setSelectedCompany(e.target.value)}
+                            className="filter-select"
+                        >
+                            {COMPANIES_LIST.map(c => (
+                                <option key={c} value={c}>{c === 'All' ? '🏢 All 20 Companies' : c}</option>
+                            ))}
+                        </select>
+                    </div>
 
-                <div className="filter-group search-group">
-                    <label>Search Problem:</label>
-                    <input
-                        type="text"
-                        placeholder="Search by topic, algorithm, keyword..."
-                        value={searchQuery}
-                        onChange={(e) => {
-                            setSearchQuery(e.target.value);
-                            setPage(1);
-                        }}
-                        className="search-input"
-                    />
+                    <div className="filter-group">
+                        <label>Difficulty:</label>
+                        <select
+                            value={selectedDifficulty}
+                            onChange={(e) => setSelectedDifficulty(e.target.value)}
+                            className="filter-select"
+                        >
+                            <option value="All">⚡ All Difficulties</option>
+                            <option value="Easy">🟢 Easy</option>
+                            <option value="Medium">🟡 Medium</option>
+                            <option value="Hard">🔴 Hard</option>
+                        </select>
+                    </div>
+
+                    <div className="filter-group search-group">
+                        <label>Search Problem:</label>
+                        <input
+                            type="text"
+                            placeholder="Search by topic, algorithm, keyword..."
+                            value={searchQuery}
+                            onChange={(e) => {
+                                setSearchQuery(e.target.value);
+                                setPage(1);
+                            }}
+                            className="search-input"
+                        />
+                    </div>
                 </div>
             </div>
 

@@ -1,277 +1,396 @@
 ﻿import { useState } from 'react';
 import Navbar from './components/Navbar';
-import './App.css';
 import Companies from './components/Companies';
 import DSA from './components/DSA';
 import Aptitude from './components/Aptitude';
 import Interviews from './components/Interviews';
 import Roadmap from './components/Roadmap';
 import IDE from './components/IDE';
+import './App.css';
+
+const POPULAR_COMPANIES = [
+    { name: 'Amazon', type: 'product', role: 'SDE-1 & Cloud', badge: 'Product' },
+    { name: 'Google', type: 'product', role: 'Software Engineer', badge: 'Product' },
+    { name: 'TCS', type: 'service', role: 'Ninja, Digital & Prime', badge: 'Service' },
+    { name: 'Zoho', type: 'product', role: 'Machine Coding SWE', badge: 'Product' },
+    { name: 'Flipkart', type: 'product', role: 'SDE-1 Machine Coding', badge: 'Product' },
+    { name: 'Accenture', type: 'service', role: 'ASE & FSE Careers', badge: 'Service' },
+    { name: 'Goldman Sachs', type: 'product', role: 'Engineering Campus', badge: 'Product' },
+    { name: 'Microsoft', type: 'product', role: 'Software Development', badge: 'Product' },
+];
 
 function App() {
-    const [activePrepSection, setActivePrepSection] = useState(null);
+    const [activeView, setActiveView] = useState('home'); // 'home' | 'roadmap' | 'companies' | 'dsa' | 'aptitude' | 'interviews'
     const [activeIdeQuestion, setActiveIdeQuestion] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCompanyForRoadmap, setSelectedCompanyForRoadmap] = useState('Amazon');
 
-    const openSection = (sectionName) => {
+    const handleNavigate = (viewName) => {
         setActiveIdeQuestion(null);
-        setActivePrepSection(sectionName);
-        setTimeout(() => {
-            const el = document.getElementById('preparation');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
+        setActiveView(viewName);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const handleOpenIDE = (question) => {
         setActiveIdeQuestion(question);
-        setTimeout(() => {
-            const el = document.getElementById('ide-workspace-section');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleBackFromIDE = () => {
+        setActiveIdeQuestion(null);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const q = searchQuery.trim().toLowerCase();
+        if (!q) return;
+
+        // Check if query matches a company
+        const matchComp = POPULAR_COMPANIES.find(c => c.name.toLowerCase().includes(q));
+        if (matchComp) {
+            setSelectedCompanyForRoadmap(matchComp.name);
+            handleNavigate('roadmap');
+        } else if (q.includes('dsa') || q.includes('code') || q.includes('tree') || q.includes('graph') || q.includes('dp')) {
+            handleNavigate('dsa');
+        } else if (q.includes('aptitude') || q.includes('math') || q.includes('logical')) {
+            handleNavigate('aptitude');
+        } else if (q.includes('interview') || q.includes('hr') || q.includes('star')) {
+            handleNavigate('interviews');
+        } else {
+            handleNavigate('roadmap');
+        }
+    };
+
+    const handleLaunchCompanyRoadmap = (compName) => {
+        setSelectedCompanyForRoadmap(compName);
+        handleNavigate('roadmap');
     };
 
     return (
-        <>
-            <Navbar onOpenRoadmap={() => openSection('roadmap')} />
+        <div className="gov-app-container">
+            {/* Top GovOS-style Navigation */}
+            <Navbar activeView={activeIdeQuestion ? 'ide' : activeView} onNavigate={handleNavigate} />
 
-            <main>
-                {/* =========================
-                    HOME / HERO SECTION
-                   ========================= */}
-
-                <section id="home" className="hero-section">
-                    <h1>Your Career Journey Starts Here</h1>
-
-                    <p>
-                        Authentic campus placement intelligence platform with 2,000 verified questions, 
-                        LeetCode canonical matching, and personalized 4-stage company roadmaps.
-                    </p>
-
-                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <button
-                            onClick={() => {
-                                document.getElementById('companies').scrollIntoView({
-                                    behavior: 'smooth'
-                                });
-                            }}
-                        >
-                            Explore Companies
-                        </button>
-                        <button
-                            onClick={() => openSection('roadmap')}
-                            style={{ background: 'linear-gradient(135deg, #0284c7 0%, #6366f1 100%)', color: '#fff' }}
-                        >
-                            🎯 Target Company Roadmap
-                        </button>
+            <main className="gov-main-content">
+                {/* 1. ACTIVE IDE WORKSPACE VIEW */}
+                {activeIdeQuestion && (
+                    <div className="view-wrapper ide-view">
+                        <div className="view-breadcrumb-bar">
+                            <button className="breadcrumb-back-btn" onClick={handleBackFromIDE}>
+                                ← Back to {activeView === 'roadmap' ? 'Roadmap' : activeView === 'dsa' ? 'DSA Arena' : 'Overview'}
+                            </button>
+                            <span className="breadcrumb-current">In-Browser Code Execution Workspace</span>
+                        </div>
+                        <IDE question={activeIdeQuestion} onBack={handleBackFromIDE} />
                     </div>
-                </section>
+                )}
 
-
-                {/* =========================
-                    FEATURES SECTION
-                   ========================= */}
-
-                <section className="features">
-                    <h2>What can Sarathi help you with?</h2>
-
-                    <div className="feature-container">
-                        <div
-                            className="feature-card clickable"
-                            onClick={() => openSection('roadmap')}
-                        >
-                            <h3>🎯 Company Roadmaps</h3>
-                            <p>
-                                4-stage hiring milestones tailored for 20 top tech giants.
-                            </p>
+                {/* 2. DEDICATED VIEW: ROADMAPS */}
+                {!activeIdeQuestion && activeView === 'roadmap' && (
+                    <div className="view-wrapper">
+                        <div className="view-breadcrumb-bar">
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
+                                ← Back to Home
+                            </button>
+                            <span className="breadcrumb-current">Company-Specific Preparation Roadmap</span>
                         </div>
-
-                        <div
-                            className="feature-card clickable"
-                            onClick={() => {
-                                document.getElementById('companies').scrollIntoView({
-                                    behavior: 'smooth'
-                                });
-                            }}
-                        >
-                            <h3>Companies</h3>
-                            <p>
-                                Explore 20 top companies (10 Service + 10 Product) and hiring patterns.
-                            </p>
-                        </div>
-
-                        <div
-                            className="feature-card clickable"
-                            onClick={() => openSection('dsa')}
-                        >
-                            <h3>DSA</h3>
-                            <p>
-                                Practice 1,400 LeetCode-matched problems across all 9 pillars.
-                            </p>
-                        </div>
-
-                        <div
-                            className="feature-card clickable"
-                            onClick={() => openSection('aptitude')}
-                        >
-                            <h3>Aptitude</h3>
-                            <p>
-                                300 Quantitative, Logical, and Verbal tests with step-by-step math.
-                            </p>
-                        </div>
-
-                        <div
-                            className="feature-card clickable"
-                            onClick={() => openSection('interviews')}
-                        >
-                            <h3>Interviews</h3>
-                            <p>
-                                300 HR, Core CS, and Behavioral questions with STAR frameworks.
-                            </p>
-                        </div>
+                        <Roadmap 
+                            initialCompany={selectedCompanyForRoadmap}
+                            onBack={() => handleNavigate('home')} 
+                            onOpenIDE={handleOpenIDE} 
+                        />
                     </div>
-                </section>
+                )}
 
-
-                {/* =========================
-                    COMPANIES SECTION
-                   ========================= */}
-
-                <Companies onOpenIDE={handleOpenIDE} />
-
-
-                {/* =========================
-                    PREPARATION SECTION & IDE
-                   ========================= */}
-
-                <section id="preparation" className="preparation-section">
-                    {/* Active IDE Workspace View */}
-                    {activeIdeQuestion && (
-                        <div id="ide-workspace-section">
-                            <IDE
-                                question={activeIdeQuestion}
-                                onBack={() => setActiveIdeQuestion(null)}
-                            />
+                {/* 3. DEDICATED VIEW: COMPANIES */}
+                {!activeIdeQuestion && activeView === 'companies' && (
+                    <div className="view-wrapper">
+                        <div className="view-breadcrumb-bar">
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
+                                ← Back to Home
+                            </button>
+                            <span className="breadcrumb-current">All 20 Tech Companies & Hiring Blueprints</span>
                         </div>
-                    )}
+                        <Companies onOpenIDE={handleOpenIDE} onSelectRoadmap={handleLaunchCompanyRoadmap} />
+                    </div>
+                )}
 
-                    {!activeIdeQuestion && activePrepSection === 'roadmap' && (
-                        <Roadmap
-                            onBack={() => setActivePrepSection(null)}
-                            onOpenIDE={handleOpenIDE}
-                        />
-                    )}
+                {/* 4. DEDICATED VIEW: DSA ARENA */}
+                {!activeIdeQuestion && activeView === 'dsa' && (
+                    <div className="view-wrapper">
+                        <div className="view-breadcrumb-bar">
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
+                                ← Back to Home
+                            </button>
+                            <span className="breadcrumb-current">1,400 LeetCode-Matched DSA Practice Arena</span>
+                        </div>
+                        <DSA onBack={() => handleNavigate('home')} onOpenIDE={handleOpenIDE} />
+                    </div>
+                )}
 
-                    {!activeIdeQuestion && activePrepSection === 'dsa' && (
-                        <DSA
-                            onBack={() => setActivePrepSection(null)}
-                            onOpenIDE={handleOpenIDE}
-                        />
-                    )}
+                {/* 5. DEDICATED VIEW: APTITUDE */}
+                {!activeIdeQuestion && activeView === 'aptitude' && (
+                    <div className="view-wrapper">
+                        <div className="view-breadcrumb-bar">
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
+                                ← Back to Home
+                            </button>
+                            <span className="breadcrumb-current">Quantitative, Logical & Verbal Aptitude Arena</span>
+                        </div>
+                        <Aptitude onBack={() => handleNavigate('home')} />
+                    </div>
+                )}
 
-                    {!activeIdeQuestion && activePrepSection === 'aptitude' && (
-                        <Aptitude onBack={() => setActivePrepSection(null)} />
-                    )}
+                {/* 6. DEDICATED VIEW: INTERVIEWS */}
+                {!activeIdeQuestion && activeView === 'interviews' && (
+                    <div className="view-wrapper">
+                        <div className="view-breadcrumb-bar">
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
+                                ← Back to Home
+                            </button>
+                            <span className="breadcrumb-current">Technical & HR Interview Navigator (STAR Framework)</span>
+                        </div>
+                        <Interviews onBack={() => handleNavigate('home')} />
+                    </div>
+                )}
 
-                    {!activeIdeQuestion && activePrepSection === 'interviews' && (
-                        <Interviews onBack={() => setActivePrepSection(null)} />
-                    )}
+                {/* 7. HOMEPAGE PORTAL (GOVOS COMMAND CENTER) */}
+                {!activeIdeQuestion && activeView === 'home' && (
+                    <div className="gov-home-portal">
+                        {/* Split Hero Section */}
+                        <section className="gov-hero-section">
+                            <div className="gov-hero-content">
+                                <div className="gov-hero-tag">
+                                    <span className="tag-sparkle">✨</span>
+                                    <span>YOUR PATH TO PLACEMENT SUCCESS.</span>
+                                </div>
 
-                    {!activeIdeQuestion && !activePrepSection && (
-                        <>
-                            <h2>Preparation</h2>
+                                <h1 className="gov-hero-title">
+                                    Campus Placements.<br />
+                                    <span className="gov-title-gradient">Simplified</span> for You.
+                                </h1>
 
-                            <p className="section-intro">
-                                Build your placement preparation with focused
-                                practice areas powered by Reddit, LinkedIn, and X.
-                            </p>
+                                <p className="gov-hero-desc">
+                                    Find authentic company hiring rounds, practice 2,000 real interview questions, 
+                                    and prepare smarter with verified LeetCode canonical mappings and zero-fallback testcases.
+                                </p>
 
-                            <div className="preparation-container">
-                                <div className="preparation-card" style={{ border: '1px solid rgba(56, 189, 248, 0.4)' }}>
-                                    <h3 style={{ color: '#38bdf8' }}>🎯 Company Roadmaps</h3>
-                                    <p>
-                                        Select your target company (Amazon, TCS, Google, Zoho...) and follow a 
-                                        structured 4-stage milestone curriculum directly mapped to hiring rounds.
-                                    </p>
-                                    <button onClick={() => openSection('roadmap')} style={{ background: '#0284c7', color: '#fff' }}>
-                                        Start Roadmap
+                                {/* Search Bar Hub */}
+                                <form className="gov-search-form" onSubmit={handleSearch}>
+                                    <div className="gov-search-box">
+                                        <span className="search-icon">🔍</span>
+                                        <input 
+                                            type="text" 
+                                            placeholder="Search company, topic, or role (e.g. Amazon, Zoho, Graphs, NQT)..."
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                        />
+                                        <button type="submit" className="search-action-btn">
+                                            Search
+                                        </button>
+                                    </div>
+                                </form>
+
+                                {/* Popular Quick Tags */}
+                                <div className="gov-popular-tags">
+                                    <span className="tags-label">Popular:</span>
+                                    {['Amazon', 'TCS', 'Google', 'Zoho', 'Flipkart', 'Accenture'].map(tag => (
+                                        <button 
+                                            key={tag}
+                                            className="tag-pill"
+                                            onClick={() => handleLaunchCompanyRoadmap(tag)}
+                                        >
+                                            {tag}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {/* Primary CTA Action Buttons */}
+                                <div className="gov-hero-actions">
+                                    <button 
+                                        className="primary-hero-btn"
+                                        onClick={() => handleNavigate('roadmap')}
+                                    >
+                                        <span>🎯 Explore Target Roadmaps</span>
+                                        <span className="btn-arrow">→</span>
+                                    </button>
+
+                                    <button 
+                                        className="secondary-hero-btn"
+                                        onClick={() => handleNavigate('companies')}
+                                    >
+                                        <span>🏢 Browse 20 Companies</span>
                                     </button>
                                 </div>
+                            </div>
 
-                                <div className="preparation-card">
-                                    <h3>DSA</h3>
-                                    <p>
-                                        Practice 1,400 data structures & algorithm problems
-                                        with automated LeetCode matching and in-browser IDE.
-                                    </p>
-                                    <button onClick={() => openSection('dsa')}>Explore DSA</button>
-                                </div>
+                            {/* Hero Right Artistic Graphic Card */}
+                            <div className="gov-hero-graphic-card">
+                                <div className="graphic-glass-panel">
+                                    <div className="graphic-badge">
+                                        <span>🌟 Small Steps, Big Opportunities</span>
+                                    </div>
 
-                                <div className="preparation-card">
-                                    <h3>Aptitude</h3>
-                                    <p>
-                                        Improve quantitative aptitude, logical
-                                        reasoning, and verbal ability with step-by-step math solutions.
-                                    </p>
-                                    <button onClick={() => openSection('aptitude')}>Practice Aptitude</button>
-                                </div>
+                                    <div className="graphic-illustration-art">
+                                        <div className="campus-dome-silhouette">🏛️</div>
+                                        <div className="student-silhouette">🎒 🚶‍♂️</div>
+                                        <div className="success-stars">✨ 🎯 🚀</div>
+                                    </div>
 
-                                <div className="preparation-card">
-                                    <h3>Interviews</h3>
-                                    <p>
-                                        Prepare for technical (DBMS, OS, OOP) and HR behavioral
-                                        interview rounds with STAR answer guidelines from LinkedIn.
-                                    </p>
-                                    <button onClick={() => openSection('interviews')}>Prepare for Interviews</button>
+                                    <div className="graphic-stat-strip">
+                                        <div className="g-stat">
+                                            <strong>20</strong>
+                                            <span>Companies</span>
+                                        </div>
+                                        <div className="g-divider"></div>
+                                        <div className="g-stat">
+                                            <strong>2,000</strong>
+                                            <span>Real Questions</span>
+                                        </div>
+                                        <div className="g-divider"></div>
+                                        <div className="g-stat">
+                                            <strong>0</strong>
+                                            <span>Dummy Fallbacks</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </>
-                    )}
-                </section>
+                        </section>
 
+                        {/* 4 Pastel Quick-Access Action Cards */}
+                        <section className="gov-quick-cards-section">
+                            <div className="gov-cards-grid">
+                                <div 
+                                    className="gov-feature-card pastel-green"
+                                    onClick={() => handleNavigate('roadmap')}
+                                    role="button"
+                                    tabIndex={0}
+                                >
+                                    <div className="card-icon-bubble green">🎯</div>
+                                    <h3>Target Company Roadmaps</h3>
+                                    <p>Authentic 4-round recruitment pipelines for 20 companies with round-specific question alignment.</p>
+                                    <span className="card-arrow-link">Explore Roadmaps →</span>
+                                </div>
 
-                {/* =========================
-                    RESOURCES SECTION
-                   ========================= */}
+                                <div 
+                                    className="gov-feature-card pastel-peach"
+                                    onClick={() => handleNavigate('dsa')}
+                                    role="button"
+                                    tabIndex={0}
+                                >
+                                    <div className="card-icon-bubble peach">💻</div>
+                                    <h3>DSA Code Arena</h3>
+                                    <p>1,400 LeetCode-matched problems across all 9 pillars with real-time in-browser code execution.</p>
+                                    <span className="card-arrow-link">Start Coding →</span>
+                                </div>
 
-                <section id="resources" className="resources-section">
-                    <h2>Resources</h2>
+                                <div 
+                                    className="gov-feature-card pastel-lavender"
+                                    onClick={() => handleNavigate('aptitude')}
+                                    role="button"
+                                    tabIndex={0}
+                                >
+                                    <div className="card-icon-bubble lavender">🧠</div>
+                                    <h3>Aptitude & Reasoning</h3>
+                                    <p>300 quantitative, logical, and verbal questions with step-by-step mathematical derivations.</p>
+                                    <span className="card-arrow-link">Practice Aptitude →</span>
+                                </div>
 
-                    <p className="section-intro">
-                        Access useful resources to support your placement
-                        preparation.
-                    </p>
+                                <div 
+                                    className="gov-feature-card pastel-blue"
+                                    onClick={() => handleNavigate('interviews')}
+                                    role="button"
+                                    tabIndex={0}
+                                >
+                                    <div className="card-icon-bubble blue">🤝</div>
+                                    <h3>Interview Navigator</h3>
+                                    <p>300 HR, Core CS, and behavioral questions with STAR framework models and evaluation rubrics.</p>
+                                    <span className="card-arrow-link">Prepare Interviews →</span>
+                                </div>
+                            </div>
+                        </section>
 
-                    <div className="resources-container">
-                        <div 
-                            className="resource-card clickable" 
-                            style={{ cursor: 'pointer' }}
-                            onClick={() => openSection('roadmap')}
-                        >
-                            <h3>Roadmaps</h3>
-                            <p>
-                                Follow structured 4-stage learning paths for
-                                20 top target companies.
-                            </p>
-                        </div>
+                        {/* How Sarathi Works Horizontal Progression Banner */}
+                        <section className="gov-workflow-section">
+                            <div className="workflow-title-box">
+                                <h2>How Sarathi Works</h2>
+                                <p>A simple, transparent way to stay ahead in your campus placement journey.</p>
+                            </div>
 
-                        <div className="resource-card">
-                            <h3>Study Material</h3>
-                            <p>
-                                Access important concepts and learning
-                                material.
-                            </p>
-                        </div>
+                            <div className="workflow-container">
+                                <div className="workflow-steps-strip">
+                                    <div className="workflow-step">
+                                        <div className="step-num-badge">1</div>
+                                        <div className="step-text">
+                                            <h4>Select Target Company</h4>
+                                            <p>Choose from 20 top product & service companies.</p>
+                                        </div>
+                                    </div>
+                                    <div className="workflow-connector">→</div>
 
-                        <div className="resource-card">
-                            <h3>Practice Resources</h3>
-                            <p>
-                                Find useful resources for regular practice
-                                and preparation.
-                            </p>
-                        </div>
+                                    <div className="workflow-step">
+                                        <div className="step-num-badge">2</div>
+                                        <div className="step-text">
+                                            <h4>Follow Authentic Rounds</h4>
+                                            <p>Prepare for exact filtration stages with real candidate memory questions.</p>
+                                        </div>
+                                    </div>
+                                    <div className="workflow-connector">→</div>
+
+                                    <div className="workflow-step">
+                                        <div className="step-num-badge">3</div>
+                                        <div className="step-text">
+                                            <h4>Practice & Master</h4>
+                                            <p>Test with real cases in the IDE, take quizzes, and master STAR frameworks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="workflow-quote-box">
+                                    <div className="quote-mark">“</div>
+                                    <p>A structured step towards preparation creates a big placement opportunity tomorrow.</p>
+                                    <div className="quote-accent-bar"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Popular Companies Strip */}
+                        <section className="gov-popular-companies-section">
+                            <div className="companies-strip-header">
+                                <div>
+                                    <h2>Popular Recruiters</h2>
+                                    <p>Explore the most sought-after campus placement companies in tech.</p>
+                                </div>
+                                <button className="view-all-link" onClick={() => handleNavigate('companies')}>
+                                    View All 20 Companies →
+                                </button>
+                            </div>
+
+                            <div className="popular-companies-cards-row">
+                                {POPULAR_COMPANIES.map(comp => (
+                                    <div 
+                                        key={comp.name} 
+                                        className="popular-comp-card"
+                                        onClick={() => handleLaunchCompanyRoadmap(comp.name)}
+                                    >
+                                        <div className="comp-card-top">
+                                            <div className="comp-avatar">{comp.name.charAt(0)}</div>
+                                            <span className={`comp-type-pill ${comp.type}`}>
+                                                {comp.badge}
+                                            </span>
+                                        </div>
+                                        <h4>{comp.name}</h4>
+                                        <span className="comp-role-sub">{comp.role}</span>
+                                        <span className="comp-launch-text">Open Roadmap →</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
                     </div>
-                </section>
+                )}
             </main>
-        </>
+        </div>
     );
 }
 

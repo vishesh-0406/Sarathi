@@ -1,42 +1,55 @@
 import { useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
+import { useTheme } from '../context/ThemeContext';
+import './IDE.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
 const DEFAULT_TEMPLATES = {
     python: (title) => `# Problem: ${title || 'Solution'}
-# Write your Python 3 solution below.
-# Output printed to standard output is verified against the expected output.
+# Language: Python 3
+# ==========================================
+# >>> WRITE YOUR SOLUTION CODE BELOW <<<
+# ==========================================
 
 def solve():
-    # TODO: Implement solution logic
+    # Write your solution logic here
     print("Solution executed")
 
 if __name__ == "__main__":
     solve()
 `,
     javascript: (title) => `// Problem: ${title || 'Solution'}
-// Write your JavaScript (Node.js) solution below.
+// Language: JavaScript (Node.js)
+// ==========================================
+// >>> WRITE YOUR SOLUTION CODE BELOW <<<
+// ==========================================
 
 function solve() {
-    // TODO: Implement solution logic
+    // Write your solution logic here
     console.log("Solution executed");
 }
 
 solve();
 `,
     java: (title) => `// Problem: ${title || 'Solution'}
-// Write your Java solution below.
+// Language: Java
+// ==========================================
+// >>> WRITE YOUR SOLUTION CODE BELOW <<<
+// ==========================================
 
 public class Solution {
     public static void main(String[] args) {
-        // TODO: Implement solution logic
+        // Write your solution logic here
         System.out.println("Solution executed");
     }
 }
 `,
     cpp: (title) => `// Problem: ${title || 'Solution'}
-// Write your C++ (GCC) solution below.
+// Language: C++ (GCC)
+// ==========================================
+// >>> WRITE YOUR SOLUTION CODE BELOW <<<
+// ==========================================
 
 #include <iostream>
 #include <vector>
@@ -46,7 +59,7 @@ public class Solution {
 using namespace std;
 
 int main() {
-    // TODO: Implement solution logic
+    // Write your solution logic here
     cout << "Solution executed" << endl;
     return 0;
 }
@@ -54,6 +67,7 @@ int main() {
 };
 
 function IDE({ question, onBack }) {
+    const { theme } = useTheme();
     const [language, setLanguage] = useState('python');
     const [code, setCode] = useState('');
     const [activeTab, setActiveTab] = useState('testcase'); // 'testcase' | 'result'
@@ -411,6 +425,14 @@ function IDE({ question, onBack }) {
 
                 {/* Right Panel: Monaco Editor & Interactive Testcase Console */}
                 <div className="ide-editor-panel">
+                    {/* Visual Editor Bar */}
+                    <div className="editor-header-bar">
+                        <div className="editor-file-tab">
+                            <span>💻 solution.{language === 'python' ? 'py' : language === 'javascript' ? 'js' : language === 'java' ? 'java' : 'cpp'}</span>
+                        </div>
+                        <span className="editor-tip">Type code here · Click ▶ Run Code below to compile & verify</span>
+                    </div>
+
                     {/* Monaco Editor Container */}
                     <div className="monaco-wrapper">
                         <Editor
@@ -418,7 +440,7 @@ function IDE({ question, onBack }) {
                             language={language === 'javascript' ? 'javascript' : language}
                             value={code}
                             onChange={(val) => setCode(val || '')}
-                            theme="vs-dark"
+                            theme={theme === 'dark' ? 'vs-dark' : 'light'}
                             options={{
                                 fontSize: 14,
                                 minimap: { enabled: false },
@@ -476,6 +498,22 @@ function IDE({ question, onBack }) {
                                         >
                                             + Custom Case
                                         </button>
+
+                                        {selectedCaseIdx !== 'custom' && (
+                                            <button
+                                                type="button"
+                                                className="restore-case-btn"
+                                                onClick={() => {
+                                                    if (testCases[selectedCaseIdx]) {
+                                                        setCurrentInput(testCases[selectedCaseIdx].input || '');
+                                                        setCurrentExpected(testCases[selectedCaseIdx].output || '');
+                                                    }
+                                                }}
+                                                title="Restore this test case to its original default values"
+                                            >
+                                                ↺ Restore Default
+                                            </button>
+                                        )}
                                     </div>
 
                                     {/* Active Case Inputs Grid */}
