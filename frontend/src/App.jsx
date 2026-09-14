@@ -1,10 +1,11 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Companies from './components/Companies';
 import DSA from './components/DSA';
 import Aptitude from './components/Aptitude';
 import Interviews from './components/Interviews';
+import Roadmap from './components/Roadmap';
 import IDE from './components/IDE';
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
 
     return (
         <>
-            <Navbar />
+            <Navbar onOpenRoadmap={() => openSection('roadmap')} />
 
             <main>
                 {/* =========================
@@ -41,19 +42,27 @@ function App() {
                     <h1>Your Career Journey Starts Here</h1>
 
                     <p>
-                        Prepare for placements with the right resources,
-                        company information, and interview preparation.
+                        Authentic campus placement intelligence platform with 2,000 verified questions, 
+                        LeetCode canonical matching, and personalized 4-stage company roadmaps.
                     </p>
 
-                    <button
-                        onClick={() => {
-                            document.getElementById('companies').scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }}
-                    >
-                        Explore Companies
-                    </button>
+                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <button
+                            onClick={() => {
+                                document.getElementById('companies').scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            }}
+                        >
+                            Explore Companies
+                        </button>
+                        <button
+                            onClick={() => openSection('roadmap')}
+                            style={{ background: 'linear-gradient(135deg, #0284c7 0%, #6366f1 100%)', color: '#fff' }}
+                        >
+                            🎯 Target Company Roadmap
+                        </button>
+                    </div>
                 </section>
 
 
@@ -67,6 +76,16 @@ function App() {
                     <div className="feature-container">
                         <div
                             className="feature-card clickable"
+                            onClick={() => openSection('roadmap')}
+                        >
+                            <h3>🎯 Company Roadmaps</h3>
+                            <p>
+                                4-stage hiring milestones tailored for 20 top tech giants.
+                            </p>
+                        </div>
+
+                        <div
+                            className="feature-card clickable"
                             onClick={() => {
                                 document.getElementById('companies').scrollIntoView({
                                     behavior: 'smooth'
@@ -75,7 +94,7 @@ function App() {
                         >
                             <h3>Companies</h3>
                             <p>
-                                Explore 12 top companies and 600 verified hiring patterns.
+                                Explore 20 top companies (10 Service + 10 Product) and hiring patterns.
                             </p>
                         </div>
 
@@ -85,7 +104,7 @@ function App() {
                         >
                             <h3>DSA</h3>
                             <p>
-                                Practice 600 LeetCode-matched coding problems by topic.
+                                Practice 1,400 LeetCode-matched problems across all 9 pillars.
                             </p>
                         </div>
 
@@ -95,7 +114,7 @@ function App() {
                         >
                             <h3>Aptitude</h3>
                             <p>
-                                Practice Quantitative, Logical, and Verbal tests with instant checks.
+                                300 Quantitative, Logical, and Verbal tests with step-by-step math.
                             </p>
                         </div>
 
@@ -105,7 +124,7 @@ function App() {
                         >
                             <h3>Interviews</h3>
                             <p>
-                                Prepare for HR, Core CS, and Behavioral rounds from LinkedIn.
+                                300 HR, Core CS, and Behavioral questions with STAR frameworks.
                             </p>
                         </div>
                     </div>
@@ -134,6 +153,13 @@ function App() {
                         </div>
                     )}
 
+                    {!activeIdeQuestion && activePrepSection === 'roadmap' && (
+                        <Roadmap
+                            onBack={() => setActivePrepSection(null)}
+                            onOpenIDE={handleOpenIDE}
+                        />
+                    )}
+
                     {!activeIdeQuestion && activePrepSection === 'dsa' && (
                         <DSA
                             onBack={() => setActivePrepSection(null)}
@@ -159,10 +185,21 @@ function App() {
                             </p>
 
                             <div className="preparation-container">
+                                <div className="preparation-card" style={{ border: '1px solid rgba(56, 189, 248, 0.4)' }}>
+                                    <h3 style={{ color: '#38bdf8' }}>🎯 Company Roadmaps</h3>
+                                    <p>
+                                        Select your target company (Amazon, TCS, Google, Zoho...) and follow a 
+                                        structured 4-stage milestone curriculum directly mapped to hiring rounds.
+                                    </p>
+                                    <button onClick={() => openSection('roadmap')} style={{ background: '#0284c7', color: '#fff' }}>
+                                        Start Roadmap
+                                    </button>
+                                </div>
+
                                 <div className="preparation-card">
                                     <h3>DSA</h3>
                                     <p>
-                                        Practice 600 data structures & algorithm problems
+                                        Practice 1,400 data structures & algorithm problems
                                         with automated LeetCode matching and in-browser IDE.
                                     </p>
                                     <button onClick={() => openSection('dsa')}>Explore DSA</button>
@@ -204,11 +241,15 @@ function App() {
                     </p>
 
                     <div className="resources-container">
-                        <div className="resource-card">
+                        <div 
+                            className="resource-card clickable" 
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => openSection('roadmap')}
+                        >
                             <h3>Roadmaps</h3>
                             <p>
-                                Follow structured learning paths for
-                                placement preparation.
+                                Follow structured 4-stage learning paths for
+                                20 top target companies.
                             </p>
                         </div>
 

@@ -1,6 +1,6 @@
-import './Navbar.css';
+﻿import './Navbar.css';
 
-function Navbar() {
+function Navbar({ onOpenRoadmap }) {
     return (
         <nav className="navbar">
             <h2>SARATHI</h2>
@@ -9,6 +9,18 @@ function Navbar() {
                 <a href="#home">Home</a>
 
                 <a href="#companies">Companies</a>
+
+                <a 
+                    href="#preparation" 
+                    onClick={(e) => {
+                        if (onOpenRoadmap) {
+                            e.preventDefault();
+                            onOpenRoadmap();
+                        }
+                    }}
+                >
+                    Roadmaps
+                </a>
 
                 <a href="#preparation">Preparation</a>
 
