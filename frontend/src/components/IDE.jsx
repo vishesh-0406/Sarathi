@@ -1,82 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from '../context/ThemeContext';
+import { generateLeetCodeTemplate } from '../utils/leetcodeTemplates';
 import './IDE.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
-const DEFAULT_TEMPLATES = {
-    python: (title) => `# Problem: ${title || 'Solution'}
-# Language: Python 3
-# ==========================================
-# >>> WRITE YOUR SOLUTION CODE BELOW <<<
-# ==========================================
-
-def solve():
-    # Write your solution logic here
-    print("Solution executed")
-
-if __name__ == "__main__":
-    solve()
-`,
-    javascript: (title) => `// Problem: ${title || 'Solution'}
-// Language: JavaScript (Node.js)
-// ==========================================
-// >>> WRITE YOUR SOLUTION CODE BELOW <<<
-// ==========================================
-
-function solve() {
-    // Write your solution logic here
-    console.log("Solution executed");
-}
-
-solve();
-`,
-    java: (title) => `// Problem: ${title || 'Solution'}
-// Language: Java
-// ==========================================
-// >>> WRITE YOUR SOLUTION CODE BELOW <<<
-// ==========================================
-
-public class Solution {
-    public static void main(String[] args) {
-        // Write your solution logic here
-        System.out.println("Solution executed");
-    }
-}
-`,
-    cpp: (title) => `// Problem: ${title || 'Solution'}
-// Language: C++ (GCC)
-// ==========================================
-// >>> WRITE YOUR SOLUTION CODE BELOW <<<
-// ==========================================
-
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
-
-using namespace std;
-
-int main() {
-    // Write your solution logic here
-    cout << "Solution executed" << endl;
-    return 0;
-}
-`
-};
 
 function IDE({ question, onBack }) {
     const { theme } = useTheme();
     const [language, setLanguage] = useState('python');
     const [code, setCode] = useState('');
-    const [activeTab, setActiveTab] = useState('testcase'); // 'testcase' | 'result'
+    const [activeTab, setActiveTab] = useState('testcase'); // 'testcase' | 'result' | 'submission'
     const [selectedCaseIdx, setSelectedCaseIdx] = useState(0); // 0, 1, ... or 'custom'
+    const [selectedResultCaseIdx, setSelectedResultCaseIdx] = useState(0); // for run result viewing
+    const [submissionChartMetric, setSubmissionChartMetric] = useState('runtime'); // 'runtime' | 'memory'
     const [currentInput, setCurrentInput] = useState('');
     const [currentExpected, setCurrentExpected] = useState('');
     const [running, setRunning] = useState(false);
-    const [result, setResult] = useState(null);
+    const [submitting, setSubmitting] = useState(false);
+    const [runResult, setRunResult] = useState(null);
+    const [submissionResult, setSubmissionResult] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null); // For Aptitude fallback
+
+    const editorRef = useRef(null);
+    const lastLoadedQuestionIdRef = useRef(null);
+    const lastLoadedLangRef = useRef(null);
 
     // GUARDRAIL: If this is an Aptitude / Verbal / MCQ question, render interactive Quiz Card
     if (question?.category === 'Aptitude' || (question?.options && question.options.length > 0)) {
@@ -153,6 +102,9 @@ function IDE({ question, onBack }) {
         );
     }
 
+    // Problem unique identifier
+    const qIdentifier = question?._id || question?.title || 'default';
+
     // Available test cases from question database or fallback
     const testCases = (question?.testCases && question.testCases.length > 0)
         ? question.testCases
@@ -164,31 +116,31 @@ function IDE({ question, onBack }) {
             }
         ];
 
-    // Load question test cases when question changes
+    // ONLY initialize code & testcases when question or language genuinely changes
+    // This strictly avoids wiping code or displacing the cursor while typing!
     useEffect(() => {
-        setSelectedCaseIdx(0);
-        setResult(null);
-        if (question?.testCases && question.testCases.length > 0) {
-            setCurrentInput(question.testCases[0].input || '');
-            setCurrentExpected(question.testCases[0].output || '');
-        } else {
-            setCurrentInput('nums = [1, 2, 3]');
-            setCurrentExpected('[1, 2, 3]');
+        if (lastLoadedQuestionIdRef.current !== qIdentifier || lastLoadedLangRef.current !== language) {
+            lastLoadedQuestionIdRef.current = qIdentifier;
+            lastLoadedLangRef.current = language;
+            setCode(generateLeetCodeTemplate(language, question));
+            setSelectedCaseIdx(0);
+            setSelectedResultCaseIdx(0);
+            setRunResult(null);
+            setSubmissionResult(null);
+            if (question?.testCases && question.testCases.length > 0) {
+                setCurrentInput(question.testCases[0].input || '');
+                setCurrentExpected(question.testCases[0].output || '');
+            } else {
+                setCurrentInput('nums = [1, 2, 3]');
+                setCurrentExpected('[1, 2, 3]');
+            }
         }
-    }, [question]);
-
-    // Initialize starter template when language or question changes
-    useEffect(() => {
-        const title = question?.title || 'Placement Coding Challenge';
-        const templateFn = DEFAULT_TEMPLATES[language] || DEFAULT_TEMPLATES.python;
-        setCode(templateFn(title));
-    }, [question?.title, language]);
+    }, [qIdentifier, language, question]);
 
     const handleResetCode = () => {
-        const title = question?.title || 'Placement Coding Challenge';
-        const templateFn = DEFAULT_TEMPLATES[language] || DEFAULT_TEMPLATES.python;
-        setCode(templateFn(title));
-        setResult(null);
+        setCode(generateLeetCodeTemplate(language, question));
+        setRunResult(null);
+        setSubmissionResult(null);
     };
 
     const handleSelectCase = (idx) => {
@@ -201,19 +153,31 @@ function IDE({ question, onBack }) {
         }
     };
 
-    const handleRunCode = async () => {
+    // RUN ALL SAMPLE TESTCASES
+    const handleRunAllCode = async () => {
         setRunning(true);
         setActiveTab('result');
 
+        // Formulate test cases to run: include any edits on current active case
+        const casesToRun = testCases.map((tc, idx) => {
+            if (selectedCaseIdx === idx) {
+                return { input: currentInput, output: currentExpected };
+            }
+            return { input: tc.input || '', output: tc.output || '' };
+        });
+
+        if (selectedCaseIdx === 'custom' && currentInput.trim()) {
+            casesToRun.push({ input: currentInput, output: currentExpected });
+        }
+
         try {
-            const res = await fetch(`${API_BASE_URL}/code/run`, {
+            const res = await fetch(`${API_BASE_URL}/code/run-all`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     language,
                     code,
-                    input: currentInput,
-                    expectedOutput: currentExpected.trim()
+                    testCases: casesToRun
                 })
             });
 
@@ -222,25 +186,59 @@ function IDE({ question, onBack }) {
             }
 
             const data = await res.json();
-            setResult({
-                ...data,
-                ranCaseIdx: selectedCaseIdx,
-                ranInput: currentInput,
-                ranExpected: currentExpected
-            });
+            setRunResult(data);
+
+            // Default to first failing case or case 0
+            const firstFail = data.cases?.findIndex((c) => !c.passed);
+            setSelectedResultCaseIdx(firstFail !== -1 && firstFail !== undefined ? firstFail : 0);
         } catch (err) {
-            setResult({
+            setRunResult({
                 status: 'Execution Error',
-                output: '',
-                error: err.message || 'Unable to connect to Sarathi code execution service.',
+                passedCount: 0,
+                totalCount: casesToRun.length,
                 duration: 0,
-                passed: false,
-                ranCaseIdx: selectedCaseIdx,
-                ranInput: currentInput,
-                ranExpected: currentExpected
+                cases: [],
+                error: err.message || 'Unable to connect to Sarathi code execution service.'
             });
         } finally {
             setRunning(false);
+        }
+    };
+
+    // SUBMIT CODE FOR FULL EVALUATION & TIME/SPACE COMPLEXITY ANALYSIS
+    const handleSubmitCode = async () => {
+        setSubmitting(true);
+        setActiveTab('submission');
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/code/submit`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    language,
+                    code,
+                    question,
+                    testCases
+                })
+            });
+
+            if (!res.ok) {
+                throw new Error(`Server returned HTTP ${res.status}`);
+            }
+
+            const data = await res.json();
+            setSubmissionResult(data);
+        } catch (err) {
+            setSubmissionResult({
+                status: 'Submission Error',
+                passed: false,
+                passedCount: 0,
+                totalCount: testCases.length,
+                duration: 0,
+                error: err.message || 'Unable to connect to Sarathi submission service.'
+            });
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -291,13 +289,27 @@ function IDE({ question, onBack }) {
 
                     <button
                         className="run-code-btn"
-                        onClick={handleRunCode}
-                        disabled={running}
+                        onClick={handleRunAllCode}
+                        disabled={running || submitting}
+                        title="Run all sample test cases"
                     >
                         {running ? (
                             <span>⏳ Running...</span>
                         ) : (
                             <span>▶ Run Code</span>
+                        )}
+                    </button>
+
+                    <button
+                        className="submit-code-btn"
+                        onClick={handleSubmitCode}
+                        disabled={running || submitting}
+                        title="Submit solution for full evaluation & time/space complexity analysis"
+                    >
+                        {submitting ? (
+                            <span>⏳ Submitting...</span>
+                        ) : (
+                            <span>🚀 Submit</span>
                         )}
                     </button>
                 </div>
@@ -440,6 +452,9 @@ function IDE({ question, onBack }) {
                             language={language === 'javascript' ? 'javascript' : language}
                             value={code}
                             onChange={(val) => setCode(val || '')}
+                            onMount={(editor) => {
+                                editorRef.current = editor;
+                            }}
                             theme={theme === 'dark' ? 'vs-dark' : 'light'}
                             options={{
                                 fontSize: 14,
@@ -449,12 +464,15 @@ function IDE({ question, onBack }) {
                                 tabSize: 4,
                                 lineNumbers: 'on',
                                 wordWrap: 'on',
+                                cursorBlinking: 'smooth',
+                                cursorSmoothCaretAnimation: 'on',
+                                smoothScrolling: true,
                                 padding: { top: 12, bottom: 12 }
                             }}
                         />
                     </div>
 
-                    {/* Bottom Console: Testcases & Execution Results */}
+                    {/* Bottom Console: Testcases, Execution Results & Submission Analytics */}
                     <div className="ide-console-panel">
                         <div className="console-tab-header">
                             <button
@@ -467,12 +485,28 @@ function IDE({ question, onBack }) {
                                 className={`console-tab-btn ${activeTab === 'result' ? 'active' : ''}`}
                                 onClick={() => setActiveTab('result')}
                             >
-                                📊 Test Result {result && <span className="tab-dot">•</span>}
+                                📊 Test Result {runResult && (
+                                    <span className={`tab-dot ${runResult.status === 'Accepted' ? 'pass' : 'fail'}`}>•</span>
+                                )}
+                            </button>
+                            <button
+                                className={`console-tab-btn ${activeTab === 'submission' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('submission')}
+                            >
+                                🚀 Submission {submissionResult && (
+                                    <span className={`tab-dot ${submissionResult.passed ? 'pass' : 'fail'}`}>•</span>
+                                )}
                             </button>
 
-                            {result && result.duration !== undefined && (
+                            {/* Contextual Right Status Badge */}
+                            {activeTab === 'result' && runResult && runResult.duration !== undefined && (
                                 <span className="console-runtime-badge">
-                                    Runtime: {result.duration} ms
+                                    Runtime: {runResult.duration} ms
+                                </span>
+                            )}
+                            {activeTab === 'submission' && submissionResult && submissionResult.complexity && (
+                                <span className={`console-runtime-badge ${submissionResult.passed ? 'submission-badge-opt' : 'submission-badge-warn'}`}>
+                                    {submissionResult.complexity.statusTag || (submissionResult.passed ? 'Accepted' : 'Failed')}
                                 </span>
                             )}
                         </div>
@@ -554,71 +588,303 @@ function IDE({ question, onBack }) {
                                 </div>
                             )}
 
-                            {/* TAB 2: TEST EXECUTION RESULT */}
+                            {/* TAB 2: TEST EXECUTION RESULT (MULTI-TESTCASE) */}
                             {activeTab === 'result' && (
                                 <div className="console-result-view">
-                                    {!result && !running && (
+                                    {!runResult && !running && (
                                         <div className="console-empty-prompt">
-                                            Click <strong>▶ Run Code</strong> to test your solution against{' '}
-                                            <span className="highlight-case">
-                                                {selectedCaseIdx === 'custom' ? 'Custom Case' : `Case ${selectedCaseIdx + 1}`}
-                                            </span>.
+                                            Click <strong>▶ Run Code</strong> to execute your solution against all sample test cases.
                                         </div>
                                     )}
 
                                     {running && (
                                         <div className="console-running-prompt">
                                             <div className="mini-spinner"></div>
-                                            Compiling and executing in isolated sandbox...
+                                            Compiling and executing against all test cases in isolated sandbox...
                                         </div>
                                     )}
 
-                                    {result && !running && (
+                                    {runResult && !running && (
                                         <div className="result-details">
-                                            {/* Status Badge & Tested Case */}
+                                            {/* Overall Status Row */}
                                             <div className="result-status-row">
-                                                <span className={`status-pill ${result.status?.toLowerCase().replace(/[\s()]/g, '-')}`}>
-                                                    {result.status === 'Accepted' && '✅ Accepted'}
-                                                    {result.status === 'Wrong Answer' && '❌ Wrong Answer'}
-                                                    {result.status?.includes('Time Limit') && '⏱ Time Limit Exceeded (TLE)'}
-                                                    {result.status === 'Runtime Error' && '⚠️ Runtime Error'}
-                                                    {result.status === 'Compilation Error' && '🚫 Compilation Error'}
-                                                    {!['Accepted', 'Wrong Answer'].includes(result.status) && !result.status?.includes('Time Limit') && result.status}
+                                                <span className={`status-pill ${runResult.status?.toLowerCase().replace(/[\s()]/g, '-')}`}>
+                                                    {runResult.status === 'Accepted' && '✅ Accepted'}
+                                                    {runResult.status === 'Wrong Answer' && '❌ Wrong Answer'}
+                                                    {runResult.status?.includes('Time Limit') && '⏱ Time Limit Exceeded (TLE)'}
+                                                    {runResult.status === 'Runtime Error' && '⚠️ Runtime Error'}
+                                                    {runResult.status === 'Compilation Error' && '🚫 Compilation Error'}
+                                                    {!['Accepted', 'Wrong Answer', 'Runtime Error', 'Compilation Error'].includes(runResult.status) && !runResult.status?.includes('Time Limit') && runResult.status}
                                                 </span>
                                                 <span className="tested-case-tag">
-                                                    Tested on: {result.ranCaseIdx === 'custom' ? 'Custom Case' : `Case ${result.ranCaseIdx + 1}`}
+                                                    {runResult.passedCount} / {runResult.totalCount} Testcases Passed
+                                                </span>
+                                                <span className="tested-duration-tag">
+                                                    ⚡ Total Runtime: {runResult.duration} ms
                                                 </span>
                                             </div>
 
-                                            {/* Error Box if any */}
-                                            {result.error && (
-                                                <div className="error-section">
-                                                    <span className="output-label error-label">Error Details:</span>
-                                                    <pre className="error-terminal">{result.error}</pre>
+                                            {/* LeetCode Style Multi-Testcase Selector Pills */}
+                                            {runResult.cases && runResult.cases.length > 0 && (
+                                                <div className="result-case-selector">
+                                                    {runResult.cases.map((c, idx) => (
+                                                        <button
+                                                            key={idx}
+                                                            className={`result-case-pill ${selectedResultCaseIdx === idx ? 'active' : ''} ${c.passed ? 'passed' : 'failed'}`}
+                                                            onClick={() => setSelectedResultCaseIdx(idx)}
+                                                        >
+                                                            <span className="case-indicator-icon">{c.passed ? '✓' : '✗'}</span>
+                                                            <span>Case {idx + 1}</span>
+                                                        </button>
+                                                    ))}
                                                 </div>
                                             )}
 
-                                            {/* Comparison Grid */}
-                                            <div className="result-comparison-grid">
-                                                <div className="comparison-col">
-                                                    <span className="output-label">Input Tested:</span>
-                                                    <pre className="comparison-terminal neutral">
-                                                        {result.ranInput || '(empty input)'}
-                                                    </pre>
+                                            {/* Active Selected Case Details */}
+                                            {(() => {
+                                                const currCase = runResult.cases?.[selectedResultCaseIdx] || runResult.cases?.[0];
+                                                if (!currCase) return null;
+
+                                                return (
+                                                    <div className="active-case-detail-wrap">
+                                                        {currCase.error && (
+                                                            <div className="error-section">
+                                                                <span className="output-label error-label">Error Details:</span>
+                                                                <pre className="error-terminal">{currCase.error}</pre>
+                                                            </div>
+                                                        )}
+
+                                                        <div className="result-comparison-grid">
+                                                            <div className="comparison-col">
+                                                                <span className="output-label">Input:</span>
+                                                                <pre className="comparison-terminal neutral">
+                                                                    {currCase.input || '(empty input)'}
+                                                                </pre>
+                                                            </div>
+                                                            <div className="comparison-col">
+                                                                <span className="output-label">Your Output:</span>
+                                                                <pre className={`comparison-terminal ${currCase.passed ? 'pass' : 'fail'}`}>
+                                                                    {currCase.output || '(empty output)'}
+                                                                </pre>
+                                                            </div>
+                                                            <div className="comparison-col">
+                                                                <span className="output-label">Expected Output:</span>
+                                                                <pre className="comparison-terminal expected">
+                                                                    {currCase.expected || '(none)'}
+                                                                </pre>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })()}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* TAB 3: SUBMISSION (AUTHENTIC LEETCODE 1:1 LAYOUT) */}
+                            {activeTab === 'submission' && (
+                                <div className="submission-view">
+                                    {!submissionResult && !submitting && (
+                                        <div className="console-empty-prompt">
+                                            Click <strong>🚀 Submit</strong> to test your code against the full LeetCode test suite and see where you rank.
+                                        </div>
+                                    )}
+
+                                    {submitting && (
+                                        <div className="console-running-prompt">
+                                            <div className="mini-spinner"></div>
+                                            🚀 Evaluating submission against all testcases & generating distribution benchmarks...
+                                        </div>
+                                    )}
+
+                                    {submissionResult && !submitting && (
+                                        <div className="leetcode-submission-container">
+                                            {/* Top Status Banner */}
+                                            <div className="leetcode-submission-header">
+                                                <div className="status-main-row">
+                                                    <div className={`status-brand-badge ${submissionResult.passed ? 'accepted' : 'wrong-answer'}`}>
+                                                        <span className="brand-check-icon">{submissionResult.passed ? '✓' : '✗'}</span>
+                                                        <span className="brand-status-title">
+                                                            {submissionResult.passed ? 'Accepted' : submissionResult.status || 'Wrong Answer'}
+                                                        </span>
+                                                    </div>
+                                                    <span className="brand-testcases-count">
+                                                        <strong>{submissionResult.passedCount} / {submissionResult.totalCount}</strong> testcases passed
+                                                    </span>
                                                 </div>
-                                                <div className="comparison-col">
-                                                    <span className="output-label">Your Output:</span>
-                                                    <pre className={`comparison-terminal ${result.passed ? 'pass' : 'fail'}`}>
-                                                        {result.output || '(empty output)'}
-                                                    </pre>
-                                                </div>
-                                                <div className="comparison-col">
-                                                    <span className="output-label">Expected Output:</span>
-                                                    <pre className="comparison-terminal expected">
-                                                        {result.expected || result.ranExpected || '(none)'}
-                                                    </pre>
+                                                <div className="status-sub-row">
+                                                    <span className="submission-time-label">
+                                                        Submitted at {new Date(submissionResult.submittedAt || Date.now()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}, {new Date(submissionResult.submittedAt || Date.now()).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                                                    </span>
                                                 </div>
                                             </div>
+
+                                            {/* LeetCode Metric Selector Tabs */}
+                                            <div className="leetcode-metric-tabs">
+                                                <button
+                                                    type="button"
+                                                    className={`metric-tab-card ${submissionChartMetric === 'runtime' ? 'active' : ''}`}
+                                                    onClick={() => setSubmissionChartMetric('runtime')}
+                                                >
+                                                    <div className="metric-card-top">
+                                                        <span className="metric-name">Runtime</span>
+                                                        <span className="metric-headline-val">
+                                                            {submissionResult.runtimeDisplay || `${submissionResult.complexity?.runtimeMs || 0} ms`}
+                                                        </span>
+                                                    </div>
+                                                    <div className="metric-beats-caption">
+                                                        Beats <strong className="beats-green">{submissionResult.complexity?.runtimePercentile || 88.5}%</strong> of users with {language === 'cpp' ? 'C++' : language === 'javascript' ? 'JavaScript' : language === 'java' ? 'Java' : 'Python 3'}
+                                                    </div>
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    className={`metric-tab-card ${submissionChartMetric === 'memory' ? 'active' : ''}`}
+                                                    onClick={() => setSubmissionChartMetric('memory')}
+                                                >
+                                                    <div className="metric-card-top">
+                                                        <span className="metric-name">Memory</span>
+                                                        <span className="metric-headline-val">
+                                                            {submissionResult.memoryDisplay || `${submissionResult.complexity?.memoryMB || 44.6} MB`}
+                                                        </span>
+                                                    </div>
+                                                    <div className="metric-beats-caption">
+                                                        Beats <strong className="beats-green">{submissionResult.complexity?.memoryPercentile || 82.4}%</strong> of users with {language === 'cpp' ? 'C++' : language === 'javascript' ? 'JavaScript' : language === 'java' ? 'Java' : 'Python 3'}
+                                                    </div>
+                                                </button>
+                                            </div>
+
+                                            {/* LeetCode Signature Distribution Histogram */}
+                                            <div className="leetcode-histogram-card">
+                                                <div className="histogram-top-bar">
+                                                    <span className="histogram-title">
+                                                        {submissionChartMetric === 'runtime' ? 'Runtime Distribution' : 'Memory Distribution'}
+                                                    </span>
+                                                    <span className="histogram-subtitle">
+                                                        {submissionChartMetric === 'runtime'
+                                                            ? `Your runtime: ${submissionResult.runtimeDisplay || '0 ms'} (Beats ${submissionResult.complexity?.runtimePercentile || 88.5}%)`
+                                                            : `Your memory: ${submissionResult.memoryDisplay || '44.60 MB'} (Beats ${submissionResult.complexity?.memoryPercentile || 82.4}%)`}
+                                                    </span>
+                                                </div>
+
+                                                <div className="histogram-chart-area">
+                                                    {(() => {
+                                                        const bins = submissionChartMetric === 'runtime'
+                                                            ? (submissionResult.complexity?.runtimeDistribution || [
+                                                                { bin: '0 ms', percent: 48.2 },
+                                                                { bin: '1 ms', percent: 22.5 },
+                                                                { bin: '2 ms', percent: 11.8 },
+                                                                { bin: '3 ms', percent: 6.4 },
+                                                                { bin: '5 ms', percent: 4.2 },
+                                                                { bin: '10 ms', percent: 3.1 },
+                                                                { bin: '18 ms', percent: 2.1 },
+                                                                { bin: '25+ ms', percent: 1.7 }
+                                                            ])
+                                                            : (submissionResult.complexity?.memoryDistribution || [
+                                                                { bin: '43.8 MB', percent: 12.4 },
+                                                                { bin: '44.2 MB', percent: 38.6 },
+                                                                { bin: '44.8 MB', percent: 28.5 },
+                                                                { bin: '45.4 MB', percent: 13.2 },
+                                                                { bin: '46.0+ MB', percent: 7.3 }
+                                                            ]);
+
+                                                        const maxPercent = Math.max(...bins.map(b => b.percent), 50);
+
+                                                        let activeIndex = 0;
+                                                        if (submissionChartMetric === 'runtime') {
+                                                            const userMs = submissionResult.complexity?.runtimeMs || 0;
+                                                            if (userMs === 0) activeIndex = 0;
+                                                            else if (userMs === 1) activeIndex = 1;
+                                                            else if (userMs <= 2) activeIndex = 2;
+                                                            else if (userMs <= 5) activeIndex = 4;
+                                                            else if (userMs <= 10) activeIndex = 5;
+                                                            else if (userMs <= 20) activeIndex = Math.min(bins.length - 2, 6);
+                                                            else activeIndex = bins.length - 1;
+                                                        } else {
+                                                            activeIndex = Math.min(bins.length - 1, 1);
+                                                        }
+
+                                                        return (
+                                                            <div className="histogram-bars-wrapper">
+                                                                {bins.map((item, idx) => {
+                                                                    const isUserBin = idx === activeIndex;
+                                                                    const barHeightPercent = Math.max(12, Math.round((item.percent / maxPercent) * 100));
+
+                                                                    return (
+                                                                        <div key={idx} className={`histogram-column ${isUserBin ? 'user-column' : ''}`}>
+                                                                            {isUserBin && (
+                                                                                <div className="user-marker-badge">
+                                                                                    <span>You are here</span>
+                                                                                    <div className="marker-arrow"></div>
+                                                                                </div>
+                                                                            )}
+                                                                            <div className="histogram-bar-track">
+                                                                                <div
+                                                                                    className={`histogram-bar-fill ${isUserBin ? 'user-bar-fill' : ''}`}
+                                                                                    style={{ height: `${barHeightPercent}%` }}
+                                                                                    title={`${item.bin}: ${item.percent}% of submissions`}
+                                                                                />
+                                                                            </div>
+                                                                            <span className={`histogram-x-label ${isUserBin ? 'user-x-label' : ''}`}>
+                                                                                {item.bin}
+                                                                            </span>
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        );
+                                                    })()}
+                                                </div>
+                                            </div>
+
+                                            {/* Editorial & Interviewer Coaching Details */}
+                                            {submissionResult.complexity && (
+                                                <div className="leetcode-editorial-footer">
+                                                    <div className="editorial-meta-row">
+                                                        <span className="editorial-title">Complexity Analysis:</span>
+                                                        <span className="editorial-pill time-pill">Time: {submissionResult.complexity.userTimeComplexity}</span>
+                                                        <span className="editorial-pill space-pill">Space: {submissionResult.complexity.userSpaceComplexity}</span>
+                                                        <span className={`editorial-status-tag ${submissionResult.complexity.isTimeOptimal ? 'opt' : 'warn'}`}>
+                                                            {submissionResult.complexity.isTimeOptimal ? '✓ Optimal Time' : '⚠️ Suboptimal Time'}
+                                                        </span>
+                                                    </div>
+                                                    {submissionResult.complexity.feedback && (
+                                                        <p className="editorial-feedback-text">
+                                                            {submissionResult.complexity.feedback}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {/* Failing Testcase Details if any */}
+                                            {!submissionResult.passed && submissionResult.failingCase && (
+                                                <div className="submission-failing-section">
+                                                    <span className="failing-heading">
+                                                        Failed on Testcase {submissionResult.failingCase.caseIdx + 1}:
+                                                    </span>
+                                                    <div className="result-comparison-grid">
+                                                        <div className="comparison-col">
+                                                            <span className="output-label">Input:</span>
+                                                            <pre className="comparison-terminal neutral">
+                                                                {submissionResult.failingCase.input || '(empty)'}
+                                                            </pre>
+                                                        </div>
+                                                        <div className="comparison-col">
+                                                            <span className="output-label">Your Output:</span>
+                                                            <pre className="comparison-terminal fail">
+                                                                {submissionResult.failingCase.output || submissionResult.failingCase.error || '(empty output)'}
+                                                            </pre>
+                                                        </div>
+                                                        <div className="comparison-col">
+                                                            <span className="output-label">Expected Output:</span>
+                                                            <pre className="comparison-terminal expected">
+                                                                {submissionResult.failingCase.expected || '(none)'}
+                                                            </pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                 </div>

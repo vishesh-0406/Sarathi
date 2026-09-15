@@ -185,28 +185,55 @@
 }
 
 .run-code-btn {
-    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-    color: #ffffff;
-    border: none;
-    padding: 8px 20px;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-color);
+    padding: 7px 18px;
     border-radius: 8px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
     transition: all 0.2s ease;
 }
 
 .run-code-btn:hover:not(:disabled) {
-    background: linear-gradient(135deg, #047857 0%, #059669 100%);
+    background-color: var(--bg-subtle);
+    border-color: var(--border-hover);
+    color: var(--accent-primary);
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
 }
 
 .run-code-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.submit-code-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.35);
+    transition: all 0.2s ease;
+}
+
+.submit-code-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.5);
+}
+
+.submit-code-btn:disabled {
     opacity: 0.6;
     cursor: wait;
 }
@@ -606,8 +633,15 @@
 }
 
 .tab-dot {
-    color: var(--accent-emerald);
     font-size: 1rem;
+}
+
+.tab-dot.pass {
+    color: var(--accent-emerald);
+}
+
+.tab-dot.fail {
+    color: var(--accent-rose);
 }
 
 .console-runtime-badge {
@@ -620,6 +654,18 @@
     border-radius: 6px;
     font-family: var(--mono);
     font-weight: 700;
+}
+
+.console-runtime-badge.submission-badge-opt {
+    color: var(--accent-emerald);
+    background-color: var(--accent-emerald-light);
+    border-color: rgba(5, 150, 105, 0.3);
+}
+
+.console-runtime-badge.submission-badge-warn {
+    color: var(--accent-amber);
+    background-color: var(--accent-amber-light);
+    border-color: rgba(217, 119, 6, 0.3);
 }
 
 .console-tab-content {
@@ -943,6 +989,411 @@
     margin: 0;
     max-height: 110px;
     overflow-y: auto;
+}
+
+.tested-duration-tag {
+    font-size: 0.78rem;
+    color: var(--accent-emerald);
+    background-color: var(--accent-emerald-light);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    font-weight: 700;
+    font-family: var(--mono);
+}
+
+/* LeetCode Style Multi-Testcase Selector Pills */
+.result-case-selector {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.result-case-pill {
+    background-color: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.result-case-pill:hover {
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+}
+
+.result-case-pill.active {
+    background-color: var(--accent-primary-light);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+}
+
+.case-indicator-icon {
+    font-weight: 900;
+    font-size: 0.88rem;
+}
+
+.result-case-pill.passed .case-indicator-icon {
+    color: var(--accent-emerald);
+}
+
+.result-case-pill.failed .case-indicator-icon {
+    color: var(--accent-rose);
+}
+
+.active-case-detail-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ============================================================
+   SUBMISSION (AUTHENTIC LEETCODE 1:1 LAYOUT & DISTRIBUTION CHART)
+   ============================================================ */
+.submission-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.leetcode-submission-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 4px 2px;
+}
+
+/* Top Header: Accepted / Wrong Answer + Testcases Count */
+.leetcode-submission-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-main-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.status-brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.status-brand-badge.accepted {
+    color: #2cbb5d;
+}
+
+.status-brand-badge.wrong-answer {
+    color: #ef4444;
+}
+
+.brand-check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #2cbb5d;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 900;
+}
+
+.status-brand-badge.wrong-answer .brand-check-icon {
+    background-color: #ef4444;
+}
+
+.brand-testcases-count {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.brand-testcases-count strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.status-sub-row {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* LeetCode Metric Selector Tabs (Runtime & Memory) */
+.leetcode-metric-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 640px) {
+    .leetcode-metric-tabs {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metric-tab-card {
+    background-color: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.metric-tab-card:hover {
+    border-color: var(--border-hover);
+    background-color: var(--bg-subtle);
+}
+
+.metric-tab-card.active {
+    border-color: #2cbb5d;
+    background-color: rgba(44, 187, 93, 0.05);
+    box-shadow: 0 2px 8px rgba(44, 187, 93, 0.15);
+}
+
+.metric-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.metric-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.metric-headline-val {
+    font-family: var(--mono);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.metric-beats-caption {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+.beats-green {
+    color: #2cbb5d;
+    font-weight: 800;
+}
+
+/* LeetCode Signature Distribution Histogram Card */
+.leetcode-histogram-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.histogram-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.histogram-title {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.histogram-subtitle {
+    font-size: 0.78rem;
+    font-family: var(--mono);
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.histogram-chart-area {
+    height: 140px;
+    display: flex;
+    align-items: flex-end;
+    padding: 18px 4px 4px 4px;
+}
+
+.histogram-bars-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.histogram-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.user-marker-badge {
+    position: absolute;
+    top: -24px;
+    background: #0284c7;
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.4);
+    z-index: 2;
+}
+
+.marker-arrow {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #0284c7;
+}
+
+.histogram-bar-track {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: flex-end;
+    background: transparent;
+}
+
+.histogram-bar-fill {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    background-color: rgba(2, 132, 199, 0.22);
+    transition: height 0.4s ease-out;
+}
+
+.user-bar-fill {
+    background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
+    box-shadow: 0 0 10px rgba(2, 132, 199, 0.5);
+}
+
+.histogram-x-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-family: var(--mono);
+    white-space: nowrap;
+}
+
+.user-x-label {
+    color: var(--accent-primary);
+    font-weight: 800;
+}
+
+/* Editorial & FAANG Interviewer Insights */
+.leetcode-editorial-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.editorial-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.editorial-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.editorial-pill {
+    font-size: 0.76rem;
+    font-family: var(--mono);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.editorial-status-tag {
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 9999px;
+}
+
+.editorial-status-tag.opt {
+    background-color: rgba(44, 187, 93, 0.12);
+    color: #2cbb5d;
+    border: 1px solid rgba(44, 187, 93, 0.3);
+}
+
+.editorial-status-tag.warn {
+    background-color: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.editorial-feedback-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin: 0;
+}
+
+.submission-failing-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.failing-heading {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--accent-rose);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
 }
 
 /* ============================================================
