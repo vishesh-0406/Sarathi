@@ -448,39 +448,50 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                             <div className="aptitude-quiz-box">
                                                                                 <strong>Select Answer:</strong>
                                                                                 <div className="quiz-options-list">
-                                                                                    {q.options.map((opt, i) => {
-                                                                                        const isSelected = userChoice === opt;
-                                                                                        const isCorrect = opt === q.correctOption;
-                                                                                        let optClass = 'quiz-opt';
-                                                                                        if (userChoice) {
-                                                                                            if (isCorrect) optClass += ' correct';
-                                                                                            else if (isSelected) optClass += ' wrong';
-                                                                                        }
-                                                                                        return (
-                                                                                            <button
-                                                                                                key={i}
-                                                                                                className={optClass}
-                                                                                                onClick={() => handleSelectOption(q._id, opt)}
-                                                                                            >
-                                                                                                {opt}
-                                                                                            </button>
-                                                                                        );
-                                                                                    })}
-                                                                                </div>
+                                                                                    {(() => {
+                                                                                        const correctLetter = (q.correctOption || '').trim().match(/^[A-D]/i) ? (q.correctOption || '').trim()[0].toUpperCase() : '';
+                                                                                        const userChoiceLetter = (userChoice || '').trim().match(/^[A-D]/i) ? (userChoice || '').trim()[0].toUpperCase() : userChoice;
+                                                                                        const isUserAnswerCorrect = userChoiceLetter === correctLetter;
 
-                                                                                {userChoice && (
-                                                                                    <div className="quiz-feedback-box">
-                                                                                        <p className={userChoice === q.correctOption ? 'feedback-correct' : 'feedback-wrong'}>
-                                                                                            {userChoice === q.correctOption ? '✓ Correct Answer!' : `✗ Incorrect. Correct: ${q.correctOption}`}
-                                                                                        </p>
-                                                                                        {q.explanation && (
-                                                                                            <div className="math-explanation">
-                                                                                                <strong>Step-by-step Solution:</strong>
-                                                                                                <p>{q.explanation}</p>
-                                                                                            </div>
-                                                                                        )}
-                                                                                    </div>
-                                                                                )}
+                                                                                        return (
+                                                                                            <>
+                                                                                                {q.options.map((opt, i) => {
+                                                                                                    const optLetter = opt.trim().match(/^[A-D]/i) ? opt.trim()[0].toUpperCase() : String.fromCharCode(65 + i);
+                                                                                                    const isSelected = userChoiceLetter === optLetter;
+                                                                                                    const isOptCorrect = optLetter === correctLetter;
+                                                                                                    let optClass = 'quiz-opt';
+                                                                                                    if (userChoice) {
+                                                                                                        if (isOptCorrect) optClass += ' correct';
+                                                                                                        else if (isSelected) optClass += ' wrong';
+                                                                                                    }
+                                                                                                    return (
+                                                                                                        <button
+                                                                                                            key={i}
+                                                                                                            className={optClass}
+                                                                                                            onClick={() => handleSelectOption(q._id, optLetter)}
+                                                                                                        >
+                                                                                                            {opt}
+                                                                                                        </button>
+                                                                                                    );
+                                                                                                })}
+
+                                                                                                {userChoice && (
+                                                                                                    <div className="quiz-feedback-box">
+                                                                                                        <p className={isUserAnswerCorrect ? 'feedback-correct' : 'feedback-wrong'}>
+                                                                                                            {isUserAnswerCorrect ? '✓ Correct Answer!' : `✗ Incorrect. Correct: Option ${correctLetter || q.correctOption}`}
+                                                                                                        </p>
+                                                                                                        {q.explanation && (
+                                                                                                            <div className="math-explanation">
+                                                                                                                <strong>Step-by-step Solution:</strong>
+                                                                                                                <p>{q.explanation}</p>
+                                                                                                            </div>
+                                                                                                        )}
+                                                                                                    </div>
+                                                                                                )}
+                                                                                            </>
+                                                                                        );
+                                                                                    })()}
+                                                                                </div>
                                                                             </div>
                                                                         )}
 

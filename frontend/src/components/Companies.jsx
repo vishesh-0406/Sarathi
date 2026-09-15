@@ -363,37 +363,44 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                     <div className="company-mcq-section">
                                         <h5 className="mcq-prompt">Choose the correct answer:</h5>
                                         <div className="options-grid">
-                                            {currentQuestion.options.map((opt, i) => {
-                                                const optLetter = opt.trim()[0];
-                                                const isSelected = selectedOption === optLetter;
-                                                const isCorrect = currentQuestion.correctOption === optLetter;
-                                                let btnClass = 'option-btn';
-                                                if (selectedOption) {
-                                                    if (isCorrect) btnClass += ' correct';
-                                                    else if (isSelected) btnClass += ' incorrect';
-                                                }
+                                            {(() => {
+                                                const correctLetter = (currentQuestion.correctOption || '').trim().match(/^[A-D]/i) ? (currentQuestion.correctOption || '').trim()[0].toUpperCase() : '';
                                                 return (
-                                                    <button
-                                                        key={i}
-                                                        type="button"
-                                                        className={btnClass}
-                                                        onClick={() => setSelectedOption(optLetter)}
-                                                    >
-                                                        <span className="option-indicator">{optLetter}</span>
-                                                        <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
-                                                    </button>
-                                                );
-                                            })}
-                                        </div>
+                                                    <>
+                                                        {currentQuestion.options.map((opt, i) => {
+                                                            const optLetter = opt.trim().match(/^[A-D]/i) ? opt.trim()[0].toUpperCase() : String.fromCharCode(65 + i);
+                                                            const isSelected = selectedOption === optLetter;
+                                                            const isCorrect = optLetter === correctLetter;
+                                                            let btnClass = 'option-btn';
+                                                            if (selectedOption) {
+                                                                if (isCorrect) btnClass += ' correct';
+                                                                else if (isSelected) btnClass += ' incorrect';
+                                                            }
+                                                            return (
+                                                                <button
+                                                                    key={i}
+                                                                    type="button"
+                                                                    className={btnClass}
+                                                                    onClick={() => setSelectedOption(optLetter)}
+                                                                >
+                                                                    <span className="option-indicator">{optLetter}</span>
+                                                                    <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
+                                                                </button>
+                                                            );
+                                                        })}
 
-                                        {selectedOption && currentQuestion.explanation && (
-                                            <div className="explanation-card">
-                                                <div className="explanation-status">
-                                                    {selectedOption === currentQuestion.correctOption ? '🎉 Correct Answer!' : '❌ Incorrect Selection'}
-                                                </div>
-                                                <p className="explanation-detail">{currentQuestion.explanation}</p>
-                                            </div>
-                                        )}
+                                                        {selectedOption && currentQuestion.explanation && (
+                                                            <div className="explanation-card">
+                                                                <div className="explanation-status">
+                                                                    {selectedOption === correctLetter ? '🎉 Correct Answer!' : `❌ Incorrect Selection (Correct: Option ${correctLetter || currentQuestion.correctOption})`}
+                                                                </div>
+                                                                <p className="explanation-detail">{currentQuestion.explanation}</p>
+                                                            </div>
+                                                        )}
+                                                    </>
+                                                );
+                                            })()}
+                                        </div>
                                     </div>
                                 )}
 

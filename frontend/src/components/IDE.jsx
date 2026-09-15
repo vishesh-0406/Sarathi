@@ -62,29 +62,44 @@ function IDE({ question, onBack }) {
                         </div>
 
                         <div className="options-grid">
-                            {question.options.map((opt, idx) => {
-                                const optLetter = String.fromCharCode(65 + idx);
+                            {(() => {
+                                const correctLetter = (question.correctOption || '').trim().match(/^[A-D]/i) ? (question.correctOption || '').trim()[0].toUpperCase() : '';
                                 return (
-                                    <button
-                                        key={idx}
-                                        className={`option-btn ${selectedOption === optLetter ? 'selected' : ''}`}
-                                        onClick={() => setSelectedOption(optLetter)}
-                                    >
-                                        <span className="option-indicator">{optLetter}</span>
-                                        <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
-                                    </button>
-                                );
-                            })}
-                        </div>
+                                    <>
+                                        {question.options.map((opt, idx) => {
+                                            const optLetter = opt.trim().match(/^[A-D]/i) ? opt.trim()[0].toUpperCase() : String.fromCharCode(65 + idx);
+                                            const isSelected = selectedOption === optLetter;
+                                            const isCorrect = optLetter === correctLetter;
+                                            let btnClass = 'option-btn';
+                                            if (selectedOption) {
+                                                if (isCorrect) btnClass += ' correct';
+                                                else if (isSelected) btnClass += ' incorrect';
+                                            }
+                                            return (
+                                                <button
+                                                    key={idx}
+                                                    type="button"
+                                                    className={btnClass}
+                                                    onClick={() => setSelectedOption(optLetter)}
+                                                >
+                                                    <span className="option-indicator">{optLetter}</span>
+                                                    <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
+                                                </button>
+                                            );
+                                        })}
 
-                        {selectedOption && question.explanation && (
-                            <div className="explanation-card">
-                                <div className="explanation-status">
-                                    {selectedOption === question.correctOption ? '🎉 Correct Answer!' : '❌ Incorrect Selection'}
-                                </div>
-                                <p className="explanation-detail">{question.explanation}</p>
-                            </div>
-                        )}
+                                        {selectedOption && question.explanation && (
+                                            <div className="explanation-card">
+                                                <div className="explanation-status">
+                                                    {selectedOption === correctLetter ? '🎉 Correct Answer!' : `❌ Incorrect Selection (Correct: Option ${correctLetter || question.correctOption})`}
+                                                </div>
+                                                <p className="explanation-detail">{question.explanation}</p>
+                                            </div>
+                                        )}
+                                    </>
+                                );
+                            })()}
+                        </div>
                     </div>
 
                     <div className="non-coding-footer-hint">
