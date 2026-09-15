@@ -450,6 +450,8 @@ ${code}
                     args = [raw];
                 }
             }
+        }
+
         if (typeof func === 'function' && func.length > args.length) {
             while (args.length < func.length) {
                 args.push(undefined);

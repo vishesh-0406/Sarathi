@@ -288,6 +288,7 @@ function IDE({ question, onBack }) {
     };
 
     const matchedLeetcode = question?.matchedProblems?.[0];
+    const authorUsername = (typeof window !== 'undefined' && localStorage.getItem('sarathi_username')) || 'vishesh_0406';
 
     return (
         <div className="ide-container">
@@ -595,7 +596,7 @@ function IDE({ question, onBack }) {
                                     {/* Author Row */}
                                     <div className="lc-author-row">
                                         <div className="lc-author-avatar">👤</div>
-                                        <span className="lc-author-name">vishesh_0406</span>
+                                        <span className="lc-author-name">{authorUsername}</span>
                                         <span className="lc-author-date">
                                             submitted at {formatSubmissionDate(submissionResult.submittedAt)}
                                         </span>
