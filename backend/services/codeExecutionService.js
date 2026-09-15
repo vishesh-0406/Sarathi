@@ -189,18 +189,24 @@ if __name__ == "__main__":
 
     if __func:
         __args = []
+        __sig = None
+        try:
+            __sig = inspect.signature(__func)
+        except Exception:
+            pass
+
         if __raw_input:
             try:
-                __sig = inspect.signature(__func)
-                for __p in __sig.parameters.values():
-                    if __p.name in __env:
-                        __val = __env[__p.name]
-                        if isinstance(__val, list):
-                            if any(k in __p.name.lower() for k in ['root', 'tree', 'p', 'q']) or 'TreeNode' in str(__p.annotation):
-                                __val = __build_tree(__val)
-                            elif any(k in __p.name.lower() for k in ['head', 'list']) or 'ListNode' in str(__p.annotation):
-                                __val = __build_list(__val)
-                        __args.append(__val)
+                if __sig:
+                    for __p in __sig.parameters.values():
+                        if __p.name in __env:
+                            __val = __env[__p.name]
+                            if isinstance(__val, list):
+                                if any(k in __p.name.lower() for k in ['root', 'tree', 'p', 'q']) or 'TreeNode' in str(__p.annotation):
+                                    __val = __build_tree(__val)
+                                elif any(k in __p.name.lower() for k in ['head', 'list']) or 'ListNode' in str(__p.annotation):
+                                    __val = __build_list(__val)
+                            __args.append(__val)
             except Exception:
                 pass
 
@@ -209,15 +215,35 @@ if __name__ == "__main__":
                     __cleaned = __raw_input.replace('null', 'None').replace('true', 'True').replace('false', 'False')
                     __val = ast.literal_eval(__cleaned)
                     if isinstance(__val, list):
-                        __sig = inspect.signature(__func)
-                        __first_p = list(__sig.parameters.values())[0] if __sig.parameters else None
-                        if __first_p and any(k in __first_p.name.lower() for k in ['root', 'tree']):
-                            __val = __build_tree(__val)
-                        elif __first_p and any(k in __first_p.name.lower() for k in ['head', 'list']):
-                            __val = __build_list(__val)
+                        if __sig and __sig.parameters:
+                            __first_p = list(__sig.parameters.values())[0]
+                            if any(k in __first_p.name.lower() for k in ['root', 'tree']):
+                                __val = __build_tree(__val)
+                            elif any(k in __first_p.name.lower() for k in ['head', 'list']):
+                                __val = __build_list(__val)
                     __args = [__val]
                 except Exception:
                     __args = [__raw_input]
+
+        if __sig:
+            try:
+                __params = [p for p in __sig.parameters.values() if p.kind in (inspect.Parameter.POSITIONAL_ONLY, inspect.Parameter.POSITIONAL_OR_KEYWORD)]
+                while len(__args) < len(__params):
+                    __p = __params[len(__args)]
+                    if __p.default is not inspect.Parameter.empty:
+                        __args.append(__p.default)
+                    else:
+                        __name = __p.name.lower()
+                        if any(k in __name for k in ['nums', 'arr', 'list']):
+                            __args.append([])
+                        elif any(k in __name for k in ['s', 'str', 'word']):
+                            __args.append("")
+                        elif any(k in __name for k in ['val', 'target', 'k', 'n', 'num']):
+                            __args.append(0)
+                        else:
+                            __args.append(None)
+            except Exception:
+                pass
 
         try:
             __res = __func(*__args)
@@ -424,6 +450,10 @@ ${code}
                     args = [raw];
                 }
             }
+        if (typeof func === 'function' && func.length > args.length) {
+            while (args.length < func.length) {
+                args.push(undefined);
+            }
         }
 
         const res = func(...args);
@@ -554,13 +584,27 @@ public class Main {
             Class<?>[] pTypes = target.getParameterTypes();
             Object[] invokeArgs = new Object[pTypes.length];
 
-            if (pTypes.length == 1) {
-                invokeArgs[0] = parseArg(raw, pTypes[0]);
-            } else if (pTypes.length > 1) {
-                for (int i = 0; i < Math.min(parts.length, pTypes.length); i++) {
-                    String part = parts[i];
+            for (int i = 0; i < pTypes.length; i++) {
+                if (i < parts.length && parts[i] != null && !parts[i].trim().isEmpty()) {
+                    String part = parts[i].trim();
                     if (part.contains("=")) part = part.substring(part.indexOf('=') + 1).trim();
-                    invokeArgs[i] = parseArg(part, pTypes[i]);
+                    try {
+                        Object val = parseArg(part, pTypes[i]);
+                        invokeArgs[i] = (val != null) ? val : getDefaultValue(pTypes[i]);
+                    } catch (Exception parseEx) {
+                        invokeArgs[i] = getDefaultValue(pTypes[i]);
+                    }
+                } else if (pTypes.length == 1 && !raw.trim().isEmpty()) {
+                    String part = raw.trim();
+                    if (part.contains("=")) part = part.substring(part.indexOf('=') + 1).trim();
+                    try {
+                        Object val = parseArg(part, pTypes[0]);
+                        invokeArgs[0] = (val != null) ? val : getDefaultValue(pTypes[0]);
+                    } catch (Exception parseEx) {
+                        invokeArgs[0] = getDefaultValue(pTypes[0]);
+                    }
+                } else {
+                    invokeArgs[i] = getDefaultValue(pTypes[i]);
                 }
             }
 
@@ -589,49 +633,87 @@ public class Main {
         }
     }
 
+    private static Object getDefaultValue(Class<?> type) {
+        if (type == int.class || type == Integer.class) return 0;
+        if (type == long.class || type == Long.class) return 0L;
+        if (type == double.class || type == Double.class) return 0.0;
+        if (type == float.class || type == Float.class) return 0.0f;
+        if (type == boolean.class || type == Boolean.class) return false;
+        if (type == char.class || type == Character.class) return ' ';
+        if (type == byte.class || type == Byte.class) return (byte) 0;
+        if (type == short.class || type == Short.class) return (short) 0;
+        if (type == int[].class) return new int[0];
+        if (type == long[].class) return new long[0];
+        if (type == double[].class) return new double[0];
+        if (type == String[].class) return new String[0];
+        if (type == String.class) return "";
+        if (type == List.class) return new ArrayList<>();
+        if (type == Map.class) return new HashMap<>();
+        if (type == Set.class) return new HashSet<>();
+        return null;
+    }
+
     private static Object parseArg(String str, Class<?> type) {
+        if (str == null) return getDefaultValue(type);
         str = str.trim();
+        if (str.isEmpty()) return getDefaultValue(type);
         if (str.contains("=")) str = str.substring(str.indexOf('=') + 1).trim();
-        if (type == TreeNode.class) {
-            return parseTree(str);
-        } else if (type == ListNode.class) {
-            return parseList(str);
-        } else if (type == int.class || type == Integer.class) {
-            return Integer.parseInt(str.replaceAll("[^0-9-]", ""));
-        } else if (type == long.class || type == Long.class) {
-            return Long.parseLong(str.replaceAll("[^0-9-]", ""));
-        } else if (type == double.class || type == Double.class) {
-            return Double.parseDouble(str);
-        } else if (type == boolean.class || type == Boolean.class) {
-            return Boolean.parseBoolean(str);
-        } else if (type == String.class) {
-            if (str.length() >= 2 && str.charAt(0) == '\"' && str.charAt(str.length() - 1) == '\"') {
-                return str.substring(1, str.length() - 1);
-            }
-            return str;
-        } else if (type == int[].class) {
-            int s = str.indexOf('['), e = str.lastIndexOf(']');
-            if (s != -1 && e != -1 && e > s) {
-                String inner = str.substring(s + 1, e).trim();
-                if (inner.isEmpty()) return new int[0];
-                String[] tokens = inner.split(",");
-                int[] arr = new int[tokens.length];
-                for (int i = 0; i < tokens.length; i++) arr[i] = Integer.parseInt(tokens[i].trim());
-                return arr;
-            }
-            return new int[0];
-        } else if (type == List.class) {
-            int s = str.indexOf('['), e = str.lastIndexOf(']');
-            List<Integer> list = new ArrayList<>();
-            if (s != -1 && e != -1 && e > s) {
-                String inner = str.substring(s + 1, e).trim();
-                if (!inner.isEmpty()) {
-                    for (String token : inner.split(",")) list.add(Integer.parseInt(token.trim()));
+        try {
+            if (type == TreeNode.class) {
+                return parseTree(str);
+            } else if (type == ListNode.class) {
+                return parseList(str);
+            } else if (type == int.class || type == Integer.class) {
+                String cleaned = str.replaceAll("[^0-9-]", "");
+                return cleaned.isEmpty() ? 0 : Integer.parseInt(cleaned);
+            } else if (type == long.class || type == Long.class) {
+                String cleaned = str.replaceAll("[^0-9-]", "");
+                return cleaned.isEmpty() ? 0L : Long.parseLong(cleaned);
+            } else if (type == double.class || type == Double.class) {
+                return Double.parseDouble(str);
+            } else if (type == boolean.class || type == Boolean.class) {
+                return Boolean.parseBoolean(str);
+            } else if (type == char.class || type == Character.class) {
+                return str.length() > 0 ? str.charAt(0) : ' ';
+            } else if (type == String.class) {
+                if (str.length() >= 2 && str.charAt(0) == '\"' && str.charAt(str.length() - 1) == '\"') {
+                    return str.substring(1, str.length() - 1);
                 }
+                return str;
+            } else if (type == int[].class) {
+                int s = str.indexOf('['), e = str.lastIndexOf(']');
+                if (s != -1 && e != -1 && e > s) {
+                    String inner = str.substring(s + 1, e).trim();
+                    if (inner.isEmpty()) return new int[0];
+                    String[] tokens = inner.split(",");
+                    List<Integer> list = new ArrayList<>();
+                    for (String token : tokens) {
+                        String cleaned = token.trim().replaceAll("[^0-9-]", "");
+                        if (!cleaned.isEmpty()) list.add(Integer.parseInt(cleaned));
+                    }
+                    int[] arr = new int[list.size()];
+                    for (int i = 0; i < list.size(); i++) arr[i] = list.get(i);
+                    return arr;
+                }
+                return new int[0];
+            } else if (type == List.class) {
+                int s = str.indexOf('['), e = str.lastIndexOf(']');
+                List<Integer> list = new ArrayList<>();
+                if (s != -1 && e != -1 && e > s) {
+                    String inner = str.substring(s + 1, e).trim();
+                    if (!inner.isEmpty()) {
+                        for (String token : inner.split(",")) {
+                            String cleaned = token.trim().replaceAll("[^0-9-]", "");
+                            if (!cleaned.isEmpty()) list.add(Integer.parseInt(cleaned));
+                        }
+                    }
+                }
+                return list;
             }
-            return list;
+        } catch (Exception ex) {
+            return getDefaultValue(type);
         }
-        return str;
+        return getDefaultValue(type);
     }
 
     private static TreeNode parseTree(String str) {
@@ -780,15 +862,15 @@ public class Main {
                     for (let i = 0; i < rawParams.length; i++) {
                         const p = rawParams[i];
                         if (p.includes('TreeNode')) {
-                            callArgs.push(`__parseTree(parts.size() > ${i} ? parts[${i}] : raw)`);
+                            callArgs.push(`__parseTree(parts.size() > ${i} ? parts[${i}] : "")`);
                         } else if (p.includes('ListNode')) {
-                            callArgs.push(`__parseList(parts.size() > ${i} ? parts[${i}] : raw)`);
+                            callArgs.push(`__parseList(parts.size() > ${i} ? parts[${i}] : "")`);
                         } else if (p.includes('vector')) {
-                            callArgs.push(`__parseVector(parts.size() > ${i} ? parts[${i}] : raw)`);
+                            callArgs.push(`__parseVector(parts.size() > ${i} ? parts[${i}] : "")`);
                         } else if (p.includes('string')) {
-                            callArgs.push(`__parseString(parts.size() > ${i} ? parts[${i}] : raw)`);
+                            callArgs.push(`__parseString(parts.size() > ${i} ? parts[${i}] : "")`);
                         } else {
-                            callArgs.push(`__parseInt(parts.size() > ${i} ? parts[${i}] : raw)`);
+                            callArgs.push(`__parseInt(parts.size() > ${i} ? parts[${i}] : "")`);
                         }
                     }
                     driverCall = `__printRes(sol.${methodName}(${callArgs.join(', ')}));`;

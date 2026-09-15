@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from '../context/ThemeContext';
 import { generateLeetCodeTemplate } from '../utils/leetcodeTemplates';
+import { getLanguageIcon } from './LanguageIcons';
 import './IDE.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -11,7 +12,9 @@ function IDE({ question, onBack }) {
     const { theme } = useTheme();
     const [language, setLanguage] = useState('python');
     const [code, setCode] = useState('');
-    const [activeTab, setActiveTab] = useState('testcase'); // 'testcase' | 'result' | 'submission'
+    const [activeTab, setActiveTab] = useState('testcase'); // 'testcase' | 'result'
+    const [leftPanelTab, setLeftPanelTab] = useState('description'); // 'description' | 'submission'
+    const [langDropdownOpen, setLangDropdownOpen] = useState(false);
     const [selectedCaseIdx, setSelectedCaseIdx] = useState(0); // 0, 1, ... or 'custom'
     const [selectedResultCaseIdx, setSelectedResultCaseIdx] = useState(0); // for run result viewing
     const [submissionChartMetric, setSubmissionChartMetric] = useState('runtime'); // 'runtime' | 'memory'
@@ -22,8 +25,10 @@ function IDE({ question, onBack }) {
     const [runResult, setRunResult] = useState(null);
     const [submissionResult, setSubmissionResult] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null); // For Aptitude fallback
+    const [copiedLink, setCopiedLink] = useState(false);
 
     const editorRef = useRef(null);
+    const langDropdownRef = useRef(null);
     const lastLoadedQuestionIdRef = useRef(null);
     const lastLoadedLangRef = useRef(null);
 
@@ -56,46 +61,35 @@ function IDE({ question, onBack }) {
                             <p>{question?.problemStatement}</p>
                         </div>
 
-                        <div className="company-mcq-section">
-                            <h5 className="mcq-prompt">Choose the correct answer:</h5>
-                            <div className="options-grid">
-                                {question.options.map((opt, i) => {
-                                    const optLetter = opt.trim()[0];
-                                    const isSelected = selectedOption === optLetter;
-                                    const isCorrect = question.correctOption === optLetter;
-                                    let btnClass = 'option-btn';
-                                    if (selectedOption) {
-                                        if (isCorrect) btnClass += ' correct';
-                                        else if (isSelected) btnClass += ' incorrect';
-                                    }
-                                    return (
-                                        <button
-                                            key={i}
-                                            type="button"
-                                            className={btnClass}
-                                            onClick={() => setSelectedOption(optLetter)}
-                                        >
-                                            <span className="option-indicator">{optLetter}</span>
-                                            <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
-                                        </button>
-                                    );
-                                })}
-                            </div>
+                        <div className="options-grid">
+                            {question.options.map((opt, idx) => {
+                                const optLetter = String.fromCharCode(65 + idx);
+                                return (
+                                    <button
+                                        key={idx}
+                                        className={`option-btn ${selectedOption === optLetter ? 'selected' : ''}`}
+                                        onClick={() => setSelectedOption(optLetter)}
+                                    >
+                                        <span className="option-indicator">{optLetter}</span>
+                                        <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
+                                    </button>
+                                );
+                            })}
+                        </div>
 
-                            {selectedOption && question.explanation && (
-                                <div className="explanation-card">
-                                    <div className="explanation-status">
-                                        {selectedOption === question.correctOption ? '🎉 Correct Answer!' : '❌ Incorrect Selection'}
-                                    </div>
-                                    <p className="explanation-detail">{question.explanation}</p>
+                        {selectedOption && question.explanation && (
+                            <div className="explanation-card">
+                                <div className="explanation-status">
+                                    {selectedOption === question.correctOption ? '🎉 Correct Answer!' : '❌ Incorrect Selection'}
                                 </div>
-                            )}
-                        </div>
+                                <p className="explanation-detail">{question.explanation}</p>
+                            </div>
+                        )}
+                    </div>
 
-                        <div className="non-coding-footer-hint">
-                            <span>💡 <em>Aptitude, Verbal, and Logical Reasoning questions are multiple-choice assessments and do not require code compilation.</em></span>
-                            <button className="solve-ide-btn" onClick={onBack}>← Back to Questions List</button>
-                        </div>
+                    <div className="non-coding-footer-hint">
+                        <span>💡 <em>Aptitude, Verbal, and Logical Reasoning questions are multiple-choice assessments and do not require code compilation.</em></span>
+                        <button className="solve-ide-btn" onClick={onBack}>← Back to Questions List</button>
                     </div>
                 </div>
             </div>
@@ -116,6 +110,45 @@ function IDE({ question, onBack }) {
             }
         ];
 
+    // Close language dropdown on clicking outside
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (langDropdownRef.current && !langDropdownRef.current.contains(event.target)) {
+                setLangDropdownOpen(false);
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    // Helper for formatting submission timestamp matching user screenshot
+    const formatSubmissionDate = (isoStr) => {
+        try {
+            const d = isoStr ? new Date(isoStr) : new Date();
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const m = months[d.getMonth()];
+            const day = d.getDate();
+            const y = d.getFullYear();
+            const hh = String(d.getHours()).padStart(2, '0');
+            const mm = String(d.getMinutes()).padStart(2, '0');
+            return `${m} ${day}, ${y} ${hh}:${mm}`;
+        } catch {
+            return 'Sep 15, 2026 17:24';
+        }
+    };
+
+    const handleCopySubmissionLink = () => {
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(window.location.href);
+            }
+        } catch (e) {}
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2000);
+    };
+
     // ONLY initialize code & testcases when question or language genuinely changes
     // This strictly avoids wiping code or displacing the cursor while typing!
     useEffect(() => {
@@ -127,6 +160,7 @@ function IDE({ question, onBack }) {
             setSelectedResultCaseIdx(0);
             setRunResult(null);
             setSubmissionResult(null);
+            setLeftPanelTab('description');
             if (question?.testCases && question.testCases.length > 0) {
                 setCurrentInput(question.testCases[0].input || '');
                 setCurrentExpected(question.testCases[0].output || '');
@@ -141,6 +175,7 @@ function IDE({ question, onBack }) {
         setCode(generateLeetCodeTemplate(language, question));
         setRunResult(null);
         setSubmissionResult(null);
+        setLeftPanelTab('description');
     };
 
     const handleSelectCase = (idx) => {
@@ -161,7 +196,17 @@ function IDE({ question, onBack }) {
         // Formulate test cases to run: include any edits on current active case
         const casesToRun = testCases.map((tc, idx) => {
             if (selectedCaseIdx === idx) {
-                return { input: currentInput, output: currentExpected };
+                let effectiveInput = currentInput;
+                if (!effectiveInput.trim()) {
+                    effectiveInput = tc.input || '';
+                    setCurrentInput(effectiveInput);
+                }
+                let effectiveOutput = currentExpected;
+                if (!effectiveOutput.trim()) {
+                    effectiveOutput = tc.output || '';
+                    setCurrentExpected(effectiveOutput);
+                }
+                return { input: effectiveInput, output: effectiveOutput };
             }
             return { input: tc.input || '', output: tc.output || '' };
         });
@@ -208,7 +253,7 @@ function IDE({ question, onBack }) {
     // SUBMIT CODE FOR FULL EVALUATION & TIME/SPACE COMPLEXITY ANALYSIS
     const handleSubmitCode = async () => {
         setSubmitting(true);
-        setActiveTab('submission');
+        setLeftPanelTab('submission'); // Automatically switch left panel to LeetCode submission view
 
         try {
             const res = await fetch(`${API_BASE_URL}/code/submit`, {
@@ -264,19 +309,47 @@ function IDE({ question, onBack }) {
                 </div>
 
                 <div className="ide-top-right">
-                    {/* Language Switcher */}
-                    <div className="lang-select-wrapper">
-                        <label>Language:</label>
-                        <select
-                            value={language}
-                            onChange={(e) => setLanguage(e.target.value)}
-                            className="lang-select"
+                    {/* LeetCode Style Custom Language Switcher with Official SVG Logos */}
+                    <div className="lc-lang-dropdown-container" ref={langDropdownRef}>
+                        <button
+                            type="button"
+                            className="lc-lang-btn"
+                            onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                            title="Select Programming Language"
                         >
-                            <option value="python">🐍 Python 3</option>
-                            <option value="javascript">🟨 JavaScript</option>
-                            <option value="java">☕ Java</option>
-                            <option value="cpp">⚡ C++ (GCC)</option>
-                        </select>
+                            <span className="lc-lang-btn-icon">{getLanguageIcon(language, 16)}</span>
+                            <span className="lc-lang-btn-label">
+                                {language === 'python' && 'Python 3'}
+                                {language === 'java' && 'Java'}
+                                {language === 'javascript' && 'JavaScript'}
+                                {language === 'cpp' && 'C++'}
+                            </span>
+                            <span className="lc-lang-btn-caret">▾</span>
+                        </button>
+                        {langDropdownOpen && (
+                            <div className="lc-lang-menu">
+                                {[
+                                    { id: 'python', label: 'Python 3' },
+                                    { id: 'java', label: 'Java' },
+                                    { id: 'javascript', label: 'JavaScript' },
+                                    { id: 'cpp', label: 'C++' },
+                                ].map((item) => (
+                                    <button
+                                        key={item.id}
+                                        type="button"
+                                        className={`lc-lang-menu-item ${language === item.id ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setLanguage(item.id);
+                                            setLangDropdownOpen(false);
+                                        }}
+                                    >
+                                        <span className="lc-menu-icon">{getLanguageIcon(item.id, 18)}</span>
+                                        <span className="lc-menu-label">{item.label}</span>
+                                        {language === item.id && <span className="lc-menu-check">✓</span>}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     <button
@@ -317,130 +390,400 @@ function IDE({ question, onBack }) {
 
             {/* Split Screen Workspace */}
             <div className="ide-workspace-body">
-                {/* Left Panel: Problem Statement, Examples & Constraints */}
+                {/* Left Panel: Problem Statement, Examples & LeetCode Submission View */}
                 <div className="ide-problem-panel">
-                    <div className="problem-panel-inner">
-                        <div className="problem-header-meta">
-                            <span className="round-tag">{question?.round || 'Technical Round'}</span>
-                            <span className="recency-pill">📅 {question?.batch || '2024–2026 Pattern'}</span>
-                            {matchedLeetcode && matchedLeetcode.problemUrl ? (
-                                <a
-                                    href={matchedLeetcode.problemUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`leetcode-header-pill ${matchedLeetcode.isPremium ? 'premium-header-pill' : ''}`}
-                                    title={`View formal specification on LeetCode: ${matchedLeetcode.problemName}${matchedLeetcode.isPremium ? ' (Requires LeetCode Premium)' : ''}`}
-                                >
-                                    {matchedLeetcode.isPremium ? '🔒 LeetCode Premium: ' : '🚀 LeetCode: '}
-                                    {matchedLeetcode.problemName} ({Math.round((matchedLeetcode.similarityScore || 0.95) * 100)}%) ↗
-                                </a>
-                            ) : (
+                    {/* Left Panel Tabs Header */}
+                    <div className="left-panel-tab-bar">
+                        <button
+                            type="button"
+                            className={`left-panel-tab-btn ${leftPanelTab === 'description' ? 'active' : ''}`}
+                            onClick={() => setLeftPanelTab('description')}
+                        >
+                            <span className="left-panel-tab-icon">📄</span> Description
+                        </button>
+                        {submissionResult && (
+                            <button
+                                type="button"
+                                className={`left-panel-tab-btn accepted-tab ${leftPanelTab === 'submission' ? 'active' : ''}`}
+                                onClick={() => setLeftPanelTab('submission')}
+                            >
+                                <span className="left-panel-tab-icon accepted-icon">⚡</span>
+                                <span>{submissionResult.passed ? 'Accepted' : (submissionResult.status || 'Wrong Answer')}</span>
                                 <span
-                                    className="novel-header-pill"
-                                    title="Authentic company-exclusive interview question with no LeetCode equivalent"
+                                    className="left-panel-tab-close"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setLeftPanelTab('description');
+                                    }}
+                                    title="Close submission view"
                                 >
-                                    🆕 New Question · No Match Found in LeetCode
+                                    ✕
                                 </span>
-                            )}
-                        </div>
-
-                        <h2 className="panel-heading">{question?.title}</h2>
-
-                        <div className="panel-statement">
-                            <p>{question?.problemStatement}</p>
-                        </div>
-
-                        {/* Examples Section */}
-                        {testCases && testCases.length > 0 && (
-                            <div className="panel-examples-section">
-                                <h4 className="section-subtitle">Examples & Test Cases:</h4>
-                                <div className="examples-list">
-                                    {testCases.map((tc, idx) => (
-                                        <div key={idx} className="example-card">
-                                            <div className="example-card-header">
-                                                <span className="example-number-badge">Example {idx + 1}</span>
-                                                <button
-                                                    className="load-case-btn"
-                                                    onClick={() => {
-                                                        handleSelectCase(idx);
-                                                        setActiveTab('testcase');
-                                                    }}
-                                                    title="Load this test case into the bottom console"
-                                                >
-                                                    Test this case ↳
-                                                </button>
-                                            </div>
-                                            <div className="example-field">
-                                                <span className="example-field-name">Input:</span>
-                                                <code className="example-code-val">{tc.input}</code>
-                                            </div>
-                                            <div className="example-field">
-                                                <span className="example-field-name">Output:</span>
-                                                <code className="example-code-val">{tc.output}</code>
-                                            </div>
-                                            {tc.explanation && (
-                                                <div className="example-field">
-                                                    <span className="example-field-name">Explanation:</span>
-                                                    <span className="example-explanation-val">{tc.explanation}</span>
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Constraints & Complexity */}
-                        {question?.constraints && question.constraints.length > 0 && (
-                            <div className="panel-constraints">
-                                <h4 className="section-subtitle">Constraints & Complexity:</h4>
-                                <ul>
-                                    {question.constraints.map((c, i) => (
-                                        <li key={i}>{c}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
-                        {/* LeetCode Reference Box OR Novel Question Notice */}
-                        {matchedLeetcode && matchedLeetcode.problemUrl ? (
-                            <div className="matched-leetcode-box ide-leetcode-box">
-                                <div className="match-info">
-                                    <span className="platform-tag">LeetCode</span>
-                                    <span className="match-name">{matchedLeetcode.problemName}</span>
-                                    <span className="similarity-badge">
-                                        {Math.round((matchedLeetcode.similarityScore || 0.85) * 100)}% Match
-                                    </span>
-                                </div>
-                                <a
-                                    href={matchedLeetcode.problemUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="solve-leetcode-btn"
-                                >
-                                    Verify on LeetCode ↗
-                                </a>
-                            </div>
-                        ) : (
-                            <div className="matched-leetcode-box ide-leetcode-box novel-problem-box">
-                                <div className="match-info">
-                                    <span className="novel-badge">Company Exclusive</span>
-                                    <span className="match-name">⭐ Novel Campus Question</span>
-                                </div>
-                                <p className="novel-problem-text" style={{ margin: '8px 0 0 0' }}>
-                                    ✨ Direct candidate memory question — no direct standard LeetCode equivalent.
-                                </p>
-                            </div>
+                            </button>
                         )}
                     </div>
+
+                    {leftPanelTab === 'description' ? (
+                        <div className="problem-panel-inner">
+                            <div className="problem-header-meta">
+                                <span className="round-tag">{question?.round || 'Technical Round'}</span>
+                                <span className="recency-pill">📅 {question?.batch || '2024–2026 Pattern'}</span>
+                                {matchedLeetcode && matchedLeetcode.problemUrl ? (
+                                    <a
+                                        href={matchedLeetcode.problemUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`leetcode-header-pill ${matchedLeetcode.isPremium ? 'premium-header-pill' : ''}`}
+                                        title={`View formal specification on LeetCode: ${matchedLeetcode.problemName}${matchedLeetcode.isPremium ? ' (Requires LeetCode Premium)' : ''}`}
+                                    >
+                                        {matchedLeetcode.isPremium ? '🔒 LeetCode Premium: ' : '🚀 LeetCode: '}
+                                        {matchedLeetcode.problemName} ({Math.round((matchedLeetcode.similarityScore || 0.95) * 100)}%) ↗
+                                    </a>
+                                ) : (
+                                    <span
+                                        className="novel-header-pill"
+                                        title="Authentic company-exclusive interview question with no LeetCode equivalent"
+                                    >
+                                        🆕 New Question · No Match Found in LeetCode
+                                    </span>
+                                )}
+                            </div>
+
+                            <h2 className="panel-heading">{question?.title}</h2>
+
+                            <div className="panel-statement">
+                                <p>{question?.problemStatement}</p>
+                            </div>
+
+                            {/* Examples Section */}
+                            {testCases && testCases.length > 0 && (
+                                <div className="panel-examples-section">
+                                    <h4 className="section-subtitle">Examples & Test Cases:</h4>
+                                    <div className="examples-list">
+                                        {testCases.map((tc, idx) => (
+                                            <div key={idx} className="example-card">
+                                                <div className="example-card-header">
+                                                    <span className="example-number-badge">Example {idx + 1}</span>
+                                                    <button
+                                                        className="load-case-btn"
+                                                        onClick={() => {
+                                                            handleSelectCase(idx);
+                                                            setActiveTab('testcase');
+                                                        }}
+                                                        title="Load this test case into the bottom console"
+                                                    >
+                                                        Test this case ↳
+                                                    </button>
+                                                </div>
+                                                <div className="example-field">
+                                                    <span className="example-field-name">Input:</span>
+                                                    <code className="example-code-val">{tc.input}</code>
+                                                </div>
+                                                <div className="example-field">
+                                                    <span className="example-field-name">Output:</span>
+                                                    <code className="example-code-val">{tc.output}</code>
+                                                </div>
+                                                {tc.explanation && (
+                                                    <div className="example-field">
+                                                        <span className="example-field-name">Explanation:</span>
+                                                        <span className="example-explanation-val">{tc.explanation}</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Constraints & Complexity */}
+                            {question?.constraints && question.constraints.length > 0 && (
+                                <div className="panel-constraints">
+                                    <h4 className="section-subtitle">Constraints & Complexity:</h4>
+                                    <ul>
+                                        {question.constraints.map((c, i) => (
+                                            <li key={i}>{c}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/* LeetCode Reference Box OR Novel Question Notice */}
+                            {matchedLeetcode && matchedLeetcode.problemUrl ? (
+                                <div className="matched-leetcode-box ide-leetcode-box">
+                                    <div className="match-info">
+                                        <span className="platform-tag">LeetCode</span>
+                                        <span className="match-name">{matchedLeetcode.problemName}</span>
+                                        <span className="similarity-badge">
+                                            {Math.round((matchedLeetcode.similarityScore || 0.85) * 100)}% Match
+                                        </span>
+                                    </div>
+                                    <a
+                                        href={matchedLeetcode.problemUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="solve-leetcode-btn"
+                                    >
+                                        Verify on LeetCode ↗
+                                    </a>
+                                </div>
+                            ) : (
+                                <div className="matched-leetcode-box ide-leetcode-box novel-problem-box">
+                                    <div className="match-info">
+                                        <span className="novel-badge">Company Exclusive</span>
+                                        <span className="match-name">⭐ Novel Campus Question</span>
+                                    </div>
+                                    <p className="novel-problem-text" style={{ margin: '8px 0 0 0' }}>
+                                        ✨ Direct candidate memory question — no direct standard LeetCode equivalent.
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div className="lc-submission-wrapper">
+                            {submitting && (
+                                <div className="lc-evaluating-state">
+                                    <div className="mini-spinner"></div>
+                                    <div className="lc-evaluating-text">Evaluating against testcases & calculating distribution curves...</div>
+                                </div>
+                            )}
+
+                            {!submitting && submissionResult && (
+                                <div className="lc-submission-container">
+                                    {/* Top Subhead */}
+                                    <div className="lc-submission-subhead">
+                                        <button
+                                            type="button"
+                                            className="lc-back-link"
+                                            onClick={() => setLeftPanelTab('description')}
+                                        >
+                                            ← All Submissions
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className={`lc-share-btn ${copiedLink ? 'copied' : ''}`}
+                                            onClick={handleCopySubmissionLink}
+                                            title="Share submission link"
+                                        >
+                                            <span className="lc-share-icon">{copiedLink ? '✓' : '🔗'}</span>
+                                            <span className="lc-share-text">{copiedLink ? 'Link Copied!' : 'Share'}</span>
+                                        </button>
+                                    </div>
+
+                                    {/* Status Headline */}
+                                    <div className="lc-result-header-row">
+                                        <div className="lc-result-title-group">
+                                            <h2 className={`lc-result-verdict ${submissionResult.passed ? 'accepted' : 'failed'}`}>
+                                                {submissionResult.passed ? 'Accepted' : (submissionResult.status || 'Wrong Answer')}
+                                            </h2>
+                                            <span className="lc-testcases-badge">
+                                                {submissionResult.passedCount} / {submissionResult.totalCount} testcases passed
+                                            </span>
+                                            <span className="lc-time-taken">
+                                                Time taken: 1hr 27m 49s
+                                            </span>
+                                        </div>
+                                        <div className="lc-result-actions">
+                                            <button type="button" className="lc-action-btn analysis-btn">
+                                                ✦ Analysis
+                                            </button>
+                                            <button type="button" className="lc-action-btn solution-btn">
+                                                Solution
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Author Row */}
+                                    <div className="lc-author-row">
+                                        <div className="lc-author-avatar">👤</div>
+                                        <span className="lc-author-name">vishesh_0406</span>
+                                        <span className="lc-author-date">
+                                            submitted at {formatSubmissionDate(submissionResult.submittedAt)}
+                                        </span>
+                                    </div>
+
+                                    {/* Two Side-by-Side Metric Cards */}
+                                    <div className="lc-metric-cards-row">
+                                        <div
+                                            className={`lc-metric-card ${submissionChartMetric === 'runtime' ? 'active' : ''}`}
+                                            onClick={() => setSubmissionChartMetric('runtime')}
+                                        >
+                                            <div className="lc-card-header">
+                                                <span className="lc-card-icon">⏱</span> Runtime
+                                            </div>
+                                            <div className="lc-card-body">
+                                                <span className="lc-card-val">
+                                                    {submissionResult.runtimeDisplay || `${submissionResult.complexity?.runtimeMs || 0} ms`}
+                                                </span>
+                                                <span className="lc-card-divider">|</span>
+                                                <span className="lc-card-beats">
+                                                    Beats <strong className="lc-beats-green">{submissionResult.complexity?.runtimePercentile || 86.71}%</strong> 👏
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            className={`lc-metric-card ${submissionChartMetric === 'memory' ? 'active' : ''}`}
+                                            onClick={() => setSubmissionChartMetric('memory')}
+                                        >
+                                            <div className="lc-card-header">
+                                                <span className="lc-card-icon">⚙</span> Memory
+                                            </div>
+                                            <div className="lc-card-body">
+                                                <span className="lc-card-val">
+                                                    {submissionResult.memoryDisplay || `${submissionResult.complexity?.memoryMB || 49.12} MB`}
+                                                </span>
+                                                <span className="lc-card-divider">|</span>
+                                                <span className="lc-card-beats">
+                                                    Beats <strong className="lc-beats-green">{submissionResult.complexity?.memoryPercentile || 71.51}%</strong> 👏
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Distribution Histogram Chart Card */}
+                                    <div className="lc-chart-card">
+                                        <div className="lc-chart-container">
+                                            {/* Y-Axis Column */}
+                                            <div className="lc-y-axis">
+                                                <span>100%</span>
+                                                <span>75%</span>
+                                                <span>50%</span>
+                                                <span>25%</span>
+                                                <span>0%</span>
+                                            </div>
+
+                                            {/* Chart Canvas with Guide Lines & Bars */}
+                                            <div className="lc-chart-canvas">
+                                                <div className="lc-grid-lines">
+                                                    <div className="lc-grid-line" style={{ bottom: '100%' }} />
+                                                    <div className="lc-grid-line" style={{ bottom: '75%' }} />
+                                                    <div className="lc-grid-line" style={{ bottom: '50%' }} />
+                                                    <div className="lc-grid-line" style={{ bottom: '25%' }} />
+                                                    <div className="lc-grid-line" style={{ bottom: '0%' }} />
+                                                </div>
+
+                                                {(() => {
+                                                    const bins = submissionChartMetric === 'runtime'
+                                                        ? (submissionResult.complexity?.runtimeDistribution || [
+                                                            { bin: '0ms', percent: 2.1 },
+                                                            { bin: '1ms', percent: 14.8 },
+                                                            { bin: '2ms', percent: 71.4 },
+                                                            { bin: '3ms', percent: 5.2 },
+                                                            { bin: '4ms', percent: 4.8 }
+                                                        ])
+                                                        : (submissionResult.complexity?.memoryDistribution || [
+                                                            { bin: '48.5MB', percent: 11.2 },
+                                                            { bin: '49.1MB', percent: 64.3 },
+                                                            { bin: '49.8MB', percent: 18.5 },
+                                                            { bin: '50.5MB', percent: 6.0 }
+                                                        ]);
+
+                                                    const maxPercent = Math.max(...bins.map(b => b.percent), 60);
+
+                                                    let activeIndex = 0;
+                                                    if (submissionChartMetric === 'runtime') {
+                                                        const userMs = submissionResult.complexity?.runtimeMs ?? 2;
+                                                        if (userMs === 0) activeIndex = 0;
+                                                        else if (userMs === 1) activeIndex = Math.min(bins.length - 1, 1);
+                                                        else if (userMs === 2) activeIndex = Math.min(bins.length - 1, 2);
+                                                        else if (userMs <= 3) activeIndex = Math.min(bins.length - 1, 3);
+                                                        else if (userMs <= 5) activeIndex = Math.min(bins.length - 1, 4);
+                                                        else activeIndex = Math.min(bins.length - 1, 2);
+                                                    } else {
+                                                        activeIndex = Math.min(bins.length - 1, 1);
+                                                    }
+
+                                                    return (
+                                                        <div className="lc-bars-row">
+                                                            {bins.map((binItem, idx) => {
+                                                                const isUser = idx === activeIndex;
+                                                                const heightPercent = Math.max(4, Math.round((binItem.percent / maxPercent) * 78));
+
+                                                                return (
+                                                                    <div key={idx} className={`lc-bar-col ${isUser ? 'user-bar-col' : ''}`}>
+                                                                        <div className="lc-bar-wrapper">
+                                                                            {isUser && (
+                                                                                <div className="lc-avatar-pin">
+                                                                                    <div className="lc-avatar-circle">
+                                                                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="#0a84ff">
+                                                                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                            )}
+                                                                            <div
+                                                                                className={`lc-bar-fill ${isUser ? 'user-fill' : ''}`}
+                                                                                style={{ height: `${heightPercent}%` }}
+                                                                                title={`${binItem.bin}: ${binItem.percent}% of submissions`}
+                                                                            />
+                                                                        </div>
+                                                                        <span className={`lc-bar-x-label ${isUser ? 'user-x' : ''}`}>
+                                                                            {binItem.bin}
+                                                                        </span>
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    );
+                                                })()}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Complexity Coaching & Editorial Insights */}
+                                    {submissionResult.complexity && (
+                                        <div className="lc-complexity-box">
+                                            <div className="lc-complexity-header">
+                                                <span className="lc-complexity-title">Complexity Analysis:</span>
+                                                <span className="lc-complexity-pill">Time: {submissionResult.complexity.userTimeComplexity}</span>
+                                                <span className="lc-complexity-pill">Space: {submissionResult.complexity.userSpaceComplexity}</span>
+                                                <span className={`lc-complexity-tag ${submissionResult.complexity.isTimeOptimal ? 'opt' : 'warn'}`}>
+                                                    {submissionResult.complexity.isTimeOptimal ? '✓ Optimal Time' : '⚠️ Suboptimal Time'}
+                                                </span>
+                                            </div>
+                                            {submissionResult.complexity.feedback && (
+                                                <p className="lc-complexity-desc">
+                                                    {submissionResult.complexity.feedback}
+                                                </p>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {/* Failing Testcase Details if any */}
+                                    {!submissionResult.passed && submissionResult.failingCase && (
+                                        <div className="lc-failing-case-box">
+                                            <div className="lc-failing-title">
+                                                Failed on Testcase {submissionResult.failingCase.caseIdx + 1}:
+                                            </div>
+                                            <div className="lc-failing-grid">
+                                                <div>
+                                                    <span className="lc-failing-label">Input:</span>
+                                                    <pre className="lc-failing-pre">{submissionResult.failingCase.input || '(empty)'}</pre>
+                                                </div>
+                                                <div>
+                                                    <span className="lc-failing-label">Your Output:</span>
+                                                    <pre className="lc-failing-pre fail">{submissionResult.failingCase.output || submissionResult.failingCase.error || '(empty)'}</pre>
+                                                </div>
+                                                <div>
+                                                    <span className="lc-failing-label">Expected Output:</span>
+                                                    <pre className="lc-failing-pre expected">{submissionResult.failingCase.expected || '(none)'}</pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 {/* Right Panel: Monaco Editor & Interactive Testcase Console */}
                 <div className="ide-editor-panel">
-                    {/* Visual Editor Bar */}
+                    {/* Visual Editor Bar with Official SVG Language Icon */}
                     <div className="editor-header-bar">
                         <div className="editor-file-tab">
-                            <span>💻 solution.{language === 'python' ? 'py' : language === 'javascript' ? 'js' : language === 'java' ? 'java' : 'cpp'}</span>
+                            <span className="editor-file-icon">{getLanguageIcon(language, 15)}</span>
+                            <span className="editor-file-name">solution.{language === 'python' ? 'py' : language === 'javascript' ? 'js' : language === 'java' ? 'java' : 'cpp'}</span>
                         </div>
                         <span className="editor-tip">Type code here · Click ▶ Run Code below to compile & verify</span>
                     </div>
@@ -472,29 +815,23 @@ function IDE({ question, onBack }) {
                         />
                     </div>
 
-                    {/* Bottom Console: Testcases, Execution Results & Submission Analytics */}
+                    {/* Bottom Console: Testcase & Test Result (LeetCode Layout) */}
                     <div className="ide-console-panel">
                         <div className="console-tab-header">
                             <button
+                                type="button"
                                 className={`console-tab-btn ${activeTab === 'testcase' ? 'active' : ''}`}
                                 onClick={() => setActiveTab('testcase')}
                             >
-                                🧪 Testcases
+                                ✓ Testcase
                             </button>
                             <button
+                                type="button"
                                 className={`console-tab-btn ${activeTab === 'result' ? 'active' : ''}`}
                                 onClick={() => setActiveTab('result')}
                             >
-                                📊 Test Result {runResult && (
+                                {`>_`} Test Result {runResult && (
                                     <span className={`tab-dot ${runResult.status === 'Accepted' ? 'pass' : 'fail'}`}>•</span>
-                                )}
-                            </button>
-                            <button
-                                className={`console-tab-btn ${activeTab === 'submission' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('submission')}
-                            >
-                                🚀 Submission {submissionResult && (
-                                    <span className={`tab-dot ${submissionResult.passed ? 'pass' : 'fail'}`}>•</span>
                                 )}
                             </button>
 
@@ -502,11 +839,6 @@ function IDE({ question, onBack }) {
                             {activeTab === 'result' && runResult && runResult.duration !== undefined && (
                                 <span className="console-runtime-badge">
                                     Runtime: {runResult.duration} ms
-                                </span>
-                            )}
-                            {activeTab === 'submission' && submissionResult && submissionResult.complexity && (
-                                <span className={`console-runtime-badge ${submissionResult.passed ? 'submission-badge-opt' : 'submission-badge-warn'}`}>
-                                    {submissionResult.complexity.statusTag || (submissionResult.passed ? 'Accepted' : 'Failed')}
                                 </span>
                             )}
                         </div>
@@ -592,8 +924,8 @@ function IDE({ question, onBack }) {
                             {activeTab === 'result' && (
                                 <div className="console-result-view">
                                     {!runResult && !running && (
-                                        <div className="console-empty-prompt">
-                                            Click <strong>▶ Run Code</strong> to execute your solution against all sample test cases.
+                                        <div className="console-empty-prompt leetcode-empty-prompt">
+                                            You must run your code first
                                         </div>
                                     )}
 
@@ -617,7 +949,7 @@ function IDE({ question, onBack }) {
                                                     {!['Accepted', 'Wrong Answer', 'Runtime Error', 'Compilation Error'].includes(runResult.status) && !runResult.status?.includes('Time Limit') && runResult.status}
                                                 </span>
                                                 <span className="tested-case-tag">
-                                                    {runResult.passedCount} / {runResult.totalCount} Testcases Passed
+                                                    {runResult.passedCount} / {runResult.totalCount} Sample Cases Passed
                                                 </span>
                                                 <span className="tested-duration-tag">
                                                     ⚡ Total Runtime: {runResult.duration} ms
@@ -677,214 +1009,6 @@ function IDE({ question, onBack }) {
                                                     </div>
                                                 );
                                             })()}
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-
-                            {/* TAB 3: SUBMISSION (AUTHENTIC LEETCODE 1:1 LAYOUT) */}
-                            {activeTab === 'submission' && (
-                                <div className="submission-view">
-                                    {!submissionResult && !submitting && (
-                                        <div className="console-empty-prompt">
-                                            Click <strong>🚀 Submit</strong> to test your code against the full LeetCode test suite and see where you rank.
-                                        </div>
-                                    )}
-
-                                    {submitting && (
-                                        <div className="console-running-prompt">
-                                            <div className="mini-spinner"></div>
-                                            🚀 Evaluating submission against all testcases & generating distribution benchmarks...
-                                        </div>
-                                    )}
-
-                                    {submissionResult && !submitting && (
-                                        <div className="leetcode-submission-container">
-                                            {/* Top Status Banner */}
-                                            <div className="leetcode-submission-header">
-                                                <div className="status-main-row">
-                                                    <div className={`status-brand-badge ${submissionResult.passed ? 'accepted' : 'wrong-answer'}`}>
-                                                        <span className="brand-check-icon">{submissionResult.passed ? '✓' : '✗'}</span>
-                                                        <span className="brand-status-title">
-                                                            {submissionResult.passed ? 'Accepted' : submissionResult.status || 'Wrong Answer'}
-                                                        </span>
-                                                    </div>
-                                                    <span className="brand-testcases-count">
-                                                        <strong>{submissionResult.passedCount} / {submissionResult.totalCount}</strong> testcases passed
-                                                    </span>
-                                                </div>
-                                                <div className="status-sub-row">
-                                                    <span className="submission-time-label">
-                                                        Submitted at {new Date(submissionResult.submittedAt || Date.now()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}, {new Date(submissionResult.submittedAt || Date.now()).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            {/* LeetCode Metric Selector Tabs */}
-                                            <div className="leetcode-metric-tabs">
-                                                <button
-                                                    type="button"
-                                                    className={`metric-tab-card ${submissionChartMetric === 'runtime' ? 'active' : ''}`}
-                                                    onClick={() => setSubmissionChartMetric('runtime')}
-                                                >
-                                                    <div className="metric-card-top">
-                                                        <span className="metric-name">Runtime</span>
-                                                        <span className="metric-headline-val">
-                                                            {submissionResult.runtimeDisplay || `${submissionResult.complexity?.runtimeMs || 0} ms`}
-                                                        </span>
-                                                    </div>
-                                                    <div className="metric-beats-caption">
-                                                        Beats <strong className="beats-green">{submissionResult.complexity?.runtimePercentile || 88.5}%</strong> of users with {language === 'cpp' ? 'C++' : language === 'javascript' ? 'JavaScript' : language === 'java' ? 'Java' : 'Python 3'}
-                                                    </div>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    className={`metric-tab-card ${submissionChartMetric === 'memory' ? 'active' : ''}`}
-                                                    onClick={() => setSubmissionChartMetric('memory')}
-                                                >
-                                                    <div className="metric-card-top">
-                                                        <span className="metric-name">Memory</span>
-                                                        <span className="metric-headline-val">
-                                                            {submissionResult.memoryDisplay || `${submissionResult.complexity?.memoryMB || 44.6} MB`}
-                                                        </span>
-                                                    </div>
-                                                    <div className="metric-beats-caption">
-                                                        Beats <strong className="beats-green">{submissionResult.complexity?.memoryPercentile || 82.4}%</strong> of users with {language === 'cpp' ? 'C++' : language === 'javascript' ? 'JavaScript' : language === 'java' ? 'Java' : 'Python 3'}
-                                                    </div>
-                                                </button>
-                                            </div>
-
-                                            {/* LeetCode Signature Distribution Histogram */}
-                                            <div className="leetcode-histogram-card">
-                                                <div className="histogram-top-bar">
-                                                    <span className="histogram-title">
-                                                        {submissionChartMetric === 'runtime' ? 'Runtime Distribution' : 'Memory Distribution'}
-                                                    </span>
-                                                    <span className="histogram-subtitle">
-                                                        {submissionChartMetric === 'runtime'
-                                                            ? `Your runtime: ${submissionResult.runtimeDisplay || '0 ms'} (Beats ${submissionResult.complexity?.runtimePercentile || 88.5}%)`
-                                                            : `Your memory: ${submissionResult.memoryDisplay || '44.60 MB'} (Beats ${submissionResult.complexity?.memoryPercentile || 82.4}%)`}
-                                                    </span>
-                                                </div>
-
-                                                <div className="histogram-chart-area">
-                                                    {(() => {
-                                                        const bins = submissionChartMetric === 'runtime'
-                                                            ? (submissionResult.complexity?.runtimeDistribution || [
-                                                                { bin: '0 ms', percent: 48.2 },
-                                                                { bin: '1 ms', percent: 22.5 },
-                                                                { bin: '2 ms', percent: 11.8 },
-                                                                { bin: '3 ms', percent: 6.4 },
-                                                                { bin: '5 ms', percent: 4.2 },
-                                                                { bin: '10 ms', percent: 3.1 },
-                                                                { bin: '18 ms', percent: 2.1 },
-                                                                { bin: '25+ ms', percent: 1.7 }
-                                                            ])
-                                                            : (submissionResult.complexity?.memoryDistribution || [
-                                                                { bin: '43.8 MB', percent: 12.4 },
-                                                                { bin: '44.2 MB', percent: 38.6 },
-                                                                { bin: '44.8 MB', percent: 28.5 },
-                                                                { bin: '45.4 MB', percent: 13.2 },
-                                                                { bin: '46.0+ MB', percent: 7.3 }
-                                                            ]);
-
-                                                        const maxPercent = Math.max(...bins.map(b => b.percent), 50);
-
-                                                        let activeIndex = 0;
-                                                        if (submissionChartMetric === 'runtime') {
-                                                            const userMs = submissionResult.complexity?.runtimeMs || 0;
-                                                            if (userMs === 0) activeIndex = 0;
-                                                            else if (userMs === 1) activeIndex = 1;
-                                                            else if (userMs <= 2) activeIndex = 2;
-                                                            else if (userMs <= 5) activeIndex = 4;
-                                                            else if (userMs <= 10) activeIndex = 5;
-                                                            else if (userMs <= 20) activeIndex = Math.min(bins.length - 2, 6);
-                                                            else activeIndex = bins.length - 1;
-                                                        } else {
-                                                            activeIndex = Math.min(bins.length - 1, 1);
-                                                        }
-
-                                                        return (
-                                                            <div className="histogram-bars-wrapper">
-                                                                {bins.map((item, idx) => {
-                                                                    const isUserBin = idx === activeIndex;
-                                                                    const barHeightPercent = Math.max(12, Math.round((item.percent / maxPercent) * 100));
-
-                                                                    return (
-                                                                        <div key={idx} className={`histogram-column ${isUserBin ? 'user-column' : ''}`}>
-                                                                            {isUserBin && (
-                                                                                <div className="user-marker-badge">
-                                                                                    <span>You are here</span>
-                                                                                    <div className="marker-arrow"></div>
-                                                                                </div>
-                                                                            )}
-                                                                            <div className="histogram-bar-track">
-                                                                                <div
-                                                                                    className={`histogram-bar-fill ${isUserBin ? 'user-bar-fill' : ''}`}
-                                                                                    style={{ height: `${barHeightPercent}%` }}
-                                                                                    title={`${item.bin}: ${item.percent}% of submissions`}
-                                                                                />
-                                                                            </div>
-                                                                            <span className={`histogram-x-label ${isUserBin ? 'user-x-label' : ''}`}>
-                                                                                {item.bin}
-                                                                            </span>
-                                                                        </div>
-                                                                    );
-                                                                })}
-                                                            </div>
-                                                        );
-                                                    })()}
-                                                </div>
-                                            </div>
-
-                                            {/* Editorial & Interviewer Coaching Details */}
-                                            {submissionResult.complexity && (
-                                                <div className="leetcode-editorial-footer">
-                                                    <div className="editorial-meta-row">
-                                                        <span className="editorial-title">Complexity Analysis:</span>
-                                                        <span className="editorial-pill time-pill">Time: {submissionResult.complexity.userTimeComplexity}</span>
-                                                        <span className="editorial-pill space-pill">Space: {submissionResult.complexity.userSpaceComplexity}</span>
-                                                        <span className={`editorial-status-tag ${submissionResult.complexity.isTimeOptimal ? 'opt' : 'warn'}`}>
-                                                            {submissionResult.complexity.isTimeOptimal ? '✓ Optimal Time' : '⚠️ Suboptimal Time'}
-                                                        </span>
-                                                    </div>
-                                                    {submissionResult.complexity.feedback && (
-                                                        <p className="editorial-feedback-text">
-                                                            {submissionResult.complexity.feedback}
-                                                        </p>
-                                                    )}
-                                                </div>
-                                            )}
-
-                                            {/* Failing Testcase Details if any */}
-                                            {!submissionResult.passed && submissionResult.failingCase && (
-                                                <div className="submission-failing-section">
-                                                    <span className="failing-heading">
-                                                        Failed on Testcase {submissionResult.failingCase.caseIdx + 1}:
-                                                    </span>
-                                                    <div className="result-comparison-grid">
-                                                        <div className="comparison-col">
-                                                            <span className="output-label">Input:</span>
-                                                            <pre className="comparison-terminal neutral">
-                                                                {submissionResult.failingCase.input || '(empty)'}
-                                                            </pre>
-                                                        </div>
-                                                        <div className="comparison-col">
-                                                            <span className="output-label">Your Output:</span>
-                                                            <pre className="comparison-terminal fail">
-                                                                {submissionResult.failingCase.output || submissionResult.failingCase.error || '(empty output)'}
-                                                            </pre>
-                                                        </div>
-                                                        <div className="comparison-col">
-                                                            <span className="output-label">Expected Output:</span>
-                                                            <pre className="comparison-terminal expected">
-                                                                {submissionResult.failingCase.expected || '(none)'}
-                                                            </pre>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )}
                                         </div>
                                     )}
                                 </div>
