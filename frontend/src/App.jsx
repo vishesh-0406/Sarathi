@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Companies from './components/Companies';
 import DSA from './components/DSA';
@@ -269,7 +269,7 @@ function App() {
                                 >
                                     <div className="card-icon-bubble green">🎯</div>
                                     <h3>Target Company Roadmaps</h3>
-                                    <p>Authentic 4-round recruitment pipelines for 20 companies with round-specific question alignment.</p>
+                                    <p>Authentic company-tailored recruitment pipelines (3, 4, and 5 rounds) for 20 top firms with round-specific question alignment.</p>
                                     <span className="card-arrow-link">Explore Roadmaps →</span>
                                 </div>
 
