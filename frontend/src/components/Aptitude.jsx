@@ -63,7 +63,10 @@ function Aptitude({ onBack }) {
     const handleSelectOption = (optionLetter) => {
         if (!currentQ || userAnswers[currentQ._id]) return; // Already answered
 
-        const isCorrect = optionLetter.toUpperCase() === currentQ.correctOption?.toUpperCase();
+        const correctLetter = (currentQ.correctOption || '').trim().match(/^[A-D]/i) 
+            ? (currentQ.correctOption || '').trim()[0].toUpperCase() 
+            : (currentQ.correctOption || '').trim().toUpperCase();
+        const isCorrect = optionLetter.toUpperCase() === correctLetter;
         setUserAnswers(prev => ({
             ...prev,
             [currentQ._id]: {
@@ -191,20 +194,25 @@ function Aptitude({ onBack }) {
                     {/* Multiple Choice Options Grid */}
                     <div className="options-grid">
                         {currentQ.options && currentQ.options.map((opt, idx) => {
-                            const optionLetter = opt.trim().charAt(0); // 'A', 'B', 'C', 'D'
+                            const optionLetter = opt.trim().match(/^[A-D]/i) ? opt.trim()[0].toUpperCase() : String.fromCharCode(65 + idx);
                             const isSelected = currentAnswer?.selected === optionLetter;
-                            const isCorrectOpt = optionLetter.toUpperCase() === currentQ.correctOption?.toUpperCase();
+                            const correctLetter = (currentQ.correctOption || '').trim().match(/^[A-D]/i) 
+                                ? (currentQ.correctOption || '').trim()[0].toUpperCase() 
+                                : (currentQ.correctOption || '').trim().toUpperCase();
+                            const isCorrectOpt = optionLetter === correctLetter;
 
                             let optionClass = 'option-btn';
                             if (currentAnswer) {
                                 if (isCorrectOpt) {
-                                    optionClass += ' option-correct';
+                                    optionClass += ' option-correct correct';
                                 } else if (isSelected && !currentAnswer.isCorrect) {
-                                    optionClass += ' option-wrong';
+                                    optionClass += ' option-wrong incorrect wrong';
                                 } else {
                                     optionClass += ' option-disabled';
                                 }
                             }
+
+                            const cleanOptText = opt.replace(/^[A-D][\)\.\:\s]\s*/i, '').trim();
 
                             return (
                                 <button
@@ -215,7 +223,7 @@ function Aptitude({ onBack }) {
                                     disabled={!!currentAnswer}
                                 >
                                     <span className="option-letter">{optionLetter}</span>
-                                    <span className="option-text">{opt.substring(2).trim()}</span>
+                                    <span className="option-text">{cleanOptText}</span>
                                     {currentAnswer && isCorrectOpt && <span className="feedback-icon">✓</span>}
                                     {currentAnswer && isSelected && !currentAnswer.isCorrect && <span className="feedback-icon">✗</span>}
                                 </button>

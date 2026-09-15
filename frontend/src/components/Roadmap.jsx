@@ -461,8 +461,9 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                                                     const isOptCorrect = optLetter === correctLetter;
                                                                                                     let optClass = 'quiz-opt';
                                                                                                     if (userChoice) {
-                                                                                                        if (isOptCorrect) optClass += ' correct';
-                                                                                                        else if (isSelected) optClass += ' wrong';
+                                                                                                        if (isOptCorrect) optClass += ' correct option-correct';
+                                                                                                        else if (isSelected) optClass += ' wrong incorrect option-wrong';
+                                                                                                        else optClass += ' option-disabled';
                                                                                                     }
                                                                                                     return (
                                                                                                         <button

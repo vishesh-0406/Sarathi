@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    ROADMAP CONTAINER & THEMED LAYOUT
    ============================================================ */
 .roadmap-page {
@@ -794,17 +794,23 @@
     background: var(--border-hover);
 }
 
-.quiz-opt.correct {
-    background: var(--accent-emerald-light);
-    border-color: var(--accent-emerald);
-    color: var(--accent-emerald);
-    font-weight: 700;
+.quiz-opt.correct,
+.quiz-opt.option-correct {
+    background: rgba(16, 185, 129, 0.16) !important;
+    border: 2px solid #10b981 !important;
+    color: #10b981 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.3) !important;
 }
 
-.quiz-opt.wrong {
-    background: var(--accent-rose-light);
-    border-color: var(--accent-rose);
-    color: var(--accent-rose);
+.quiz-opt.wrong,
+.quiz-opt.incorrect,
+.quiz-opt.option-wrong {
+    background: rgba(239, 68, 68, 0.16) !important;
+    border: 2px solid #ef4444 !important;
+    color: #ef4444 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.3) !important;
 }
 
 .quiz-feedback-box {

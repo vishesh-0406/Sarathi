@@ -1479,28 +1479,45 @@
     color: var(--text-secondary);
 }
 
-.option-btn.correct {
-    background-color: var(--accent-emerald-light);
-    border-color: var(--accent-emerald);
-    color: var(--accent-emerald);
+.option-btn.correct,
+.option-btn.option-correct {
+    background-color: rgba(16, 185, 129, 0.16) !important;
+    border: 2px solid #10b981 !important;
+    color: #10b981 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.3) !important;
 }
 
-.option-btn.correct .option-indicator {
-    background-color: var(--accent-emerald);
-    color: #ffffff;
-    border-color: var(--accent-emerald);
+.option-btn.correct .option-indicator,
+.option-btn.option-correct .option-indicator,
+.option-btn.correct .option-letter,
+.option-btn.option-correct .option-letter {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.4) !important;
 }
 
-.option-btn.incorrect {
-    background-color: var(--accent-rose-light);
-    border-color: var(--accent-rose);
-    color: var(--accent-rose);
+.option-btn.incorrect,
+.option-btn.option-wrong,
+.option-btn.wrong {
+    background-color: rgba(239, 68, 68, 0.16) !important;
+    border: 2px solid #ef4444 !important;
+    color: #ef4444 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.3) !important;
 }
 
-.option-btn.incorrect .option-indicator {
-    background-color: var(--accent-rose);
-    color: #ffffff;
-    border-color: var(--accent-rose);
+.option-btn.incorrect .option-indicator,
+.option-btn.option-wrong .option-indicator,
+.option-btn.incorrect .option-letter,
+.option-btn.option-wrong .option-letter,
+.option-btn.wrong .option-indicator,
+.option-btn.wrong .option-letter {
+    background-color: #ef4444 !important;
+    color: #ffffff !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.4) !important;
 }
 
 .explanation-card {

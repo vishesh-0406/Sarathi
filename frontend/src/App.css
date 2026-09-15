@@ -1291,6 +1291,263 @@
 }
 
 /* ============================================================
+   APTITUDE & MCQ INTERACTIVE OPTIONS GRID
+   ============================================================ */
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px 0 20px 0;
+}
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background-color: var(--bg-subtle, #1e293b);
+    border: 1.5px solid var(--border-color, #334155);
+    color: var(--text-primary, #f8fafc);
+    font-size: 0.98rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: var(--accent-primary, #6366f1);
+    background-color: var(--accent-primary-light, rgba(99, 102, 241, 0.12));
+    transform: translateX(4px);
+}
+
+.option-letter,
+.option-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 8px;
+    background: var(--bg-surface, #0f172a);
+    border: 1.5px solid var(--border-color, #475569);
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #94a3b8);
+    transition: all 0.2s ease;
+}
+
+.option-text {
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: inherit;
+}
+
+.feedback-icon {
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================== CORRECT OPTION (VIBRANT GREEN) ==================== */
+.option-btn.option-correct,
+.option-btn.correct,
+.quiz-opt.correct {
+    background-color: rgba(16, 185, 129, 0.16) !important;
+    border: 2px solid #10b981 !important;
+    color: #10b981 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.3) !important;
+}
+
+.option-btn.option-correct .option-letter,
+.option-btn.option-correct .option-indicator,
+.option-btn.correct .option-letter,
+.option-btn.correct .option-indicator {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5) !important;
+}
+
+.option-btn.option-correct .feedback-icon,
+.option-btn.correct .feedback-icon {
+    color: #10b981 !important;
+    font-weight: 900;
+}
+
+/* ==================== WRONG OPTION (VIBRANT RED) ==================== */
+.option-btn.option-wrong,
+.option-btn.incorrect,
+.option-btn.wrong,
+.quiz-opt.wrong {
+    background-color: rgba(239, 68, 68, 0.16) !important;
+    border: 2px solid #ef4444 !important;
+    color: #ef4444 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.3) !important;
+}
+
+.option-btn.option-wrong .option-letter,
+.option-btn.option-wrong .option-indicator,
+.option-btn.incorrect .option-letter,
+.option-btn.incorrect .option-indicator,
+.option-btn.wrong .option-letter,
+.option-btn.wrong .option-indicator {
+    background-color: #ef4444 !important;
+    color: #ffffff !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5) !important;
+}
+
+.option-btn.option-wrong .feedback-icon,
+.option-btn.incorrect .feedback-icon,
+.option-btn.wrong .feedback-icon {
+    color: #ef4444 !important;
+    font-weight: 900;
+}
+
+/* Disabled state for unselected options once answered */
+.option-btn.option-disabled,
+.option-btn:disabled:not(.option-correct):not(.correct):not(.option-wrong):not(.incorrect):not(.wrong) {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--bg-subtle, #1e293b);
+    border-color: var(--border-color, #334155);
+}
+
+/* Step-by-Step Explanation Accordion */
+.explanation-section {
+    margin: 20px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.explanation-toggle-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--bg-subtle);
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.explanation-toggle-btn:hover {
+    background: var(--border-hover);
+}
+
+.explanation-box {
+    padding: 18px;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+}
+
+.explanation-box h4 {
+    margin: 0 0 10px 0;
+    color: var(--accent-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.explanation-text {
+    margin: 0;
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Aptitude Navigation Buttons */
+.aptitude-nav-bar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+    background: var(--bg-subtle);
+    color: var(--text-primary);
+}
+
+.nav-btn:hover:not(:disabled) {
+    border-color: var(--accent-primary);
+    background: var(--accent-primary-light);
+    color: var(--accent-primary);
+}
+
+.nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.random-btn {
+    background: var(--accent-primary-light);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.next-btn {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+}
+
+.next-btn:hover:not(:disabled) {
+    filter: brightness(1.1);
+    color: #ffffff;
+}
+
+/* Card Footer */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.source-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.source-link:hover {
+    color: #38bdf8;
+}
+
+/* ============================================================
    INTERVIEW MODULE
    ============================================================ */
 .interview-section {

@@ -72,8 +72,9 @@ function IDE({ question, onBack }) {
                                             const isCorrect = optLetter === correctLetter;
                                             let btnClass = 'option-btn';
                                             if (selectedOption) {
-                                                if (isCorrect) btnClass += ' correct';
-                                                else if (isSelected) btnClass += ' incorrect';
+                                                if (isCorrect) btnClass += ' correct option-correct';
+                                                else if (isSelected) btnClass += ' incorrect wrong option-wrong';
+                                                else btnClass += ' option-disabled';
                                             }
                                             return (
                                                 <button
