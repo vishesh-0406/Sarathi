@@ -1,4 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
+import CompanyLogo from './CompanyLogos';
+import {
+    ArrowLeftIcon,
+    InterviewIcon,
+    ChevronDownIcon,
+    ChevronUpIcon,
+    LinkedInIcon,
+    ExternalLinkIcon,
+    CalendarIcon
+} from './Icons';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
@@ -69,15 +79,17 @@ function Interviews({ onBack }) {
         <section id="interviews-section" className="interviews-section">
             <div className="section-header-row">
                 {onBack && (
-                    <button className="back-btn" onClick={onBack}>
-                        ← Back to Preparation
+                    <button className="back-btn" onClick={onBack} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <ArrowLeftIcon size={14} /> Back to Preparation
                     </button>
                 )}
                 <div>
-                    <h2>👔 HR & Technical Interview Prep</h2>
+                    <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                        <InterviewIcon size={26} color="#7c3aed" /> HR & Technical Interview Prep
+                    </h2>
                     <p className="section-intro">
                         Authentic candidate experiences harvested from <strong>LinkedIn (#interviewexperience)</strong>.
-                        Master HR behavioral rounds, STAR frameworks, and core CS deep-dives across all 12 companies.
+                        Master HR behavioral rounds, STAR frameworks, and core CS deep-dives across all 20 companies.
                     </p>
                 </div>
             </div>
@@ -92,7 +104,7 @@ function Interviews({ onBack }) {
                         className="filter-select"
                     >
                         {COMPANIES_LIST.map(c => (
-                            <option key={c} value={c}>{c === 'All' ? '🏢 All 12 Companies' : c}</option>
+                            <option key={c} value={c}>{c === 'All' ? '🏢 All 20 Companies' : c}</option>
                         ))}
                     </select>
                 </div>
@@ -125,7 +137,9 @@ function Interviews({ onBack }) {
             {/* Count Badge */}
             <div className="meta-results-row">
                 <span>Showing <strong>{filteredQuestions.length}</strong> verified interview questions</span>
-                <span className="recency-pill">📅 Sourced from 2024–2026 Hiring Cycles</span>
+                <span className="recency-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <CalendarIcon size={13} /> Sourced from 2024–2026 Hiring Cycles
+                </span>
             </div>
 
             {/* Loading & Error States */}
@@ -143,7 +157,10 @@ function Interviews({ onBack }) {
                     return (
                         <div key={q._id} className="interview-card">
                             <div className="card-top-row">
-                                <span className="company-tag">{q.company}</span>
+                                <span className="company-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                                    <CompanyLogo name={q.company} size={16} />
+                                    <span>{q.company}</span>
+                                </span>
                                 <span className="round-tag">{q.round}</span>
                                 <span className={`difficulty-badge ${q.difficulty?.toLowerCase()}`}>
                                     {q.difficulty}
@@ -163,9 +180,16 @@ function Interviews({ onBack }) {
                                         type="button"
                                         className="accordion-toggle-btn"
                                         onClick={() => toggleExpand(q._id)}
+                                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}
                                     >
                                         <span>💡 Recommended STAR Answer Strategy & Key Points</span>
-                                        <span>{isExpanded ? '▲ Hide' : '▼ Reveal Tips'}</span>
+                                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                                            {isExpanded ? (
+                                                <>Hide <ChevronUpIcon size={13} /></>
+                                            ) : (
+                                                <>Reveal Tips <ChevronDownIcon size={13} /></>
+                                            )}
+                                        </span>
                                     </button>
 
                                     {isExpanded && (
@@ -185,8 +209,9 @@ function Interviews({ onBack }) {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="source-link linkedin-link"
+                                        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
                                     >
-                                        💬 View on LinkedIn ↗
+                                        <LinkedInIcon size={14} /> View on LinkedIn <ExternalLinkIcon size={11} />
                                     </a>
                                 )}
                             </div>

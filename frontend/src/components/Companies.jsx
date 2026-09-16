@@ -1,4 +1,19 @@
 import { useState, useEffect, useCallback } from 'react';
+import { CompanyLogo } from './CompanyLogos';
+import { 
+    ArrowLeftIcon, 
+    RoadmapIcon, 
+    ShuffleIcon, 
+    DSAIcon, 
+    AptitudeIcon, 
+    InterviewIcon, 
+    SparklesIcon, 
+    CalendarIcon, 
+    ZapIcon, 
+    LockIcon, 
+    ExternalLinkIcon, 
+    ChatIcon 
+} from './Icons';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
@@ -200,16 +215,19 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                     className="back-button"
                     onClick={handleBackToCompanies}
                 >
-                    ← Back to {selectedType === 'service' ? 'Service Companies' : 'Product Companies'}
+                    <ArrowLeftIcon size={14} /> Back to {selectedType === 'service' ? 'Service Companies' : 'Product Companies'}
                 </button>
 
                 <div className="company-details">
-                    <div className="company-details-header">
-                        <span className={`company-badge ${selectedType}`}>
-                            {selectedType === 'service' ? 'Service-Based' : 'Product-Based'}
-                        </span>
-                        <h2>{selectedCompany.name}</h2>
-                        <p>{selectedCompany.description}</p>
+                    <div className="company-details-header" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                        <CompanyLogo name={selectedCompany.name} size={56} className="company-detail-logo" />
+                        <div>
+                            <span className={`company-badge ${selectedType}`}>
+                                {selectedType === 'service' ? 'Service-Based' : 'Product-Based'}
+                            </span>
+                            <h2 style={{ margin: '4px 0 6px 0' }}>{selectedCompany.name}</h2>
+                            <p style={{ margin: 0 }}>{selectedCompany.description}</p>
+                        </div>
                     </div>
 
                     {/* =========================
@@ -237,7 +255,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                     onClick={handleRandomQuestion}
                                     title="Jump to a random question"
                                 >
-                                    🔀 Random Question
+                                    <ShuffleIcon size={14} /> Random Question
                                 </button>
                             )}
                         </div>
@@ -257,21 +275,21 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                     className={`filter-pill ${categoryFilter === 'DSA' ? 'active' : ''}`}
                                     onClick={() => { setCategoryFilter('DSA'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
                                 >
-                                    💻 Coding / DSA ({questionsList.filter((q) => q.category === 'DSA').length})
+                                    <DSAIcon size={14} /> Coding / DSA ({questionsList.filter((q) => q.category === 'DSA').length})
                                 </button>
                                 <button
                                     type="button"
                                     className={`filter-pill ${categoryFilter === 'Aptitude' ? 'active' : ''}`}
                                     onClick={() => { setCategoryFilter('Aptitude'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
                                 >
-                                    🎯 Aptitude & Verbal ({questionsList.filter((q) => q.category === 'Aptitude').length})
+                                    <AptitudeIcon size={14} /> Aptitude & Verbal ({questionsList.filter((q) => q.category === 'Aptitude').length})
                                 </button>
                                 <button
                                     type="button"
                                     className={`filter-pill ${categoryFilter === 'Interview' ? 'active' : ''}`}
                                     onClick={() => { setCategoryFilter('Interview'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
                                 >
-                                    👔 HR & Interview ({questionsList.filter((q) => q.category === 'Interview').length})
+                                    <InterviewIcon size={14} /> HR & Interview ({questionsList.filter((q) => q.category === 'Interview').length})
                                 </button>
                                 {questionsList.some((q) => q.category === 'DSA' && (!q.matchedProblems || q.matchedProblems.length === 0 || q.isNovel)) && (
                                     <button
@@ -279,7 +297,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                         className={`filter-pill novel-filter-pill ${categoryFilter === 'Novel' ? 'active' : ''}`}
                                         onClick={() => { setCategoryFilter('Novel'); setCurrentIndex(0); setSelectedOption(null); setShowAnswerTips(false); }}
                                     >
-                                        🆕 Exclusive / New ({questionsList.filter((q) => q.category === 'DSA' && (!q.matchedProblems || q.matchedProblems.length === 0 || q.isNovel)).length})
+                                        <SparklesIcon size={14} /> Exclusive / New ({questionsList.filter((q) => q.category === 'DSA' && (!q.matchedProblems || q.matchedProblems.length === 0 || q.isNovel)).length})
                                     </button>
                                 )}
                             </div>
@@ -334,7 +352,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                         <span className="round-tag">Round: {currentQuestion.round}</span>
                                     )}
                                     <span className="batch-tag" title="Verified question from past 2 years placement cycle">
-                                        📅 {currentQuestion.batch || (currentQuestion.year ? `${currentQuestion.year} Pattern` : '2024–2026 Pattern')}
+                                        <CalendarIcon size={13} /> {currentQuestion.batch || (currentQuestion.year ? `${currentQuestion.year} Pattern` : '2024–2026 Pattern')}
                                     </span>
                                     {currentQuestion.recollectionType && (
                                         <span className={`recollection-tag recollection-${currentQuestion.recollectionType}`}>
@@ -347,7 +365,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                     )}
                                     {currentQuestion.category === 'DSA' && (!currentQuestion.matchedProblems || currentQuestion.matchedProblems.length === 0 || currentQuestion.isNovel) && (
                                         <span className="novel-pill-tag" title="Authentic company-exclusive question with no LeetCode equivalent">
-                                            🆕 New Question (No LeetCode Match)
+                                            <SparklesIcon size={13} /> New Question (No LeetCode Match)
                                         </span>
                                     )}
                                 </div>
@@ -429,7 +447,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                     <>
                                         {currentQuestion.constraints && currentQuestion.constraints.length > 0 && (
                                             <div className="constraints-section">
-                                                <h5>⚡ Memory Constraints & Bounds</h5>
+                                                <h5 style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><ZapIcon size={14} color="#f59e0b" /> Memory Constraints & Bounds</h5>
                                                 <ul>
                                                     {currentQuestion.constraints.map((c, i) => (
                                                         <li key={i}><code>{c}</code></li>
@@ -442,11 +460,11 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                         {currentQuestion.matchedProblems && currentQuestion.matchedProblems.length > 0 ? (
                                             <div className="matched-problems-box">
                                                 <div className="matched-header">
-                                                    <span>✨ Closest Canonical Match</span>
+                                                    <span><SparklesIcon size={14} /> Closest Canonical Match</span>
                                                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                                                         {currentQuestion.matchedProblems[0].isPremium && (
                                                             <span className="premium-lock-badge" title="LeetCode Premium subscription required">
-                                                                🔒 LeetCode Premium
+                                                                <LockIcon size={13} /> LeetCode Premium
                                                             </span>
                                                         )}
                                                         <span className="similarity-badge">
@@ -463,7 +481,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                                             rel="noopener noreferrer"
                                                             className="canonical-link"
                                                         >
-                                                            {currentQuestion.matchedProblems[0].problemName} ↗
+                                                            {currentQuestion.matchedProblems[0].problemName} <ExternalLinkIcon size={12} />
                                                         </a>
                                                     ) : (
                                                         <span>{currentQuestion.matchedProblems[0].problemName}</span>
@@ -471,18 +489,18 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                                 </p>
                                                 {currentQuestion.matchedProblems[0].isPremium && (
                                                     <p className="premium-notice-text">
-                                                        ℹ️ <em>Note: This problem is locked behind a LeetCode Premium subscription. You can practice and verify your solution directly here in SARATHI for free!</em>
+                                                        <LockIcon size={12} /> <em>Note: This problem is locked behind a LeetCode Premium subscription. You can practice and verify your solution directly here in SARATHI for free!</em>
                                                     </p>
                                                 )}
                                             </div>
                                         ) : (
                                             <div className="matched-problems-box novel-problem-box">
                                                 <div className="matched-header">
-                                                    <span className="novel-box-title">🆕 New Question · No Match Found in LeetCode</span>
+                                                    <span className="novel-box-title"><SparklesIcon size={14} /> New Question · No Match Found in LeetCode</span>
                                                     <span className="novel-badge">Company Exclusive</span>
                                                 </div>
                                                 <p className="matched-problem-name novel-problem-text">
-                                                    ✨ <strong>Real Interview Experience:</strong> This question is an authentic candidate recollection exclusive to this company's assessment. It does not exist in standard LeetCode archives — practice it directly in SARATHI!
+                                                    <SparklesIcon size={14} color="#0284c7" /> <strong>Real Interview Experience:</strong> This question is an authentic candidate recollection exclusive to this company's assessment. It does not exist in standard LeetCode archives — practice it directly in SARATHI!
                                                 </p>
                                             </div>
                                         )}
@@ -495,9 +513,9 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                                     className={`solve-ide-btn company-solve-ide-btn ${(!currentQuestion.matchedProblems || currentQuestion.matchedProblems.length === 0 || currentQuestion.isNovel) ? 'novel-solve-btn' : ''}`}
                                                     onClick={() => onOpenIDE(currentQuestion)}
                                                 >
-                                                    {(!currentQuestion.matchedProblems || currentQuestion.matchedProblems.length === 0 || currentQuestion.isNovel)
-                                                        ? '💻 Solve New Question in IDE'
-                                                        : '💻 Open & Solve in IDE'}
+                                                    <ZapIcon size={14} /> {(!currentQuestion.matchedProblems || currentQuestion.matchedProblems.length === 0 || currentQuestion.isNovel)
+                                                        ? 'Solve New Question in IDE'
+                                                        : 'Open & Solve in IDE'}
                                                 </button>
                                             </div>
                                         )}
@@ -507,7 +525,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                 {/* QUESTION FOOTER WITH VERIFIED SOURCE & PREV/NEXT NAV */}
                                 <div className="question-card-footer">
                                     <div className="source-info-box">
-                                        <span className="source-verification-badge">💬 Community Discussions</span>
+                                        <span className="source-verification-badge"><ChatIcon size={13} /> Community Discussions</span>
                                         {currentQuestion.sourceUrl ? (
                                             <a
                                                 href={currentQuestion.sourceUrl}
@@ -516,7 +534,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                                 className="source-external-link"
                                                 title={`View live candidate placement discussions for ${currentQuestion.company}`}
                                             >
-                                                {currentQuestion.source || 'Candidate Discussion'} ↗
+                                                {currentQuestion.source || 'Candidate Discussion'} <ExternalLinkIcon size={12} />
                                             </a>
                                         ) : (
                                             <span className="source-text">{currentQuestion.source || 'Candidate Discussion'}</span>
@@ -531,7 +549,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                             disabled={currentIndex === 0}
                                             title="Go to previous question"
                                         >
-                                            ← Previous
+                                            <ArrowLeftIcon size={13} /> Previous
                                         </button>
 
                                         <span className="nav-index-indicator">
@@ -544,7 +562,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                             disabled={currentIndex === filteredQuestions.length - 1}
                                             title="Go to next question"
                                         >
-                                            Next Question →
+                                            Next Question <ArrowRightIcon size={13} />
                                         </button>
                                     </div>
                                 </div>
@@ -594,8 +612,9 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                 <button
                     className="back-button"
                     onClick={() => setSelectedType(null)}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                 >
-                    ← Back to Categories
+                    <ArrowLeftIcon size={14} /> Back to Categories
                 </button>
 
                 <h2>
@@ -616,14 +635,21 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                             className="company-card"
                             key={company.name}
                         >
+                            <div className="company-card-top-row" style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '12px' }}>
+                                <CompanyLogo name={company.name} size={44} className="company-card-logo" />
+                                <div>
+                                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)' }}>{company.name}</h3>
+                                    <span style={{ fontSize: '0.74rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.6px', color: 'var(--text-muted)' }}>
+                                        {selectedType === 'service' ? 'IT Services & Consulting' : 'Product & Cloud Engineering'}
+                                    </span>
+                                </div>
+                            </div>
 
-                            <h3>{company.name}</h3>
-
-                            <p>
+                            <p style={{ margin: '0 0 16px 0', lineHeight: 1.5, color: 'var(--text-secondary)' }}>
                                 {company.description}
                             </p>
 
-                            <div style={{ display: 'flex', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: '10px', marginTop: 'auto', flexWrap: 'wrap', alignItems: 'center' }}>
                                 <button
                                     onClick={() =>
                                         handleSelectCompany(company)
@@ -634,9 +660,9 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                 {onSelectRoadmap && (
                                     <button
                                         onClick={() => onSelectRoadmap(company.name)}
-                                        style={{ background: '#0284c7', color: '#fff', border: 'none' }}
+                                        style={{ background: '#0284c7', color: '#fff', border: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                                     >
-                                        🎯 Roadmap
+                                        <RoadmapIcon size={14} /> Roadmap
                                     </button>
                                 )}
                             </div>
@@ -670,16 +696,22 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                     className="company-type-card"
                     onClick={() => setSelectedType('service')}
                 >
+                    <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
+                        <CompanyLogo name="TCS" size={32} />
+                        <CompanyLogo name="Infosys" size={32} />
+                        <CompanyLogo name="Accenture" size={32} />
+                        <CompanyLogo name="Wipro" size={32} />
+                        <CompanyLogo name="Cognizant" size={32} />
+                    </div>
 
                     <h3>Service-Based</h3>
 
                     <p>
-                        Explore service-based companies and their
-                        placement opportunities.
+                        Explore 10 major service-based leaders like TCS, Infosys, Accenture, Wipro, and Cognizant with recruitment patterns.
                     </p>
 
                     <button>
-                        Explore
+                        Explore Service Companies
                     </button>
 
                 </div>
@@ -689,16 +721,22 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                     className="company-type-card"
                     onClick={() => setSelectedType('product')}
                 >
+                    <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
+                        <CompanyLogo name="Amazon" size={32} />
+                        <CompanyLogo name="Google" size={32} />
+                        <CompanyLogo name="Microsoft" size={32} />
+                        <CompanyLogo name="Adobe" size={32} />
+                        <CompanyLogo name="Uber" size={32} />
+                    </div>
 
                     <h3>Product-Based</h3>
 
                     <p>
-                        Explore product-based companies and their
-                        placement opportunities.
+                        Explore 10 premier product firms like Amazon, Google, Microsoft, Adobe, and Uber with OA and DSA bars.
                     </p>
 
                     <button>
-                        Explore
+                        Explore Product Companies
                     </button>
 
                 </div>

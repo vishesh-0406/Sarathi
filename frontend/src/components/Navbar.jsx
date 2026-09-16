@@ -1,16 +1,27 @@
-﻿import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
+import { 
+    SarathiLogo, 
+    HomeIcon, 
+    RoadmapIcon, 
+    CompanyIcon, 
+    DSAIcon, 
+    AptitudeIcon, 
+    InterviewIcon, 
+    SunIcon, 
+    MoonIcon 
+} from './Icons';
 import './Navbar.css';
 
 function Navbar({ activeView, onNavigate }) {
     const { theme, toggleTheme } = useTheme();
 
     const navItems = [
-        { id: 'home', label: 'Home', icon: '🏠' },
-        { id: 'roadmap', label: 'Roadmaps', icon: '🎯' },
-        { id: 'companies', label: 'Companies', icon: '🏢' },
-        { id: 'dsa', label: 'DSA Arena', icon: '💻' },
-        { id: 'aptitude', label: 'Aptitude', icon: '🧠' },
-        { id: 'interviews', label: 'Interviews', icon: '🤝' },
+        { id: 'home', label: 'Home', icon: HomeIcon },
+        { id: 'roadmap', label: 'Roadmaps', icon: RoadmapIcon },
+        { id: 'companies', label: 'Companies', icon: CompanyIcon },
+        { id: 'dsa', label: 'DSA Arena', icon: DSAIcon },
+        { id: 'aptitude', label: 'Aptitude', icon: AptitudeIcon },
+        { id: 'interviews', label: 'Interviews', icon: InterviewIcon },
     ];
 
     return (
@@ -18,7 +29,9 @@ function Navbar({ activeView, onNavigate }) {
             <nav className="gov-navbar">
                 {/* Brand Logo & Tagline */}
                 <div className="gov-brand" onClick={() => onNavigate('home')} role="button" tabIndex={0}>
-                    <div className="gov-logo-icon">🧭</div>
+                    <div className="gov-logo-icon">
+                        <SarathiLogo size={32} />
+                    </div>
                     <div className="gov-logo-text">
                         <span className="gov-brand-name">Sarathi</span>
                         <span className="gov-brand-sub">Placement Intelligence</span>
@@ -29,13 +42,14 @@ function Navbar({ activeView, onNavigate }) {
                 <div className="gov-nav-links">
                     {navItems.map(item => {
                         const isActive = activeView === item.id;
+                        const IconComponent = item.icon;
                         return (
                             <button
                                 key={item.id}
                                 className={`gov-nav-pill ${isActive ? 'active' : ''}`}
                                 onClick={() => onNavigate(item.id)}
                             >
-                                <span className="nav-icon">{item.icon}</span>
+                                <span className="nav-icon"><IconComponent size={16} /></span>
                                 <span className="nav-label">{item.label}</span>
                             </button>
                         );
@@ -51,12 +65,12 @@ function Navbar({ activeView, onNavigate }) {
                     >
                         {theme === 'light' ? (
                             <>
-                                <span className="theme-icon">🌙</span>
+                                <span className="theme-icon"><MoonIcon size={16} /></span>
                                 <span className="theme-label">Dark</span>
                             </>
                         ) : (
                             <>
-                                <span className="theme-icon">☀️</span>
+                                <span className="theme-icon"><SunIcon size={16} /></span>
                                 <span className="theme-label">Light</span>
                             </>
                         )}

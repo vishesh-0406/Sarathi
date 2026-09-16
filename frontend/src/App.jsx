@@ -6,6 +6,18 @@ import Aptitude from './components/Aptitude';
 import Interviews from './components/Interviews';
 import Roadmap from './components/Roadmap';
 import IDE from './components/IDE';
+import { CompanyLogo } from './components/CompanyLogos';
+import { 
+    RoadmapIcon, 
+    CompanyIcon, 
+    DSAIcon, 
+    AptitudeIcon, 
+    InterviewIcon, 
+    SearchIcon, 
+    ArrowLeftIcon, 
+    ArrowRightIcon, 
+    SparklesIcon 
+} from './components/Icons';
 import './App.css';
 
 const POPULAR_COMPANIES = [
@@ -77,8 +89,8 @@ function App() {
                 {activeIdeQuestion && (
                     <div className="view-wrapper ide-view">
                         <div className="view-breadcrumb-bar">
-                            <button className="breadcrumb-back-btn" onClick={handleBackFromIDE}>
-                                ← Back to {activeView === 'roadmap' ? 'Roadmap' : activeView === 'dsa' ? 'DSA Arena' : 'Overview'}
+                            <button className="breadcrumb-back-btn" onClick={handleBackFromIDE} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <ArrowLeftIcon size={14} /> Back to {activeView === 'roadmap' ? 'Roadmap' : activeView === 'dsa' ? 'DSA Arena' : 'Overview'}
                             </button>
                             <span className="breadcrumb-current">In-Browser Code Execution Workspace</span>
                         </div>
@@ -90,8 +102,8 @@ function App() {
                 {!activeIdeQuestion && activeView === 'roadmap' && (
                     <div className="view-wrapper">
                         <div className="view-breadcrumb-bar">
-                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
-                                ← Back to Home
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <ArrowLeftIcon size={14} /> Back to Home
                             </button>
                             <span className="breadcrumb-current">Company-Specific Preparation Roadmap</span>
                         </div>
@@ -107,8 +119,8 @@ function App() {
                 {!activeIdeQuestion && activeView === 'companies' && (
                     <div className="view-wrapper">
                         <div className="view-breadcrumb-bar">
-                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
-                                ← Back to Home
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <ArrowLeftIcon size={14} /> Back to Home
                             </button>
                             <span className="breadcrumb-current">All 20 Tech Companies & Hiring Blueprints</span>
                         </div>
@@ -120,8 +132,8 @@ function App() {
                 {!activeIdeQuestion && activeView === 'dsa' && (
                     <div className="view-wrapper">
                         <div className="view-breadcrumb-bar">
-                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
-                                ← Back to Home
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <ArrowLeftIcon size={14} /> Back to Home
                             </button>
                             <span className="breadcrumb-current">1,400 LeetCode-Matched DSA Practice Arena</span>
                         </div>
@@ -133,8 +145,8 @@ function App() {
                 {!activeIdeQuestion && activeView === 'aptitude' && (
                     <div className="view-wrapper">
                         <div className="view-breadcrumb-bar">
-                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
-                                ← Back to Home
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <ArrowLeftIcon size={14} /> Back to Home
                             </button>
                             <span className="breadcrumb-current">Quantitative, Logical & Verbal Aptitude Arena</span>
                         </div>
@@ -146,8 +158,8 @@ function App() {
                 {!activeIdeQuestion && activeView === 'interviews' && (
                     <div className="view-wrapper">
                         <div className="view-breadcrumb-bar">
-                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')}>
-                                ← Back to Home
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <ArrowLeftIcon size={14} /> Back to Home
                             </button>
                             <span className="breadcrumb-current">Technical & HR Interview Navigator (STAR Framework)</span>
                         </div>
@@ -179,7 +191,7 @@ function App() {
                                 {/* Search Bar Hub */}
                                 <form className="gov-search-form" onSubmit={handleSearch}>
                                     <div className="gov-search-box">
-                                        <span className="search-icon">🔍</span>
+                                        <span className="search-icon"><SearchIcon size={18} /></span>
                                         <input 
                                             type="text" 
                                             placeholder="Search company, topic, or role (e.g. Amazon, Zoho, Graphs, NQT)..."
@@ -212,7 +224,9 @@ function App() {
                                         className="primary-hero-btn"
                                         onClick={() => handleNavigate('roadmap')}
                                     >
-                                        <span>🎯 Explore Target Roadmaps</span>
+                                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                            <RoadmapIcon size={18} /> Explore Target Roadmaps
+                                        </span>
                                         <span className="btn-arrow">→</span>
                                     </button>
 
@@ -220,7 +234,9 @@ function App() {
                                         className="secondary-hero-btn"
                                         onClick={() => handleNavigate('companies')}
                                     >
-                                        <span>🏢 Browse 20 Companies</span>
+                                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                            <CompanyIcon size={18} /> Browse 20 Companies
+                                        </span>
                                     </button>
                                 </div>
                             </div>
@@ -267,7 +283,9 @@ function App() {
                                     role="button"
                                     tabIndex={0}
                                 >
-                                    <div className="card-icon-bubble green">🎯</div>
+                                    <div className="card-icon-bubble green">
+                                        <RoadmapIcon size={24} />
+                                    </div>
                                     <h3>Target Company Roadmaps</h3>
                                     <p>Authentic company-tailored recruitment pipelines (3, 4, and 5 rounds) for 20 top firms with round-specific question alignment.</p>
                                     <span className="card-arrow-link">Explore Roadmaps →</span>
@@ -279,7 +297,9 @@ function App() {
                                     role="button"
                                     tabIndex={0}
                                 >
-                                    <div className="card-icon-bubble peach">💻</div>
+                                    <div className="card-icon-bubble peach">
+                                        <DSAIcon size={24} />
+                                    </div>
                                     <h3>DSA Code Arena</h3>
                                     <p>1,400 LeetCode-matched problems across all 9 pillars with real-time in-browser code execution.</p>
                                     <span className="card-arrow-link">Start Coding →</span>
@@ -291,7 +311,9 @@ function App() {
                                     role="button"
                                     tabIndex={0}
                                 >
-                                    <div className="card-icon-bubble lavender">🧠</div>
+                                    <div className="card-icon-bubble lavender">
+                                        <AptitudeIcon size={24} />
+                                    </div>
                                     <h3>Aptitude & Reasoning</h3>
                                     <p>300 quantitative, logical, and verbal questions with step-by-step mathematical derivations.</p>
                                     <span className="card-arrow-link">Practice Aptitude →</span>
@@ -303,7 +325,9 @@ function App() {
                                     role="button"
                                     tabIndex={0}
                                 >
-                                    <div className="card-icon-bubble blue">🤝</div>
+                                    <div className="card-icon-bubble blue">
+                                        <InterviewIcon size={24} />
+                                    </div>
                                     <h3>Interview Navigator</h3>
                                     <p>300 HR, Core CS, and behavioral questions with STAR framework models and evaluation rubrics.</p>
                                     <span className="card-arrow-link">Prepare Interviews →</span>
@@ -375,7 +399,7 @@ function App() {
                                         onClick={() => handleLaunchCompanyRoadmap(comp.name)}
                                     >
                                         <div className="comp-card-top">
-                                            <div className="comp-avatar">{comp.name.charAt(0)}</div>
+                                            <CompanyLogo name={comp.name} size={42} className="popular-comp-logo" />
                                             <span className={`comp-type-pill ${comp.type}`}>
                                                 {comp.badge}
                                             </span>

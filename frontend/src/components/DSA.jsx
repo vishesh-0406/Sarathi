@@ -1,4 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
+import { CompanyLogo } from './CompanyLogos';
+import { 
+    DSAIcon, 
+    ArrowLeftIcon, 
+    ArrowRightIcon, 
+    CalendarIcon, 
+    ZapIcon, 
+    LockIcon, 
+    SparklesIcon, 
+    LeetCodeIcon, 
+    ExternalLinkIcon, 
+    ChatIcon 
+} from './Icons';
 import './DSA.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -91,12 +104,14 @@ function DSA({ onBack, onOpenIDE }) {
         <section id="dsa-section" className="dsa-section">
             <div className="section-header-row">
                 {onBack && (
-                    <button className="back-btn" onClick={onBack}>
-                        ← Back to Preparation
+                    <button className="back-btn" onClick={onBack} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        <ArrowLeftIcon size={14} /> Back to Preparation
                     </button>
                 )}
                 <div>
-                    <h2>💻 Data Structures & Algorithms Practice</h2>
+                    <h2 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <DSAIcon size={24} /> Data Structures & Algorithms Practice
+                    </h2>
                     <p className="section-intro">
                         Curated <strong>1,400 placement coding problems</strong> across 20 target companies.
                         Dynamically linked with <strong>LeetCode problems</strong> for online practice and testcase validation.
@@ -170,7 +185,7 @@ function DSA({ onBack, onOpenIDE }) {
             {/* Meta Row */}
             <div className="meta-results-row">
                 <span>Showing <strong>{filteredQuestions.length}</strong> matching DSA questions</span>
-                <span className="recency-pill">📅 Verified 2024–2026 Hiring Patterns</span>
+                <span className="recency-pill"><CalendarIcon size={13} /> Verified 2024–2026 Hiring Patterns</span>
             </div>
 
             {/* Loading & Error */}
@@ -188,16 +203,22 @@ function DSA({ onBack, onOpenIDE }) {
                     return (
                         <div key={q._id} className="dsa-card">
                             <div className="card-top-row">
-                                <span className="company-tag">{q.company}</span>
+                                <span className="company-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                    <CompanyLogo name={q.company} size={16} /> {q.company}
+                                </span>
                                 <span className="round-tag">{q.round}</span>
                                 <span className={`difficulty-badge ${q.difficulty?.toLowerCase()}`}>
                                     {q.difficulty}
                                 </span>
                                 {matched?.isPremium && (
-                                    <span className="premium-top-badge" title="This problem requires a LeetCode Premium subscription">🔒 Premium</span>
+                                    <span className="premium-top-badge" title="This problem requires a LeetCode Premium subscription">
+                                        <LockIcon size={12} /> Premium
+                                    </span>
                                 )}
                                 {(!matched || q.isNovel) && (
-                                    <span className="novel-top-badge">🆕 New Question</span>
+                                    <span className="novel-top-badge">
+                                        <SparklesIcon size={12} /> New Question
+                                    </span>
                                 )}
                             </div>
 
@@ -226,7 +247,7 @@ function DSA({ onBack, onOpenIDE }) {
                                         className={`solve-ide-btn ${(!matched || q.isNovel) ? 'novel-solve-btn' : ''}`}
                                         onClick={() => onOpenIDE(q)}
                                     >
-                                        💻 {(!matched || q.isNovel) ? 'Solve New Question' : 'Solve in IDE'}
+                                        <ZapIcon size={14} /> {(!matched || q.isNovel) ? 'Solve New Question' : 'Solve in IDE'}
                                     </button>
                                 )}
 
@@ -238,14 +259,14 @@ function DSA({ onBack, onOpenIDE }) {
                                         className={`solve-leetcode-btn ${matched.isPremium ? 'premium-leetcode-btn' : ''}`}
                                         title={matched.isPremium ? `${matched.problemName} (Requires LeetCode Premium)` : matched.problemName}
                                     >
-                                        {matched.isPremium ? '🔒 LeetCode Premium' : '🚀 LeetCode'} ({Math.round(matched.similarityScore * 100)}%) ↗
+                                        {matched.isPremium ? <><LockIcon size={13} /> LeetCode Premium</> : <><LeetCodeIcon size={14} /> LeetCode</>} ({Math.round(matched.similarityScore * 100)}%) <ExternalLinkIcon size={11} />
                                     </a>
                                 ) : (
                                     <span 
                                         className="novel-question-tag" 
                                         title="Authentic company-exclusive interview pattern with no LeetCode equivalent"
                                     >
-                                        🆕 New Question (No LeetCode Match)
+                                        <SparklesIcon size={13} /> New Question (No LeetCode Match)
                                     </span>
                                 )}
                             </div>
@@ -260,7 +281,7 @@ function DSA({ onBack, onOpenIDE }) {
                                         rel="noopener noreferrer"
                                         className="source-link reddit-link"
                                     >
-                                        💬 Community Discussions ↗
+                                        <ChatIcon size={13} /> Community Discussions <ExternalLinkIcon size={11} />
                                     </a>
                                 )}
                             </div>
@@ -277,7 +298,7 @@ function DSA({ onBack, onOpenIDE }) {
                         onClick={() => setPage(prev => Math.max(1, prev - 1))}
                         disabled={page === 1}
                     >
-                        ← Previous Page
+                        <ArrowLeftIcon size={13} /> Previous Page
                     </button>
                     <span className="page-indicator">
                         Page {page} of {totalPages}
@@ -287,7 +308,7 @@ function DSA({ onBack, onOpenIDE }) {
                         onClick={() => setPage(prev => Math.min(totalPages, prev + 1))}
                         disabled={page === totalPages}
                     >
-                        Next Page →
+                        Next Page <ArrowRightIcon size={13} />
                     </button>
                 </div>
             )}

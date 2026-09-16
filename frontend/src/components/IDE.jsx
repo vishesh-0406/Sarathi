@@ -3,6 +3,8 @@ import Editor from '@monaco-editor/react';
 import { useTheme } from '../context/ThemeContext';
 import { generateLeetCodeTemplate } from '../utils/leetcodeTemplates';
 import { getLanguageIcon } from './LanguageIcons';
+import CompanyLogo from './CompanyLogos';
+import { ArrowLeftIcon } from './Icons';
 import './IDE.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -38,12 +40,17 @@ function IDE({ question, onBack }) {
             <div className="ide-container non-coding-container">
                 <div className="ide-top-bar">
                     <div className="ide-top-left">
-                        <button className="back-btn ide-back-btn" onClick={onBack}>
-                            ← Back to Questions
+                        <button className="back-btn ide-back-btn" onClick={onBack} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                            <ArrowLeftIcon size={14} /> Back to Questions
                         </button>
                         <div className="ide-title-group">
                             <span className="ide-problem-title">{question?.title || 'Aptitude Question'}</span>
-                            {question?.company && <span className="company-tag">{question.company}</span>}
+                            {question?.company && (
+                                <span className="company-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                                    <CompanyLogo name={question.company} size={15} />
+                                    <span>{question.company}</span>
+                                </span>
+                            )}
                             <span className="category-tag category-aptitude">🎯 Aptitude & Verbal</span>
                         </div>
                     </div>
@@ -311,12 +318,17 @@ function IDE({ question, onBack }) {
             {/* Top Navigation & Action Bar */}
             <div className="ide-top-bar">
                 <div className="ide-top-left">
-                    <button className="back-btn ide-back-btn" onClick={onBack}>
-                        ← Back to Questions
+                    <button className="back-btn ide-back-btn" onClick={onBack} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <ArrowLeftIcon size={14} /> Back to Questions
                     </button>
                     <div className="ide-title-group">
                         <span className="ide-problem-title">{question?.title || 'Coding Workspace'}</span>
-                        {question?.company && <span className="company-tag">{question.company}</span>}
+                        {question?.company && (
+                            <span className="company-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                                <CompanyLogo name={question.company} size={15} />
+                                <span>{question.company}</span>
+                            </span>
+                        )}
                         {question?.difficulty && (
                             <span className={`difficulty-badge ${question.difficulty.toLowerCase()}`}>
                                 {question.difficulty}

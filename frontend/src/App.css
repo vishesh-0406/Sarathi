@@ -743,6 +743,7 @@
     letter-spacing: 0.4px;
     display: inline-flex;
     align-items: center;
+    gap: 0.35rem;
 }
 
 .round-tag {

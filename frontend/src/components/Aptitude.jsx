@@ -1,12 +1,26 @@
 import { useState, useEffect, useCallback } from 'react';
+import { CompanyLogo } from './CompanyLogos';
+import { 
+    AptitudeIcon, 
+    ArrowLeftIcon, 
+    ArrowRightIcon, 
+    CalendarIcon, 
+    ShuffleIcon, 
+    ChevronUpIcon, 
+    ChevronDownIcon, 
+    XTwitterIcon, 
+    CheckIcon, 
+    XIcon, 
+    ExternalLinkIcon 
+} from './Icons';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
 const TOPICS = [
-    { key: 'All', label: '📊 All Aptitude' },
-    { key: 'Quantitative', label: '🔢 Quantitative Aptitude' },
-    { key: 'Logical', label: '🧠 Logical Reasoning' },
-    { key: 'Verbal', label: '📖 Verbal Ability' }
+    { key: 'All', label: 'All Aptitude' },
+    { key: 'Quantitative', label: 'Quantitative Aptitude' },
+    { key: 'Logical', label: 'Logical Reasoning' },
+    { key: 'Verbal', label: 'Verbal Ability' }
 ];
 
 const COMPANIES_LIST = [
@@ -106,12 +120,14 @@ function Aptitude({ onBack }) {
         <section id="aptitude-section" className="aptitude-section">
             <div className="section-header-row">
                 {onBack && (
-                    <button className="back-btn" onClick={onBack}>
-                        ← Back to Preparation
+                    <button className="back-btn" onClick={onBack} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        <ArrowLeftIcon size={14} /> Back to Preparation
                     </button>
                 )}
                 <div>
-                    <h2>🎯 Interactive Aptitude Arena</h2>
+                    <h2 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <AptitudeIcon size={24} /> Interactive Aptitude Arena
+                    </h2>
                     <p className="section-intro">
                         Real aptitude test patterns collected from <strong>X (Twitter) & Drive Exam Memories</strong>.
                         Instant answer verification with step-by-step mathematical & logical explanations.
@@ -130,7 +146,7 @@ function Aptitude({ onBack }) {
                     <strong>{Object.keys(userAnswers).length} / {questions.length}</strong>
                 </div>
                 <div className="recency-pill">
-                    📅 2024–2026 Test Pattern
+                    <CalendarIcon size={13} /> 2024–2026 Test Pattern
                 </div>
             </div>
 
@@ -176,7 +192,9 @@ function Aptitude({ onBack }) {
                 <div className="aptitude-card">
                     <div className="aptitude-card-header">
                         <div className="header-badges">
-                            <span className="company-tag">{currentQ.company}</span>
+                            <span className="company-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <CompanyLogo name={currentQ.company} size={16} /> {currentQ.company}
+                            </span>
                             <span className="topic-tag">{currentQ.topic}</span>
                             <span className="round-tag">{currentQ.round}</span>
                         </div>
@@ -224,8 +242,8 @@ function Aptitude({ onBack }) {
                                 >
                                     <span className="option-letter">{optionLetter}</span>
                                     <span className="option-text">{cleanOptText}</span>
-                                    {currentAnswer && isCorrectOpt && <span className="feedback-icon">✓</span>}
-                                    {currentAnswer && isSelected && !currentAnswer.isCorrect && <span className="feedback-icon">✗</span>}
+                                    {currentAnswer && isCorrectOpt && <span className="feedback-icon"><CheckIcon size={14} /></span>}
+                                    {currentAnswer && isSelected && !currentAnswer.isCorrect && <span className="feedback-icon"><XIcon size={14} /></span>}
                                 </button>
                             );
                         })}
@@ -235,9 +253,9 @@ function Aptitude({ onBack }) {
                     {currentAnswer && (
                         <div className={`result-banner ${currentAnswer.isCorrect ? 'banner-correct' : 'banner-wrong'}`}>
                             {currentAnswer.isCorrect ? (
-                                <span>🎉 <strong>Correct!</strong> Well done. Click below to inspect the mathematical breakdown.</span>
+                                <span><CheckIcon size={16} /> <strong>Correct!</strong> Well done. Click below to inspect the mathematical breakdown.</span>
                             ) : (
-                                <span>❌ <strong>Incorrect.</strong> The correct answer is <strong>Option {currentQ.correctOption}</strong>.</span>
+                                <span><XIcon size={16} /> <strong>Incorrect.</strong> The correct answer is <strong>Option {currentQ.correctOption}</strong>.</span>
                             )}
                         </div>
                     )}
@@ -249,8 +267,8 @@ function Aptitude({ onBack }) {
                             className="explanation-toggle-btn"
                             onClick={() => setShowExplanation(prev => !prev)}
                         >
-                            <span>📐 {showExplanation ? 'Hide Step-by-Step Solution' : 'View Step-by-Step Solution & Shortcuts'}</span>
-                            <span>{showExplanation ? '▲' : '▼'}</span>
+                            <span>{showExplanation ? 'Hide Step-by-Step Solution' : 'View Step-by-Step Solution & Shortcuts'}</span>
+                            <span>{showExplanation ? <ChevronUpIcon size={14} /> : <ChevronDownIcon size={14} />}</span>
                         </button>
 
                         {showExplanation && (
@@ -267,23 +285,26 @@ function Aptitude({ onBack }) {
                             className="nav-btn prev-btn"
                             onClick={handlePrev}
                             disabled={currentIndex === 0}
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                         >
-                            ← Previous
+                            <ArrowLeftIcon size={13} /> Previous
                         </button>
 
                         <button
                             className="nav-btn random-btn"
                             onClick={handleRandom}
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                         >
-                            🔀 Random Question
+                            <ShuffleIcon size={14} /> Random Question
                         </button>
 
                         <button
                             className="nav-btn next-btn"
                             onClick={handleNext}
                             disabled={currentIndex === questions.length - 1}
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                         >
-                            Next Question →
+                            Next Question <ArrowRightIcon size={13} />
                         </button>
                     </div>
 
@@ -296,8 +317,9 @@ function Aptitude({ onBack }) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="source-link twitter-link"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                             >
-                                🐦 View Discussions on X ↗
+                                <XTwitterIcon size={13} /> View Discussions on X <ExternalLinkIcon size={11} />
                             </a>
                         )}
                     </div>

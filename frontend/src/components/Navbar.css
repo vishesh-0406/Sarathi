@@ -1,4 +1,4 @@
-﻿.gov-navbar-wrapper {
+.gov-navbar-wrapper {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -93,7 +93,9 @@
 }
 
 .nav-icon {
-    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Right utilities */

@@ -1,4 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
+import { CompanyLogo } from './CompanyLogos';
+import { 
+    RoadmapIcon, 
+    ArrowLeftIcon, 
+    ZapIcon, 
+    LinkIcon, 
+    LockIcon, 
+    SparklesIcon, 
+    AptitudeIcon, 
+    DocumentIcon, 
+    ChevronDownIcon, 
+    ChevronUpIcon 
+} from './Icons';
 import './Roadmap.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -130,11 +143,13 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
         <div className="roadmap-page">
             {/* Header Navigation Bar */}
             <div className="roadmap-topbar">
-                <button className="back-btn" onClick={onBack}>
-                    ← Back to Preparation
+                <button className="back-btn" onClick={onBack} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <ArrowLeftIcon size={14} /> Back to Preparation
                 </button>
                 <div className="roadmap-title-box">
-                    <h1>🎯 Company-Specific Preparation Roadmap</h1>
+                    <h1 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <RoadmapIcon size={28} /> Company-Specific Preparation Roadmap
+                    </h1>
                     <p>Authentic recruitment rounds and filtration stages tailored to each company's exact hiring bar.</p>
                 </div>
             </div>
@@ -153,13 +168,13 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                         className={`type-tab ${companyTypeFilter === 'product' ? 'active' : ''}`}
                         onClick={() => setCompanyTypeFilter('product')}
                     >
-                        🚀 Product-Based (10)
+                        Product-Based (10)
                     </button>
                     <button 
                         className={`type-tab ${companyTypeFilter === 'service' ? 'active' : ''}`}
                         onClick={() => setCompanyTypeFilter('service')}
                     >
-                        🏢 Service-Based (10)
+                        Service-Based (10)
                     </button>
                 </div>
 
@@ -169,7 +184,9 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                             key={comp.name}
                             className={`company-chip ${selectedCompany === comp.name ? 'selected' : ''}`}
                             onClick={() => setSelectedCompany(comp.name)}
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                         >
+                            <CompanyLogo name={comp.name} size={20} />
                             <span className="chip-name">{comp.name}</span>
                             <span className={`chip-badge ${comp.type}`}>
                                 {comp.type === 'product' ? 'Product' : 'Service'}
@@ -197,12 +214,13 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                 <>
                     {/* Company Intelligence & Blueprint Card */}
                     <div className="company-blueprint-card">
-                        <div className="blueprint-header">
+                        <div className="blueprint-header" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                            <CompanyLogo name={roadmapData.company.name} size={54} className="blueprint-company-logo" />
                             <div>
                                 <span className={`company-tier-tag ${roadmapData.company.type}`}>
-                                    {roadmapData.company.tier || (roadmapData.company.type === 'product' ? '🚀 Top Product Firm' : '🏢 Global IT Services Leader')}
+                                    {roadmapData.company.tier || (roadmapData.company.type === 'product' ? 'Top Product Firm' : 'Global IT Services Leader')}
                                 </span>
-                                <h2>{roadmapData.company.name} Placement Blueprint</h2>
+                                <h2 style={{ margin: '4px 0 0 0' }}>{roadmapData.company.name} Placement Blueprint</h2>
                             </div>
 
                             <div className="blueprint-meta-stats">
@@ -219,7 +237,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                     <strong>{roadmapData.stats.interviewCount}</strong> HR / CS
                                 </div>
                                 <div className="meta-stat-pill novel">
-                                    ✨ <strong>{roadmapData.stats.novelCount}</strong> Company Exclusives
+                                    <SparklesIcon size={13} /> <strong>{roadmapData.stats.novelCount}</strong> Exclusives
                                 </div>
                             </div>
                         </div>
@@ -330,7 +348,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                 {filteredQuestions.length} Questions
                                             </span>
                                             <span className="accordion-arrow">
-                                                {isExpanded ? '▲' : '▼'}
+                                                {isExpanded ? <ChevronUpIcon size={14} /> : <ChevronDownIcon size={14} />}
                                             </span>
                                         </div>
                                     </div>
@@ -359,7 +377,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                         </span>
                                                                         {q.isNovel ? (
                                                                             <span className="novel-exclusive-tag">
-                                                                                ✨ Company Exclusive
+                                                                                <SparklesIcon size={13} /> Company Exclusive
                                                                             </span>
                                                                         ) : matched ? (
                                                                             <a
@@ -369,8 +387,8 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                                 className="canonical-lc-link"
                                                                                 title="View canonical problem on LeetCode"
                                                                             >
-                                                                                🔗 {matched.problemName}
-                                                                                {matched.isPremium && <span className="premium-lock"> 🔒</span>}
+                                                                                <LinkIcon size={13} /> {matched.problemName}
+                                                                                {matched.isPremium && <span className="premium-lock"> <LockIcon size={12} /></span>}
                                                                             </a>
                                                                         ) : null}
                                                                     </div>
@@ -390,7 +408,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                             className="ide-btn"
                                                                             onClick={() => onOpenIDE(q)}
                                                                         >
-                                                                            ⚡ Solve in IDE
+                                                                            <ZapIcon size={14} /> Solve in IDE
                                                                         </button>
                                                                     )}
 
@@ -399,7 +417,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                             className="quiz-btn"
                                                                             onClick={() => toggleQuestionDetail(q._id)}
                                                                         >
-                                                                            {isDetailOpen ? 'Hide Quiz' : '🧠 Practice Quiz'}
+                                                                            {isDetailOpen ? 'Hide Quiz' : <><AptitudeIcon size={14} /> Practice Quiz</>}
                                                                         </button>
                                                                     )}
 
@@ -408,7 +426,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                             className="star-btn"
                                                                             onClick={() => toggleQuestionDetail(q._id)}
                                                                         >
-                                                                            {isDetailOpen ? 'Hide Guide' : '📋 View STAR Guide'}
+                                                                            {isDetailOpen ? 'Hide Guide' : <><DocumentIcon size={14} /> View STAR Guide</>}
                                                                         </button>
                                                                     )}
 
