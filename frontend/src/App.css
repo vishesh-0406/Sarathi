@@ -110,6 +110,12 @@
     -webkit-text-fill-color: transparent;
 }
 
+:root[data-theme="dark"] .gov-title-gradient {
+    background: linear-gradient(135deg, #ffffff 10%, #93c5fd 60%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .gov-hero-desc {
     font-size: 1.15rem;
     line-height: 1.6;
@@ -1308,21 +1314,21 @@
     width: 100%;
     padding: 14px 20px;
     border-radius: 12px;
-    background-color: var(--bg-subtle, #1e293b);
-    border: 1.5px solid var(--border-color, #334155);
-    color: var(--text-primary, #f8fafc);
+    background-color: var(--bg-subtle, #18181c);
+    border: 1.5px solid var(--border-color, #27272a);
+    color: var(--text-primary, #f4f4f6);
     font-size: 0.98rem;
     font-weight: 500;
     cursor: pointer;
     text-align: left;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .option-btn:hover:not(:disabled) {
-    border-color: var(--accent-primary, #6366f1);
-    background-color: var(--accent-primary-light, rgba(99, 102, 241, 0.12));
+    border-color: var(--border-hover, #3f3f46);
+    background-color: var(--border-color, #222226);
     transform: translateX(4px);
 }
 
@@ -1335,11 +1341,11 @@
     height: 32px;
     min-width: 32px;
     border-radius: 8px;
-    background: var(--bg-surface, #0f172a);
-    border: 1.5px solid var(--border-color, #475569);
+    background: var(--bg-surface, #121215);
+    border: 1.5px solid var(--border-color, #27272a);
     font-weight: 800;
     font-size: 0.9rem;
-    color: var(--text-secondary, #94a3b8);
+    color: var(--text-secondary, #a1a1aa);
     transition: all 0.2s ease;
 }
 
@@ -1422,8 +1428,8 @@
 .option-btn:disabled:not(.option-correct):not(.correct):not(.option-wrong):not(.incorrect):not(.wrong) {
     opacity: 0.5;
     cursor: not-allowed;
-    background-color: var(--bg-subtle, #1e293b);
-    border-color: var(--border-color, #334155);
+    background-color: var(--bg-subtle, #18181c);
+    border-color: var(--border-color, #27272a);
 }
 
 /* Step-by-Step Explanation Accordion */

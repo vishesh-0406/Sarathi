@@ -139,7 +139,7 @@
     border-radius: 9999px;
     font-size: 0.78rem;
     font-weight: 700;
-    border: 1px solid rgba(2, 132, 199, 0.2);
+    border: 1px solid var(--border-color);
 }
 
 .pulse-dot {
