@@ -14,9 +14,9 @@
   --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
-  --accent-primary: #0284c7;
-  --accent-primary-hover: #0369a1;
-  --accent-primary-light: #e0f2fe;
+  --accent-primary: #18181b;
+  --accent-primary-hover: #27272a;
+  --accent-primary-light: #f4f4f5;
   --accent-cyan: #0891b2;
   --accent-cyan-light: #ecfeff;
   --accent-purple: #7c3aed;
@@ -35,29 +35,29 @@
 /* Authentic Stylish Dark Theme (Obsidian & Matte Black Developer Style) */
 :root[data-theme="dark"], body.dark-theme {
   --bg-primary: #09090b;
-  --bg-surface: #121215;
-  --bg-surface-elevated: #18181c;
-  --bg-subtle: #18181c;
-  --border-color: rgba(255, 255, 255, 0.09);
-  --border-hover: rgba(255, 255, 255, 0.2);
+  --bg-surface: #111113;
+  --bg-surface-elevated: #161619;
+  --bg-subtle: #161619;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
   --text-primary: #f4f4f6;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
-  --accent-primary: #60a5fa;
-  --accent-primary-hover: #3b82f6;
-  --accent-primary-light: rgba(96, 165, 250, 0.12);
-  --accent-cyan: #22d3ee;
-  --accent-cyan-light: rgba(34, 211, 238, 0.12);
-  --accent-purple: #c084fc;
-  --accent-purple-light: rgba(192, 132, 252, 0.12);
-  --accent-emerald: #10b981;
-  --accent-emerald-light: rgba(16, 185, 129, 0.12);
-  --accent-amber: #f59e0b;
-  --accent-amber-light: rgba(245, 158, 11, 0.12);
-  --accent-rose: #f43f5e;
-  --accent-rose-light: rgba(244, 63, 94, 0.12);
-  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.4);
-  --card-shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.75), 0 2px 6px rgba(0, 0, 0, 0.5);
+  --accent-primary: #f4f4f6;
+  --accent-primary-hover: #e4e4e7;
+  --accent-primary-light: rgba(255, 255, 255, 0.08);
+  --accent-cyan: #38bdf8;
+  --accent-cyan-light: rgba(56, 189, 248, 0.08);
+  --accent-purple: #a78bfa;
+  --accent-purple-light: rgba(167, 139, 250, 0.08);
+  --accent-emerald: #34d399;
+  --accent-emerald-light: rgba(52, 211, 153, 0.08);
+  --accent-amber: #fbbf24;
+  --accent-amber-light: rgba(251, 191, 36, 0.08);
+  --accent-rose: #f87171;
+  --accent-rose-light: rgba(248, 113, 113, 0.08);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.65), 0 1px 2px rgba(0, 0, 0, 0.5);
+  --card-shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
 
@@ -78,7 +78,7 @@
 }
 
 :root[data-theme="dark"] ::selection {
-  background-color: rgba(96, 165, 250, 0.25);
+  background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
 }
 

@@ -446,15 +446,37 @@ export function inferSignature(question) {
         if (isList && (lp.includes('head') || lp.includes('list') || lp === 'node')) {
             return { name: p, py: 'Optional[ListNode]', java: 'ListNode', cpp: 'ListNode*', js: 'ListNode' };
         }
-        if (lp.includes('matrix') || lp.includes('grid') || inputStr.includes('[[')) {
+
+        // Extract value assigned to this parameter in inputStr, e.g. "r = 7", "arr = [2, 8, ...]"
+        let pVal = '';
+        try {
+            const regex = new RegExp('(?:^|[,\\s])' + p + '\\s*=\\s*([^,]+?)(?:(?=,\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*=)|$)');
+            const match = inputStr.match(regex);
+            if (match) {
+                pVal = match[1].trim();
+            }
+        } catch (e) {}
+
+        const is2DArray = pVal.startsWith('[[') || (pVal === '' && (lp.includes('matrix') || lp.includes('grid')));
+        if (is2DArray) {
             return { name: p, py: 'List[List[int]]', java: 'int[][]', cpp: 'vector<vector<int>>&', js: 'number[][]' };
         }
-        if (lp.includes('num') || lp.includes('arr') || lp.includes('price') || lp.includes('height') || lp.includes('interval') || inputStr.includes('[')) {
+
+        const is1DArray = (pVal.startsWith('[') && !pVal.startsWith('[[')) || (pVal === '' && (lp.includes('nums') || lp.includes('arr') || lp.includes('prices') || lp.includes('intervals')));
+        if (is1DArray) {
             return { name: p, py: 'List[int]', java: 'int[]', cpp: 'vector<int>&', js: 'number[]' };
         }
-        if (lp === 's' || lp === 't' || lp.includes('str') || lp.includes('word') || inputStr.includes('"')) {
+
+        const isString = pVal.startsWith('"') || pVal.startsWith("'") || (pVal === '' && (lp === 's' || lp === 't' || lp.includes('str') || lp.includes('word')));
+        if (isString) {
             return { name: p, py: 'str', java: 'String', cpp: 'string', js: 'string' };
         }
+
+        const isBool = pVal === 'true' || pVal === 'false' || (pVal === '' && (lp.startsWith('is') || lp.startsWith('has')));
+        if (isBool) {
+            return { name: p, py: 'bool', java: 'boolean', cpp: 'bool', js: 'boolean' };
+        }
+
         return { name: p, py: 'int', java: 'int', cpp: 'int', js: 'number' };
     });
 

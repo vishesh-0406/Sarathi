@@ -21,6 +21,54 @@ function buildTopicRegex(topicStr) {
     return new RegExp(escapeRegex(trimmed), 'i');
 }
 
+// Balanced alternating company distribution: top product leaders & premier services
+const COMPANY_DISPLAY_ORDER = [
+    'Google', 'TCS', 'Amazon', 'Infosys', 'Microsoft', 'Accenture',
+    'Adobe', 'Wipro', 'Oracle', 'Cognizant', 'Salesforce', 'Capgemini',
+    'Uber', 'HCLTech', 'Zoho', 'Tech Mahindra', 'Flipkart', 'LTIMindtree',
+    'Goldman Sachs', 'Genpact'
+];
+
+function interleaveByCompany(questions) {
+    if (!questions || questions.length <= 1) return questions;
+
+    // Group questions by normalized company name
+    const companyMap = new Map();
+    for (const q of questions) {
+        const comp = q.company || 'Other';
+        if (!companyMap.has(comp)) {
+            companyMap.set(comp, []);
+        }
+        companyMap.get(comp).push(q);
+    }
+
+    // Sort company keys according to balanced display order
+    const sortedCompanies = Array.from(companyMap.keys()).sort((a, b) => {
+        const idxA = COMPANY_DISPLAY_ORDER.findIndex(c => c.toLowerCase() === a.toLowerCase());
+        const idxB = COMPANY_DISPLAY_ORDER.findIndex(c => c.toLowerCase() === b.toLowerCase());
+        const posA = idxA === -1 ? 999 : idxA;
+        const posB = idxB === -1 ? 999 : idxB;
+        return posA - posB;
+    });
+
+    const companyLists = sortedCompanies.map(comp => companyMap.get(comp));
+    const interleaved = [];
+    let maxLen = 0;
+    for (const list of companyLists) {
+        if (list.length > maxLen) maxLen = list.length;
+    }
+
+    for (let i = 0; i < maxLen; i++) {
+        for (const list of companyLists) {
+            if (i < list.length) {
+                interleaved.push(list[i]);
+            }
+        }
+    }
+
+    return interleaved;
+}
+
 const getQuestions = async (req, res) => {
     try {
         const { company, category, difficulty, topic } = req.query;
@@ -39,7 +87,16 @@ const getQuestions = async (req, res) => {
             filter.topic = buildTopicRegex(topic);
         }
 
-        const questions = await Question.find(filter).sort({ createdAt: -1 });
+        let questions = await Question.find(filter).lean();
+
+        // If no specific company filter is requested (All Companies view),
+        // interleave questions across all 20 companies so students see a diverse, balanced mix
+        if (!company) {
+            questions = interleaveByCompany(questions);
+        } else {
+            questions.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        }
+
         res.json(questions);
     } catch (error) {
         res.status(500).json({

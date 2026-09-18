@@ -12,16 +12,16 @@ export function SarathiLogo({ size = 28, className = "" }) {
         >
             <defs>
                 <linearGradient id="sarathiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#0284c7" />
-                    <stop offset="50%" stopColor="#38bdf8" />
-                    <stop offset="100%" stopColor="#0ea5e9" />
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="50%" stopColor="#a1a1aa" />
+                    <stop offset="100%" stopColor="#71717a" />
                 </linearGradient>
             </defs>
-            <circle cx="16" cy="16" r="14" stroke="url(#sarathiGrad)" strokeWidth="2" strokeDasharray="3 2" opacity="0.85" />
-            <circle cx="16" cy="16" r="10" fill="url(#sarathiGrad)" fillOpacity="0.12" stroke="url(#sarathiGrad)" strokeWidth="1.5" />
-            <polygon points="16,6 20,16 16,14 12,16" fill="#0284c7" />
-            <polygon points="16,26 20,16 16,18 12,16" fill="#94a3b8" />
-            <circle cx="16" cy="16" r="2.5" fill="#ffffff" stroke="#0284c7" strokeWidth="1.5" />
+            <circle cx="16" cy="16" r="14" stroke="url(#sarathiGrad)" strokeWidth="1.75" strokeDasharray="3 2" opacity="0.8" />
+            <circle cx="16" cy="16" r="10" fill="#ffffff" fillOpacity="0.04" stroke="url(#sarathiGrad)" strokeWidth="1.2" />
+            <polygon points="16,6 20,16 16,14 12,16" fill="#f4f4f5" />
+            <polygon points="16,26 20,16 16,18 12,16" fill="#52525b" />
+            <circle cx="16" cy="16" r="2.5" fill="#09090b" stroke="#f4f4f5" strokeWidth="1.5" />
         </svg>
     );
 }
@@ -103,8 +103,8 @@ export function SunIcon({ size = 18, className = "" }) {
 
 export function MoonIcon({ size = 18, className = "" }) {
     return (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#818cf8" fillOpacity="0.2" />
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" fillOpacity="0.15" />
         </svg>
     );
 }
@@ -118,7 +118,7 @@ export function SearchIcon({ size = 18, className = "" }) {
     );
 }
 
-export function ZapIcon({ size = 16, className = "", color = "#38bdf8" }) {
+export function ZapIcon({ size = 16, className = "", color = "#f59e0b" }) {
     return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill={color} stroke={color} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -280,3 +280,48 @@ export function XTwitterIcon({ size = 14, className = "" }) {
         </svg>
     );
 }
+
+export function PlayIcon({ size = 13, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill={color} stroke="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <polygon points="6 3 20 12 6 21 6 3" />
+        </svg>
+    );
+}
+
+export function UploadIcon({ size = 14, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+        </svg>
+    );
+}
+
+export function SpinnerIcon({ size = 14, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={`icon-spin ${className}`} style={{ display: 'inline-block', verticalAlign: 'middle', animation: 'spin 0.85s linear infinite' }}>
+            <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+    );
+}
+
+export function ClockIcon({ size = 14, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+        </svg>
+    );
+}
+
+export function UndoIcon({ size = 13, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <polyline points="1 4 1 10 7 10" />
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+        </svg>
+    );
+}
+

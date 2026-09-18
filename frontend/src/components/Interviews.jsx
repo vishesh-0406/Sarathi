@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import CompanyLogo from './CompanyLogos';
 import {
     ArrowLeftIcon,
@@ -18,6 +18,50 @@ const COMPANIES_LIST = [
     'Amazon', 'Google', 'Microsoft', 'Adobe', 'Oracle', 'Salesforce',
     'Uber', 'Zoho', 'Flipkart', 'Goldman Sachs'
 ];
+
+const COMPANY_DISPLAY_ORDER = [
+    'Google', 'TCS', 'Amazon', 'Infosys', 'Microsoft', 'Accenture',
+    'Adobe', 'Wipro', 'Oracle', 'Cognizant', 'Salesforce', 'Capgemini',
+    'Uber', 'HCLTech', 'Zoho', 'Tech Mahindra', 'Flipkart', 'LTIMindtree',
+    'Goldman Sachs', 'Genpact'
+];
+
+function interleaveByCompany(list) {
+    if (!list || list.length <= 1) return list;
+    const companyMap = new Map();
+    for (const q of list) {
+        const comp = q.company || 'Other';
+        if (!companyMap.has(comp)) {
+            companyMap.set(comp, []);
+        }
+        companyMap.get(comp).push(q);
+    }
+
+    const sortedCompanies = Array.from(companyMap.keys()).sort((a, b) => {
+        const idxA = COMPANY_DISPLAY_ORDER.findIndex(c => c.toLowerCase() === a.toLowerCase());
+        const idxB = COMPANY_DISPLAY_ORDER.findIndex(c => c.toLowerCase() === b.toLowerCase());
+        const posA = idxA === -1 ? 999 : idxA;
+        const posB = idxB === -1 ? 999 : idxB;
+        return posA - posB;
+    });
+
+    const companyLists = sortedCompanies.map(comp => companyMap.get(comp));
+    const interleaved = [];
+    let maxLen = 0;
+    for (const l of companyLists) {
+        if (l.length > maxLen) maxLen = l.length;
+    }
+
+    for (let i = 0; i < maxLen; i++) {
+        for (const l of companyLists) {
+            if (i < l.length) {
+                interleaved.push(l[i]);
+            }
+        }
+    }
+
+    return interleaved;
+}
 
 const TOPICS_LIST = [
     'All', 'HR & Behavioral', 'Core CS (DBMS)', 'Core CS (Operating Systems)',
@@ -64,16 +108,23 @@ function Interviews({ onBack }) {
         setExpandedIds(prev => ({ ...prev, [id]: !prev[id] }));
     };
 
-    const filteredQuestions = questions.filter(q => {
-        if (!searchQuery.trim()) return true;
-        const qStr = searchQuery.toLowerCase();
-        return (
-            q.title?.toLowerCase().includes(qStr) ||
-            q.problemStatement?.toLowerCase().includes(qStr) ||
-            q.company?.toLowerCase().includes(qStr) ||
-            q.round?.toLowerCase().includes(qStr)
-        );
-    });
+    const filteredQuestions = useMemo(() => {
+        const filtered = questions.filter(q => {
+            if (!searchQuery.trim()) return true;
+            const qStr = searchQuery.toLowerCase();
+            return (
+                q.title?.toLowerCase().includes(qStr) ||
+                q.problemStatement?.toLowerCase().includes(qStr) ||
+                q.company?.toLowerCase().includes(qStr) ||
+                q.round?.toLowerCase().includes(qStr)
+            );
+        });
+
+        if (selectedCompany === 'All') {
+            return interleaveByCompany(filtered);
+        }
+        return filtered;
+    }, [questions, searchQuery, selectedCompany]);
 
     return (
         <section id="interviews-section" className="interviews-section">

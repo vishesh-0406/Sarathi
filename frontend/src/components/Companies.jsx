@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { CompanyLogo } from './CompanyLogos';
 import { 
     ArrowLeftIcon, 
+    ArrowRightIcon,
+    SearchIcon,
     RoadmapIcon, 
     ShuffleIcon, 
     DSAIcon, 
@@ -14,6 +16,7 @@ import {
     ExternalLinkIcon, 
     ChatIcon 
 } from './Icons';
+import './Companies.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
@@ -105,8 +108,26 @@ const companies = {
     ]
 };
 
+const ALL_COMPANIES = [
+    ...companies.service.map(c => ({
+        ...c,
+        type: 'service',
+        typeLabel: 'Service-Based',
+        track: 'IT Services & Enterprise Consulting',
+        rounds: '3-4 Rounds'
+    })),
+    ...companies.product.map(c => ({
+        ...c,
+        type: 'product',
+        typeLabel: 'Product-Based',
+        track: 'Product & Cloud Systems Engineering',
+        rounds: '3-5 Rounds'
+    }))
+];
+
 function Companies({ onOpenIDE, onSelectRoadmap }) {
-    const [selectedType, setSelectedType] = useState(null);
+    const [typeFilter, setTypeFilter] = useState('all'); // 'all' | 'service' | 'product'
+    const [searchTerm, setSearchTerm] = useState('');
     const [selectedCompany, setSelectedCompany] = useState(null);
     const [questionsList, setQuestionsList] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -215,17 +236,17 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                     className="back-button"
                     onClick={handleBackToCompanies}
                 >
-                    <ArrowLeftIcon size={14} /> Back to {selectedType === 'service' ? 'Service Companies' : 'Product Companies'}
+                    <ArrowLeftIcon size={14} /> Back to All Companies
                 </button>
 
                 <div className="company-details">
-                    <div className="company-details-header" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <div className="company-details-header">
                         <CompanyLogo name={selectedCompany.name} size={56} className="company-detail-logo" />
                         <div>
-                            <span className={`company-badge ${selectedType}`}>
-                                {selectedType === 'service' ? 'Service-Based' : 'Product-Based'}
+                            <span className={`company-category-badge ${selectedCompany.type || 'service'}`}>
+                                {selectedCompany.type === 'service' ? 'Service-Based' : 'Product-Based'}
                             </span>
-                            <h2 style={{ margin: '4px 0 6px 0' }}>{selectedCompany.name}</h2>
+                            <h2 style={{ margin: '6px 0 4px 0' }}>{selectedCompany.name}</h2>
                             <p style={{ margin: 0 }}>{selectedCompany.description}</p>
                         </div>
                     </div>
@@ -500,7 +521,7 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
                                                     <span className="novel-badge">Company Exclusive</span>
                                                 </div>
                                                 <p className="matched-problem-name novel-problem-text">
-                                                    <SparklesIcon size={14} color="#0284c7" /> <strong>Real Interview Experience:</strong> This question is an authentic candidate recollection exclusive to this company's assessment. It does not exist in standard LeetCode archives — practice it directly in SARATHI!
+                                                    <SparklesIcon size={14} color="#f59e0b" /> <strong>Real Interview Experience:</strong> This question is an authentic candidate recollection exclusive to this company's assessment. It does not exist in standard LeetCode archives — practice it directly in SARATHI!
                                                 </p>
                                             </div>
                                         )}
@@ -601,148 +622,127 @@ function Companies({ onOpenIDE, onSelectRoadmap }) {
     }
 
 
-    /* =========================
-       COMPANY LIST SCREEN
-       ========================= */
+    /* ============================================================
+       COMPANY DIRECTORY SCREEN (SIMPLE, NEAT & MODERN)
+       ============================================================ */
 
-    if (selectedType) {
-        return (
-            <section id="companies" className="companies-section">
-
-                <button
-                    className="back-button"
-                    onClick={() => setSelectedType(null)}
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-                >
-                    <ArrowLeftIcon size={14} /> Back to Categories
-                </button>
-
-                <h2>
-                    {selectedType === 'service'
-                        ? 'Service-Based Companies'
-                        : 'Product-Based Companies'}
-                </h2>
-
-                <p className="companies-intro">
-                    Select a company to explore its placement information
-                    and preparation resources.
-                </p>
-
-                <div className="company-container">
-
-                    {companies[selectedType].map((company) => (
-                        <div
-                            className="company-card"
-                            key={company.name}
-                        >
-                            <div className="company-card-top-row" style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '12px' }}>
-                                <CompanyLogo name={company.name} size={44} className="company-card-logo" />
-                                <div>
-                                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)' }}>{company.name}</h3>
-                                    <span style={{ fontSize: '0.74rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.6px', color: 'var(--text-muted)' }}>
-                                        {selectedType === 'service' ? 'IT Services & Consulting' : 'Product & Cloud Engineering'}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <p style={{ margin: '0 0 16px 0', lineHeight: 1.5, color: 'var(--text-secondary)' }}>
-                                {company.description}
-                            </p>
-
-                            <div style={{ display: 'flex', gap: '10px', marginTop: 'auto', flexWrap: 'wrap', alignItems: 'center' }}>
-                                <button
-                                    onClick={() =>
-                                        handleSelectCompany(company)
-                                    }
-                                >
-                                    View Details
-                                </button>
-                                {onSelectRoadmap && (
-                                    <button
-                                        onClick={() => onSelectRoadmap(company.name)}
-                                        style={{ background: '#0284c7', color: '#fff', border: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-                                    >
-                                        <RoadmapIcon size={14} /> Roadmap
-                                    </button>
-                                )}
-                            </div>
-
-                        </div>
-                    ))}
-
-                </div>
-
-            </section>
-        );
-    }
-
-
-    /* =========================
-       COMPANY CATEGORY SCREEN
-       ========================= */
+    const displayedCompanies = ALL_COMPANIES.filter(c => {
+        const matchesType = typeFilter === 'all' || c.type === typeFilter;
+        const query = searchTerm.trim().toLowerCase();
+        const matchesSearch = !query || 
+            c.name.toLowerCase().includes(query) || 
+            c.description.toLowerCase().includes(query) ||
+            c.track.toLowerCase().includes(query);
+        return matchesType && matchesSearch;
+    });
 
     return (
         <section id="companies" className="companies-section">
-
-            <h2>Explore Companies</h2>
-
-            <p className="companies-intro">
-                Choose the type of company you want to explore.
-            </p>
-
-            <div className="company-type-container">
-
-                <div
-                    className="company-type-card"
-                    onClick={() => setSelectedType('service')}
-                >
-                    <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
-                        <CompanyLogo name="TCS" size={32} />
-                        <CompanyLogo name="Infosys" size={32} />
-                        <CompanyLogo name="Accenture" size={32} />
-                        <CompanyLogo name="Wipro" size={32} />
-                        <CompanyLogo name="Cognizant" size={32} />
-                    </div>
-
-                    <h3>Service-Based</h3>
-
-                    <p>
-                        Explore 10 major service-based leaders like TCS, Infosys, Accenture, Wipro, and Cognizant with recruitment patterns.
-                    </p>
-
-                    <button>
-                        Explore Service Companies
-                    </button>
-
-                </div>
-
-
-                <div
-                    className="company-type-card"
-                    onClick={() => setSelectedType('product')}
-                >
-                    <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
-                        <CompanyLogo name="Amazon" size={32} />
-                        <CompanyLogo name="Google" size={32} />
-                        <CompanyLogo name="Microsoft" size={32} />
-                        <CompanyLogo name="Adobe" size={32} />
-                        <CompanyLogo name="Uber" size={32} />
-                    </div>
-
-                    <h3>Product-Based</h3>
-
-                    <p>
-                        Explore 10 premier product firms like Amazon, Google, Microsoft, Adobe, and Uber with OA and DSA bars.
-                    </p>
-
-                    <button>
-                        Explore Product Companies
-                    </button>
-
-                </div>
-
+            <div className="companies-header">
+                <h2>Explore Companies</h2>
+                <p className="companies-intro">
+                    Explore authentic recruitment patterns, interview debriefs, and tailored preparation roadmaps across 20 top tech companies.
+                </p>
             </div>
 
+            {/* Toolbar: Category Filters & Search */}
+            <div className="companies-toolbar">
+                <div className="companies-filter-group">
+                    <button
+                        type="button"
+                        className={`company-type-filter-btn ${typeFilter === 'all' ? 'active' : ''}`}
+                        onClick={() => setTypeFilter('all')}
+                    >
+                        All Companies ({ALL_COMPANIES.length})
+                    </button>
+                    <button
+                        type="button"
+                        className={`company-type-filter-btn ${typeFilter === 'service' ? 'active' : ''}`}
+                        onClick={() => setTypeFilter('service')}
+                    >
+                        Service-Based (10)
+                    </button>
+                    <button
+                        type="button"
+                        className={`company-type-filter-btn ${typeFilter === 'product' ? 'active' : ''}`}
+                        onClick={() => setTypeFilter('product')}
+                    >
+                        Product-Based (10)
+                    </button>
+                </div>
+
+                <div className="companies-search-box">
+                    <SearchIcon size={16} className="search-input-icon" />
+                    <input
+                        type="text"
+                        className="companies-search-input"
+                        placeholder="Search company (e.g. Amazon, TCS, Google)..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+            </div>
+
+            {/* 20 Companies Grid */}
+            <div className="companies-grid">
+                {displayedCompanies.map((company) => (
+                    <div className="company-grid-card" key={company.name}>
+                        <div className="company-card-header">
+                            <div className="company-card-identity">
+                                <CompanyLogo name={company.name} size={44} />
+                                <div>
+                                    <h3 className="company-card-name">{company.name}</h3>
+                                    <span className="company-track-sub">{company.track}</span>
+                                </div>
+                            </div>
+                            <span className={`company-category-badge ${company.type}`}>
+                                {company.type === 'service' ? 'Service' : 'Product'}
+                            </span>
+                        </div>
+
+                        <p className="company-card-desc">{company.description}</p>
+
+                        <div className="company-card-meta-row">
+                            <span className="company-meta-chip">100 Questions</span>
+                            <span className="company-meta-chip">{company.rounds}</span>
+                        </div>
+
+                        <div className="company-card-actions">
+                            <button
+                                type="button"
+                                className="company-explore-btn"
+                                onClick={() => handleSelectCompany(company)}
+                            >
+                                Explore Questions
+                            </button>
+                            {onSelectRoadmap && (
+                                <button
+                                    type="button"
+                                    className="company-roadmap-btn"
+                                    onClick={() => onSelectRoadmap(company.name)}
+                                    title={`View ${company.name} hiring roadmap`}
+                                >
+                                    <RoadmapIcon size={14} /> Roadmap
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                ))}
+
+                {displayedCompanies.length === 0 && (
+                    <div className="companies-empty-search">
+                        <p>No companies found matching "<strong>{searchTerm}</strong>".</p>
+                        <button
+                            type="button"
+                            className="company-type-filter-btn active"
+                            style={{ marginTop: '10px' }}
+                            onClick={() => { setSearchTerm(''); setTypeFilter('all'); }}
+                        >
+                            Clear Filters
+                        </button>
+                    </div>
+                )}
+            </div>
         </section>
     );
 }

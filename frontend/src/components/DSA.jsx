@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { CompanyLogo } from './CompanyLogos';
 import { 
     DSAIcon, 
@@ -22,6 +22,50 @@ const COMPANIES_LIST = [
     'Amazon', 'Google', 'Microsoft', 'Adobe', 'Oracle', 'Salesforce',
     'Uber', 'Zoho', 'Flipkart', 'Goldman Sachs'
 ];
+
+const COMPANY_DISPLAY_ORDER = [
+    'Google', 'TCS', 'Amazon', 'Infosys', 'Microsoft', 'Accenture',
+    'Adobe', 'Wipro', 'Oracle', 'Cognizant', 'Salesforce', 'Capgemini',
+    'Uber', 'HCLTech', 'Zoho', 'Tech Mahindra', 'Flipkart', 'LTIMindtree',
+    'Goldman Sachs', 'Genpact'
+];
+
+function interleaveByCompany(list) {
+    if (!list || list.length <= 1) return list;
+    const companyMap = new Map();
+    for (const q of list) {
+        const comp = q.company || 'Other';
+        if (!companyMap.has(comp)) {
+            companyMap.set(comp, []);
+        }
+        companyMap.get(comp).push(q);
+    }
+
+    const sortedCompanies = Array.from(companyMap.keys()).sort((a, b) => {
+        const idxA = COMPANY_DISPLAY_ORDER.findIndex(c => c.toLowerCase() === a.toLowerCase());
+        const idxB = COMPANY_DISPLAY_ORDER.findIndex(c => c.toLowerCase() === b.toLowerCase());
+        const posA = idxA === -1 ? 999 : idxA;
+        const posB = idxB === -1 ? 999 : idxB;
+        return posA - posB;
+    });
+
+    const companyLists = sortedCompanies.map(comp => companyMap.get(comp));
+    const interleaved = [];
+    let maxLen = 0;
+    for (const l of companyLists) {
+        if (l.length > maxLen) maxLen = l.length;
+    }
+
+    for (let i = 0; i < maxLen; i++) {
+        for (const l of companyLists) {
+            if (i < l.length) {
+                interleaved.push(l[i]);
+            }
+        }
+    }
+
+    return interleaved;
+}
 
 const TOPIC_PILLS = [
     'All', 'Arrays', 'Strings', 'Linked Lists', 'Trees', 'Graphs',
@@ -67,35 +111,43 @@ function DSA({ onBack, onOpenIDE }) {
         fetchDSAQuestions();
     }, [fetchDSAQuestions]);
 
-    const filteredQuestions = questions.filter(q => {
-        // Search query filter
-        if (searchQuery.trim()) {
-            const query = searchQuery.toLowerCase();
-            const matchesText =
-                q.title?.toLowerCase().includes(query) ||
-                q.problemStatement?.toLowerCase().includes(query) ||
-                q.company?.toLowerCase().includes(query) ||
-                q.matchedProblems?.some(m => m.problemName?.toLowerCase().includes(query));
-            if (!matchesText) return false;
-        }
+    const filteredQuestions = useMemo(() => {
+        const filtered = questions.filter(q => {
+            // Search query filter
+            if (searchQuery.trim()) {
+                const query = searchQuery.toLowerCase();
+                const matchesText =
+                    q.title?.toLowerCase().includes(query) ||
+                    q.problemStatement?.toLowerCase().includes(query) ||
+                    q.company?.toLowerCase().includes(query) ||
+                    q.matchedProblems?.some(m => m.problemName?.toLowerCase().includes(query));
+                if (!matchesText) return false;
+            }
 
-        // Topic filter heuristic based on title, problemStatement, and matchedProblem
-        if (selectedTopic !== 'All') {
-            const topic = selectedTopic.toLowerCase();
-            const combinedText = `${q.title} ${q.problemStatement} ${q.matchedProblems?.map(m => m.problemName).join(' ')}`.toLowerCase();
-            if (topic === 'arrays' && !combinedText.includes('array') && !combinedText.includes('subarray')) return false;
-            if (topic === 'strings' && !combinedText.includes('string') && !combinedText.includes('anagram') && !combinedText.includes('palindrome')) return false;
-            if (topic === 'linked lists' && !combinedText.includes('list') && !combinedText.includes('node')) return false;
-            if (topic === 'trees' && !combinedText.includes('tree') && !combinedText.includes('bst') && !combinedText.includes('ancestor')) return false;
-            if (topic === 'graphs' && !combinedText.includes('graph') && !combinedText.includes('island') && !combinedText.includes('course') && !combinedText.includes('path')) return false;
-            if (topic === 'dynamic programming' && !combinedText.includes('dp') && !combinedText.includes('subsequence') && !combinedText.includes('coin') && !combinedText.includes('jump')) return false;
-            if (topic === 'stacks & queues' && !combinedText.includes('stack') && !combinedText.includes('queue') && !combinedText.includes('parenthes')) return false;
-            if (topic === 'binary search' && !combinedText.includes('binary search') && !combinedText.includes('rotated') && !combinedText.includes('median')) return false;
-            if (topic === 'two pointers' && !combinedText.includes('two-pointer') && !combinedText.includes('water') && !combinedText.includes('3sum')) return false;
-        }
+            // Topic filter heuristic based on title, problemStatement, and matchedProblem
+            if (selectedTopic !== 'All') {
+                const topic = selectedTopic.toLowerCase();
+                const combinedText = `${q.title} ${q.problemStatement} ${q.matchedProblems?.map(m => m.problemName).join(' ')}`.toLowerCase();
+                if (topic === 'arrays' && !combinedText.includes('array') && !combinedText.includes('subarray')) return false;
+                if (topic === 'strings' && !combinedText.includes('string') && !combinedText.includes('anagram') && !combinedText.includes('palindrome')) return false;
+                if (topic === 'linked lists' && !combinedText.includes('list') && !combinedText.includes('node')) return false;
+                if (topic === 'trees' && !combinedText.includes('tree') && !combinedText.includes('bst') && !combinedText.includes('ancestor')) return false;
+                if (topic === 'graphs' && !combinedText.includes('graph') && !combinedText.includes('island') && !combinedText.includes('course') && !combinedText.includes('path')) return false;
+                if (topic === 'dynamic programming' && !combinedText.includes('dp') && !combinedText.includes('subsequence') && !combinedText.includes('coin') && !combinedText.includes('jump')) return false;
+                if (topic === 'stacks & queues' && !combinedText.includes('stack') && !combinedText.includes('queue') && !combinedText.includes('parenthes')) return false;
+                if (topic === 'binary search' && !combinedText.includes('binary search') && !combinedText.includes('rotated') && !combinedText.includes('median')) return false;
+                if (topic === 'two pointers' && !combinedText.includes('two-pointer') && !combinedText.includes('water') && !combinedText.includes('3sum')) return false;
+            }
 
-        return true;
-    });
+            return true;
+        });
+
+        // When All Companies is selected, ensure balanced interleaving across companies
+        if (selectedCompany === 'All') {
+            return interleaveByCompany(filtered);
+        }
+        return filtered;
+    }, [questions, searchQuery, selectedTopic, selectedCompany]);
 
     const totalPages = Math.ceil(filteredQuestions.length / pageSize) || 1;
     const paginatedQuestions = filteredQuestions.slice((page - 1) * pageSize, page * pageSize);
@@ -143,7 +195,10 @@ function DSA({ onBack, onOpenIDE }) {
                         <label>Company:</label>
                         <select
                             value={selectedCompany}
-                            onChange={(e) => setSelectedCompany(e.target.value)}
+                            onChange={(e) => {
+                                setSelectedCompany(e.target.value);
+                                setPage(1);
+                            }}
                             className="filter-select"
                         >
                             {COMPANIES_LIST.map(c => (
@@ -156,7 +211,10 @@ function DSA({ onBack, onOpenIDE }) {
                         <label>Difficulty:</label>
                         <select
                             value={selectedDifficulty}
-                            onChange={(e) => setSelectedDifficulty(e.target.value)}
+                            onChange={(e) => {
+                                setSelectedDifficulty(e.target.value);
+                                setPage(1);
+                            }}
                             className="filter-select"
                         >
                             <option value="All">⚡ All Difficulties</option>

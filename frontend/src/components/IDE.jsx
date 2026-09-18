@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { generateLeetCodeTemplate } from '../utils/leetcodeTemplates';
 import { getLanguageIcon } from './LanguageIcons';
 import CompanyLogo from './CompanyLogos';
-import { ArrowLeftIcon } from './Icons';
+import { ArrowLeftIcon, PlayIcon, UploadIcon, SpinnerIcon, ClockIcon, UndoIcon, CheckIcon, LinkIcon } from './Icons';
 import './IDE.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -386,19 +386,20 @@ function IDE({ question, onBack }) {
                         onClick={handleResetCode}
                         title="Reset code to original template"
                     >
-                        ↺ Reset
+                        <UndoIcon size={12} />
+                        <span>Reset</span>
                     </button>
 
                     <button
                         className="run-code-btn"
                         onClick={handleRunAllCode}
                         disabled={running || submitting}
-                        title="Run all sample test cases"
+                        title="Run code against sample test cases"
                     >
                         {running ? (
-                            <span>⏳ Running...</span>
+                            <span className="btn-content-flex"><SpinnerIcon size={12} /> Running...</span>
                         ) : (
-                            <span>▶ Run Code</span>
+                            <span className="btn-content-flex"><PlayIcon size={11} /> Run</span>
                         )}
                     </button>
 
@@ -406,12 +407,12 @@ function IDE({ question, onBack }) {
                         className="submit-code-btn"
                         onClick={handleSubmitCode}
                         disabled={running || submitting}
-                        title="Submit solution for full evaluation & time/space complexity analysis"
+                        title="Submit solution for full evaluation and complexity analysis"
                     >
                         {submitting ? (
-                            <span>⏳ Submitting...</span>
+                            <span className="btn-content-flex"><SpinnerIcon size={13} color="#ffffff" /> Submitting...</span>
                         ) : (
-                            <span>🚀 Submit</span>
+                            <span className="btn-content-flex"><UploadIcon size={13} color="#ffffff" /> Submit</span>
                         )}
                     </button>
                 </div>
@@ -465,7 +466,7 @@ function IDE({ question, onBack }) {
                                         className={`leetcode-header-pill ${matchedLeetcode.isPremium ? 'premium-header-pill' : ''}`}
                                         title={`View formal specification on LeetCode: ${matchedLeetcode.problemName}${matchedLeetcode.isPremium ? ' (Requires LeetCode Premium)' : ''}`}
                                     >
-                                        {matchedLeetcode.isPremium ? '🔒 LeetCode Premium: ' : '🚀 LeetCode: '}
+                                        {matchedLeetcode.isPremium ? '🔒 LeetCode Premium: ' : 'LeetCode: '}
                                         {matchedLeetcode.problemName} ({Math.round((matchedLeetcode.similarityScore || 0.95) * 100)}%) ↗
                                     </a>
                                 ) : (
@@ -473,7 +474,7 @@ function IDE({ question, onBack }) {
                                         className="novel-header-pill"
                                         title="Authentic company-exclusive interview question with no LeetCode equivalent"
                                     >
-                                        🆕 New Question · No Match Found in LeetCode
+                                        Company Exclusive · Campus OA
                                     </span>
                                 )}
                             </div>
@@ -559,10 +560,10 @@ function IDE({ question, onBack }) {
                                 <div className="matched-leetcode-box ide-leetcode-box novel-problem-box">
                                     <div className="match-info">
                                         <span className="novel-badge">Company Exclusive</span>
-                                        <span className="match-name">⭐ Novel Campus Question</span>
+                                        <span className="match-name">Novel Assessment Question</span>
                                     </div>
                                     <p className="novel-problem-text" style={{ margin: '8px 0 0 0' }}>
-                                        ✨ Direct candidate memory question — no direct standard LeetCode equivalent.
+                                        Verified campus recruitment assessment problem with dedicated evaluation test cases.
                                     </p>
                                 </div>
                             )}
@@ -613,7 +614,7 @@ function IDE({ question, onBack }) {
                                         </div>
                                         <div className="lc-result-actions">
                                             <button type="button" className="lc-action-btn analysis-btn">
-                                                ✦ Analysis
+                                                Complexity Analysis
                                             </button>
                                             <button type="button" className="lc-action-btn solution-btn">
                                                 Solution
@@ -645,7 +646,7 @@ function IDE({ question, onBack }) {
                                                 </span>
                                                 <span className="lc-card-divider">|</span>
                                                 <span className="lc-card-beats">
-                                                    Beats <strong className="lc-beats-green">{submissionResult.complexity?.runtimePercentile || 86.71}%</strong> 👏
+                                                    Beats <strong className="lc-beats-green">{submissionResult.complexity?.runtimePercentile || 86.71}%</strong>
                                                 </span>
                                             </div>
                                         </div>
@@ -663,7 +664,7 @@ function IDE({ question, onBack }) {
                                                 </span>
                                                 <span className="lc-card-divider">|</span>
                                                 <span className="lc-card-beats">
-                                                    Beats <strong className="lc-beats-green">{submissionResult.complexity?.memoryPercentile || 71.51}%</strong> 👏
+                                                    Beats <strong className="lc-beats-green">{submissionResult.complexity?.memoryPercentile || 71.51}%</strong>
                                                 </span>
                                             </div>
                                         </div>
