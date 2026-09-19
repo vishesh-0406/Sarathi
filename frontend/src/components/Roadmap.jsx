@@ -10,7 +10,11 @@ import {
     AptitudeIcon, 
     DocumentIcon, 
     ChevronDownIcon, 
-    ChevronUpIcon 
+    ChevronUpIcon,
+    ChatIcon,
+    LinkedInIcon,
+    XTwitterIcon,
+    ExternalLinkIcon
 } from './Icons';
 import './Roadmap.css';
 
@@ -539,6 +543,30 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                         )}
                                                                     </div>
                                                                 )}
+
+                                                                {/* Card Footer with Verified Provenance & Discussions Link */}
+                                                                <div className="card-footer roadmap-card-footer">
+                                                                    <span className="source-info">
+                                                                        Source: <strong>{q.source || 'Candidate Discussion'}</strong>
+                                                                    </span>
+                                                                    {q.sourceUrl && (
+                                                                        <a
+                                                                            href={q.sourceUrl}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer"
+                                                                            className={`source-link ${(q.category === 'Interview' || (q.source && q.source.includes('LinkedIn'))) ? 'linkedin-link' : (q.category === 'Aptitude' || (q.source && (q.source.includes('X') || q.source.includes('Twitter')))) ? 'twitter-link' : 'reddit-link'}`}
+                                                                            title="View candidate discussion & experience thread"
+                                                                        >
+                                                                            {(q.category === 'Interview' || (q.source && q.source.includes('LinkedIn'))) ? (
+                                                                                <><LinkedInIcon size={13} /> Verified Discussion <ExternalLinkIcon size={11} /></>
+                                                                            ) : (q.category === 'Aptitude' || (q.source && (q.source.includes('X') || q.source.includes('Twitter')))) ? (
+                                                                                <><XTwitterIcon size={12} /> Discussion Thread <ExternalLinkIcon size={11} /></>
+                                                                            ) : (
+                                                                                <><ChatIcon size={13} /> Community Discussions <ExternalLinkIcon size={11} /></>
+                                                                            )}
+                                                                        </a>
+                                                                    )}
+                                                                </div>
                                                             </div>
                                                         );
                                                     })}

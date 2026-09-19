@@ -922,3 +922,68 @@
     padding: 24px;
     color: var(--accent-rose);
 }
+
+/* ============================================================
+   CARD FOOTER WITH AUTHENTIC PROVENANCE & DISCUSSIONS
+   ============================================================ */
+.roadmap-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+    margin-top: 14px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.roadmap-card-footer .source-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.roadmap-card-footer .source-info strong {
+    color: var(--text-secondary);
+}
+
+.roadmap-card-footer .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.roadmap-card-footer .reddit-link {
+    color: var(--text-secondary);
+}
+
+.roadmap-card-footer .reddit-link:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.roadmap-card-footer .linkedin-link {
+    color: var(--text-secondary);
+}
+
+.roadmap-card-footer .linkedin-link:hover {
+    color: #38bdf8;
+    text-decoration: underline;
+}
+
+.roadmap-card-footer .twitter-link {
+    color: var(--text-secondary);
+}
+
+.roadmap-card-footer .twitter-link:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}

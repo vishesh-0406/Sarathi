@@ -2290,3 +2290,54 @@
     font-size: 0.9rem;
 }
 
+/* ============================================================
+   IDE PROVENANCE SOURCE ATTRIBUTION FOOTER
+   ============================================================ */
+.ide-source-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 14px;
+    margin-top: 24px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ide-source-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.ide-source-label strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.ide-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.ide-source-link:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+

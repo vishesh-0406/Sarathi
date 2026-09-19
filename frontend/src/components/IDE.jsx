@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { generateLeetCodeTemplate } from '../utils/leetcodeTemplates';
 import { getLanguageIcon } from './LanguageIcons';
 import CompanyLogo from './CompanyLogos';
-import { ArrowLeftIcon, PlayIcon, UploadIcon, SpinnerIcon, ClockIcon, UndoIcon, CheckIcon, LinkIcon } from './Icons';
+import { ArrowLeftIcon, PlayIcon, UploadIcon, SpinnerIcon, ClockIcon, UndoIcon, CheckIcon, LinkIcon, ChatIcon, LinkedInIcon, XTwitterIcon, ExternalLinkIcon } from './Icons';
 import './IDE.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -107,6 +107,30 @@ function IDE({ question, onBack }) {
                                     </>
                                 );
                             })()}
+                        </div>
+
+                        {/* Provenance Source Attribution */}
+                        <div className="ide-source-footer" style={{ marginTop: '16px' }}>
+                            <span className="ide-source-label">
+                                Source: <strong>{question?.source || 'Campus Placement Drive Archive'}</strong>
+                            </span>
+                            {question?.sourceUrl && (
+                                <a
+                                    href={question.sourceUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="ide-source-link"
+                                    title="View candidate discussion & experience thread"
+                                >
+                                    {(question?.category === 'Interview' || (question?.source && question.source.includes('LinkedIn'))) ? (
+                                        <><LinkedInIcon size={13} /> Verified Discussion <ExternalLinkIcon size={11} /></>
+                                    ) : (question?.category === 'Aptitude' || (question?.source && (question.source.includes('X') || question.source.includes('Twitter')))) ? (
+                                        <><XTwitterIcon size={12} /> Discussion Thread <ExternalLinkIcon size={11} /></>
+                                    ) : (
+                                        <><ChatIcon size={13} /> Community Discussions <ExternalLinkIcon size={11} /></>
+                                    )}
+                                </a>
+                            )}
                         </div>
                     </div>
 
@@ -567,6 +591,30 @@ function IDE({ question, onBack }) {
                                     </p>
                                 </div>
                             )}
+
+                            {/* Provenance Source Attribution */}
+                            <div className="ide-source-footer">
+                                <span className="ide-source-label">
+                                    Source: <strong>{question?.source || 'Candidate Interview Experience'}</strong>
+                                </span>
+                                {question?.sourceUrl && (
+                                    <a
+                                        href={question.sourceUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="ide-source-link"
+                                        title="View candidate discussion & interview experience thread"
+                                    >
+                                        {(question?.category === 'Interview' || (question?.source && question.source.includes('LinkedIn'))) ? (
+                                            <><LinkedInIcon size={13} /> Verified Discussion <ExternalLinkIcon size={11} /></>
+                                        ) : (question?.category === 'Aptitude' || (question?.source && (question.source.includes('X') || question.source.includes('Twitter')))) ? (
+                                            <><XTwitterIcon size={12} /> Discussion Thread <ExternalLinkIcon size={11} /></>
+                                        ) : (
+                                            <><ChatIcon size={13} /> Community Discussions <ExternalLinkIcon size={11} /></>
+                                        )}
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     ) : (
                         <div className="lc-submission-wrapper">
