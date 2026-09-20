@@ -1,4 +1,7 @@
+import { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
+import CompanyLogo from './CompanyLogos';
 import { 
     SarathiLogo, 
     HomeIcon, 
@@ -8,12 +11,17 @@ import {
     AptitudeIcon, 
     InterviewIcon, 
     SunIcon, 
-    MoonIcon 
+    MoonIcon,
+    UserIcon,
+    LogOutIcon
 } from './Icons';
 import './Navbar.css';
 
-function Navbar({ activeView, onNavigate }) {
+function Navbar({ activeView, onNavigate, onOpenAuth }) {
     const { theme, toggleTheme } = useTheme();
+    const { user, logout } = useAuth();
+    const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+    const profileDropdownRef = useRef(null);
 
     const navItems = [
         { id: 'home', label: 'Home', icon: HomeIcon },
@@ -23,6 +31,17 @@ function Navbar({ activeView, onNavigate }) {
         { id: 'aptitude', label: 'Aptitude', icon: AptitudeIcon },
         { id: 'interviews', label: 'Interviews', icon: InterviewIcon },
     ];
+
+    // Close profile dropdown when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target)) {
+                setProfileMenuOpen(false);
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
         <header className="gov-navbar-wrapper">
@@ -56,8 +75,71 @@ function Navbar({ activeView, onNavigate }) {
                     })}
                 </div>
 
-                {/* Right Utilities: Theme Toggle & Quick Badge */}
+                {/* Right Utilities: Auth Controls, Theme Toggle & Status Badge */}
                 <div className="gov-nav-actions">
+                    {/* User Auth Chip or Sign In Button */}
+                    {!user ? (
+                        <button 
+                            className="gov-auth-btn signin-btn" 
+                            onClick={() => onOpenAuth && onOpenAuth('login')}
+                            title="Sign in to save placement progress"
+                        >
+                            <UserIcon size={14} />
+                            <span>Sign In</span>
+                        </button>
+                    ) : (
+                        <div className="gov-user-profile-wrapper" ref={profileDropdownRef}>
+                            <button 
+                                className="gov-user-chip-btn" 
+                                onClick={() => setProfileMenuOpen(!profileMenuOpen)}
+                                title="View your candidate profile"
+                            >
+                                <span className="user-avatar-circle">
+                                    {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                                </span>
+                                <span className="user-display-name">{user.name.split(' ')[0]}</span>
+                                {user.targetCompany && (
+                                    <span className="user-target-tag">
+                                        <CompanyLogo name={user.targetCompany} size={13} />
+                                        <span>{user.targetCompany}</span>
+                                    </span>
+                                )}
+                            </button>
+
+                            {profileMenuOpen && (
+                                <div className="gov-profile-dropdown" role="menu">
+                                    <div className="dropdown-user-header">
+                                        <div className="dropdown-user-name">{user.name}</div>
+                                        <div className="dropdown-user-email">{user.email}</div>
+                                    </div>
+
+                                    <div className="dropdown-meta-row">
+                                        <span className="meta-label">Dream Target:</span>
+                                        <span className="meta-val">
+                                            <CompanyLogo name={user.targetCompany || 'Amazon'} size={13} />
+                                            <strong>{user.targetCompany || 'Amazon'}</strong>
+                                        </span>
+                                    </div>
+
+                                    <div className="dropdown-divider"></div>
+
+                                    <button 
+                                        className="dropdown-item-btn logout-btn" 
+                                        onClick={() => {
+                                            logout();
+                                            setProfileMenuOpen(false);
+                                        }}
+                                        role="menuitem"
+                                    >
+                                        <LogOutIcon size={14} />
+                                        <span>Sign Out</span>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    {/* Theme Toggle */}
                     <button 
                         className="gov-theme-toggle" 
                         onClick={toggleTheme}

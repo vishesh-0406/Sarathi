@@ -159,6 +159,173 @@
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
+/* ============================================================
+   NAVBAR AUTH CONTROLS & USER PROFILE DROPDOWN
+   ============================================================ */
+.gov-auth-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--text-primary, #f4f4f6);
+    color: var(--bg-primary, #09090b);
+    border: 1px solid transparent;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.gov-auth-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+}
+
+.gov-user-profile-wrapper {
+    position: relative;
+}
+
+.gov-user-chip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-surface-elevated, #18181c);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+    padding: 4px 10px 4px 5px;
+    border-radius: 9999px;
+    color: var(--text-primary, #f4f4f6);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.gov-user-chip-btn:hover {
+    border-color: var(--border-hover, rgba(255, 255, 255, 0.25));
+    background-color: var(--bg-subtle, #222226);
+}
+
+.user-avatar-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--text-primary, #f4f4f6);
+    color: var(--bg-primary, #09090b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.user-display-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.user-target-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    padding: 2px 7px;
+    font-size: 0.72rem;
+    color: var(--text-secondary, #d4d4d8);
+}
+
+.gov-profile-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 220px;
+    background-color: var(--bg-surface, #121215);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: authFadeIn 0.15s ease-out;
+}
+
+.dropdown-user-header {
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.dropdown-user-name {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--text-primary, #f4f4f6);
+}
+
+.dropdown-user-email {
+    font-size: 0.76rem;
+    color: var(--text-muted, #71717a);
+    margin-top: 2px;
+    word-break: break-all;
+}
+
+.dropdown-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    font-size: 0.78rem;
+    background-color: var(--bg-subtle, #18181c);
+    border-radius: 6px;
+}
+
+.dropdown-meta-row .meta-label {
+    color: var(--text-muted, #71717a);
+}
+
+.dropdown-meta-row .meta-val {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-primary, #f4f4f6);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color, rgba(255, 255, 255, 0.08));
+    margin: 2px 0;
+}
+
+.dropdown-item-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary, #d4d4d8);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+    width: 100%;
+}
+
+.dropdown-item-btn:hover {
+    background-color: var(--bg-subtle, #18181c);
+    color: var(--text-primary, #ffffff);
+}
+
+.dropdown-item-btn.logout-btn:hover {
+    background-color: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+}
+
 @media (max-width: 900px) {
     .gov-nav-links {
         display: none;

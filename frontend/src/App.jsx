@@ -6,6 +6,7 @@ import Aptitude from './components/Aptitude';
 import Interviews from './components/Interviews';
 import Roadmap from './components/Roadmap';
 import IDE from './components/IDE';
+import AuthModal from './components/AuthModal';
 import { CompanyLogo } from './components/CompanyLogos';
 import { 
     RoadmapIcon, 
@@ -36,6 +37,15 @@ function App() {
     const [activeIdeQuestion, setActiveIdeQuestion] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCompanyForRoadmap, setSelectedCompanyForRoadmap] = useState('Amazon');
+    const [authModal, setAuthModal] = useState({ isOpen: false, mode: 'login' });
+
+    const handleOpenAuth = (mode = 'login') => {
+        setAuthModal({ isOpen: true, mode });
+    };
+
+    const handleCloseAuth = () => {
+        setAuthModal(prev => ({ ...prev, isOpen: false }));
+    };
 
     const handleNavigate = (viewName) => {
         setActiveIdeQuestion(null);
@@ -82,7 +92,11 @@ function App() {
     return (
         <div className="gov-app-container">
             {/* Top GovOS-style Navigation */}
-            <Navbar activeView={activeIdeQuestion ? 'ide' : activeView} onNavigate={handleNavigate} />
+            <Navbar 
+                activeView={activeIdeQuestion ? 'ide' : activeView} 
+                onNavigate={handleNavigate} 
+                onOpenAuth={handleOpenAuth}
+            />
 
             <main className="gov-main-content">
                 {/* 1. ACTIVE IDE WORKSPACE VIEW */}
@@ -414,6 +428,13 @@ function App() {
                     </div>
                 )}
             </main>
+
+            {/* User Authentication Modal (Obsidian Matte) */}
+            <AuthModal 
+                isOpen={authModal.isOpen} 
+                initialMode={authModal.mode} 
+                onClose={handleCloseAuth} 
+            />
         </div>
     );
 }

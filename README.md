@@ -1,4 +1,4 @@
-﻿# 🧭 सारथी (Sarathi) — Authentic Campus Placement Intelligence Platform
+# 🧭 Sarathi — Authentic Campus Placement Intelligence Platform
 
 [![React](https://img.shields.io/badge/React-18-blue.svg?logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF.svg?logo=vite)](https://vitejs.dev/)
