@@ -140,7 +140,7 @@ function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
                                     <input
                                         type="text"
                                         className="auth-input"
-                                        placeholder="e.g. Vishesh Kumar"
+                                        placeholder="Enter your full name"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                         required

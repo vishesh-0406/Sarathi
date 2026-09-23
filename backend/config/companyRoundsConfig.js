@@ -3,6 +3,10 @@
  * Reflects real-world recruitment processes for 20 companies:
  * - Product Firms (3, 4, or 5 custom rounds with official company naming)
  * - Service & Consulting Firms (3 authentic rounds matching national hiring pipelines)
+ *
+ * Each company's Round 1 features both quantitative/cognitive screening AND authentic
+ * preliminary OA / screening DSA challenges, guaranteeing questions appear under
+ * both [ Aptitude ] and [ DSA ] category filters.
  */
 
 const COMPANY_ROUNDS_CONFIG = {
@@ -21,7 +25,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Quantitative screening and a 45-minute live interactive session on CoderPad/Docs evaluating clean code and time complexity',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Cognitive Screening', 'Hash Tables & Two Pointers', 'Time Complexity Analysis', 'Clean Modular Syntax'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.round === 'Google SWE Phone Screen' || q.difficulty === 'Easy'))
             },
             {
                 roundNumber: 2,
@@ -73,7 +77,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Written elimination round testing mathematical ability, C pointer tracing, and manual code output prediction (no IDE allowed)',
                 estimatedTime: 'Day 1',
                 focusPillars: ['C Pointer Arithmetic', 'Loop Output Tracing', 'Quantitative Aptitude', 'Mathematical Logic'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && q.difficulty === 'Easy' && !q.title.toLowerCase().includes('tree') && !q.title.toLowerCase().includes('linked list'))
             },
             {
                 roundNumber: 2,
@@ -125,7 +129,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: '70-minute assessment: cognitive screening, 2 DSA coding challenges, and the Amazon Work Style Behavioral Assessment',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Cognitive Screening', 'Sliding Window', 'Two Pointers', 'Work Style Assessment'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && /oa|online|campus oa/i.test(q.round || '') && (q.difficulty === 'Easy' || (!q.title.toLowerCase().includes('tree') && !q.title.toLowerCase().includes('ladder') && !q.title.toLowerCase().includes('alien') && !q.title.toLowerCase().includes('lca'))))
             },
             {
                 roundNumber: 2,
@@ -168,7 +172,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Screening round on Codility: algorithmic problem solving, string manipulation, and bitwise optimization under strict memory constraints',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Cognitive Screening', 'String Manipulation', 'Bitwise Operators', 'Memory Bounds'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/codility|sde-1 oa|campus assessment/i.test(q.round || '') || q.difficulty === 'Easy'))
             },
             {
                 roundNumber: 2,
@@ -211,7 +215,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Preliminary screening on HackerRank / CoCubes covering quantitative analysis, core CS fundamentals, and algorithmic coding',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Quantitative Ability', 'Interval Overlaps', 'Array Sorting', 'Prefix Calculations'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/campus coding assessment/i.test(q.round || '') || q.difficulty === 'Easy'))
             },
             {
                 roundNumber: 2,
@@ -254,7 +258,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Online screening covering analytical aptitude, OS/DBMS core fundamentals, and foundational coding challenges',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Quantitative Analysis', 'OS & Memory MCQs', 'DBMS & SQL Concepts', 'Foundational Arrays'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/technical assessment/i.test(q.round || '') || q.difficulty === 'Easy'))
             },
             {
                 roundNumber: 2,
@@ -297,7 +301,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'HackerRank test assessing speed math, probability, array intervals, and foundational algorithmic efficiency',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Probability & Math', 'Interval Overlaps', 'Two Pointers', 'Array Partitions'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.difficulty === 'Easy' || /screen|preliminary/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,
@@ -340,7 +344,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Screening assessment on quantitative ability, core CS principles, and 2 hands-on coding challenges',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Quantitative Aptitude', 'String Hashing', 'Array Permutations', 'Core CS Fundamentals'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/hackerrank oa|online/i.test(q.round || '') || q.difficulty === 'Easy'))
             },
             {
                 roundNumber: 2,
@@ -387,7 +391,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Screening test focusing on quantitative reasoning, prefix sums, sliding window arrays, and interval scheduling',
                 estimatedTime: 'Day 1',
                 focusPillars: ['Quantitative Aptitude', 'Sliding Window', 'Interval Scheduling', 'Prefix Calculations'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.difficulty === 'Easy' || /oa|campus coding/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,
@@ -421,7 +425,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'Rigorous HackerRank test covering advanced probability, permutations, number theory, and 2 algorithmic coding problems',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Probability & Statistics', 'Combinatorics', 'Number Theory', 'Foundational Arrays'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.difficulty === 'Easy' || /quantitative engineering/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,
@@ -455,11 +459,11 @@ const COMPANY_ROUNDS_CONFIG = {
             {
                 roundNumber: 1,
                 id: 'tcs-r1-nqt-cognitive',
-                name: 'Round 1: TCS NQT Cognitive Assessment',
-                subtitle: 'Preliminary screening on Numerical Ability, Logical Reasoning, and Verbal English required to qualify for coding tracks',
+                name: 'Round 1: TCS NQT Cognitive Assessment & Foundation Coding',
+                subtitle: 'Preliminary screening on Numerical Ability, Logical Reasoning, Verbal English, and Foundation / Ninja coding challenges',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Numerical Ability', 'Logical Deduction', 'Data Interpretation', 'Verbal English'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Numerical Ability', 'Logical Deduction', 'Foundational Coding', 'Ninja Track Challenges'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/ninja|nqt coding/i.test(q.round || '') || (q.difficulty === 'Easy' && !/prime|digital/i.test(q.round || ''))))
             },
             {
                 roundNumber: 2,
@@ -492,8 +496,8 @@ const COMPANY_ROUNDS_CONFIG = {
                 name: 'Round 1: Infosys Certification Assessment (InfyTQ / HackWithInfy)',
                 subtitle: 'National screening test covering programming fundamentals, quantitative aptitude, and core algorithmic problem solving',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Quantitative Aptitude', 'Reasoning Ability', 'Programming Logic', 'Speed & Accuracy'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Quantitative Aptitude', 'Reasoning Ability', 'Programming Logic', 'InfyTQ Assessment'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/infytq/i.test(q.round || '') || q.difficulty === 'Easy'))
             },
             {
                 roundNumber: 2,
@@ -523,16 +527,16 @@ const COMPANY_ROUNDS_CONFIG = {
             {
                 roundNumber: 1,
                 id: 'accenture-r1-cognitive-pseudocode',
-                name: 'Round 1: Cognitive & Critical Reasoning Assessment + Pseudocode Debugging',
-                subtitle: 'Analytical thinking, abstract reasoning, quantitative puzzles, English ability, and bitwise loop pseudocode tracing',
+                name: 'Round 1: Cognitive & Critical Reasoning Assessment + Screening Coding',
+                subtitle: 'Analytical thinking, abstract reasoning, quantitative puzzles, English ability, and foundational coding challenges',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Critical Reasoning', 'Abstract Logic', 'Quantitative Math', 'Pseudocode Debugging'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Critical Reasoning', 'Abstract Logic', 'Quantitative Math', 'Foundational Coding'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && /cognitive|accenture coding assessment/i.test(q.round || ''))
             },
             {
                 roundNumber: 2,
                 id: 'accenture-r2-automata-coding',
-                name: 'Round 2: Coding Assessment (Automata)',
+                name: 'Round 2: Coding Assessment (Automata & Advanced Coding)',
                 subtitle: '2 Coding questions in 45 minutes: string manipulation, autobiographical numbers, binary operations, and Accenture exclusives',
                 estimatedTime: 'Week 2',
                 focusPillars: ['Rat Food House Calculation', 'Autobiographical Number', 'Move Hyphens Logic', 'Large Small Sum Array'],
@@ -561,7 +565,7 @@ const COMPANY_ROUNDS_CONFIG = {
                 subtitle: 'National-level talent hunt covering Quantitative Aptitude, Logical Reasoning, Verbal English, and Automata coding challenges',
                 estimatedTime: 'Week 1',
                 focusPillars: ['Quantitative Aptitude', 'Logical Reasoning', 'Verbal Ability', 'Automata Coding'],
-                filter: (q) => q.category === 'Aptitude'
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/elite nlth/i.test(q.round || '') || (q.difficulty === 'Easy' && !/turbo/i.test(q.round || ''))))
             },
             {
                 roundNumber: 2,
@@ -594,8 +598,8 @@ const COMPANY_ROUNDS_CONFIG = {
                 name: 'Round 1: GenC / GenC Next Online Assessment',
                 subtitle: 'Preliminary screening on Quantitative Aptitude, Analytical Ability, and hands-on coding challenges for GenC Next upgrade',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Quantitative Aptitude', 'Analytical Ability', 'Foundational Coding', 'GenC Next Challenges'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Quantitative Aptitude', 'Analytical Ability', 'Foundational Coding', 'GenC Coding'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/genc coding/i.test(q.round || '') || (q.difficulty === 'Easy' && !/genc next|elevate|advanced/i.test(q.round || ''))))
             },
             {
                 roundNumber: 2,
@@ -625,11 +629,11 @@ const COMPANY_ROUNDS_CONFIG = {
             {
                 roundNumber: 1,
                 id: 'capgemini-r1-pseudocode-cognitive',
-                name: 'Round 1: Pseudo-code & Cognitive Assessment',
-                subtitle: 'Elimination round covering pseudocode output tracing, bitwise logic, English comprehension, and game-based cognitive tests',
+                name: 'Round 1: Pseudo-code & Cognitive Assessment + Coding',
+                subtitle: 'Elimination round covering pseudocode output tracing, bitwise logic, English comprehension, and foundational coding challenges',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Pseudocode Tracing', 'Bitwise Operators', 'Cognitive Games', 'Verbal English'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Pseudocode Tracing', 'Bitwise Operators', 'Cognitive Games', 'Foundational Arrays'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (/pseudo-code|capgemini coding round/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,
@@ -660,10 +664,10 @@ const COMPANY_ROUNDS_CONFIG = {
                 roundNumber: 1,
                 id: 'hcl-r1-first-careers-aptitude',
                 name: 'Round 1: First Careers Aptitude & Technical Screening',
-                subtitle: 'Online screening covering Quantitative Math, Logical Reasoning, and fundamental Computer Science principles',
+                subtitle: 'Online screening covering Quantitative Math, Logical Reasoning, and fundamental Computer Science & coding challenges',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Quantitative Math', 'Logical Deduction', 'Computer Science Basics', 'Speed & Accuracy'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Quantitative Math', 'Logical Deduction', 'Computer Science Basics', 'Foundational Coding'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.difficulty === 'Easy' || /campus coding|technical assessment/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,
@@ -694,10 +698,10 @@ const COMPANY_ROUNDS_CONFIG = {
                 roundNumber: 1,
                 id: 'techm-r1-conversant-cognitive',
                 name: 'Round 1: Conversant Cognitive & Mindcraft Assessment',
-                subtitle: 'Preliminary test evaluating quantitative aptitude, logical reasoning, English essay writing, and technical MCQs',
+                subtitle: 'Preliminary test evaluating quantitative aptitude, logical reasoning, English essay writing, and foundational coding',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Quantitative Aptitude', 'Logical Reasoning', 'Written English Essay', 'Technical MCQs'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Quantitative Aptitude', 'Logical Reasoning', 'Written English Essay', 'Foundational Coding'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.difficulty === 'Easy' || /mindcraft/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,
@@ -728,10 +732,10 @@ const COMPANY_ROUNDS_CONFIG = {
                 roundNumber: 1,
                 id: 'lti-r1-ignition-aptitude',
                 name: 'Round 1: Ignition & Spark Aptitude Assessment',
-                subtitle: 'Comprehensive online screening covering analytical ability, quantitative aptitude, verbal fluency, and technical fundamentals',
+                subtitle: 'Comprehensive online screening covering analytical ability, quantitative aptitude, verbal fluency, and foundational coding',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Analytical Reasoning', 'Quantitative Aptitude', 'Verbal Fluency', 'Technical Basics'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Analytical Reasoning', 'Quantitative Aptitude', 'Verbal Fluency', 'Foundational Coding'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.difficulty === 'Easy' || /campus assessment/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,
@@ -762,10 +766,10 @@ const COMPANY_ROUNDS_CONFIG = {
                 roundNumber: 1,
                 id: 'genpact-r1-technical-analytical-screen',
                 name: 'Round 1: Technical & Analytical Online Screening',
-                subtitle: 'Assessment evaluating numerical data interpretation, critical reasoning, and foundational programming concepts',
+                subtitle: 'Assessment evaluating numerical data interpretation, critical reasoning, and foundational programming challenges',
                 estimatedTime: 'Week 1',
-                focusPillars: ['Data Interpretation', 'Critical Reasoning', 'Numerical Math', 'Programming Concepts'],
-                filter: (q) => q.category === 'Aptitude'
+                focusPillars: ['Data Interpretation', 'Critical Reasoning', 'Numerical Math', 'Foundational Coding'],
+                filter: (q) => q.category === 'Aptitude' || (q.category === 'DSA' && (q.difficulty === 'Easy' || /analytics/i.test(q.round || '')))
             },
             {
                 roundNumber: 2,

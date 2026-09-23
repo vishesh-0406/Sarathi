@@ -2,7 +2,7 @@
   {
     "company": "TCS",
     "title": "Vehicle Fleet Wheel Assembly Check (Two Wheeler and Four Wheeler)",
-    "problemStatement": "An automobile manufacturing plant produces two-wheelers (V1) and four-wheelers (V2). Given total vehicles V and total wheels W, calculate count of each vehicle. If invalid, return error indicator.",
+    "problemStatement": "An automobile manufacturing plant produces two-wheelers (V1) and four-wheelers (V2). Given total vehicles V and total wheels W, calculate count of each vehicle as an array [twoWheelers, fourWheelers]. If invalid, return [-1, -1].",
     "constraints": [
       "2 <= W <= 10^5",
       "W >= 2*V",
@@ -21,13 +21,13 @@
     "testCases": [
       {
         "input": "vehicles = 200, wheels = 540",
-        "output": "twoWheelers: 130, fourWheelers: 70",
-        "explanation": "4*V - W = 800 - 540 = 260. 260 / 2 = 130 two-wheelers. 200 - 130 = 70 four-wheelers."
+        "output": "[130, 70]",
+        "explanation": "4*V - W = 800 - 540 = 260. 260 / 2 = 130 two-wheelers. 200 - 130 = 70 four-wheelers. Returns [130, 70]."
       },
       {
         "input": "vehicles = 10, wheels = 20",
-        "output": "twoWheelers: 10, fourWheelers: 0",
-        "explanation": "All 10 are two-wheelers."
+        "output": "[10, 0]",
+        "explanation": "All 10 are two-wheelers. Returns [10, 0]."
       }
     ],
     "isNovel": true,
@@ -2980,7 +2980,7 @@
   {
     "company": "Infosys",
     "title": "HackWithInfy Monster Turn-Based Combat Strategy",
-    "problemStatement": "Given monster HP and list of spells with damage and mana cost, find minimum mana required to defeat monster (reduce HP <= 0).",
+    "problemStatement": "Given monster health HP and a 2D array spells where spells[i] = [damage, manaCost], find the minimum mana required to defeat the monster (reduce HP <= 0). Each spell can be cast multiple times.",
     "constraints": [
       "Unbounded Knapsack DP",
       "1 <= HP <= 10^4"
@@ -2996,9 +2996,9 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "HP = 100, spells = [{ dmg: 25, mana: 30 }, { dmg: 40, mana: 45 }]",
+        "input": "HP = 100, spells = [[25, 30], [40, 45]]",
         "output": "115",
-        "explanation": "Two spells of 40 (mana 90) + one spell of 25 (mana 30) = 105 dmg with 120 mana, or optimal combination."
+        "explanation": "Optimal spell combination reduces HP to <= 0 with minimum mana 115."
       }
     ],
     "isNovel": true,
@@ -26656,7 +26656,7 @@
   {
     "company": "Genpact",
     "title": "Insurance Claims Adjudication Risk Scorer",
-    "problemStatement": "Evaluate insurance claim severity based on claimant age, previous claim count, and claim amount. If claim amount > 50000 and prior claims >= 2, route to SPECIAL_INVESTIGATION.",
+    "problemStatement": "Evaluate insurance claim severity based on claim amount and previous prior claims count. If amount > 50000 and priors >= 2, return \"SPECIAL_INVESTIGATION\". Otherwise, return \"FAST_TRACK\".",
     "constraints": [
       "Decision rules engine"
     ],
@@ -26671,12 +26671,12 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "claim = {\"amount\": 75000, \"priors\": 3}",
+        "input": "amount = 75000, priors = 3",
         "output": "\"SPECIAL_INVESTIGATION\"",
         "explanation": "High value claim with repeated historical claims triggers fraud investigation."
       },
       {
-        "input": "claim = {\"amount\": 12000, \"priors\": 0}",
+        "input": "amount = 12000, priors = 0",
         "output": "\"FAST_TRACK\"",
         "explanation": "Standard low-risk claim routed to fast-track settlement."
       }
@@ -32390,7 +32390,7 @@
   {
     "company": "Google",
     "title": "Docs Collaborative Operational Transformation Conflict Resolver",
-    "problemStatement": "In a collaborative text editor, user A applies insert operation opA at index posA and user B applies insert operation opB at index posB concurrently. Transform opA against opB so both clients converge to identical text.",
+    "problemStatement": "In a collaborative text editor, user A inserts a character at position posA and user B inserts a character at position posB concurrently. Transform user A's insertion position against user B's operation so both clients converge to identical text. If posB < posA, posA shifts right by 1; otherwise posA remains unchanged. Return the transformed position of operation A.",
     "constraints": [
       "Operational Transformation algorithm",
       "posA, posB >= 0",
@@ -32407,14 +32407,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "opA = { type: \"insert\", pos: 3, char: \"X\" }, opB = { type: \"insert\", pos: 2, char: \"Y\" }",
-        "output": "{ type: \"insert\", pos: 4, char: \"X\" }",
-        "explanation": "Since opB inserted before opA, opA index shifts right by 1."
+        "input": "posA = 3, posB = 2",
+        "output": "4",
+        "explanation": "Since opB inserted before opA (posB < posA), opA index shifts right by 1 to 4."
       },
       {
-        "input": "opA = { type: \"insert\", pos: 1, char: \"A\" }, opB = { type: \"insert\", pos: 5, char: \"B\" }",
-        "output": "{ type: \"insert\", pos: 1, char: \"A\" }",
-        "explanation": "opB occurred after opA, so opA index is unchanged."
+        "input": "posA = 1, posB = 5",
+        "output": "1",
+        "explanation": "opB occurred after opA (posB >= posA), so opA index remains 1."
       }
     ],
     "isNovel": true,
@@ -32505,7 +32505,7 @@
   {
     "company": "Google",
     "title": "BigQuery Columnar Block Compression Run-Length Encoder",
-    "problemStatement": "Compress sorted columnar integers into runs of [value, count] pairs and compute total bytes saved compared to uncompressed 32-bit storage.",
+    "problemStatement": "Given a sorted integer array data representing columnar storage blocks, compress it using run-length encoding into a list of [value, count] pairs where each pair denotes an element value and its consecutive frequency count. Return the list of run-length pairs.",
     "constraints": [
       "1 <= data.length <= 10^6",
       "O(N) single-pass encoding"
@@ -32524,6 +32524,11 @@
         "input": "data = [1, 1, 1, 2, 2, 3]",
         "output": "[[1, 3], [2, 2], [3, 1]]",
         "explanation": "Value 1 repeats 3 times, 2 repeats 2 times, 3 appears once."
+      },
+      {
+        "input": "data = [4, 4, 5, 5, 5, 5]",
+        "output": "[[4, 2], [5, 4]]",
+        "explanation": "Value 4 repeats 2 times, 5 repeats 4 times."
       }
     ],
     "isNovel": true,
@@ -35278,7 +35283,7 @@
   {
     "company": "Microsoft",
     "title": "Excel Cyclic Formula Dependency Detector",
-    "problemStatement": "Given spreadsheet cell formulas with dependencies (e.g. A1 depends on B1), determine if a circular reference cycle exists that would cause evaluation recursion.",
+    "problemStatement": "Given a list of spreadsheet cell dependency directed pairs edges, where edges[i] = [cellA, cellB] denotes that cellA depends on cellB, determine if a circular formula dependency cycle exists. Return true if a cycle exists, false otherwise.",
     "constraints": [
       "Directed graph cycle detection",
       "Topological Sort / DFS with color state"
@@ -35294,14 +35299,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "dependencies = { \"A1\": [\"B1\"], \"B1\": [\"C1\"], \"C1\": [\"A1\"] }",
+        "input": "edges = [[\"A1\", \"B1\"], [\"B1\", \"C1\"], [\"C1\", \"A1\"]]",
         "output": "true",
-        "explanation": "A1 -> B1 -> C1 -> A1 forms a circular dependency."
+        "explanation": "A1 -> B1 -> C1 -> A1 forms a circular dependency cycle."
       },
       {
-        "input": "dependencies = { \"A1\": [\"B1\", \"C1\"], \"B1\": [], \"C1\": [] }",
+        "input": "edges = [[\"A1\", \"B1\"], [\"A1\", \"C1\"]]",
         "output": "false",
-        "explanation": "DAG with no cycles."
+        "explanation": "DAG with no circular dependency cycles."
       }
     ],
     "isNovel": true,
@@ -35379,7 +35384,7 @@
   {
     "company": "Microsoft",
     "title": "Edge Browser Tab Memory Eviction LRU-Priority",
-    "problemStatement": "Given browser tabs with memory consumption and priority levels, evict the tab that minimizes priority loss while freeing at least targetMemory megabytes.",
+    "problemStatement": "Given a 2D array tabs where tabs[i] = [id, mem, priority], and an integer target, find the tab id that frees at least target megabytes of memory while minimizing the priority score. If multiple tabs qualify, choose the one with the lowest priority score. Return the id of the evicted tab.",
     "constraints": [
       "Greedy knapsack / sorting",
       "Tab memory up to 2000MB"
@@ -35395,9 +35400,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "tabs = [{ id: 1, mem: 400, prio: 1 }, { id: 2, mem: 600, prio: 3 }], target = 350",
+        "input": "tabs = [[1, 400, 1], [2, 600, 3]], target = 350",
         "output": "1",
         "explanation": "Tab 1 frees 400MB >= 350MB with lowest priority score 1."
+      },
+      {
+        "input": "tabs = [[1, 200, 2], [2, 500, 1]], target = 300",
+        "output": "2",
+        "explanation": "Tab 2 frees 500MB >= 300MB with priority score 1."
       }
     ],
     "isNovel": true,
@@ -39502,8 +39512,8 @@
   },
   {
     "company": "Adobe",
-    "title": "0 1 Knapsack Variation Maximum Profit",
-    "problemStatement": "Maximize profit from items within weight capacity.",
+    "title": "0-1 Knapsack Variation Maximum Profit",
+    "problemStatement": "Given item weights, values, and total knapsack weight capacity, determine the maximum value achievable without exceeding capacity. Return the maximum profit.",
     "constraints": [
       "Capacity up to 1000",
       "DP knapsack"
@@ -41211,7 +41221,7 @@
   {
     "company": "Oracle",
     "title": "B-Tree Index Block Split with Concurrent Insertions",
-    "problemStatement": "Simulate an in-memory B+ tree leaf block splitting mechanism when keys overflow block byte boundary. Given block size B and sequential keys, compute total split cascades and new height of tree.",
+    "problemStatement": "Simulate an in-memory B+ tree leaf block splitting mechanism. Given max nodeCapacity, a sorted array of current keys, and a new insertKey to insert, insert the key in sorted order. If the total number of keys exceeds nodeCapacity, determine the median key to promote to the parent node. Return the median promoted key.",
     "constraints": [
       "Block size 4KB to 64KB",
       "1 <= keys <= 10^5",
@@ -41229,8 +41239,13 @@
     "testCases": [
       {
         "input": "nodeCapacity = 4, keys = [10, 20, 30, 40], insertKey = 25",
-        "output": "{\"left\": [10, 20], \"median\": 25, \"right\": [30, 40]}",
-        "explanation": "Node exceeds capacity, splits at median 25 with balanced sub-nodes."
+        "output": "25",
+        "explanation": "Node exceeds capacity 4, splits and promotes median key 25."
+      },
+      {
+        "input": "nodeCapacity = 2, keys = [5, 15], insertKey = 10",
+        "output": "10",
+        "explanation": "Keys become [5, 10, 15], median promoted key is 10."
       }
     ],
     "isNovel": true,
@@ -41239,7 +41254,7 @@
   {
     "company": "Oracle",
     "title": "SQL Execution Plan Cost Minimizer for Nested Loops",
-    "problemStatement": "Given table cardinality statistics and selectivity coefficients for 3 joined tables, calculate the optimal join order tree that minimizes the total intermediate row count.",
+    "problemStatement": "Given table cardinality statistics outerTableRows, innerTableRows, and a boolean hasIndexOnJoin, calculate the minimum estimated execution cost. If hasIndexOnJoin is true, an Index Nested Loop join is used with cost = outerTableRows * 3. Otherwise, a standard Nested Loop join is used with cost = outerTableRows * innerTableRows / 5000. Return the minimum estimated cost.",
     "constraints": [
       "3 <= tables <= 12",
       "Cardinalities up to 10^9",
@@ -41257,8 +41272,13 @@
     "testCases": [
       {
         "input": "outerTableRows = 1000, innerTableRows = 50000, hasIndexOnJoin = true",
-        "output": "{\"method\": \"IndexNestedLoop\", \"estimatedCost\": 3000}",
-        "explanation": "Indexed join on inner table yields lower cost (3000) than Hash Join (8500)."
+        "output": "3000",
+        "explanation": "Index join on inner table yields lower cost (1000 * 3 = 3000)."
+      },
+      {
+        "input": "outerTableRows = 500, innerTableRows = 100000, hasIndexOnJoin = false",
+        "output": "10000",
+        "explanation": "Standard nested loop join cost: 500 * 100000 / 5000 = 10000."
       }
     ],
     "isNovel": true,
@@ -41267,7 +41287,7 @@
   {
     "company": "Oracle",
     "title": "Multi-Version Concurrency Control Read Snapshot Resolver",
-    "problemStatement": "Given a row revision chain with System Commit Numbers (SCNs) and active transaction read timestamps, return the exact row value visible to a reader query without acquiring read locks.",
+    "problemStatement": "Given an active transaction read timestamp readTxnTimestamp, an array of commit timestamps versions, and corresponding row values values, return the latest committed value visible to the transaction (the value with the maximum timestamp <= readTxnTimestamp). If no such version exists, return empty string.",
     "constraints": [
       "1 <= revisions per row <= 1000",
       "SCN values up to 10^12",
@@ -41284,9 +41304,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "readTxnTimestamp = 105, rowVersions = [{\"version\": 100, \"val\": \"A\"}, {\"version\": 110, \"val\": \"B\"}]",
+        "input": "readTxnTimestamp = 105, versions = [100, 110], values = [\"A\", \"B\"]",
         "output": "\"A\"",
         "explanation": "Transaction reads latest committed version with timestamp <= 105, which is version 100 (\"A\")."
+      },
+      {
+        "input": "readTxnTimestamp = 90, versions = [100, 110], values = [\"A\", \"B\"]",
+        "output": "\"\"",
+        "explanation": "No version exists before timestamp 90, returns empty string."
       }
     ],
     "isNovel": true,
@@ -41295,7 +41320,7 @@
   {
     "company": "Oracle",
     "title": "Buffer Cache Dirty Page Least-Cost Eviction Policy",
-    "problemStatement": "Design a buffer cache eviction manager that balances LRU touch age and dirty write-back cost so that memory pressure is relieved with minimum disk latency penalty.",
+    "problemStatement": "Design a database buffer cache page eviction manager. Given cacheSize, an array pages where pages[i] = [pageId, isDirty] (0 for clean, 1 for dirty), and a newPageId to load into cache, find the pageId to evict. Clean pages (isDirty == 0) are prioritized for eviction to avoid immediate disk write cost. If multiple clean pages exist, evict the earliest in the array. Return the pageId of the evicted page.",
     "constraints": [
       "Cache size N <= 10^5 pages",
       "Dirty write-back cost 10x read cost",
@@ -41312,9 +41337,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "cacheSize = 3, pages = [{\"id\": 1, \"dirty\": false}, {\"id\": 2, \"dirty\": true}, {\"id\": 3, \"dirty\": false}], newPage = 4",
+        "input": "cacheSize = 3, pages = [[1, 0], [2, 1], [3, 0]], newPage = 4",
         "output": "1",
         "explanation": "Clean page 1 is evicted first to avoid synchronous I/O write cost."
+      },
+      {
+        "input": "cacheSize = 2, pages = [[10, 1], [20, 0]], newPage = 30",
+        "output": "20",
+        "explanation": "Clean page 20 is evicted first."
       }
     ],
     "isNovel": true,
@@ -44039,7 +44069,7 @@
   {
     "company": "Salesforce",
     "title": "Multi-Tenant Governor Limit Rate Allocator",
-    "problemStatement": "In a multi-tenant cloud environment, each tenant has a max API call quota per hour. Process incoming API request batches and mark whether each request is allowed or rejected due to governor limits.",
+    "problemStatement": "In a multi-tenant cloud environment, each tenant has a max API call quota limit per evaluation window. Given limit and an array of requested call batches requests, evaluate each request sequentially. If the cumulative calls consumed plus the current batch exceeds limit, the request is rejected with \"governor_limit_exceeded\". Otherwise, the calls are consumed and marked \"allowed\". Return an array of strings indicating the status for each request.",
     "constraints": [
       "Hash map quota tracking",
       "1 <= requests.length <= 10^5"
@@ -44055,9 +44085,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "limits = { \"tenantA\": 100 }, requests = [{ tenant: \"tenantA\", calls: 95 }, { tenant: \"tenantA\", calls: 10 }]",
+        "input": "limit = 100, requests = [95, 10]",
         "output": "[\"allowed\", \"governor_limit_exceeded\"]",
         "explanation": "First batch uses 95 of 100. Second batch needs 10 (total 105 > 100) and is rejected."
+      },
+      {
+        "input": "limit = 50, requests = [20, 25, 10]",
+        "output": "[\"allowed\", \"allowed\", \"governor_limit_exceeded\"]",
+        "explanation": "First uses 20, second uses 25 (total 45), third needs 10 (total 55 > 50) and is rejected."
       }
     ],
     "isNovel": true,
@@ -47040,7 +47075,7 @@
   {
     "company": "Uber",
     "title": "Multi-Stop Fare Split Optimizer",
-    "problemStatement": "In an Uber Pool ride, passengers join at kilometer mark s_i and disembark at e_i. Total fare is calculated at rate per kilometer. Compute each passenger proportional fare share based on shared distance intervals.",
+    "problemStatement": "In an Uber Pool ride, passengers travel along a 1D route. Given a 2D array rides where rides[i] = [startKm, endKm] for passenger i, and an integer ratePerKm, compute each passenger's proportional fare share based on shared distance intervals. For each interval between passenger entry and exit points, the cost (distance * ratePerKm) is split equally among all passengers active during that interval. Return an integer array where the i-th element is the total fare charged to passenger i.",
     "constraints": [
       "Interval coordinate compression",
       "1 <= passengers <= 1000"
@@ -47056,9 +47091,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "rides = [{\"id\": 1, \"s\": 0, \"e\": 10}, {\"id\": 2, \"s\": 5, \"e\": 10}], ratePerKm = 2",
-        "output": "{\"1\": 15, \"2\": 5}",
-        "explanation": "0-5km: only passenger 1 (cost 10). 5-10km: both passengers split 10 equally (5 each). Total: 1 gets 15, 2 gets 5."
+        "input": "rides = [[0, 10], [5, 10]], ratePerKm = 2",
+        "output": "[15, 5]",
+        "explanation": "0-5km: only passenger 1 (cost 10). 5-10km: both passengers split 10 equally (5 each). Total: passenger 1 pays 15, passenger 2 pays 5."
+      },
+      {
+        "input": "rides = [[0, 6], [2, 8]], ratePerKm = 3",
+        "output": "[15, 15]",
+        "explanation": "0-2km: pass 1 (6). 2-6km: split 12 equally (6 each). 6-8km: pass 2 (6). Total: pass 1 pays 15, pass 2 pays 15."
       }
     ],
     "isNovel": true,
@@ -49930,7 +49970,7 @@
   {
     "company": "Zoho",
     "title": "Railway Berths Seat Allocation Engine",
-    "problemStatement": "Implement Indian Railway seat reservation logic: allocate Lower Berth (LB) to senior citizens (>60) or females with children first, Middle Berth (MB), Upper Berth (UB), then Side Lower (SL). Handle RAC and Waiting List queues.",
+    "problemStatement": "Implement Indian Railway berth allocation logic. Given passenger ages and genders (M/F), assign berths in order of priority: senior citizens (age >= 60) or females receive Lower Berth (\"LB\") first, followed by Middle Berth (\"MB\"), Upper Berth (\"UB\"), and Side Lower (\"SL\"). Return an array of strings representing the berth allocated to each passenger.",
     "constraints": [
       "Classic Zoho Round 3 problem",
       "Object-Oriented Design & priority queue allocation"
@@ -49946,9 +49986,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "passengers = [{\"name\": \"Ram\", \"age\": 65, \"gender\": \"M\"}, {\"name\": \"Kumar\", \"age\": 25, \"gender\": \"M\"}]",
-        "output": "[{\"name\": \"Ram\", \"berth\": \"LB\"}, {\"name\": \"Kumar\", \"berth\": \"MB\"}]",
-        "explanation": "Senior citizen Ram is prioritized for Lower Berth (LB)."
+        "input": "ages = [65, 25], genders = [\"M\", \"M\"]",
+        "output": "[\"LB\", \"MB\"]",
+        "explanation": "Senior citizen (age 65) receives Lower Berth (\"LB\"), other passenger receives Middle Berth (\"MB\")."
+      },
+      {
+        "input": "ages = [22, 62], genders = [\"F\", \"F\"]",
+        "output": "[\"MB\", \"LB\"]",
+        "explanation": "Female senior citizen (age 62) receives Lower Berth (\"LB\"), younger female receives Middle Berth (\"MB\")."
       }
     ],
     "isNovel": true,
@@ -55749,7 +55794,7 @@
   {
     "company": "Goldman Sachs",
     "title": "High-Frequency Order Book Matching Engine",
-    "problemStatement": "Implement an order book matching engine. Match incoming buy orders with lowest available sell order (ask <= bid). If prices cross, execute trade at the maker's price and decrement quantity.",
+    "problemStatement": "Implement an order book matching engine. Given highest buy bid bids where bids[0] = [bidPrice, bidQty], and lowest sell ask asks where asks[0] = [askPrice, askQty], if askPrice <= bidPrice, execute trade at maker askPrice with quantity min(bidQty, askQty). Return an array [execPrice, execQty, remainingBidQty]. If no trade crosses, return [-1, 0, bidQty].",
     "constraints": [
       "Price-time priority",
       "Max-Heap for Bids, Min-Heap for Asks",
@@ -55766,9 +55811,14 @@
     "matchedProblems": [],
     "testCases": [
       {
-        "input": "bids = [{\"p\": 100, \"q\": 10}], asks = [{\"p\": 99, \"q\": 6}]",
-        "output": "[{\"execPrice\": 99, \"execQty\": 6, \"remainBidQty\": 4}]",
+        "input": "bids = [[100, 10]], asks = [[99, 6]]",
+        "output": "[99, 6, 4]",
         "explanation": "Trade matches at ask price 99 for 6 units. Bid remains with 4 units at 100."
+      },
+      {
+        "input": "bids = [[95, 10]], asks = [[98, 5]]",
+        "output": "[-1, 0, 10]",
+        "explanation": "No match since ask 98 > bid 95."
       }
     ],
     "isNovel": true,

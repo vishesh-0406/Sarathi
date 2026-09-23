@@ -13,7 +13,8 @@ import {
     SunIcon, 
     MoonIcon,
     UserIcon,
-    LogOutIcon
+    LogOutIcon,
+    TargetIcon
 } from './Icons';
 import './Navbar.css';
 
@@ -25,12 +26,14 @@ function Navbar({ activeView, onNavigate, onOpenAuth }) {
 
     const navItems = [
         { id: 'home', label: 'Home', icon: HomeIcon },
+        { id: 'tracker', label: 'AI Tracker', icon: TargetIcon },
         { id: 'roadmap', label: 'Roadmaps', icon: RoadmapIcon },
         { id: 'companies', label: 'Companies', icon: CompanyIcon },
         { id: 'dsa', label: 'DSA Arena', icon: DSAIcon },
         { id: 'aptitude', label: 'Aptitude', icon: AptitudeIcon },
         { id: 'interviews', label: 'Interviews', icon: InterviewIcon },
     ];
+
 
     // Close profile dropdown when clicking outside
     useEffect(() => {
@@ -124,6 +127,18 @@ function Navbar({ activeView, onNavigate, onOpenAuth }) {
                                     <div className="dropdown-divider"></div>
 
                                     <button 
+                                        className="dropdown-item-btn" 
+                                        onClick={() => {
+                                            onNavigate('tracker');
+                                            setProfileMenuOpen(false);
+                                        }}
+                                        role="menuitem"
+                                    >
+                                        <TargetIcon size={14} />
+                                        <span>AI Readiness Tracker</span>
+                                    </button>
+
+                                    <button 
                                         className="dropdown-item-btn logout-btn" 
                                         onClick={() => {
                                             logout();
@@ -134,6 +149,7 @@ function Navbar({ activeView, onNavigate, onOpenAuth }) {
                                         <LogOutIcon size={14} />
                                         <span>Sign Out</span>
                                     </button>
+
                                 </div>
                             )}
                         </div>

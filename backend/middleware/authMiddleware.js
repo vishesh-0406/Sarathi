@@ -37,4 +37,31 @@ const protect = async (req, res, next) => {
     }
 };
 
-module.exports = { protect };
+/**
+ * Optional protection middleware:
+ * Populates req.user if a valid token is provided, but continues as guest if not.
+ */
+const protectOptional = async (req, res, next) => {
+    let token;
+
+    if (
+        req.headers.authorization &&
+        req.headers.authorization.startsWith('Bearer')
+    ) {
+        try {
+            token = req.headers.authorization.split(' ')[1];
+            if (token) {
+                const decoded = jwt.verify(token, JWT_SECRET);
+                req.user = await User.findById(decoded.id).select('-password');
+            }
+        } catch (error) {
+            // Silently treat invalid/expired token as guest
+            req.user = null;
+        }
+    }
+
+    next();
+};
+
+module.exports = { protect, protectOptional };
+

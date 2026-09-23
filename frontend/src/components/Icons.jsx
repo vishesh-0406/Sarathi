@@ -353,4 +353,45 @@ export function MailIcon({ size = 14, className = "", color = "currentColor" }) 
     );
 }
 
+export function BookmarkIcon({ size = 15, className = "", filled = false, color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? color : "none"} stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+        </svg>
+    );
+}
+
+export function TargetIcon({ size = 16, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="12" r="6" />
+            <circle cx="12" cy="12" r="2" />
+        </svg>
+    );
+}
+
+export function TrophyIcon({ size = 16, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+            <path d="M4 22h16" />
+            <path d="M10 14.66V17c0 .55-.45 1-1 1H7" />
+            <path d="M14 14.66V17c0 .55.45 1 1 1h2" />
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
+        </svg>
+    );
+}
+
+export function BrainIcon({ size = 16, className = "", color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-5.04z" />
+            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-5.04z" />
+        </svg>
+    );
+}
+
+
 

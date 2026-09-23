@@ -143,6 +143,62 @@ export function AuthProvider({ children }) {
         }
     };
 
+    // Refresh profile state
+    const refreshUser = async () => {
+        if (!token) return;
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/me`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const userData = await res.json();
+                setUser(userData);
+            }
+        } catch (err) {
+            console.error('Failed to refresh user:', err);
+        }
+    };
+
+    // Toggle bookmark for a question
+    const toggleBookmark = async (questionId) => {
+        if (!token) return { success: false, requiresAuth: true };
+        try {
+            const res = await fetch(`${API_BASE_URL}/user/bookmark`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ questionId })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                setUser(prev => prev ? { ...prev, bookmarksCount: data.bookmarksCount } : null);
+                return { success: true, bookmarked: data.bookmarked, count: data.bookmarksCount };
+            }
+            return { success: false, error: data.message };
+        } catch (err) {
+            return { success: false, error: err.message };
+        }
+    };
+
+    // Record quiz attempt
+    const recordQuizAttempt = async (questionId, selectedOption, isCorrect) => {
+        if (!token) return;
+        try {
+            await fetch(`${API_BASE_URL}/user/quiz-attempt`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ questionId, selectedOption, isCorrect })
+            });
+        } catch (err) {
+            console.error('Failed to record quiz attempt:', err);
+        }
+    };
+
     return (
         <AuthContext.Provider value={{
             user,
@@ -152,11 +208,15 @@ export function AuthProvider({ children }) {
             login,
             register,
             logout,
-            updateTargetCompany
+            updateTargetCompany,
+            toggleBookmark,
+            recordQuizAttempt,
+            refreshUser
         }}>
             {children}
         </AuthContext.Provider>
     );
+
 }
 
 export function useAuth() {

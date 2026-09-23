@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
 
 const connectDb = async() => {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+        const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/sarathi';
+        await mongoose.connect(mongoUri);
         console.log("MongoDB connected successfully");
         
     } catch (error) {
@@ -11,5 +14,6 @@ const connectDb = async() => {
         process.exit(1);
     }
 };
+
 
 module.exports = connectDb;

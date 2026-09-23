@@ -408,12 +408,13 @@ export function inferSignature(question) {
     const inputStr = question?.testCases?.[0]?.input || '';
     const outputStr = (question?.testCases?.[0]?.output || '').trim();
 
-    const isTree = title.includes('tree') || statement.includes('binary tree') || statement.includes('treenode') || inputStr.includes('root');
+    const isTree = title.includes('binary tree') || statement.includes('binary tree') || statement.includes('treenode') || inputStr.includes('root') || (title.includes('tree') && !title.includes('snapshot') && !title.includes('trie') && !title.includes('undo'));
     const isList = title.includes('linked list') || statement.includes('linked list') || statement.includes('listnode') || inputStr.includes('head');
 
     // Method Name deduction
     let rawTitle = question?.matchedProblems?.[0]?.problemName || question?.title || 'solve';
-    rawTitle = rawTitle.replace(/^\d+[\.\s]+/, '')
+    rawTitle = rawTitle.replace(/\b0\s*[-_]?\s*1\b/gi, 'zero one')
+        .replace(/^\d+[\.\s]+/, '')
         .replace(/^(amazon|google|microsoft|flipkart|hcltech|tcs|infosys|oracle|uber|zoho)\s*[-:]\s*/i, '')
         .replace(/\b(verification|assessment|challenge|problem|solution)\b/gi, '')
         .replace(/[^a-zA-Z0-9\s]/g, '')
@@ -422,7 +423,13 @@ export function inferSignature(question) {
     const words = rawTitle.split(/\s+/).filter(Boolean);
     let methodName = 'solve';
     if (words.length > 0) {
+        if (/^\d/.test(words[0])) {
+            words.unshift('solve');
+        }
         methodName = words[0].toLowerCase() + words.slice(1).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join('');
+    }
+    if (/^\d/.test(methodName)) {
+        methodName = 'solve' + methodName;
     }
 
     // Parameter extraction
@@ -450,7 +457,7 @@ export function inferSignature(question) {
         // Extract value assigned to this parameter in inputStr, e.g. "r = 7", "arr = [2, 8, ...]"
         let pVal = '';
         try {
-            const regex = new RegExp('(?:^|[,\\s])' + p + '\\s*=\\s*([^,]+?)(?:(?=,\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*=)|$)');
+            const regex = new RegExp('(?:^|[,\\s])' + p + '\\s*=\\s*([\\s\\S]+?)(?:(?=,\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*=)|$)');
             const match = inputStr.match(regex);
             if (match) {
                 pVal = match[1].trim();
@@ -459,11 +466,19 @@ export function inferSignature(question) {
 
         const is2DArray = pVal.startsWith('[[') || (pVal === '' && (lp.includes('matrix') || lp.includes('grid')));
         if (is2DArray) {
+            const is2DStringArray = pVal.includes('"') || pVal.includes("'") || lp.includes('words') || lp.includes('strings') || lp.includes('edges');
+            if (is2DStringArray) {
+                return { name: p, py: 'List[List[str]]', java: 'String[][]', cpp: 'vector<vector<string>>&', js: 'string[][]' };
+            }
             return { name: p, py: 'List[List[int]]', java: 'int[][]', cpp: 'vector<vector<int>>&', js: 'number[][]' };
         }
 
-        const is1DArray = (pVal.startsWith('[') && !pVal.startsWith('[[')) || (pVal === '' && (lp.includes('nums') || lp.includes('arr') || lp.includes('prices') || lp.includes('intervals')));
+        const is1DArray = (pVal.startsWith('[') && !pVal.startsWith('[[')) || (pVal === '' && (lp.includes('nums') || lp.includes('arr') || lp.includes('prices') || lp.includes('intervals') || lp.includes('commands') || lp.includes('words')));
         if (is1DArray) {
+            const isStringArray = pVal.includes('"') || pVal.includes("'") || lp.includes('commands') || lp.includes('words') || lp.includes('strings');
+            if (isStringArray) {
+                return { name: p, py: 'List[str]', java: 'String[]', cpp: 'vector<string>&', js: 'string[]' };
+            }
             return { name: p, py: 'List[int]', java: 'int[]', cpp: 'vector<int>&', js: 'number[]' };
         }
 
@@ -485,12 +500,20 @@ export function inferSignature(question) {
     if (outputStr.toLowerCase() === 'true' || outputStr.toLowerCase() === 'false') {
         ret = { python: 'bool', java: 'boolean', cpp: 'bool', js: 'boolean' };
     } else if (outputStr.startsWith('[[') && outputStr.endsWith(']]')) {
-        ret = { python: 'List[List[int]]', java: 'List<List<Integer>>', cpp: 'vector<vector<int>>', js: 'number[][]' };
+        const is2DStringRet = outputStr.includes('"') || outputStr.includes("'");
+        if (is2DStringRet) {
+            ret = { python: 'List[List[str]]', java: 'List<List<String>>', cpp: 'vector<vector<string>>', js: 'string[][]' };
+        } else {
+            ret = { python: 'List[List[int]]', java: 'List<List<Integer>>', cpp: 'vector<vector<int>>', js: 'number[][]' };
+        }
     } else if (outputStr.startsWith('[') && outputStr.endsWith(']')) {
+        const isStringList = outputStr.includes('"') || outputStr.includes("'");
         if (isTree && (title.includes('invert') || title.includes('merge') || title.includes('trim'))) {
             ret = { python: 'Optional[TreeNode]', java: 'TreeNode', cpp: 'TreeNode*', js: 'TreeNode' };
         } else if (isList && (title.includes('reverse') || title.includes('merge') || title.includes('sort') || title.includes('remove'))) {
             ret = { python: 'Optional[ListNode]', java: 'ListNode', cpp: 'ListNode*', js: 'ListNode' };
+        } else if (isStringList) {
+            ret = { python: 'List[str]', java: 'String[]', cpp: 'vector<string>', js: 'string[]' };
         } else {
             ret = { python: 'List[int]', java: 'int[]', cpp: 'vector<int>', js: 'number[]' };
         }
@@ -523,6 +546,9 @@ export function generateLeetCodeTemplate(language, question) {
             let defaultReturn = 'return 0;';
             if (sig.ret.java === 'boolean') defaultReturn = 'return false;';
             else if (sig.ret.java === 'int[]') defaultReturn = 'return new int[]{};';
+            else if (sig.ret.java === 'int[][]') defaultReturn = 'return new int[][]{};';
+            else if (sig.ret.java === 'String[]') defaultReturn = 'return new String[]{};';
+            else if (sig.ret.java === 'String[][]') defaultReturn = 'return new String[][]{};';
             else if (sig.ret.java === 'TreeNode' || sig.ret.java === 'ListNode') defaultReturn = 'return null;';
             else if (sig.ret.java === 'String') defaultReturn = 'return "";';
             else if (sig.ret.java.includes('List')) defaultReturn = 'return new ArrayList<>();';

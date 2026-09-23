@@ -29,13 +29,16 @@ const registerUser = async (req, res) => {
         }
 
         const normalizedEmail = email.toLowerCase().trim();
+        console.log('1. Checking userExists for:', normalizedEmail);
 
         // 2. Check if user already exists
         const userExists = await User.findOne({ email: normalizedEmail });
+        console.log('2. userExists result:', !!userExists);
         if (userExists) {
             return res.status(400).json({ message: 'An account with this email already exists. Please sign in.' });
         }
 
+        console.log('3. Creating user in MongoDB...');
         // 3. Create user (password is automatically hashed by Mongoose pre-save hook)
         const user = await User.create({
             name: name.trim(),
@@ -43,6 +46,8 @@ const registerUser = async (req, res) => {
             password,
             targetCompany: targetCompany ? targetCompany.trim() : 'Amazon'
         });
+        console.log('4. User created successfully with ID:', user._id);
+
 
         // 4. Return token and user profile
         res.status(201).json({

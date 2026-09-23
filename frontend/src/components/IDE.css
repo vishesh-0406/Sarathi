@@ -2340,4 +2340,47 @@
     background-color: rgba(255, 255, 255, 0.08);
 }
 
+/* IDE Top Bar Bookmark Action Button */
+.ide-bookmark-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-surface-elevated, #18181c);
+    color: var(--text-secondary, #a1a1aa);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+    border-radius: 6px;
+    padding: 3px 9px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ide-bookmark-btn:hover {
+    color: var(--text-primary, #f4f4f6);
+    border-color: var(--border-hover, rgba(255, 255, 255, 0.24));
+    background: var(--bg-surface, #202024);
+}
+
+.ide-bookmark-btn.bookmarked {
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.4);
+    background: rgba(251, 191, 36, 0.08);
+}
+
+.ide-bookmark-toast {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent-emerald, #34d399);
+    animation: fadeInOut 2.5s forwards ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-2px); }
+    15% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-2px); }
+}
+
+
 

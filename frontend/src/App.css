@@ -278,6 +278,7 @@
 .gov-hero-graphic-card {
     display: flex;
     justify-content: center;
+    perspective: 1000px;
 }
 
 .graphic-glass-panel {
@@ -285,7 +286,6 @@
     border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 32px 28px;
-    box-shadow: var(--card-shadow-hover);
     width: 100%;
     max-width: 440px;
     display: flex;
@@ -294,6 +294,31 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    /* Smooth Impressive Levitation Float */
+    animation: heroFloat 5.5s ease-in-out infinite;
+    will-change: transform, box-shadow;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.graphic-glass-panel:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 24px 48px -8px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 255, 255, 0.04);
+}
+
+@keyframes heroFloat {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+    50% {
+        transform: translateY(-13px) rotate(0.35deg);
+        box-shadow: 0 28px 52px -6px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
 }
 
 .graphic-badge {
@@ -317,16 +342,58 @@
 
 .campus-dome-silhouette {
     font-size: 4rem;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+    animation: floatDome 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatDome {
+    0% {
+        transform: translateY(0) scale(0.98);
+    }
+    100% {
+        transform: translateY(-5px) scale(1.02);
+    }
 }
 
 .student-silhouette {
     font-size: 2.4rem;
+    animation: floatStudent 4.8s ease-in-out infinite alternate;
+}
+
+@keyframes floatStudent {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-3px);
+    }
 }
 
 .success-stars {
     font-size: 1.3rem;
     letter-spacing: 6px;
+    animation: pulseStars 3s ease-in-out infinite;
+}
+
+@keyframes pulseStars {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.85;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+        filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.45));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .graphic-glass-panel,
+    .campus-dome-silhouette,
+    .student-silhouette,
+    .success-stars {
+        animation: none;
+    }
 }
 
 .graphic-stat-strip {

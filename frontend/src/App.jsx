@@ -6,8 +6,10 @@ import Aptitude from './components/Aptitude';
 import Interviews from './components/Interviews';
 import Roadmap from './components/Roadmap';
 import IDE from './components/IDE';
+import Tracker from './components/Tracker';
 import AuthModal from './components/AuthModal';
 import { CompanyLogo } from './components/CompanyLogos';
+
 import { 
     RoadmapIcon, 
     CompanyIcon, 
@@ -129,7 +131,21 @@ function App() {
                     </div>
                 )}
 
+                {/* 2.5 DEDICATED VIEW: AI READINESS TRACKER */}
+                {!activeIdeQuestion && activeView === 'tracker' && (
+                    <div className="view-wrapper">
+                        <div className="view-breadcrumb-bar">
+                            <button className="breadcrumb-back-btn" onClick={() => handleNavigate('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                <ArrowLeftIcon size={14} /> Back to Home
+                            </button>
+                            <span className="breadcrumb-current">Personal AI Placement Readiness & Milestone Tracker</span>
+                        </div>
+                        <Tracker onSolveQuestion={handleOpenIDE} onOpenAuth={handleOpenAuth} />
+                    </div>
+                )}
+
                 {/* 3. DEDICATED VIEW: COMPANIES */}
+
                 {!activeIdeQuestion && activeView === 'companies' && (
                     <div className="view-wrapper">
                         <div className="view-breadcrumb-bar">
@@ -252,7 +268,17 @@ function App() {
                                             <CompanyIcon size={18} /> Browse 20 Companies
                                         </span>
                                     </button>
+
+                                    <button 
+                                        className="secondary-hero-btn ai-tracker-hero-cta"
+                                        onClick={() => handleNavigate('tracker')}
+                                    >
+                                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                            <SparklesIcon size={17} /> AI Readiness Score
+                                        </span>
+                                    </button>
                                 </div>
+
                             </div>
 
                             {/* Hero Right Artistic Graphic Card */}

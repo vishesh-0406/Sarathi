@@ -1,10 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import Editor from '@monaco-editor/react';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 import { generateLeetCodeTemplate } from '../utils/leetcodeTemplates';
 import { getLanguageIcon } from './LanguageIcons';
 import CompanyLogo from './CompanyLogos';
-import { ArrowLeftIcon, PlayIcon, UploadIcon, SpinnerIcon, ClockIcon, UndoIcon, CheckIcon, LinkIcon, ChatIcon, LinkedInIcon, XTwitterIcon, ExternalLinkIcon } from './Icons';
+import { 
+    ArrowLeftIcon, 
+    PlayIcon, 
+    UploadIcon, 
+    SpinnerIcon, 
+    ClockIcon, 
+    UndoIcon, 
+    CheckIcon, 
+    LinkIcon, 
+    ChatIcon, 
+    LinkedInIcon, 
+    XTwitterIcon, 
+    ExternalLinkIcon,
+    BookmarkIcon 
+} from './Icons';
 import './IDE.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -12,6 +27,7 @@ const API_BASE_URL = 'http://localhost:5000/api';
 
 function IDE({ question, onBack }) {
     const { theme } = useTheme();
+    const { user, token, toggleBookmark, recordQuizAttempt, refreshUser } = useAuth();
     const [language, setLanguage] = useState('python');
     const [code, setCode] = useState('');
     const [activeTab, setActiveTab] = useState('testcase'); // 'testcase' | 'result'
@@ -28,11 +44,39 @@ function IDE({ question, onBack }) {
     const [submissionResult, setSubmissionResult] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null); // For Aptitude fallback
     const [copiedLink, setCopiedLink] = useState(false);
+    const [isBookmarked, setIsBookmarked] = useState(false);
+    const [bookmarkToast, setBookmarkToast] = useState('');
 
     const editorRef = useRef(null);
     const langDropdownRef = useRef(null);
     const lastLoadedQuestionIdRef = useRef(null);
     const lastLoadedLangRef = useRef(null);
+
+    // Sync bookmark status from user profile if available
+    useEffect(() => {
+        if (question?._id && user?.bookmarks) {
+            const hasMark = Array.isArray(user.bookmarks) && user.bookmarks.some(b => 
+                (typeof b === 'string' ? b : b._id) === question._id
+            );
+            setIsBookmarked(Boolean(hasMark));
+        }
+    }, [question?._id, user]);
+
+    const handleToggleBookmark = async () => {
+        if (!user) {
+            setBookmarkToast('Sign in to bookmark questions');
+            setTimeout(() => setBookmarkToast(''), 3000);
+            return;
+        }
+        if (!question?._id) return;
+        const res = await toggleBookmark(question._id);
+        if (res.success) {
+            setIsBookmarked(res.bookmarked);
+            setBookmarkToast(res.bookmarked ? 'Saved to Bookmarks' : 'Bookmark removed');
+            setTimeout(() => setBookmarkToast(''), 2500);
+        }
+    };
+
 
     // GUARDRAIL: If this is an Aptitude / Verbal / MCQ question, render interactive Quiz Card
     if (question?.category === 'Aptitude' || (question?.options && question.options.length > 0)) {
@@ -52,6 +96,16 @@ function IDE({ question, onBack }) {
                                 </span>
                             )}
                             <span className="category-tag category-aptitude">🎯 Aptitude & Verbal</span>
+                            <button 
+                                type="button" 
+                                className={`ide-bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
+                                onClick={handleToggleBookmark}
+                                title={isBookmarked ? 'Remove Bookmark' : 'Bookmark Question for Revision'}
+                            >
+                                <BookmarkIcon size={13} filled={isBookmarked} color={isBookmarked ? '#fbbf24' : 'currentColor'} />
+                                <span>{isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
+                            </button>
+                            {bookmarkToast && <span className="ide-bookmark-toast">{bookmarkToast}</span>}
                         </div>
                     </div>
                 </div>
@@ -88,13 +142,21 @@ function IDE({ question, onBack }) {
                                                     key={idx}
                                                     type="button"
                                                     className={btnClass}
-                                                    onClick={() => setSelectedOption(optLetter)}
+                                                    onClick={() => {
+                                                        if (!selectedOption) {
+                                                            setSelectedOption(optLetter);
+                                                            if (question?._id && recordQuizAttempt) {
+                                                                recordQuizAttempt(question._id, optLetter, isCorrect);
+                                                            }
+                                                        }
+                                                    }}
                                                 >
                                                     <span className="option-indicator">{optLetter}</span>
                                                     <span className="option-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
                                                 </button>
                                             );
                                         })}
+
 
                                         {selectedOption && question.explanation && (
                                             <div className="explanation-card">
@@ -219,7 +281,11 @@ function IDE({ question, onBack }) {
     }, [qIdentifier, language, question]);
 
     const handleResetCode = () => {
-        setCode(generateLeetCodeTemplate(language, question));
+        const freshTemplate = generateLeetCodeTemplate(language, question);
+        setCode(freshTemplate);
+        if (editorRef.current) {
+            editorRef.current.setValue(freshTemplate);
+        }
         setRunResult(null);
         setSubmissionResult(null);
         setLeftPanelTab('description');
@@ -262,13 +328,15 @@ function IDE({ question, onBack }) {
             casesToRun.push({ input: currentInput, output: currentExpected });
         }
 
+        const codeToRun = editorRef.current ? editorRef.current.getValue() : code;
+
         try {
             const res = await fetch(`${API_BASE_URL}/code/run-all`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     language,
-                    code,
+                    code: codeToRun,
                     testCases: casesToRun
                 })
             });
@@ -302,13 +370,20 @@ function IDE({ question, onBack }) {
         setSubmitting(true);
         setLeftPanelTab('submission'); // Automatically switch left panel to LeetCode submission view
 
+        const codeToSubmit = editorRef.current ? editorRef.current.getValue() : code;
+
         try {
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
             const res = await fetch(`${API_BASE_URL}/code/submit`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers,
                 body: JSON.stringify({
                     language,
-                    code,
+                    code: codeToSubmit,
                     question,
                     testCases
                 })
@@ -320,6 +395,9 @@ function IDE({ question, onBack }) {
 
             const data = await res.json();
             setSubmissionResult(data);
+            if (data.userRecorded && refreshUser) {
+                refreshUser();
+            }
         } catch (err) {
             setSubmissionResult({
                 status: 'Submission Error',
@@ -335,7 +413,7 @@ function IDE({ question, onBack }) {
     };
 
     const matchedLeetcode = question?.matchedProblems?.[0];
-    const authorUsername = (typeof window !== 'undefined' && localStorage.getItem('sarathi_username')) || 'vishesh_0406';
+    const authorUsername = user?.name ? user.name.toLowerCase().replace(/\s+/g, '_') : 'candidate_dev';
 
     return (
         <div className="ide-container">
@@ -358,8 +436,19 @@ function IDE({ question, onBack }) {
                                 {question.difficulty}
                             </span>
                         )}
+                        <button 
+                            type="button" 
+                            className={`ide-bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
+                            onClick={handleToggleBookmark}
+                            title={isBookmarked ? 'Remove Bookmark' : 'Bookmark Question for Revision'}
+                        >
+                            <BookmarkIcon size={13} filled={isBookmarked} color={isBookmarked ? '#fbbf24' : 'currentColor'} />
+                            <span>{isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
+                        </button>
+                        {bookmarkToast && <span className="ide-bookmark-toast">{bookmarkToast}</span>}
                     </div>
                 </div>
+
 
                 <div className="ide-top-right">
                     {/* LeetCode Style Custom Language Switcher with Official SVG Logos */}
@@ -869,9 +958,10 @@ function IDE({ question, onBack }) {
                     {/* Monaco Editor Container */}
                     <div className="monaco-wrapper">
                         <Editor
+                            key={`${qIdentifier}_${language}`}
                             height="100%"
                             language={language === 'javascript' ? 'javascript' : language}
-                            value={code}
+                            defaultValue={generateLeetCodeTemplate(language, question)}
                             onChange={(val) => setCode(val || '')}
                             onMount={(editor) => {
                                 editorRef.current = editor;

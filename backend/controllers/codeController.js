@@ -197,6 +197,46 @@ const submitCode = async (req, res) => {
             ? totalOfficialTestcases
             : Math.max(1, Math.floor(totalOfficialTestcases * (passedCount / cases.length)));
 
+        // Automatically record solved question to authenticated user profile
+        let userRecorded = false;
+        if (req.user && overallStatus === 'Accepted') {
+            try {
+                const User = require('../models/User');
+                const Question = require('../models/Question');
+
+                let targetQId = question?._id;
+                if (!targetQId && question?.title) {
+                    const foundQ = await Question.findOne({ title: question.title }).select('_id');
+                    if (foundQ) targetQId = foundQ._id;
+                }
+
+                if (targetQId) {
+                    const userDoc = await User.findById(req.user._id);
+                    if (userDoc) {
+                        const existingIdx = userDoc.solvedQuestions.findIndex(
+                            sq => sq.questionId && sq.questionId.toString() === targetQId.toString()
+                        );
+                        if (existingIdx > -1) {
+                            userDoc.solvedQuestions[existingIdx].status = 'Accepted';
+                            userDoc.solvedQuestions[existingIdx].language = language;
+                            userDoc.solvedQuestions[existingIdx].solvedAt = new Date();
+                        } else {
+                            userDoc.solvedQuestions.push({
+                                questionId: targetQId,
+                                status: 'Accepted',
+                                language,
+                                solvedAt: new Date()
+                            });
+                        }
+                        await userDoc.save();
+                        userRecorded = true;
+                    }
+                }
+            } catch (saveErr) {
+                console.error('Error saving user solved progress:', saveErr.message);
+            }
+        }
+
         res.json({
             status: overallStatus,
             passed: overallStatus === 'Accepted',
@@ -208,8 +248,10 @@ const submitCode = async (req, res) => {
             submittedAt: new Date().toISOString(),
             failingCase,
             cases: results,
-            complexity: complexityReport
+            complexity: complexityReport,
+            userRecorded
         });
+
     } catch (error) {
         res.status(500).json({
             status: 'Server Error',

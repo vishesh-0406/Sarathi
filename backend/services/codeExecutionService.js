@@ -508,13 +508,23 @@ ${code}
             let className = 'Main';
 
             if (!hasMain) {
-                const strippedCode = code.replace(/public\s+class\s+Solution/, 'class Solution');
+                const importLines = [];
+                const nonImportLines = [];
+                for (const line of code.split('\n')) {
+                    if (line.trim().startsWith('import ')) {
+                        importLines.push(line.trim());
+                    } else {
+                        nonImportLines.push(line);
+                    }
+                }
+                const strippedCode = nonImportLines.join('\n').replace(/public\s+class\s+Solution/, 'class Solution');
                 const hasTreeNode = code.includes('class TreeNode');
                 const hasListNode = code.includes('class ListNode');
 
                 finalCode = `
 import java.util.*;
 import java.lang.reflect.*;
+${importLines.join('\n')}
 
 ${hasTreeNode ? '' : `
 class TreeNode {
@@ -645,9 +655,11 @@ public class Main {
         if (type == byte.class || type == Byte.class) return (byte) 0;
         if (type == short.class || type == Short.class) return (short) 0;
         if (type == int[].class) return new int[0];
+        if (type == int[][].class) return new int[0][0];
         if (type == long[].class) return new long[0];
         if (type == double[].class) return new double[0];
         if (type == String[].class) return new String[0];
+        if (type == String[][].class) return new String[0][0];
         if (type == String.class) return "";
         if (type == List.class) return new ArrayList<>();
         if (type == Map.class) return new HashMap<>();
@@ -682,6 +694,43 @@ public class Main {
                     return str.substring(1, str.length() - 1);
                 }
                 return str;
+            } else if (type == String[].class) {
+                int s = str.indexOf('['), e = str.lastIndexOf(']');
+                if (s != -1 && e != -1 && e > s) {
+                    String inner = str.substring(s + 1, e).trim();
+                    if (inner.isEmpty()) return new String[0];
+                    List<String> list = new ArrayList<>();
+                    StringBuilder cur = new StringBuilder();
+                    boolean inQuotes = false;
+                    char quoteChar = ' ';
+                    for (int i = 0; i < inner.length(); i++) {
+                        char c = inner.charAt(i);
+                        if (!inQuotes && (c == 34 || c == 39)) {
+                            inQuotes = true;
+                            quoteChar = c;
+                        } else if (inQuotes && c == quoteChar) {
+                            inQuotes = false;
+                        } else if (!inQuotes && c == ',') {
+                            String item = cur.toString().trim();
+                            if (item.length() >= 2 && (item.charAt(0) == 34 || item.charAt(0) == 39) && item.charAt(item.length() - 1) == item.charAt(0)) {
+                                item = item.substring(1, item.length() - 1);
+                            }
+                            list.add(item);
+                            cur = new StringBuilder();
+                            continue;
+                        }
+                        cur.append(c);
+                    }
+                    if (cur.length() > 0) {
+                        String item = cur.toString().trim();
+                        if (item.length() >= 2 && (item.charAt(0) == 34 || item.charAt(0) == 39) && item.charAt(item.length() - 1) == item.charAt(0)) {
+                            item = item.substring(1, item.length() - 1);
+                        }
+                        list.add(item);
+                    }
+                    return list.toArray(new String[0]);
+                }
+                return new String[0];
             } else if (type == int[].class) {
                 int s = str.indexOf('['), e = str.lastIndexOf(']');
                 if (s != -1 && e != -1 && e > s) {
@@ -698,15 +747,100 @@ public class Main {
                     return arr;
                 }
                 return new int[0];
+            } else if (type == int[][].class) {
+                int s = str.indexOf('['), e = str.lastIndexOf(']');
+                if (s != -1 && e != -1 && e > s) {
+                    String inner = str.substring(s + 1, e).trim();
+                    if (inner.isEmpty()) return new int[0][0];
+                    List<int[]> rows = new ArrayList<>();
+                    int bDepth = 0;
+                    StringBuilder cur = new StringBuilder();
+                    for (int i = 0; i < inner.length(); i++) {
+                        char c = inner.charAt(i);
+                        if (c == '[') bDepth++;
+                        else if (c == ']') bDepth--;
+                        if (c == ',' && bDepth == 0) {
+                            String rowStr = cur.toString().trim();
+                            if (!rowStr.isEmpty()) rows.add((int[]) parseArg(rowStr, int[].class));
+                            cur = new StringBuilder();
+                        } else {
+                            cur.append(c);
+                        }
+                    }
+                    if (cur.length() > 0) {
+                        String rowStr = cur.toString().trim();
+                        if (!rowStr.isEmpty()) rows.add((int[]) parseArg(rowStr, int[].class));
+                    }
+                    return rows.toArray(new int[0][]);
+                }
+                return new int[0][0];
+            } else if (type == String[][].class) {
+                int s = str.indexOf('['), e = str.lastIndexOf(']');
+                if (s != -1 && e != -1 && e > s) {
+                    String inner = str.substring(s + 1, e).trim();
+                    if (inner.isEmpty()) return new String[0][0];
+                    List<String[]> rows = new ArrayList<>();
+                    int bDepth = 0;
+                    StringBuilder cur = new StringBuilder();
+                    for (int i = 0; i < inner.length(); i++) {
+                        char c = inner.charAt(i);
+                        if (c == '[') bDepth++;
+                        else if (c == ']') bDepth--;
+                        if (c == ',' && bDepth == 0) {
+                            String rowStr = cur.toString().trim();
+                            if (!rowStr.isEmpty()) rows.add((String[]) parseArg(rowStr, String[].class));
+                            cur = new StringBuilder();
+                        } else {
+                            cur.append(c);
+                        }
+                    }
+                    if (cur.length() > 0) {
+                        String rowStr = cur.toString().trim();
+                        if (!rowStr.isEmpty()) rows.add((String[]) parseArg(rowStr, String[].class));
+                    }
+                    return rows.toArray(new String[0][]);
+                }
+                return new String[0][0];
             } else if (type == List.class) {
                 int s = str.indexOf('['), e = str.lastIndexOf(']');
-                List<Integer> list = new ArrayList<>();
+                List<Object> list = new ArrayList<>();
                 if (s != -1 && e != -1 && e > s) {
                     String inner = str.substring(s + 1, e).trim();
                     if (!inner.isEmpty()) {
-                        for (String token : inner.split(",")) {
-                            String cleaned = token.trim().replaceAll("[^0-9-]", "");
-                            if (!cleaned.isEmpty()) list.add(Integer.parseInt(cleaned));
+                        if (inner.indexOf(34) != -1 || inner.indexOf(39) != -1) {
+                            StringBuilder cur = new StringBuilder();
+                            boolean inQuotes = false;
+                            char quoteChar = ' ';
+                            for (int i = 0; i < inner.length(); i++) {
+                                char c = inner.charAt(i);
+                                if (!inQuotes && (c == 34 || c == 39)) {
+                                    inQuotes = true;
+                                    quoteChar = c;
+                                } else if (inQuotes && c == quoteChar) {
+                                    inQuotes = false;
+                                } else if (!inQuotes && c == ',') {
+                                    String item = cur.toString().trim();
+                                    if (item.length() >= 2 && (item.charAt(0) == 34 || item.charAt(0) == 39) && item.charAt(item.length() - 1) == item.charAt(0)) {
+                                        item = item.substring(1, item.length() - 1);
+                                    }
+                                    list.add(item);
+                                    cur = new StringBuilder();
+                                    continue;
+                                }
+                                cur.append(c);
+                            }
+                            if (cur.length() > 0) {
+                                String item = cur.toString().trim();
+                                if (item.length() >= 2 && (item.charAt(0) == 34 || item.charAt(0) == 39) && item.charAt(item.length() - 1) == item.charAt(0)) {
+                                    item = item.substring(1, item.length() - 1);
+                                }
+                                list.add(item);
+                            }
+                        } else {
+                            for (String token : inner.split(",")) {
+                                String cleaned = token.trim().replaceAll("[^0-9-]", "");
+                                if (!cleaned.isEmpty()) list.add(Integer.parseInt(cleaned));
+                            }
                         }
                     }
                 }
@@ -851,7 +985,7 @@ public class Main {
             let finalCode = code;
 
             if (!hasMain && code.includes('class Solution')) {
-                const methodMatch = code.match(/(?:int|long\s+long|double|string|bool|void|auto|TreeNode\*|ListNode\*|vector<[^>]+>)\s+([a-zA-Z0-9_]+)\s*\(([^)]*)\)/);
+                const methodMatch = code.match(/(?:int|long\s+long|double|string|bool|void|auto|TreeNode\*|ListNode\*|vector<[\w\s<>]+>)\s+([a-zA-Z0-9_]+)\s*\(([^)]*)\)/);
                 const methodName = methodMatch ? methodMatch[1] : 'solve';
                 const paramsSig = methodMatch ? methodMatch[2].trim() : '';
 
@@ -860,22 +994,31 @@ public class Main {
                     driverCall = `__printRes(sol.${methodName}());`;
                 } else {
                     const rawParams = paramsSig.split(',').map(p => p.trim());
+                    const decls = [];
                     const callArgs = [];
                     for (let i = 0; i < rawParams.length; i++) {
                         const p = rawParams[i];
+                        const varName = `__arg${i}`;
                         if (p.includes('TreeNode')) {
-                            callArgs.push(`__parseTree(parts.size() > ${i} ? parts[${i}] : "")`);
+                            decls.push(`auto ${varName} = __parseTree(parts.size() > ${i} ? parts[${i}] : "");`);
                         } else if (p.includes('ListNode')) {
-                            callArgs.push(`__parseList(parts.size() > ${i} ? parts[${i}] : "")`);
+                            decls.push(`auto ${varName} = __parseList(parts.size() > ${i} ? parts[${i}] : "");`);
+                        } else if (p.includes('vector') && p.includes('string') && p.includes('vector<vector')) {
+                            decls.push(`auto ${varName} = __parse2DStringVector(parts.size() > ${i} ? parts[${i}] : "");`);
+                        } else if (p.includes('vector<vector')) {
+                            decls.push(`auto ${varName} = __parse2DVector(parts.size() > ${i} ? parts[${i}] : "");`);
+                        } else if (p.includes('vector') && p.includes('string')) {
+                            decls.push(`auto ${varName} = __parseStringVector(parts.size() > ${i} ? parts[${i}] : "");`);
                         } else if (p.includes('vector')) {
-                            callArgs.push(`__parseVector(parts.size() > ${i} ? parts[${i}] : "")`);
+                            decls.push(`auto ${varName} = __parseVector(parts.size() > ${i} ? parts[${i}] : "");`);
                         } else if (p.includes('string')) {
-                            callArgs.push(`__parseString(parts.size() > ${i} ? parts[${i}] : "")`);
+                            decls.push(`auto ${varName} = __parseString(parts.size() > ${i} ? parts[${i}] : "");`);
                         } else {
-                            callArgs.push(`__parseInt(parts.size() > ${i} ? parts[${i}] : "")`);
+                            decls.push(`auto ${varName} = __parseInt(parts.size() > ${i} ? parts[${i}] : "");`);
                         }
+                        callArgs.push(varName);
                     }
-                    driverCall = `__printRes(sol.${methodName}(${callArgs.join(', ')}));`;
+                    driverCall = `${decls.join('\n        ')}\n        __printRes(sol.${methodName}(${callArgs.join(', ')}));`;
                 }
 
                 const hasTreeNode = code.includes('struct TreeNode');
@@ -990,6 +1133,66 @@ static vector<int> __parseVector(string s) {
     return res;
 }
 
+static vector<string> __parseStringVector(string s) {
+    if (s.find('=') != string::npos) s = s.substr(s.find('=') + 1);
+    size_t start = s.find('['), end = s.rfind(']');
+    vector<string> res;
+    if (start == string::npos || end == string::npos || end <= start) return res;
+    string inner = s.substr(start + 1, end - start - 1);
+    stringstream ss(inner);
+    string token;
+    while (getline(ss, token, ',')) {
+        while (!token.empty() && (token[0] == ' ' || token[0] == '\t' || token[0] == 34 || token[0] == 39)) token.erase(0, 1);
+        while (!token.empty() && (token.back() == ' ' || token.back() == '\t' || token.back() == 34 || token.back() == 39)) token.pop_back();
+        if (!token.empty()) res.push_back(token);
+    }
+    return res;
+}
+
+static vector<vector<int>> __parse2DVector(string s) {
+    if (s.find('=') != string::npos) s = s.substr(s.find('=') + 1);
+    size_t start = s.find('['), end = s.rfind(']');
+    vector<vector<int>> res;
+    if (start == string::npos || end == string::npos || end <= start) return res;
+    string inner = s.substr(start + 1, end - start - 1);
+    int bDepth = 0;
+    string cur = "";
+    for (char c : inner) {
+        if (c == '[') bDepth++;
+        else if (c == ']') bDepth--;
+        if (c == ',' && bDepth == 0) {
+            if (!cur.empty()) res.push_back(__parseVector(cur));
+            cur = "";
+        } else {
+            cur += c;
+        }
+    }
+    if (!cur.empty()) res.push_back(__parseVector(cur));
+    return res;
+}
+
+static vector<vector<string>> __parse2DStringVector(string s) {
+    if (s.find('=') != string::npos) s = s.substr(s.find('=') + 1);
+    size_t start = s.find('['), end = s.rfind(']');
+    vector<vector<string>> res;
+    if (start == string::npos || end == string::npos || end <= start) return res;
+    string inner = s.substr(start + 1, end - start - 1);
+    int bDepth = 0;
+    string cur = "";
+    for (char c : inner) {
+        if (c == '[') bDepth++;
+        else if (c == ']') bDepth--;
+        if (c == ',' && bDepth == 0) {
+            if (!cur.empty()) res.push_back(__parseStringVector(cur));
+            cur = "";
+        } else {
+            cur += c;
+        }
+    }
+    if (!cur.empty()) res.push_back(__parseStringVector(cur));
+    return res;
+}
+
 static int __parseInt(string s) {
     if (s.find('=') != string::npos) s = s.substr(s.find('=') + 1);
     while (!s.empty() && (s[0] == ' ' || s[0] == '\t')) s.erase(0, 1);
@@ -1012,6 +1215,35 @@ static void __printRes(const vector<int>& vec) {
     cout << "[";
     for (size_t i = 0; i < vec.size(); ++i) {
         cout << vec[i] << (i + 1 < vec.size() ? "," : "");
+    }
+    cout << "]" << endl;
+}
+static void __printRes(const vector<string>& vec) {
+    cout << "[";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        cout << "\"" << vec[i] << "\"" << (i + 1 < vec.size() ? "," : "");
+    }
+    cout << "]" << endl;
+}
+static void __printRes(const vector<vector<int>>& mat) {
+    cout << "[";
+    for (size_t i = 0; i < mat.size(); ++i) {
+        cout << "[";
+        for (size_t j = 0; j < mat[i].size(); ++j) {
+            cout << mat[i][j] << (j + 1 < mat[i].size() ? "," : "");
+        }
+        cout << "]" << (i + 1 < mat.size() ? "," : "");
+    }
+    cout << "]" << endl;
+}
+static void __printRes(const vector<vector<string>>& mat) {
+    cout << "[";
+    for (size_t i = 0; i < mat.size(); ++i) {
+        cout << "[";
+        for (size_t j = 0; j < mat[i].size(); ++j) {
+            cout << "\"" << mat[i][j] << "\"" << (j + 1 < mat[i].size() ? "," : "");
+        }
+        cout << "]" << (i + 1 < mat.size() ? "," : "");
     }
     cout << "]" << endl;
 }
@@ -1185,7 +1417,8 @@ int main() {
         if (expectedOutput && expectedOutput.trim()) {
             const normOut = cleanOutput.replace(/\r\n/g, '\n').replace(/\s*,\s*/g, ',').replace(/\s+/g, ' ').trim();
             const normExp = expectedOutput.replace(/\r\n/g, '\n').replace(/\s*,\s*/g, ',').replace(/\s+/g, ' ').trim();
-            passed = (normOut === normExp || normOut.toLowerCase() === normExp.toLowerCase());
+            const unquote = s => ((s.startsWith('"') && s.endsWith('"') && s.length >= 2) || (s.startsWith("'") && s.endsWith("'") && s.length >= 2)) ? s.slice(1, -1) : s;
+            passed = (normOut === normExp || normOut.toLowerCase() === normExp.toLowerCase() || unquote(normOut) === unquote(normExp));
             status = passed ? 'Accepted' : 'Wrong Answer';
         }
 
