@@ -328,9 +328,11 @@ async function computeRoundClearanceProbabilities(targetCompany, solvedDocList, 
         let targetQuota = 6;
 
         if (roundDef.roundNumber === 1) {
-            // Round 1 includes cognitive aptitude quiz credits
-            const quizBonus = Math.min(4, Math.floor(correctQuizzes / 2));
-            totalProgressCredits += quizBonus;
+            // Round 1 includes cognitive aptitude quiz credits ONLY IF user has actually started practicing this round
+            if (solvedInRound > 0) {
+                const quizBonus = Math.min(3, Math.floor(correctQuizzes / 3));
+                totalProgressCredits += quizBonus;
+            }
             targetQuota = 8;
         } else if (roundDef.roundNumber === 2) {
             targetQuota = 6;
@@ -340,23 +342,26 @@ async function computeRoundClearanceProbabilities(targetCompany, solvedDocList, 
             targetQuota = 4;
         }
 
-        // Clearance probability calculation (15% baseline floor up to 98%)
-        const solvedRatio = Math.min(1.0, totalProgressCredits / targetQuota);
-        let prob = 18;
-        if (totalProgressCredits > 0) {
-            prob = Math.min(98, Math.round(18 + (solvedRatio * 72) + (readinessScore * 0.08)));
-        } else {
-            prob = Math.min(25, Math.round(15 + (readinessScore * 0.1)));
-        }
+        // Clearance probability calculation:
+        // When user has not solved or practiced anything for this round, probability is 0%
+        let prob = 0;
+        let status = 'Not Started';
+        let statusColor = '#64748b';
 
-        let status = 'Needs Focus';
-        let statusColor = '#f43f5e';
-        if (prob >= 75) {
-            status = 'High Clearance Probability';
-            statusColor = '#10b981';
-        } else if (prob >= 45) {
-            status = 'Moderate — In Progress';
-            statusColor = '#38bdf8';
+        if (totalProgressCredits > 0) {
+            const solvedRatio = Math.min(1.0, totalProgressCredits / targetQuota);
+            prob = Math.min(98, Math.round(20 + (solvedRatio * 68) + (readinessScore * 0.1)));
+
+            if (prob >= 75) {
+                status = 'High Clearance Probability';
+                statusColor = '#10b981';
+            } else if (prob >= 45) {
+                status = 'Moderate — In Progress';
+                statusColor = '#38bdf8';
+            } else {
+                status = 'Needs Focus';
+                statusColor = '#f43f5e';
+            }
         }
 
         // Stage-tailored strategic advice

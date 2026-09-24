@@ -557,6 +557,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     gap: 16px;
+    align-items: start;
 }
 
 .roadmap-q-card {
@@ -566,9 +567,16 @@
     padding: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     box-shadow: var(--card-shadow);
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    align-self: start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.roadmap-q-card.expanded {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .roadmap-q-card:hover {
@@ -675,7 +683,7 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    margin-top: auto;
+    margin-top: 10px;
 }
 
 .ide-btn {

@@ -865,25 +865,26 @@
 }
 
 .heatmap-cell.level-0 {
-    background-color: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background-color: #122319;
+    border: 1px solid rgba(34, 197, 94, 0.12);
 }
 
 .heatmap-cell.level-1 {
-    background-color: #064e3b;
+    background-color: #1b4d3e;
+    border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
 .heatmap-cell.level-2 {
-    background-color: #059669;
+    background-color: #27774a;
 }
 
 .heatmap-cell.level-3 {
-    background-color: #10b981;
+    background-color: #2fb369;
 }
 
 .heatmap-cell.level-4 {
-    background-color: #34d399;
-    box-shadow: 0 0 6px rgba(52, 211, 153, 0.4);
+    background-color: #48bb78;
+    box-shadow: 0 0 8px rgba(72, 187, 120, 0.55);
 }
 
 .heatmap-tooltip {
@@ -891,17 +892,17 @@
     display: inline-flex;
     flex-direction: column;
     gap: 2px;
-    background: #0f172a;
-    border: 1px solid #334155;
+    background: #0d1b14;
+    border: 1px solid rgba(72, 187, 120, 0.3);
     border-radius: 8px;
     padding: 8px 14px;
     font-size: 0.78rem;
     color: #f8fafc;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 }
 
 .heatmap-tooltip strong {
-    color: #34d399;
+    color: #48bb78;
     font-weight: 700;
 }
 
@@ -938,11 +939,11 @@
     border-radius: 2px;
 }
 
-.mini-cell.lvl-0 { background: #1e293b; }
-.mini-cell.lvl-1 { background: #064e3b; }
-.mini-cell.lvl-2 { background: #059669; }
-.mini-cell.lvl-3 { background: #10b981; }
-.mini-cell.lvl-4 { background: #34d399; }
+.mini-cell.lvl-0 { background: #122319; border: 1px solid rgba(34, 197, 94, 0.12); }
+.mini-cell.lvl-1 { background: #1b4d3e; }
+.mini-cell.lvl-2 { background: #27774a; }
+.mini-cell.lvl-3 { background: #2fb369; }
+.mini-cell.lvl-4 { background: #48bb78; }
 
 /* 3. ROUND-BY-ROUND CLEARANCE BREAKDOWN (OPTION B) */
 .round-clearance-card {

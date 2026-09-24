@@ -370,7 +370,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                         const userChoice = quizAnswers[q._id];
 
                                                         return (
-                                                            <div key={q._id} className="roadmap-q-card">
+                                                            <div key={q._id} className={`roadmap-q-card ${isDetailOpen ? 'expanded' : ''}`}>
                                                                 <div className="card-top-row">
                                                                     <div className="badges-group">
                                                                         <span className={`cat-tag ${getCategoryBadgeClass(q.category)}`}>
