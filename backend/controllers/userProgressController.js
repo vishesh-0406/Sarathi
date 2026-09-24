@@ -148,9 +148,43 @@ const updateTargetCompany = async (req, res) => {
     }
 };
 
+/**
+ * @desc    Update target placement drive date and recalculate countdown
+ * @route   PUT /api/user/target-date
+ * @access  Private
+ */
+const updateTargetPlacementDate = async (req, res) => {
+    try {
+        const { targetDate } = req.body;
+        if (!targetDate) {
+            return res.status(400).json({ message: 'targetDate is required' });
+        }
+
+        const user = await User.findById(req.user._id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.targetPlacementDate = new Date(targetDate);
+        await user.save();
+
+        const updatedMetrics = await computeReadinessMetrics(user);
+
+        res.json({
+            success: true,
+            targetPlacementDate: user.targetPlacementDate,
+            tracker: updatedMetrics
+        });
+    } catch (error) {
+        console.error('Update target date error:', error.message);
+        res.status(500).json({ message: 'Failed to update target placement date', error: error.message });
+    }
+};
+
 module.exports = {
     getTrackerDashboard,
     toggleBookmark,
     recordQuizAttempt,
-    updateTargetCompany
+    updateTargetCompany,
+    updateTargetPlacementDate
 };

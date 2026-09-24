@@ -140,7 +140,11 @@ function App() {
                             </button>
                             <span className="breadcrumb-current">Personal AI Placement Readiness & Milestone Tracker</span>
                         </div>
-                        <Tracker onSolveQuestion={handleOpenIDE} onOpenAuth={handleOpenAuth} />
+                        <Tracker 
+                            onSolveQuestion={handleOpenIDE} 
+                            onOpenAuth={handleOpenAuth} 
+                            onSelectRoadmap={handleLaunchCompanyRoadmap}
+                        />
                     </div>
                 )}
 

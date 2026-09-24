@@ -199,6 +199,31 @@ export function AuthProvider({ children }) {
         }
     };
 
+    // Update target placement drive date
+    const updateTargetPlacementDate = async (targetDate) => {
+        if (!token) return { success: false, error: 'Not authenticated' };
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/user/target-date`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ targetDate })
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                return { success: false, error: data.message || 'Update failed' };
+            }
+
+            return { success: true, targetPlacementDate: data.targetPlacementDate, tracker: data.tracker };
+        } catch (err) {
+            return { success: false, error: err.message };
+        }
+    };
+
     return (
         <AuthContext.Provider value={{
             user,
@@ -209,6 +234,7 @@ export function AuthProvider({ children }) {
             register,
             logout,
             updateTargetCompany,
+            updateTargetPlacementDate,
             toggleBookmark,
             recordQuizAttempt,
             refreshUser

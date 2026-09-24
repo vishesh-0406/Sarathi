@@ -1,6 +1,7 @@
 const Question = require('../models/Question');
+const COMPANY_ROUNDS_CONFIG = require('../config/companyRoundsConfig');
 
-// Official hiring stage definitions for all 20 companies
+// Official hiring stage definitions fallback
 const COMPANY_ROUND_SCHEMAS = {
     'Google': [
         { roundNum: 1, title: 'Google Online Challenge (GOC)', focus: 'Arrays, Strings & Math' },
@@ -118,10 +119,24 @@ const COMPANY_ROUND_SCHEMAS = {
 const COMPANY_STRATEGIC_ADVICE = {
     'Amazon': 'Amazon heavily weights leadership principles alongside clean O(N) or O(N log N) algorithmic solutions. Ensure you can explain code trade-offs and articulate the "Customer Obsession" angle.',
     'Google': 'Google evaluates optimal computational complexity and scale. Brute-force solutions are heavily penalized. Practice finding the most optimal asymptotic bounds.',
-    'Microsoft': 'Microsoft focuses on clean code structure, modular methods, and edge cases (null inputs, empty strings, integer overflow).',
-    'TCS': 'For TCS Digital and Prime tracks, speed in arithmetic simulation and clean boundary handling in Automata are key differentiators.',
-    'Zoho': 'Zoho forbids built-in helper libraries in Rounds 2 & 3. You must be comfortable writing your own string parsers, linked structures, and matrix manipulations from scratch.',
-    'Goldman Sachs': 'Goldman tests mathematical depth, probability, and heap-based order processing. Prioritize Two Pointers, Heaps, and Combinatorics.'
+    'Microsoft': 'Microsoft interviewers love clean recursive tree structures, string parsing, and modular object design. Be prepared for follow-up scalability questions.',
+    'Adobe': 'Adobe tests rigorous matrix algorithms, interval intersections, and core geometry logic. Emphasize modular helper functions and memory bounds.',
+    'Oracle': 'Oracle focuses on memory alignment, concurrency, buffer pool LRU caches, and deep DBMS indexing. Demonstrate an understanding of thread synchronization.',
+    'Uber': 'Uber challenges candidates on graph shortest paths (Dijkstra), spatial geohashing, and concurrent rate-limiting algorithms. Practice high-throughput patterns.',
+    'Salesforce': 'Salesforce values clean object-oriented architecture, multi-tenant state isolation, and graph BFS algorithms. Keep code extensible.',
+    'Zoho': 'Zoho bans built-in libraries in early rounds. Practice writing manual string parsers, matrix traversals, and custom sorting from first principles.',
+    'Flipkart': 'Flipkart Machine Coding evaluates low-level modular design. Write clean class hierarchies, follow SOLID principles, and handle flash-sale edge cases.',
+    'Goldman Sachs': 'Goldman Sachs focuses on probability, combinatorics, and high-frequency trade order book simulation. Precision and numerical edge cases are key.',
+    'TCS': 'TCS NQT requires speed in Quantitative Aptitude to qualify for coding. Digital and Prime upgrades require solving dynamic programming and number theory challenges.',
+    'Infosys': 'Infosys Specialist Programmer (SP) and DSE tracks require mastering multi-dimensional DP and tree traversals. Ensure high accuracy on HackWithInfy problems.',
+    'Accenture': 'Accenture Automata tests bitwise logic, string transformations, and clean execution. Zero runtime errors on sample test cases is crucial.',
+    'Wipro': 'Wipro Elite NLTH combines quantitative aptitude with automata coding. Turbo tracks demand proficiency in array subarrays and search/sort optimization.',
+    'Cognizant': 'Cognizant GenC Next assesses complex array transformations and hashing logic. Code readability and clean time complexity determine upgrade calls.',
+    'Capgemini': 'Capgemini evaluates pseudocode output tracing and game-based cognitive tests before coding. Focus on bitwise loops and string parsing.',
+    'HCLTech': 'HCLTech tests networking algorithms and array logic. Maintain strong fundamentals in core CS topics (OS, DBMS, Computer Networks).',
+    'Tech Mahindra': 'Tech Mahindra Conversant tests string manipulation and telecom routing simulations. Emphasize clean variable naming and edge case checks.',
+    'LTIMindtree': 'LTIMindtree Ignition and Spark tracks prioritize full-stack logic, array algorithms, and clean syntax. Practice two pointers and sorting.',
+    'Genpact': 'Genpact evaluates analytics logic, SQL joins, and data interpretation. Demonstrate an ability to translate business requirements into clean algorithms.'
 };
 
 const CORE_TOPICS = [
@@ -153,6 +168,252 @@ function mapTopicPillar(q) {
         return 'Greedy & Math';
     }
     return 'Arrays & Strings';
+}
+
+/**
+ * Generate Activity Heatmap across calendar days
+ * Real-time aggregation of solved coding challenges and quiz attempts
+ */
+function generateActivityHeatmap(user) {
+    const activityMap = {};
+
+    // 1. Gather all solved questions
+    if (Array.isArray(user.solvedQuestions)) {
+        user.solvedQuestions.forEach(sq => {
+            if (sq.solvedAt) {
+                const dateStr = new Date(sq.solvedAt).toISOString().split('T')[0];
+                activityMap[dateStr] = (activityMap[dateStr] || 0) + 1;
+            }
+        });
+    }
+
+    // 2. Gather all quiz attempts
+    if (Array.isArray(user.quizAttempts)) {
+        user.quizAttempts.forEach(qa => {
+            if (qa.attemptedAt) {
+                const dateStr = new Date(qa.attemptedAt).toISOString().split('T')[0];
+                activityMap[dateStr] = (activityMap[dateStr] || 0) + 1;
+            }
+        });
+    }
+
+    // Rolling 28 weeks (196 days) ending on the current day
+    const numDays = 196;
+    const now = new Date();
+    const todayStr = now.toISOString().split('T')[0];
+    const baseDate = new Date(`${todayStr}T12:00:00.000Z`);
+
+    const days = [];
+    let totalActivities = 0;
+    const activeDatesSet = new Set();
+
+    for (let i = numDays - 1; i >= 0; i--) {
+        const d = new Date(baseDate.getTime() - (i * 86400000));
+        const dateStr = d.toISOString().split('T')[0];
+        const count = activityMap[dateStr] || 0;
+        totalActivities += count;
+
+        let level = 0;
+        if (count >= 5) level = 4;
+        else if (count >= 3) level = 3;
+        else if (count >= 2) level = 2;
+        else if (count >= 1) level = 1;
+
+        if (count > 0) activeDatesSet.add(dateStr);
+
+        days.push({
+            date: dateStr,
+            count,
+            level,
+            dayOfWeek: d.getUTCDay() // 0 = Sun, 1 = Mon, ..., 6 = Sat
+        });
+    }
+
+    // Calculate Streaks
+    let currentStreak = 0;
+    let longestStreak = 0;
+
+    const yesterdayDate = new Date(baseDate.getTime() - 86400000);
+    const yesterdayStr = yesterdayDate.toISOString().split('T')[0];
+
+    // Current streak is active if today has activity OR yesterday had activity
+    let checkDateMs = (activityMap[todayStr] && activityMap[todayStr] > 0)
+        ? baseDate.getTime()
+        : (activityMap[yesterdayStr] && activityMap[yesterdayStr] > 0)
+            ? yesterdayDate.getTime()
+            : null;
+
+    if (checkDateMs !== null) {
+        while (true) {
+            const d = new Date(checkDateMs);
+            const dStr = d.toISOString().split('T')[0];
+            if (activityMap[dStr] && activityMap[dStr] > 0) {
+                currentStreak++;
+                checkDateMs -= 86400000;
+            } else {
+                break;
+            }
+        }
+    }
+
+    // Longest streak calculation across sorted active dates
+    const sortedActiveDates = Object.keys(activityMap).sort();
+    if (sortedActiveDates.length > 0) {
+        let tempStreak = 1;
+        longestStreak = 1;
+        for (let i = 1; i < sortedActiveDates.length; i++) {
+            const prev = new Date(sortedActiveDates[i - 1]);
+            const curr = new Date(sortedActiveDates[i]);
+            const diffDays = Math.round((curr - prev) / (1000 * 60 * 60 * 24));
+            if (diffDays === 1) {
+                tempStreak++;
+                if (tempStreak > longestStreak) longestStreak = tempStreak;
+            } else if (diffDays > 1) {
+                tempStreak = 1;
+            }
+        }
+        if (currentStreak > longestStreak) longestStreak = currentStreak;
+    }
+
+    return {
+        days,
+        totalActiveDays: activeDatesSet.size,
+        totalActivities,
+        currentStreak,
+        longestStreak,
+        activityMap
+    };
+}
+
+/**
+ * Compute Round-by-Round Clearance Probability Breakdown (Option B)
+ * Evaluates user's performance against the company's authentic recruitment stages
+ */
+async function computeRoundClearanceProbabilities(targetCompany, solvedDocList, correctQuizzes, readinessScore) {
+    const config = COMPANY_ROUNDS_CONFIG[targetCompany] || COMPANY_ROUNDS_CONFIG['Amazon'];
+    if (!config || !Array.isArray(config.rounds)) {
+        return [];
+    }
+
+    // Fetch all questions for this company to partition them accurately by round
+    const allCompanyQuestions = await Question.find({
+        company: new RegExp(`^${targetCompany}$`, 'i')
+    }).sort({ difficulty: 1, title: 1 }).lean();
+
+    const assignedQuestions = new Set();
+    const roundQuestionsMap = {};
+
+    config.rounds.forEach((roundDef, idx) => {
+        const isLastRound = idx === config.rounds.length - 1;
+        let matched = [];
+        if (isLastRound) {
+            matched = allCompanyQuestions.filter(q => !assignedQuestions.has(q._id.toString()));
+        } else {
+            matched = allCompanyQuestions.filter(q => {
+                if (assignedQuestions.has(q._id.toString())) return false;
+                return roundDef.filter(q);
+            });
+        }
+        matched.forEach(q => assignedQuestions.add(q._id.toString()));
+        roundQuestionsMap[roundDef.roundNumber] = matched;
+    });
+
+    const solvedIdsSet = new Set(solvedDocList.map(q => q._id.toString()));
+
+    return config.rounds.map((roundDef, idx) => {
+        const roundQuestions = roundQuestionsMap[roundDef.roundNumber] || [];
+        const solvedInRound = roundQuestions.filter(q => solvedIdsSet.has(q._id.toString())).length;
+
+        let totalProgressCredits = solvedInRound;
+        let targetQuota = 6;
+
+        if (roundDef.roundNumber === 1) {
+            // Round 1 includes cognitive aptitude quiz credits
+            const quizBonus = Math.min(4, Math.floor(correctQuizzes / 2));
+            totalProgressCredits += quizBonus;
+            targetQuota = 8;
+        } else if (roundDef.roundNumber === 2) {
+            targetQuota = 6;
+        } else if (roundDef.roundNumber === 3) {
+            targetQuota = 5;
+        } else {
+            targetQuota = 4;
+        }
+
+        // Clearance probability calculation (15% baseline floor up to 98%)
+        const solvedRatio = Math.min(1.0, totalProgressCredits / targetQuota);
+        let prob = 18;
+        if (totalProgressCredits > 0) {
+            prob = Math.min(98, Math.round(18 + (solvedRatio * 72) + (readinessScore * 0.08)));
+        } else {
+            prob = Math.min(25, Math.round(15 + (readinessScore * 0.1)));
+        }
+
+        let status = 'Needs Focus';
+        let statusColor = '#f43f5e';
+        if (prob >= 75) {
+            status = 'High Clearance Probability';
+            statusColor = '#10b981';
+        } else if (prob >= 45) {
+            status = 'Moderate — In Progress';
+            statusColor = '#38bdf8';
+        }
+
+        // Stage-tailored strategic advice
+        let roundTip = '';
+        if (roundDef.roundNumber === 1) {
+            roundTip = `${targetCompany}'s preliminary screening eliminates over 70% of candidates. Focus on speed and zero runtime penalties.`;
+        } else if (roundDef.roundNumber === 2) {
+            roundTip = 'Live 1-on-1 coding interview: verbalize edge cases and write clean, modular helper functions.';
+        } else if (roundDef.roundNumber === 3) {
+            roundTip = 'Advanced architectural round: optimize for memory bounds and multi-state dynamic programming.';
+        } else {
+            roundTip = 'Culture & leadership interview: practice structured STAR answers emphasizing technical ownership.';
+        }
+
+        return {
+            roundNumber: roundDef.roundNumber,
+            id: roundDef.id,
+            name: roundDef.name,
+            subtitle: roundDef.subtitle,
+            focusPillars: roundDef.focusPillars || [],
+            totalQuestions: roundQuestions.length,
+            solvedCount: totalProgressCredits,
+            actualCodeSolved: solvedInRound,
+            targetQuota,
+            clearanceProbability: prob,
+            status,
+            statusColor,
+            roundTip
+        };
+    });
+}
+
+/**
+ * Compute Placement Drive Countdown & Study Pace (Option A)
+ */
+function computePlacementCountdown(user, targetCompanySolvedCount) {
+    const targetDate = user.targetPlacementDate || new Date(Date.now() + 45 * 24 * 60 * 60 * 1000);
+    const now = new Date();
+    const daysRemaining = Math.max(1, Math.ceil((new Date(targetDate) - now) / (1000 * 60 * 60 * 24)));
+    
+    // Target benchmark of 25 company-specific questions for offer caliber
+    const targetBenchmark = 25;
+    const questionsRemaining = Math.max(0, targetBenchmark - targetCompanySolvedCount);
+    const dailyTargetPace = Math.max(1, Math.ceil(questionsRemaining / daysRemaining));
+
+    return {
+        targetPlacementDate: new Date(targetDate).toISOString(),
+        formattedTargetDate: new Date(targetDate).toLocaleDateString(undefined, {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        }),
+        daysRemaining,
+        questionsRemaining,
+        dailyTargetPace,
+        targetBenchmark
+    };
 }
 
 /**
@@ -215,7 +476,6 @@ async function computeReadinessMetrics(user) {
     const targetScore = Math.min(40, (targetCompanySolvedCount / targetCompanyGoal) * 40);
 
     // Pillar B: Overall Algorithmic Breadth & Complexity (30% weight)
-    // Weighted: Easy = 1, Medium = 2, Hard = 3.5. Target aggregate weight = 40
     const aggregateWeight = (easySolved * 1) + (mediumSolved * 2) + (hardSolved * 3.5);
     const breadthScore = Math.min(30, (aggregateWeight / 40) * 30);
 
@@ -225,12 +485,10 @@ async function computeReadinessMetrics(user) {
         const accuracy = correctQuizzes / quizAttemptsList.length;
         quizScore = Math.min(15, (accuracy * 10) + Math.min(5, (quizAttemptsList.length / 10) * 5));
     } else {
-        // Baseline 3 pts if no quizzes yet to avoid penalizing pure coders excessively
         quizScore = 3;
     }
 
     // Pillar D: Topic Balance (15% weight)
-    // Award up to 2.5 pts for each of the 6 core pillars that has at least 1 problem solved
     let pillarsActive = 0;
     CORE_TOPICS.forEach(topic => {
         if (topicStats[topic].solved > 0) pillarsActive++;
@@ -238,7 +496,7 @@ async function computeReadinessMetrics(user) {
     const balanceScore = (pillarsActive / CORE_TOPICS.length) * 15;
 
     const rawReadiness = Math.round(targetScore + breadthScore + quizScore + balanceScore);
-    const readinessScore = Math.max(5, Math.min(100, rawReadiness)); // Baseline 5% for registering
+    const readinessScore = Math.max(5, Math.min(100, rawReadiness));
 
     // 3. Readiness Status Tier & Label
     let readinessTier = 'Foundation Building';
@@ -254,7 +512,16 @@ async function computeReadinessMetrics(user) {
         readinessColor = '#fbbf24'; // Amber
     }
 
-    // 4. Round Milestone Progress for Target Company
+    // 4. Activity Heatmap Generator (LeetCode style)
+    const heatmap = generateActivityHeatmap(user);
+
+    // 5. Round-by-Round Clearance Probability (Option B)
+    const roundClearance = await computeRoundClearanceProbabilities(targetCompany, solvedDocList, correctQuizzes, readinessScore);
+
+    // 6. Placement Drive Countdown (Option A)
+    const countdown = computePlacementCountdown(user, targetCompanySolvedCount);
+
+    // Legacy milestones for backwards compatibility
     const roundsConfig = COMPANY_ROUND_SCHEMAS[targetCompany] || [
         { roundNum: 1, title: 'Screening Assessment', focus: 'Foundational Aptitude & Coding' },
         { roundNum: 2, title: 'Technical Interview 1', focus: 'Data Structures & Problem Solving' },
@@ -262,21 +529,15 @@ async function computeReadinessMetrics(user) {
         { roundNum: 4, title: 'Managerial & Cultural Fit', focus: 'Behavioral & Core Principles' }
     ];
 
-    // Compute progress for each round based on target company solved questions
     const roundMilestones = roundsConfig.map((r, idx) => {
-        // Calculate an intuitive milestone percentage based on user's solves
         let progress = 0;
         if (idx === 0) {
-            // Round 1 (OA): requires basic solves + aptitude
             progress = Math.min(100, Math.round(((easySolved + mediumSolved + targetCompanySolvedCount) / 8) * 100));
         } else if (idx === 1) {
-            // Round 2 (Tech 1): requires medium solves in target company
             progress = Math.min(100, Math.round((targetCompanySolvedCount / 5) * 100));
         } else if (idx === 2) {
-            // Round 3 (Tech 2): requires medium/hard solves
             progress = Math.min(100, Math.round(((mediumSolved + hardSolved) / 6) * 100));
         } else {
-            // Final round (Leadership/HR): overall readiness reflection
             progress = Math.min(100, Math.round((readinessScore / 80) * 100));
         }
 
@@ -288,7 +549,7 @@ async function computeReadinessMetrics(user) {
         };
     });
 
-    // 5. Strengths & Critical Blindspots Analysis
+    // 7. Strengths & Critical Blindspots Analysis
     const sortedTopics = Object.entries(topicStats).sort((a, b) => b[1].solved - a[1].solved);
     const strengths = sortedTopics
         .filter(([_, stats]) => stats.solved >= 2)
@@ -298,8 +559,7 @@ async function computeReadinessMetrics(user) {
         .filter(([_, stats]) => stats.solved === 0)
         .map(([name]) => name);
 
-    // 6. Next 3 High-Impact Recommended Questions
-    // Fetch unsolved questions for target company
+    // 8. Next 3 High-Impact Recommended Questions
     const queryFilter = {
         company: new RegExp(`^${targetCompany}$`, 'i'),
         _id: { $nin: solvedDocList.map(q => q._id) }
@@ -307,11 +567,10 @@ async function computeReadinessMetrics(user) {
 
     let recommendedQuestions = await Question.find(queryFilter)
         .select('_id title difficulty category topic round problemStatement matchedProblems company')
-        .sort({ difficulty: -1 }) // prioritize Medium / Hard
+        .sort({ difficulty: -1 })
         .limit(3)
         .lean();
 
-    // Fallback if user already solved all or company has few
     if (recommendedQuestions.length < 3) {
         const fallbackQs = await Question.find({
             _id: { $nin: [...solvedDocList.map(q => q._id), ...recommendedQuestions.map(q => q._id)] },
@@ -324,7 +583,7 @@ async function computeReadinessMetrics(user) {
         recommendedQuestions = [...recommendedQuestions, ...fallbackQs];
     }
 
-    // 7. Solved Timeline (formatted for quick view)
+    // 9. Solved Timeline
     const solvedHistory = solvedQuestionsList.map(sq => {
         const doc = docMap.get(sq.questionId ? sq.questionId.toString() : '');
         return {
@@ -339,7 +598,7 @@ async function computeReadinessMetrics(user) {
         };
     }).sort((a, b) => new Date(b.solvedAt) - new Date(a.solvedAt));
 
-    // 8. Bookmarks List
+    // 10. Bookmarks List
     const bookmarksList = bookmarkIds.length > 0
         ? await Question.find({ _id: { $in: bookmarkIds } })
             .select('_id title difficulty category company topic')
@@ -363,19 +622,25 @@ async function computeReadinessMetrics(user) {
         },
         topicMastery: topicStats,
         roundMilestones,
+        roundClearance,
+        heatmap,
+        countdown,
         insights: {
             strengths: strengths.length > 0 ? strengths : ['Starting your preparation trajectory'],
             blindspots: blindspots.length > 0 ? blindspots : ['None identified — comprehensive coverage'],
             strategicAdvice: COMPANY_STRATEGIC_ADVICE[targetCompany] || 'Focus on clean code, edge case testing, and optimal time complexity.'
         },
         recommendedQuestions,
-        solvedHistory: solvedHistory.slice(0, 15), // latest 15 solves
+        solvedHistory: solvedHistory.slice(0, 15),
         bookmarks: bookmarksList
     };
 }
 
 module.exports = {
     computeReadinessMetrics,
+    generateActivityHeatmap,
+    computeRoundClearanceProbabilities,
+    computePlacementCountdown,
     COMPANY_ROUND_SCHEMAS,
     COMPANY_STRATEGIC_ADVICE
 };

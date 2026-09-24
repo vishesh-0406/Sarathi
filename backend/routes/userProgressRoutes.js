@@ -5,7 +5,8 @@ const {
     getTrackerDashboard,
     toggleBookmark,
     recordQuizAttempt,
-    updateTargetCompany
+    updateTargetCompany,
+    updateTargetPlacementDate
 } = require('../controllers/userProgressController');
 
 // All user progress endpoints require valid JWT authentication
@@ -15,5 +16,6 @@ router.get('/tracker', getTrackerDashboard);
 router.post('/bookmark', toggleBookmark);
 router.post('/quiz-attempt', recordQuizAttempt);
 router.put('/target-company', updateTargetCompany);
+router.put('/target-date', updateTargetPlacementDate);
 
 module.exports = router;

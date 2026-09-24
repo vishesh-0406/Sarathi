@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
         default: 'Amazon',
         trim: true
     },
+    targetPlacementDate: {
+        type: Date,
+        default: () => new Date(Date.now() + 45 * 24 * 60 * 60 * 1000)
+    },
     // DSA / Coding Solved Questions
     solvedQuestions: [{
         questionId: {

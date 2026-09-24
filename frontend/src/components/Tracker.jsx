@@ -10,7 +10,9 @@ import {
     PlayIcon, 
     ArrowRightIcon, 
     CheckIcon,
-    SpinnerIcon
+    SpinnerIcon,
+    CalendarIcon,
+    FlameIcon
 } from './Icons';
 import './Tracker.css';
 
@@ -23,14 +25,18 @@ const ALL_COMPANIES = [
     'Capgemini', 'HCLTech', 'Tech Mahindra', 'LTIMindtree', 'Genpact'
 ];
 
-function Tracker({ onSolveQuestion, onOpenAuth }) {
-    const { user, token, isAuthenticated, updateTargetCompany, toggleBookmark } = useAuth();
+function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
+    const { user, token, isAuthenticated, updateTargetCompany, updateTargetPlacementDate, toggleBookmark } = useAuth();
     const [trackerData, setTrackerData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [activeTab, setActiveTab] = useState('solved'); // 'solved' | 'bookmarks'
     const [companyDropdownOpen, setCompanyDropdownOpen] = useState(false);
     const [updatingCompany, setUpdatingCompany] = useState(false);
+    const [dateModalOpen, setDateModalOpen] = useState(false);
+    const [customDate, setCustomDate] = useState('');
+    const [updatingDate, setUpdatingDate] = useState(false);
+    const [hoveredCell, setHoveredCell] = useState(null);
 
     // Fetch tracker metrics
     const fetchTrackerData = async () => {
@@ -66,7 +72,7 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
 
     useEffect(() => {
         fetchTrackerData();
-    }, [token, user?.targetCompany]);
+    }, [token, user?.targetCompany, user?.solvedCount]);
 
     const handleSelectCompany = async (comp) => {
         setCompanyDropdownOpen(false);
@@ -82,6 +88,33 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
             console.error('Failed to update target company:', err);
         } finally {
             setUpdatingCompany(false);
+        }
+    };
+
+    const handleSetPlacementDays = async (days) => {
+        const target = new Date();
+        target.setDate(target.getDate() + days);
+        await savePlacementDate(target.toISOString());
+    };
+
+    const handleSaveCustomDate = async (e) => {
+        e.preventDefault();
+        if (!customDate) return;
+        await savePlacementDate(new Date(customDate).toISOString());
+    };
+
+    const savePlacementDate = async (dateStr) => {
+        try {
+            setUpdatingDate(true);
+            const res = await updateTargetPlacementDate(dateStr);
+            if (res.success) {
+                setDateModalOpen(false);
+                await fetchTrackerData();
+            }
+        } catch (err) {
+            console.error('Failed to update target date:', err);
+        } finally {
+            setUpdatingDate(false);
         }
     };
 
@@ -101,10 +134,10 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
                         <SparklesIcon size={32} />
                     </div>
                     <div className="guest-banner-content">
-                        <h2>Personalized AI Placement Readiness Tracker</h2>
+                        <h2>Personalized AI Placement Readiness & Milestone Tracker</h2>
                         <p>
                             Sign in to get an accurate 0–100% placement readiness score tailored to your dream company,
-                            track official hiring round milestones, analyze topic mastery, and receive high-impact problem recommendations.
+                            view round-by-round clearance probability, track your daily solving heatmap, and maintain a consistent prep streak.
                         </p>
                     </div>
                     <button className="guest-auth-btn" onClick={() => onOpenAuth('login')}>
@@ -126,22 +159,22 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
                     </div>
 
                     <div className="preview-card">
-                        <h3><TargetIcon size={18} /> Official Hiring Milestones</h3>
+                        <h3><TargetIcon size={18} /> Round-by-Round Clearance Probability</h3>
                         <ul className="preview-milestone-list">
-                            <li><span className="dot"></span> Online Assessment (OA on HackerRank)</li>
-                            <li><span className="dot"></span> Technical Round 1: Core DSA</li>
-                            <li><span className="dot"></span> Technical Round 2: Advanced DSA & LLD</li>
-                            <li><span className="dot"></span> Bar Raiser: 16 Leadership Principles</li>
+                            <li><span className="dot dot-high"></span> Round 1: OA on HackerRank (82% High)</li>
+                            <li><span className="dot dot-med"></span> Round 2: Tech Round 1 — Core DSA (60% Moderate)</li>
+                            <li><span className="dot dot-low"></span> Round 3: Tech Round 2 — Systems (35% Focus)</li>
+                            <li><span className="dot dot-high"></span> Round 4: Bar Raiser (75% High)</li>
                         </ul>
                     </div>
 
                     <div className="preview-card">
-                        <h3><BrainIcon size={18} /> AI Topic Mastery Radar</h3>
-                        <div className="preview-topic-bars">
-                            <div className="preview-topic-row"><span>Arrays & Strings</span><div className="bar-wrap"><div className="bar fill-60"></div></div></div>
-                            <div className="preview-topic-row"><span>Trees & Graphs</span><div className="bar-wrap"><div className="bar fill-40"></div></div></div>
-                            <div className="preview-topic-row"><span>Dynamic Programming</span><div className="bar-wrap"><div className="bar fill-20"></div></div></div>
-                            <div className="preview-topic-row"><span>Aptitude & Verbal</span><div className="bar-wrap"><div className="bar fill-80"></div></div></div>
+                        <h3><FlameIcon size={18} /> Daily Activity Heatmap & Countdown</h3>
+                        <p className="preview-sub" style={{ marginBottom: '10px' }}>Target: Campus Drives in 45 Days (2 Problems/Day)</p>
+                        <div className="preview-heatmap-grid">
+                            {Array.from({ length: 28 * 7 }).map((_, i) => (
+                                <div key={i} className={`mini-cell lvl-${(i % 5 === 0) ? 2 : (i % 7 === 0) ? 4 : (i % 3 === 0) ? 1 : 0}`}></div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -153,7 +186,7 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
         return (
             <div className="tracker-container tracker-loading-state">
                 <SpinnerIcon size={36} className="tracker-spin" />
-                <p>Computing AI Placement Readiness Metrics...</p>
+                <p>Computing AI Placement Readiness Metrics & Heatmap...</p>
             </div>
         );
     }
@@ -176,7 +209,9 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
         readinessColor,
         stats,
         topicMastery,
-        roundMilestones,
+        roundClearance = [],
+        heatmap = { days: [], currentStreak: 0, longestStreak: 0, totalActiveDays: 0, totalActivities: 0 },
+        countdown = { daysRemaining: 45, formattedTargetDate: 'Nov 2026', dailyTargetPace: 1 },
         insights,
         recommendedQuestions,
         solvedHistory,
@@ -188,9 +223,30 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
     const circumference = 2 * Math.PI * radius;
     const strokeDashoffset = circumference - (readinessScore / 100) * circumference;
 
+    // Group heatmap into 28 weeks (columns of 7 days)
+    const weeks = [];
+    const totalDays = heatmap.days.length;
+    for (let i = 0; i < totalDays; i += 7) {
+        weeks.push(heatmap.days.slice(i, i + 7));
+    }
+
+    // Determine month labels for heatmap
+    const monthLabels = [];
+    let lastMonth = '';
+    weeks.forEach((w, wIdx) => {
+        if (w.length > 0) {
+            const d = new Date(w[0].date);
+            const m = d.toLocaleString('default', { month: 'short' });
+            if (m !== lastMonth && wIdx % 4 === 0) {
+                monthLabels.push({ index: wIdx, label: m });
+                lastMonth = m;
+            }
+        }
+    });
+
     return (
         <div className="tracker-container">
-            {/* 1. HERO READINESS GAUGE & TARGET COMPANY BANNER */}
+            {/* 1. HERO READINESS GAUGE & TARGET ENTERPRISE BANNER */}
             <div className="tracker-hero-card">
                 <div className="tracker-gauge-section">
                     <div className="svg-gauge-wrapper">
@@ -231,36 +287,55 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
                             and accuracy across official hiring rounds.
                         </p>
 
-                        <div className="target-company-switcher">
-                            <span className="switcher-label">Target Enterprise:</span>
-                            <div className="company-dropdown-relative">
-                                <button
-                                    type="button"
-                                    className="company-select-pill"
-                                    onClick={() => setCompanyDropdownOpen(!companyDropdownOpen)}
-                                    disabled={updatingCompany}
-                                >
-                                    <CompanyLogo name={targetCompany} size={18} />
-                                    <span className="selected-company-name">{targetCompany}</span>
-                                    <span className="caret">▾</span>
-                                </button>
+                        <div className="hero-action-pills-row">
+                            {/* Target Company Switcher */}
+                            <div className="target-company-switcher">
+                                <span className="switcher-label">Target Enterprise:</span>
+                                <div className="company-dropdown-relative">
+                                    <button
+                                        type="button"
+                                        className="company-select-pill"
+                                        onClick={() => setCompanyDropdownOpen(!companyDropdownOpen)}
+                                        disabled={updatingCompany}
+                                    >
+                                        <CompanyLogo name={targetCompany} size={18} />
+                                        <span className="selected-company-name">{targetCompany}</span>
+                                        <span className="caret">▾</span>
+                                    </button>
 
-                                {companyDropdownOpen && (
-                                    <div className="company-dropdown-menu">
-                                        {ALL_COMPANIES.map(comp => (
-                                            <button
-                                                key={comp}
-                                                type="button"
-                                                className={`company-menu-item ${comp === targetCompany ? 'active' : ''}`}
-                                                onClick={() => handleSelectCompany(comp)}
-                                            >
-                                                <CompanyLogo name={comp} size={16} />
-                                                <span>{comp}</span>
-                                                {comp === targetCompany && <CheckIcon size={13} />}
-                                            </button>
-                                        ))}
-                                    </div>
-                                )}
+                                    {companyDropdownOpen && (
+                                        <div className="company-dropdown-menu">
+                                            {ALL_COMPANIES.map(comp => (
+                                                <button
+                                                    key={comp}
+                                                    type="button"
+                                                    className={`company-menu-item ${comp === targetCompany ? 'active' : ''}`}
+                                                    onClick={() => handleSelectCompany(comp)}
+                                                >
+                                                    <CompanyLogo name={comp} size={16} />
+                                                    <span>{comp}</span>
+                                                    {comp === targetCompany && <CheckIcon size={13} />}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Placement Drive Countdown Pill */}
+                            <div className="countdown-display-pill" onClick={() => setDateModalOpen(true)} title="Click to adjust your campus placement target date">
+                                <CalendarIcon size={16} color="#38bdf8" />
+                                <div className="countdown-pill-text">
+                                    <span className="countdown-days-bold">{countdown.daysRemaining} Days</span>
+                                    <span className="countdown-date-sub">Drive Target: {countdown.formattedTargetDate}</span>
+                                </div>
+                                <span className="edit-date-badge">Edit</span>
+                            </div>
+
+                            {/* Daily Pace Recommended */}
+                            <div className="pace-display-pill">
+                                <FlameIcon size={16} color="#f97316" />
+                                <span>Pace: <strong>{countdown.dailyTargetPace} problem{countdown.dailyTargetPace > 1 ? 's' : ''}/day</strong></span>
                             </div>
                         </div>
                     </div>
@@ -306,72 +381,247 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
                 </div>
             </div>
 
-            {/* 2. RECRUITMENT ROUND MILESTONES & TOPIC MASTERY GRID */}
-            <div className="tracker-split-grid">
-                {/* Left: Round Milestones */}
-                <div className="tracker-card milestones-card">
-                    <div className="card-header-clean">
-                        <h3><TargetIcon size={18} /> {targetCompany} Recruitment Stages</h3>
-                        <span className="header-meta-tag">{roundMilestones.length} Official Rounds</span>
-                    </div>
-                    <div className="milestones-timeline">
-                        {roundMilestones.map((m) => (
-                            <div key={m.roundNum} className="milestone-row">
-                                <div className="milestone-badge-col">
-                                    <span className={`milestone-badge ${m.progress >= 100 ? 'complete' : m.progress > 0 ? 'active' : ''}`}>
-                                        {m.progress >= 100 ? '✓' : `R${m.roundNum}`}
-                                    </span>
-                                </div>
-                                <div className="milestone-details-col">
-                                    <div className="milestone-title-row">
-                                        <span className="milestone-title">{m.title}</span>
-                                        <span className="milestone-pct">{m.progress}%</span>
-                                    </div>
-                                    <span className="milestone-focus">{m.focus}</span>
-                                    <div className="milestone-bar-wrap">
-                                        <div
-                                            className="milestone-bar-fill"
-                                            style={{ width: `${Math.min(100, m.progress)}%` }}
-                                        ></div>
-                                    </div>
-                                </div>
+            {/* DATE PICKER MODAL (OPTION A) */}
+            {dateModalOpen && (
+                <div className="tracker-modal-overlay" onClick={() => setDateModalOpen(false)}>
+                    <div className="tracker-modal-card" onClick={e => e.stopPropagation()}>
+                        <div className="modal-header">
+                            <h3><CalendarIcon size={18} /> Set Campus Placement Drive Target</h3>
+                            <button className="close-modal-btn" onClick={() => setDateModalOpen(false)}>✕</button>
+                        </div>
+                        <p className="modal-subtitle">
+                            Configure when your target company campus drives begin to calibrate your daily study pace.
+                        </p>
+
+                        <div className="preset-buttons-row">
+                            <button type="button" className="preset-btn" onClick={() => handleSetPlacementDays(30)} disabled={updatingDate}>
+                                30 Days (1 Month)
+                            </button>
+                            <button type="button" className="preset-btn" onClick={() => handleSetPlacementDays(45)} disabled={updatingDate}>
+                                45 Days (Standard)
+                            </button>
+                            <button type="button" className="preset-btn" onClick={() => handleSetPlacementDays(60)} disabled={updatingDate}>
+                                60 Days (2 Months)
+                            </button>
+                            <button type="button" className="preset-btn" onClick={() => handleSetPlacementDays(90)} disabled={updatingDate}>
+                                90 Days (Quarter)
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleSaveCustomDate} className="custom-date-form">
+                            <label className="form-label">Or Pick Exact Date:</label>
+                            <div className="date-input-row">
+                                <input
+                                    type="date"
+                                    className="custom-date-input"
+                                    value={customDate}
+                                    min={new Date().toISOString().split('T')[0]}
+                                    onChange={e => setCustomDate(e.target.value)}
+                                    required
+                                />
+                                <button type="submit" className="save-date-btn" disabled={updatingDate || !customDate}>
+                                    {updatingDate ? 'Saving...' : 'Set Date'}
+                                </button>
                             </div>
-                        ))}
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {/* 2. LIVE ACTIVITY HEATMAP CARD (LEETCODE / GITHUB STYLE) */}
+            <div className="tracker-card heatmap-card">
+                <div className="card-header-clean">
+                    <div className="heatmap-header-title">
+                        <h3><FlameIcon size={20} color="#f97316" /> Activity Heatmap & Consistency</h3>
+                        <span className="live-pulse-badge">Live Real-Time Sync</span>
+                    </div>
+                    <div className="heatmap-stats-strip">
+                        <div className="h-stat-chip">
+                            <span className="h-stat-icon">🔥</span>
+                            <span className="h-stat-label">Current Streak:</span>
+                            <strong>{heatmap.currentStreak} Days</strong>
+                        </div>
+                        <div className="h-stat-chip">
+                            <span className="h-stat-icon">⚡</span>
+                            <span className="h-stat-label">Longest Streak:</span>
+                            <strong>{heatmap.longestStreak} Days</strong>
+                        </div>
+                        <div className="h-stat-chip">
+                            <span className="h-stat-icon">📅</span>
+                            <span className="h-stat-label">Active Days:</span>
+                            <strong>{heatmap.totalActiveDays}</strong>
+                        </div>
+                        <div className="h-stat-chip">
+                            <span className="h-stat-icon">🏆</span>
+                            <span className="h-stat-label">Total Submissions:</span>
+                            <strong>{heatmap.totalActivities}</strong>
+                        </div>
                     </div>
                 </div>
 
-                {/* Right: Core Topic Mastery */}
-                <div className="tracker-card mastery-card">
-                    <div className="card-header-clean">
-                        <h3><BrainIcon size={18} /> Algorithmic Topic Mastery</h3>
-                        <span className="header-meta-tag">6 Core Pillars</span>
-                    </div>
-                    <div className="mastery-list">
-                        {Object.entries(topicMastery).map(([topicName, info]) => {
-                            const pct = Math.min(100, Math.round((info.solved / info.target) * 100));
-                            return (
-                                <div key={topicName} className="mastery-item">
-                                    <div className="mastery-item-head">
-                                        <span className="topic-name">{topicName}</span>
-                                        <span className="topic-counts">{info.solved} / {info.target} problems</span>
-                                    </div>
-                                    <div className="mastery-bar-wrap">
+                <p className="heatmap-desc">
+                    Every solved coding problem in any round, Aptitude test, and mock assessment updates this activity map automatically.
+                </p>
+
+                {/* Heatmap Grid Wrapper */}
+                <div className="heatmap-scroll-container">
+                    <div className="heatmap-grid-outer">
+                        {/* Day of Week Labels (Mon, Wed, Fri) */}
+                        <div className="heatmap-day-labels">
+                            <span></span>
+                            <span>Mon</span>
+                            <span></span>
+                            <span>Wed</span>
+                            <span></span>
+                            <span>Fri</span>
+                            <span></span>
+                        </div>
+
+                        {/* 28-Week Heatmap Columns */}
+                        <div className="heatmap-weeks-container">
+                            {weeks.map((week, wIdx) => (
+                                <div key={wIdx} className="heatmap-week-column">
+                                    {week.map((day) => (
                                         <div
-                                            className="mastery-bar-fill"
-                                            style={{
-                                                width: `${pct}%`,
-                                                backgroundColor: pct >= 80 ? '#34d399' : pct >= 40 ? '#38bdf8' : '#fbbf24'
-                                            }}
-                                        ></div>
-                                    </div>
+                                            key={day.date}
+                                            className={`heatmap-cell level-${day.level}`}
+                                            onMouseEnter={() => setHoveredCell(day)}
+                                            onMouseLeave={() => setHoveredCell(null)}
+                                        />
+                                    ))}
                                 </div>
-                            );
-                        })}
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Tooltip Overlay */}
+                    {hoveredCell && (
+                        <div className="heatmap-tooltip">
+                            <strong>{hoveredCell.count} question{hoveredCell.count === 1 ? '' : 's'} solved / attempted</strong>
+                            <span>on {new Date(hoveredCell.date).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                        </div>
+                    )}
+
+                    {/* Legend Bar */}
+                    <div className="heatmap-footer-legend">
+                        <span className="legend-label">Less</span>
+                        <div className="legend-cells">
+                            <div className="heatmap-cell level-0"></div>
+                            <div className="heatmap-cell level-1"></div>
+                            <div className="heatmap-cell level-2"></div>
+                            <div className="heatmap-cell level-3"></div>
+                            <div className="heatmap-cell level-4"></div>
+                        </div>
+                        <span className="legend-label">More</span>
                     </div>
                 </div>
             </div>
 
-            {/* 3. AI STRATEGIC INSIGHTS & NEXT 3 RECOMMENDED PROBLEMS */}
+            {/* 3. ROUND-BY-ROUND CLEARANCE PROBABILITY BREAKDOWN (OPTION B) */}
+            <div className="tracker-card round-clearance-card">
+                <div className="card-header-clean">
+                    <div>
+                        <h3><TargetIcon size={20} color="#34d399" /> Official Recruitment Round Clearance Probability</h3>
+                        <p className="card-sub-explain">
+                            Dynamic probability of clearing each official hiring round at <strong>{targetCompany}</strong> based on your authentic problem coverage.
+                        </p>
+                    </div>
+                    <span className="header-meta-tag">{roundClearance.length} Hiring Stages</span>
+                </div>
+
+                <div className="round-clearance-grid">
+                    {roundClearance.map((rc) => (
+                        <div key={rc.roundNumber} className="round-prob-card">
+                            <div className="round-prob-card-header">
+                                <div className="round-prob-badge">Round {rc.roundNumber}</div>
+                                <span className={`prob-status-chip status-${rc.status.toLowerCase().replace(/[\s—]+/g, '-')}`} style={{ borderColor: rc.statusColor, color: rc.statusColor }}>
+                                    {rc.status}
+                                </span>
+                            </div>
+
+                            <h4 className="round-prob-name">{rc.name}</h4>
+                            <p className="round-prob-sub">{rc.subtitle}</p>
+
+                            {/* Large Clearance Meter */}
+                            <div className="clearance-meter-wrap">
+                                <div className="clearance-meter-header">
+                                    <span className="prob-value" style={{ color: rc.statusColor }}>
+                                        {rc.clearanceProbability}%
+                                    </span>
+                                    <span className="quota-tag">
+                                        {rc.solvedCount} / {rc.targetQuota} Target Solved
+                                    </span>
+                                </div>
+                                <div className="meter-bar-track">
+                                    <div
+                                        className="meter-bar-fill"
+                                        style={{
+                                            width: `${Math.min(100, rc.clearanceProbability)}%`,
+                                            backgroundColor: rc.statusColor
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+
+                            {/* Evaluated Focus Pillars */}
+                            <div className="round-focus-strip">
+                                {rc.focusPillars?.map((p, idx) => (
+                                    <span key={idx} className="focus-pill">{p}</span>
+                                ))}
+                            </div>
+
+                            {/* Strategic Stage Tip */}
+                            <div className="round-prob-tip">
+                                <span>💡 {rc.roundTip}</span>
+                            </div>
+
+                            {/* Action CTA to Roadmap */}
+                            {onSelectRoadmap && (
+                                <button
+                                    type="button"
+                                    className="round-practice-cta"
+                                    onClick={() => onSelectRoadmap(targetCompany)}
+                                >
+                                    <span>Practice Round {rc.roundNumber} in Roadmap</span>
+                                    <ArrowRightIcon size={13} />
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* 4. CORE TOPIC MASTERY (6 PILLARS) */}
+            <div className="tracker-card mastery-card">
+                <div className="card-header-clean">
+                    <h3><BrainIcon size={18} /> Algorithmic Topic Mastery Radar</h3>
+                    <span className="header-meta-tag">6 Core Placement Pillars</span>
+                </div>
+                <div className="mastery-grid">
+                    {Object.entries(topicMastery).map(([topicName, info]) => {
+                        const pct = Math.min(100, Math.round((info.solved / info.target) * 100));
+                        return (
+                            <div key={topicName} className="mastery-item">
+                                <div className="mastery-item-head">
+                                    <span className="topic-name">{topicName}</span>
+                                    <span className="topic-counts">{info.solved} / {info.target} problems</span>
+                                </div>
+                                <div className="mastery-bar-wrap">
+                                    <div
+                                        className="mastery-bar-fill"
+                                        style={{
+                                            width: `${pct}%`,
+                                            backgroundColor: pct >= 80 ? '#34d399' : pct >= 40 ? '#38bdf8' : '#fbbf24'
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+
+            {/* 5. AI STRATEGIC INSIGHTS & NEXT 3 RECOMMENDED PROBLEMS */}
             <div className="tracker-card ai-insights-card">
                 <div className="card-header-clean">
                     <h3><SparklesIcon size={18} /> AI Placement Insights & Recommended Focus</h3>
@@ -440,7 +690,7 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
                 </div>
             </div>
 
-            {/* 4. ACTIVITY & REVISION HUB (SOLVED HISTORY / BOOKMARKS) */}
+            {/* 6. ACTIVITY & REVISION HUB (SOLVED HISTORY / BOOKMARKS) */}
             <div className="tracker-card activity-hub-card">
                 <div className="activity-tabs-header">
                     <div className="activity-tabs">
@@ -467,7 +717,7 @@ function Tracker({ onSolveQuestion, onOpenAuth }) {
                     {activeTab === 'solved' && (
                         solvedHistory.length === 0 ? (
                             <div className="empty-activity-state">
-                                <p>No questions solved yet. Start coding in the IDE to track your history!</p>
+                                <p>No questions solved yet. Start coding in the IDE to track your history and light up your activity heatmap!</p>
                             </div>
                         ) : (
                             <div className="activity-table-wrapper">
