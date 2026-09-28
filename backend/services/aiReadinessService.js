@@ -357,7 +357,7 @@ async function computeRoundClearanceProbabilities(targetCompany, solvedDocList, 
                 statusColor = '#10b981';
             } else if (prob >= 45) {
                 status = 'Moderate — In Progress';
-                statusColor = '#38bdf8';
+                statusColor = '#fbbf24';
             } else {
                 status = 'Needs Focus';
                 statusColor = '#f43f5e';

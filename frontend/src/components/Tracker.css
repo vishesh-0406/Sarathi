@@ -352,8 +352,8 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 999px;
     padding: 6px 14px;
     cursor: pointer;
@@ -362,8 +362,8 @@
 }
 
 .countdown-display-pill:hover {
-    background: rgba(56, 189, 248, 0.16);
-    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.24);
     transform: translateY(-1px);
 }
 
@@ -376,7 +376,7 @@
 .countdown-days-bold {
     font-size: 0.85rem;
     font-weight: 700;
-    color: #38bdf8;
+    color: #f4f4f6;
 }
 
 .countdown-date-sub {
@@ -389,8 +389,8 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    color: #38bdf8;
-    background: rgba(56, 189, 248, 0.16);
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.08);
     padding: 2px 6px;
     border-radius: 4px;
     margin-left: 2px;
@@ -675,9 +675,9 @@
 }
 
 .preset-btn:hover:not(:disabled) {
-    border-color: #38bdf8;
-    background: rgba(56, 189, 248, 0.12);
-    color: #38bdf8;
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
 }
 
 .custom-date-form {
@@ -711,11 +711,11 @@
 }
 
 .custom-date-input:focus {
-    border-color: #38bdf8;
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .save-date-btn {
-    background: #38bdf8;
+    background: #f4f4f6;
     color: #09090b;
     border: none;
     border-radius: 8px;
@@ -723,12 +723,13 @@
     font-weight: 700;
     font-size: 0.86rem;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    transition: all 0.15s ease;
     white-space: nowrap;
 }
 
 .save-date-btn:hover:not(:disabled) {
-    opacity: 0.9;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
 }
 
 /* 2. LIVE ACTIVITY HEATMAP CARD */

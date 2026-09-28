@@ -14,7 +14,9 @@ import {
     ChatIcon,
     LinkedInIcon,
     XTwitterIcon,
-    ExternalLinkIcon
+    ExternalLinkIcon,
+    DSAIcon,
+    InterviewIcon
 } from './Icons';
 import './Roadmap.css';
 
@@ -139,6 +141,34 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
             case 'interview': return 'badge-interview';
             default: return 'badge-dsa';
         }
+    };
+
+    const renderCategoryBadge = (cat) => {
+        const lower = (cat || '').toLowerCase();
+        if (lower === 'dsa') {
+            return (
+                <span className="track-cat-pill dsa">
+                    <DSAIcon size={12} /> DSA
+                </span>
+            );
+        } else if (lower === 'aptitude') {
+            return (
+                <span className="track-cat-pill aptitude">
+                    <AptitudeIcon size={12} /> Aptitude
+                </span>
+            );
+        } else if (lower === 'interview') {
+            return (
+                <span className="track-cat-pill interview">
+                    <InterviewIcon size={12} /> Interview
+                </span>
+            );
+        }
+        return (
+            <span className="track-cat-pill">
+                {cat}
+            </span>
+        );
     };
 
     const rounds = roadmapData?.rounds || roadmapData?.milestones || [];
@@ -363,20 +393,21 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                             {filteredQuestions.length === 0 ? (
                                                 <p className="no-q-msg">No questions in this round match the selected filter.</p>
                                             ) : (
-                                                <div className="questions-grid">
-                                                    {filteredQuestions.map((q) => {
+                                                <div className="roadmap-curriculum-track">
+                                                    {filteredQuestions.map((q, idx) => {
                                                         const isDetailOpen = expandedQuestionDetails[q._id];
                                                         const matched = q.matchedProblems?.[0];
                                                         const userChoice = quizAnswers[q._id];
+                                                        const seqNumber = `#${String(idx + 1).padStart(2, '0')}`;
 
                                                         return (
-                                                            <div key={q._id} className={`roadmap-q-card ${isDetailOpen ? 'expanded' : ''}`}>
-                                                                <div className="card-top-row">
-                                                                    <div className="badges-group">
-                                                                        <span className={`cat-tag ${getCategoryBadgeClass(q.category)}`}>
-                                                                            {q.category}
-                                                                        </span>
-                                                                        <span className={`diff-tag ${getDifficultyClass(q.difficulty)}`}>
+                                                            <div key={q._id} className={`roadmap-track-item ${isDetailOpen ? 'is-expanded' : ''}`}>
+                                                                {/* Problem Item Header Bar */}
+                                                                <div className="track-item-top">
+                                                                    <div className="track-badges-left">
+                                                                        <span className="track-seq-idx">{seqNumber}</span>
+                                                                        {renderCategoryBadge(q.category)}
+                                                                        <span className={`track-diff-pill ${getDifficultyClass(q.difficulty)}`}>
                                                                             {q.difficulty}
                                                                         </span>
                                                                         {q.isNovel ? (
@@ -397,79 +428,84 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                         ) : null}
                                                                     </div>
 
-                                                                    <span className="round-tag">{q.round || 'Technical Round'}</span>
+                                                                    <div className="track-badges-right">
+                                                                        <span className="round-tag">{q.round || 'Technical Round'}</span>
+                                                                    </div>
                                                                 </div>
 
-                                                                <h4 className="q-title">{q.title}</h4>
-                                                                <p className="q-snippet">
-                                                                    {(q.problemStatement || q.question || '').slice(0, 160)}...
+                                                                {/* Question Title & Problem Premise */}
+                                                                <div className="track-title-row">
+                                                                    <h4 className="track-problem-title">{q.title}</h4>
+                                                                </div>
+
+                                                                <p className="track-problem-snippet">
+                                                                    {(q.problemStatement || q.question || '').slice(0, 220)}...
                                                                 </p>
 
-                                                                {/* Direct Interactive Action Row */}
-                                                                <div className="card-action-row">
+                                                                {/* Direct Interactive Action Bar */}
+                                                                <div className="track-action-bar">
                                                                     {q.category === 'DSA' && (
-                                                                        <button 
-                                                                            className="ide-btn"
-                                                                            onClick={() => onOpenIDE(q)}
-                                                                        >
-                                                                            <ZapIcon size={14} /> Solve in IDE
-                                                                        </button>
+                                                                        <>
+                                                                            <button 
+                                                                                type="button"
+                                                                                className="ide-btn"
+                                                                                onClick={() => onOpenIDE(q)}
+                                                                            >
+                                                                                <ZapIcon size={14} /> Solve in IDE
+                                                                            </button>
+                                                                            <button
+                                                                                type="button"
+                                                                                className={`details-btn ${isDetailOpen ? 'active' : ''}`}
+                                                                                onClick={() => toggleQuestionDetail(q._id)}
+                                                                            >
+                                                                                {isDetailOpen ? 'Hide Problem ▴' : 'View Problem Details ▾'}
+                                                                            </button>
+                                                                        </>
                                                                     )}
 
                                                                     {q.category === 'Aptitude' && (
                                                                         <button 
-                                                                            className="quiz-btn"
+                                                                            type="button"
+                                                                            className={`quiz-btn ${isDetailOpen ? 'active' : ''}`}
                                                                             onClick={() => toggleQuestionDetail(q._id)}
                                                                         >
-                                                                            {isDetailOpen ? 'Hide Quiz' : <><AptitudeIcon size={14} /> Practice Quiz</>}
+                                                                            {isDetailOpen ? 'Hide Quiz ▴' : <><AptitudeIcon size={14} /> Practice Quiz ▾</>}
                                                                         </button>
                                                                     )}
 
                                                                     {q.category === 'Interview' && (
                                                                         <button 
-                                                                            className="star-btn"
+                                                                            type="button"
+                                                                            className={`star-btn ${isDetailOpen ? 'active' : ''}`}
                                                                             onClick={() => toggleQuestionDetail(q._id)}
                                                                         >
-                                                                            {isDetailOpen ? 'Hide Guide' : <><DocumentIcon size={14} /> View STAR Guide</>}
-                                                                        </button>
-                                                                    )}
-
-                                                                    {q.category === 'DSA' && (
-                                                                        <button
-                                                                            className="details-btn"
-                                                                            onClick={() => toggleQuestionDetail(q._id)}
-                                                                        >
-                                                                            {isDetailOpen ? 'Less' : 'Details'}
+                                                                            {isDetailOpen ? 'Hide Strategy ▴' : <><DocumentIcon size={14} /> View STAR Strategy ▾</>}
                                                                         </button>
                                                                     )}
                                                                 </div>
 
-                                                                {/* Expanded Content Drawer */}
+                                                                {/* In-Place Full-Width Stage Workspace Drawer */}
                                                                 {isDetailOpen && (
-                                                                    <div className="q-detail-drawer">
+                                                                    <div className="track-stage-workspace">
                                                                         {/* Full Problem Statement */}
-                                                                        <div className="full-statement">
-                                                                            <strong>Problem Statement:</strong>
+                                                                        <div className="workspace-statement">
+                                                                            <span className="workspace-section-label">Full Problem Statement</span>
                                                                             <p>{q.problemStatement || q.question}</p>
                                                                         </div>
 
-                                                                        {/* Constraints if available */}
-                                                                        {q.constraints && q.constraints.length > 0 && (
-                                                                            <div className="constraints-box">
-                                                                                <strong>Constraints:</strong>
-                                                                                <ul>
-                                                                                    {q.constraints.map((c, i) => (
-                                                                                        <li key={i}>{c}</li>
-                                                                                    ))}
-                                                                                </ul>
-                                                                            </div>
-                                                                        )}
-
                                                                         {/* Aptitude Multiple Choice Interactive Section */}
                                                                         {q.category === 'Aptitude' && q.options && (
-                                                                            <div className="aptitude-quiz-box">
-                                                                                <strong>Select Answer:</strong>
-                                                                                <div className="quiz-options-list">
+                                                                            <div className="aptitude-quiz-console">
+                                                                                <div className="quiz-console-header">
+                                                                                    <span className="quiz-header-label">
+                                                                                        <AptitudeIcon size={14} /> Multiple Choice Challenge
+                                                                                    </span>
+                                                                                    <span className="quiz-header-hint">
+                                                                                        Select an option to evaluate your answer immediately
+                                                                                    </span>
+                                                                                </div>
+
+                                                                                <div className="quiz-options-grid">
                                                                                     {(() => {
                                                                                         const correctLetter = (q.correctOption || '').trim().match(/^[A-D]/i) ? (q.correctOption || '').trim()[0].toUpperCase() : '';
                                                                                         const userChoiceLetter = (userChoice || '').trim().match(/^[A-D]/i) ? (userChoice || '').trim()[0].toUpperCase() : userChoice;
@@ -477,35 +513,61 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
 
                                                                                         return (
                                                                                             <>
-                                                                                                {q.options.map((opt, i) => {
-                                                                                                    const optLetter = opt.trim().match(/^[A-D]/i) ? opt.trim()[0].toUpperCase() : String.fromCharCode(65 + i);
-                                                                                                    const isSelected = userChoiceLetter === optLetter;
-                                                                                                    const isOptCorrect = optLetter === correctLetter;
-                                                                                                    let optClass = 'quiz-opt';
-                                                                                                    if (userChoice) {
-                                                                                                        if (isOptCorrect) optClass += ' correct option-correct';
-                                                                                                        else if (isSelected) optClass += ' wrong incorrect option-wrong';
-                                                                                                        else optClass += ' option-disabled';
-                                                                                                    }
-                                                                                                    return (
-                                                                                                        <button
-                                                                                                            key={i}
-                                                                                                            className={optClass}
-                                                                                                            onClick={() => handleSelectOption(q._id, optLetter)}
-                                                                                                        >
-                                                                                                            {opt}
-                                                                                                        </button>
-                                                                                                    );
-                                                                                                })}
+                                                                                                <div className="quiz-opts-wrapper">
+                                                                                                    {q.options.map((opt, i) => {
+                                                                                                        const optLetter = opt.trim().match(/^[A-D]/i) ? opt.trim()[0].toUpperCase() : String.fromCharCode(65 + i);
+                                                                                                        const isSelected = userChoiceLetter === optLetter;
+                                                                                                        const isOptCorrect = optLetter === correctLetter;
+                                                                                                        let optClass = 'quiz-opt-btn';
+                                                                                                        if (userChoice) {
+                                                                                                            if (isOptCorrect) optClass += ' correct';
+                                                                                                            else if (isSelected) optClass += ' wrong';
+                                                                                                            else optClass += ' disabled';
+                                                                                                        }
+                                                                                                        const cleanOptText = opt.replace(/^[A-D][.):\s]+/i, '');
+
+                                                                                                        return (
+                                                                                                            <button
+                                                                                                                key={i}
+                                                                                                                type="button"
+                                                                                                                className={optClass}
+                                                                                                                onClick={() => handleSelectOption(q._id, optLetter)}
+                                                                                                            >
+                                                                                                                <span className="opt-letter-badge">{optLetter}</span>
+                                                                                                                <span className="opt-text-val">{cleanOptText || opt}</span>
+                                                                                                                {userChoice && isOptCorrect && (
+                                                                                                                    <span className="opt-status-check">✓ Correct</span>
+                                                                                                                )}
+                                                                                                                {userChoice && isSelected && !isOptCorrect && (
+                                                                                                                    <span className="opt-status-cross">✗ Your choice</span>
+                                                                                                                )}
+                                                                                                            </button>
+                                                                                                        );
+                                                                                                    })}
+                                                                                                </div>
 
                                                                                                 {userChoice && (
-                                                                                                    <div className="quiz-feedback-box">
-                                                                                                        <p className={isUserAnswerCorrect ? 'feedback-correct' : 'feedback-wrong'}>
-                                                                                                            {isUserAnswerCorrect ? '✓ Correct Answer!' : `✗ Incorrect. Correct: Option ${correctLetter || q.correctOption}`}
-                                                                                                        </p>
+                                                                                                    <div className={`quiz-feedback-banner ${isUserAnswerCorrect ? 'correct' : 'wrong'}`}>
+                                                                                                        <div className="feedback-result-row">
+                                                                                                            <span className="feedback-verdict">
+                                                                                                                {isUserAnswerCorrect ? '✓ Correct Answer!' : `✗ Incorrect Choice`}
+                                                                                                            </span>
+                                                                                                            {!isUserAnswerCorrect && (
+                                                                                                                <span className="feedback-correct-answer">
+                                                                                                                    Correct Answer: Option {correctLetter || q.correctOption}
+                                                                                                                </span>
+                                                                                                            )}
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                className="quiz-retry-btn"
+                                                                                                                onClick={() => handleSelectOption(q._id, null)}
+                                                                                                            >
+                                                                                                                ↺ Retry Question
+                                                                                                            </button>
+                                                                                                        </div>
                                                                                                         {q.explanation && (
-                                                                                                            <div className="math-explanation">
-                                                                                                                <strong>Step-by-step Solution:</strong>
+                                                                                                            <div className="quiz-math-explanation">
+                                                                                                                <span className="solution-heading">Step-by-step Solution:</span>
                                                                                                                 <p>{q.explanation}</p>
                                                                                                             </div>
                                                                                                         )}
@@ -519,33 +581,76 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                         )}
 
                                                                         {/* Interview STAR Answer Section */}
-                                                                        {q.category === 'Interview' && q.answer && (
-                                                                            <div className="star-answer-box">
-                                                                                <strong>Recommended STAR Model Response:</strong>
-                                                                                <div className="star-content">
-                                                                                    {q.answer}
-                                                                                </div>
-                                                                                {q.topic && (
-                                                                                    <span className="interview-topic-tag">
-                                                                                        Topic Focus: {q.topic}
+                                                                        {q.category === 'Interview' && (
+                                                                            <div className="interview-star-console">
+                                                                                <div className="star-console-header">
+                                                                                    <span className="star-console-label">
+                                                                                        <SparklesIcon size={14} color="#fbbf24" /> Recommended STAR Framework Strategy
                                                                                     </span>
-                                                                                )}
+                                                                                    {q.topic && (
+                                                                                        <span className="interview-topic-tag">
+                                                                                            Focus: {q.topic}
+                                                                                        </span>
+                                                                                    )}
+                                                                                </div>
+                                                                                <div className="star-console-body">
+                                                                                    {q.answer ? (
+                                                                                        <div className="star-answer-content">{q.answer}</div>
+                                                                                    ) : (
+                                                                                        <div className="star-answer-tips">
+                                                                                            {q.answerTips || 'Structure your response using the STAR framework: clearly articulate the Situation, specify your Task responsibility, highlight concrete engineering Actions, and quantify measurable Results.'}
+                                                                                        </div>
+                                                                                    )}
+                                                                                </div>
                                                                             </div>
                                                                         )}
 
-                                                                        {/* DSA Sample Test Cases if available */}
-                                                                        {q.category === 'DSA' && q.testCases && q.testCases.length > 0 && (
-                                                                            <div className="sample-tc-box">
-                                                                                <strong>Sample Test Case:</strong>
-                                                                                <pre>Input: {q.testCases[0].input}</pre>
-                                                                                <pre>Output: {q.testCases[0].expectedOutput}</pre>
+                                                                        {/* DSA Constraints & Test Cases */}
+                                                                        {q.category === 'DSA' && (
+                                                                            <div className="dsa-workspace-console">
+                                                                                {q.constraints && q.constraints.length > 0 && (
+                                                                                    <div className="dsa-constraints-box">
+                                                                                        <span className="workspace-section-label">Constraints:</span>
+                                                                                        <ul>
+                                                                                            {q.constraints.map((c, i) => (
+                                                                                                <li key={i}><code>{c}</code></li>
+                                                                                            ))}
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                )}
+
+                                                                                {q.testCases && q.testCases.length > 0 && (
+                                                                                    <div className="dsa-sample-tc-box">
+                                                                                        <span className="workspace-section-label">Sample Test Case:</span>
+                                                                                        <div className="sample-tc-block">
+                                                                                            <div className="tc-row">
+                                                                                                <span className="tc-tag">Input:</span>
+                                                                                                <code>{q.testCases[0].input}</code>
+                                                                                            </div>
+                                                                                            <div className="tc-row">
+                                                                                                <span className="tc-tag">Output:</span>
+                                                                                                <code>{q.testCases[0].expectedOutput}</code>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                )}
+
+                                                                                <div className="dsa-action-footer">
+                                                                                    <button 
+                                                                                        type="button"
+                                                                                        className="ide-btn launch-ide-lg"
+                                                                                        onClick={() => onOpenIDE(q)}
+                                                                                    >
+                                                                                        <ZapIcon size={14} /> Open in Sarathi Cloud IDE
+                                                                                    </button>
+                                                                                </div>
                                                                             </div>
                                                                         )}
                                                                     </div>
                                                                 )}
 
                                                                 {/* Card Footer with Verified Provenance & Discussions Link */}
-                                                                <div className="card-footer roadmap-card-footer">
+                                                                <div className="track-item-footer">
                                                                     <span className="source-info">
                                                                         Source: <strong>{q.source || 'Candidate Discussion'}</strong>
                                                                     </span>
@@ -554,7 +659,7 @@ function Roadmap({ initialCompany = 'Amazon', onBack, onOpenIDE }) {
                                                                             href={q.sourceUrl}
                                                                             target="_blank"
                                                                             rel="noopener noreferrer"
-                                                                            className={`source-link ${(q.category === 'Interview' || (q.source && q.source.includes('LinkedIn'))) ? 'linkedin-link' : (q.category === 'Aptitude' || (q.source && (q.source.includes('X') || q.source.includes('Twitter')))) ? 'twitter-link' : 'reddit-link'}`}
+                                                                            className={`track-source-link ${(q.category === 'Interview' || (q.source && q.source.includes('LinkedIn'))) ? 'linkedin-link' : (q.category === 'Aptitude' || (q.source && (q.source.includes('X') || q.source.includes('Twitter')))) ? 'twitter-link' : 'reddit-link'}`}
                                                                             title="View candidate discussion & experience thread"
                                                                         >
                                                                             {(q.category === 'Interview' || (q.source && q.source.includes('LinkedIn'))) ? (

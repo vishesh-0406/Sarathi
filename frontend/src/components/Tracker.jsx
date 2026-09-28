@@ -324,7 +324,7 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
 
                             {/* Placement Drive Countdown Pill */}
                             <div className="countdown-display-pill" onClick={() => setDateModalOpen(true)} title="Click to adjust your campus placement target date">
-                                <CalendarIcon size={16} color="#38bdf8" />
+                                <CalendarIcon size={16} color="#e4e4e7" />
                                 <div className="countdown-pill-text">
                                     <span className="countdown-days-bold">{countdown.daysRemaining} Days</span>
                                     <span className="countdown-date-sub">Drive Target: {countdown.formattedTargetDate}</span>
@@ -611,7 +611,7 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
                                         className="mastery-bar-fill"
                                         style={{
                                             width: `${pct}%`,
-                                            backgroundColor: pct >= 80 ? '#34d399' : pct >= 40 ? '#38bdf8' : '#fbbf24'
+                                            backgroundColor: pct >= 80 ? '#34d399' : pct >= 40 ? '#e4e4e7' : '#fbbf24'
                                         }}
                                     ></div>
                                 </div>
