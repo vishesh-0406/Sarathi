@@ -183,7 +183,7 @@ if __name__ == "__main__":
 
     if not __func:
         for __k, __v in list(globals().items()):
-            if callable(__v) and not __k.startswith('_') and not __k.startswith('__') and __k not in ['sys', 'json', 'ast', 're', 'inspect', 'TreeNode', 'ListNode']:
+            if inspect.isfunction(__v) and not __k.startswith('_') and not __k.startswith('__') and __k not in ['sys', 'json', 'ast', 're', 'inspect', 'TreeNode', 'ListNode', '__build_tree', '__build_list', '__serialize_tree', '__serialize_list']:
                 __func = __v
                 break
 

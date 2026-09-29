@@ -7,6 +7,8 @@ const questionRoutes = require('./routes/questionRoutes');
 const codeRoutes = require('./routes/codeRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userProgressRoutes = require('./routes/userProgressRoutes');
+const mockTestRoutes = require('./routes/mockTestRoutes');
+const pipelineRoutes = require('./routes/pipelineRoutes');
 
 const app = express();
 
@@ -24,17 +26,23 @@ app.get('/ping', (req, res) => res.send('pong'));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userProgressRoutes);
+app.use('/api/user/mock-test', mockTestRoutes);
+app.use('/api/pipeline', pipelineRoutes);
 app.use('/api/companies', companyRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/code', codeRoutes);
 
 
 
+const pipelineSyncService = require('./services/pipelineSyncService');
+
 const startServer = async () => {
     try {
         await connectDb();
         app.listen(PORT, '0.0.0.0', () => {
             console.log(`Sarathi server running on http://localhost:${PORT}`);
+            // Start automated 24-hour background pipeline worker
+            pipelineSyncService.startAutomatedWorker({ intervalHours: 24, runOnStart: false });
         });
     } catch (err) {
         console.error('Failed to start server:', err);

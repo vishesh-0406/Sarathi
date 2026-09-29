@@ -449,12 +449,12 @@ async function computeReadinessMetrics(user) {
     let hardSolved = 0;
 
     const topicStats = {
-        'Arrays & Strings': { solved: 0, target: 12 },
-        'Trees & Graphs': { solved: 0, target: 10 },
-        'Dynamic Programming': { solved: 0, target: 8 },
-        'Greedy & Math': { solved: 0, target: 8 },
-        'System Design & OOP': { solved: 0, target: 6 },
-        'Aptitude & Logical': { solved: 0, target: 10 }
+        'Arrays & Strings': { solved: 0, baseTarget: 12, target: 12, isMastered: false },
+        'Trees & Graphs': { solved: 0, baseTarget: 10, target: 10, isMastered: false },
+        'Dynamic Programming': { solved: 0, baseTarget: 8, target: 8, isMastered: false },
+        'Greedy & Math': { solved: 0, baseTarget: 8, target: 8, isMastered: false },
+        'System Design & OOP': { solved: 0, baseTarget: 6, target: 6, isMastered: false },
+        'Aptitude & Logical': { solved: 0, baseTarget: 15, target: 15, isMastered: false }
     };
 
     solvedDocList.forEach(q => {
@@ -474,6 +474,21 @@ async function computeReadinessMetrics(user) {
     // Also account for quiz attempts under Aptitude & Logical
     const correctQuizzes = quizAttemptsList.filter(qa => qa.isCorrect).length;
     topicStats['Aptitude & Logical'].solved += correctQuizzes;
+
+    // Dynamically scale milestones so counts like 16/10 never overflow as broken fractions
+    Object.keys(topicStats).forEach(key => {
+        const item = topicStats[key];
+        if (item.solved >= item.baseTarget) {
+            // Advance to next milestone bracket (10 -> 20 -> 30 or 15 -> 20 -> 25)
+            const step = item.baseTarget >= 10 ? 10 : 5;
+            item.target = Math.max(item.baseTarget, Math.ceil((item.solved + 1) / step) * step);
+            item.isMastered = true;
+        } else {
+            item.target = item.baseTarget;
+            item.isMastered = false;
+        }
+    });
+
 
     // 2. Compute Weighted Readiness Index (0 - 100)
     // Pillar A: Target Company Intensity (40% weight, baseline goal 15 company questions)
@@ -610,11 +625,18 @@ async function computeReadinessMetrics(user) {
             .lean()
         : [];
 
+    const dayNumber = Math.max(1, Math.floor((Date.now() - new Date(user.onboardedAt || user.createdAt || Date.now()).getTime()) / (1000 * 60 * 60 * 24)) + 1);
+
     return {
         targetCompany,
         readinessScore,
         readinessTier,
         readinessColor,
+        dayNumber,
+        hasCompletedOnboarding: user.hasCompletedOnboarding || false,
+        onboardedAt: user.onboardedAt,
+        targetPlacementDate: user.targetPlacementDate,
+        mockTestReports: (user.mockTestReports || []).slice(-10).reverse(),
         stats: {
             totalSolved: solvedDocList.length,
             targetCompanySolved: targetCompanySolvedCount,

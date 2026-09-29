@@ -107,3 +107,6 @@ export function getLanguageIcon(lang, size = 18, className = "") {
             return <PythonIcon size={size} className={className} />;
     }
 }
+
+export { JSIcon as JavaScriptIcon, CPPIcon as CppIcon };
+

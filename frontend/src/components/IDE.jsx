@@ -48,6 +48,7 @@ function IDE({ question, onBack }) {
     const [bookmarkToast, setBookmarkToast] = useState('');
 
     const editorRef = useRef(null);
+    const codeRef = useRef('');
     const langDropdownRef = useRef(null);
     const lastLoadedQuestionIdRef = useRef(null);
     const lastLoadedLangRef = useRef(null);
@@ -264,7 +265,9 @@ function IDE({ question, onBack }) {
         if (lastLoadedQuestionIdRef.current !== qIdentifier || lastLoadedLangRef.current !== language) {
             lastLoadedQuestionIdRef.current = qIdentifier;
             lastLoadedLangRef.current = language;
-            setCode(generateLeetCodeTemplate(language, question));
+            const freshTempl = generateLeetCodeTemplate(language, question);
+            codeRef.current = freshTempl;
+            setCode(freshTempl);
             setSelectedCaseIdx(0);
             setSelectedResultCaseIdx(0);
             setRunResult(null);
@@ -282,6 +285,7 @@ function IDE({ question, onBack }) {
 
     const handleResetCode = () => {
         const freshTemplate = generateLeetCodeTemplate(language, question);
+        codeRef.current = freshTemplate;
         setCode(freshTemplate);
         if (editorRef.current) {
             editorRef.current.setValue(freshTemplate);
@@ -328,7 +332,7 @@ function IDE({ question, onBack }) {
             casesToRun.push({ input: currentInput, output: currentExpected });
         }
 
-        const codeToRun = editorRef.current ? editorRef.current.getValue() : code;
+        const codeToRun = editorRef.current ? editorRef.current.getValue() : (codeRef.current || code);
 
         try {
             const res = await fetch(`${API_BASE_URL}/code/run-all`, {
@@ -370,7 +374,7 @@ function IDE({ question, onBack }) {
         setSubmitting(true);
         setLeftPanelTab('submission'); // Automatically switch left panel to LeetCode submission view
 
-        const codeToSubmit = editorRef.current ? editorRef.current.getValue() : code;
+        const codeToSubmit = editorRef.current ? editorRef.current.getValue() : (codeRef.current || code);
 
         try {
             const headers = { 'Content-Type': 'application/json' };
@@ -962,13 +966,35 @@ function IDE({ question, onBack }) {
                             height="100%"
                             language={language === 'javascript' ? 'javascript' : language}
                             defaultValue={generateLeetCodeTemplate(language, question)}
-                            onChange={(val) => setCode(val || '')}
+                            onChange={(val) => {
+                                codeRef.current = val || '';
+                            }}
                             onMount={(editor) => {
                                 editorRef.current = editor;
+                                try {
+                                    const model = editor.getModel();
+                                    if (model) {
+                                        const lines = model.getLinesContent();
+                                        let targetLine = 1;
+                                        for (let i = 0; i < lines.length; i++) {
+                                            const l = lines[i];
+                                            if (l.includes('pass') || l.includes('TODO') || l.includes('return') || l.includes('//') || l.includes('#')) {
+                                                targetLine = i + 1;
+                                                break;
+                                            }
+                                        }
+                                        if (targetLine === 1 && lines.length > 2) {
+                                            targetLine = Math.min(3, lines.length);
+                                        }
+                                        editor.setPosition({ lineNumber: targetLine, column: 999 });
+                                        editor.focus();
+                                    }
+                                } catch (e) {}
                             }}
                             theme={theme === 'dark' ? 'vs-dark' : 'light'}
                             options={{
                                 fontSize: 14,
+                                fontFamily: "'JetBrains Mono', 'Fira Code', ui-monospace, Menlo, Consolas, monospace",
                                 minimap: { enabled: false },
                                 scrollBeyondLastLine: false,
                                 automaticLayout: true,
@@ -977,8 +1003,12 @@ function IDE({ question, onBack }) {
                                 wordWrap: 'on',
                                 cursorBlinking: 'smooth',
                                 cursorSmoothCaretAnimation: 'on',
+                                cursorSurroundingLines: 3,
+                                autoClosingBrackets: 'always',
+                                autoClosingQuotes: 'always',
+                                fixedOverflowWidgets: true,
                                 smoothScrolling: true,
-                                padding: { top: 12, bottom: 12 }
+                                padding: { top: 12, bottom: 20 }
                             }}
                         />
                     </div>

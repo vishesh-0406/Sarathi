@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import CompanyLogo from './CompanyLogos';
+import CompanyOnboardingModal from './CompanyOnboardingModal';
+import MockAssessmentModal from './MockAssessmentModal';
 import { 
     TargetIcon, 
     TrophyIcon, 
@@ -30,23 +32,56 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
     const [trackerData, setTrackerData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [activeTab, setActiveTab] = useState('solved'); // 'solved' | 'bookmarks'
+    const [activeTab, setActiveTab] = useState('solved'); // 'solved' | 'bookmarks' | 'reports'
     const [companyDropdownOpen, setCompanyDropdownOpen] = useState(false);
     const [updatingCompany, setUpdatingCompany] = useState(false);
     const [dateModalOpen, setDateModalOpen] = useState(false);
     const [customDate, setCustomDate] = useState('');
     const [updatingDate, setUpdatingDate] = useState(false);
     const [hoveredCell, setHoveredCell] = useState(null);
+    const [onboardingModalOpen, setOnboardingModalOpen] = useState(false);
+    const [mockModal, setMockModal] = useState({
+        isOpen: false,
+        company: 'Amazon',
+        roundNumber: 1,
+        roundTitle: '',
+        isComprehensive: false
+    });
+
+    const handleOpenMockTest = (roundNum, rTitle, isComp = false) => {
+        if (!isAuthenticated) {
+            if (onOpenAuth) onOpenAuth('login');
+            return;
+        }
+        setMockModal({
+            isOpen: true,
+            company: trackerData?.targetCompany || user?.targetCompany || 'Amazon',
+            roundNumber: roundNum,
+            roundTitle: rTitle || (isComp ? `Full Comprehensive Simulation` : `Round ${roundNum} Assessment`),
+            isComprehensive: isComp
+        });
+    };
+
+    const handleCloseMockTest = () => {
+        setMockModal(prev => ({ ...prev, isOpen: false }));
+    };
+
+    const handleTestCompleted = (report) => {
+        // Silently update tracker metrics and heatmap in the background without unmounting the modal or showing full-page loader
+        fetchTrackerData(true);
+    };
 
     // Fetch tracker metrics
-    const fetchTrackerData = async () => {
+    const fetchTrackerData = async (isBackground = false) => {
         if (!token) {
             setLoading(false);
             return;
         }
 
         try {
-            setLoading(true);
+            if (!isBackground && !trackerData) {
+                setLoading(true);
+            }
             setError(null);
             const res = await fetch(`${API_BASE_URL}/user/tracker`, {
                 headers: {
@@ -134,7 +169,7 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
                         <SparklesIcon size={32} />
                     </div>
                     <div className="guest-banner-content">
-                        <h2>Personalized AI Placement Readiness & Milestone Tracker</h2>
+                        <h2>Sankalp — Personalized AI Placement Readiness & Milestone Tracker</h2>
                         <p>
                             Sign in to get an accurate 0–100% placement readiness score tailored to your dream company,
                             view round-by-round clearance probability, track your daily solving heatmap, and maintain a consistent prep streak.
@@ -182,21 +217,21 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
         );
     }
 
-    if (loading) {
+    if (loading && !trackerData) {
         return (
             <div className="tracker-container tracker-loading-state">
                 <SpinnerIcon size={36} className="tracker-spin" />
-                <p>Computing AI Placement Readiness Metrics & Heatmap...</p>
+                <p>Computing Sankalp Placement Readiness Metrics & Heatmap...</p>
             </div>
         );
     }
 
-    if (error || !trackerData) {
+    if ((error || !trackerData) && !loading) {
         return (
             <div className="tracker-container">
                 <div className="tracker-error-banner">
                     <p>⚠️ {error || 'Unable to load readiness data'}</p>
-                    <button className="retry-btn" onClick={fetchTrackerData}>Retry</button>
+                    <button className="retry-btn" onClick={() => fetchTrackerData(false)}>Retry</button>
                 </div>
             </div>
         );
@@ -246,6 +281,41 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
 
     return (
         <div className="tracker-container">
+            {/* 0. DAY-BY-DAY ROADMAP CALIBRATION BANNER */}
+            <div className="day-tracker-banner">
+                <div className="day-tracker-left">
+                    <div className="day-number-badge">
+                        <span className="day-prefix">DAY</span>
+                        <span className="day-val">{trackerData?.dayNumber || 1}</span>
+                    </div>
+                    <div className="day-tracker-info">
+                        <div className="day-title-row">
+                            <h3 className="day-banner-title">
+                                {targetCompany} SDE Placement Roadmap
+                            </h3>
+                            <span className="day-status-pill">
+                                Active Calibration
+                            </span>
+                        </div>
+                        <p className="day-banner-sub">
+                            Day {trackerData?.dayNumber || 1} of {(countdown?.daysRemaining || 45) + (trackerData?.dayNumber || 1)} • 
+                            <strong> {countdown?.daysRemaining || 45} Days Remaining</strong> until campus drive • Recommended pace: <strong>{countdown?.dailyTargetPace || 2} problems/day</strong>
+                        </p>
+                    </div>
+                </div>
+                <div className="day-tracker-actions">
+                    <button 
+                        type="button" 
+                        className="recalibrate-btn"
+                        onClick={() => setOnboardingModalOpen(true)}
+                        title="Change target company or reconfigure campus drive timeline"
+                    >
+                        <SparklesIcon size={14} />
+                        <span>Recalibrate Roadmap</span>
+                    </button>
+                </div>
+            </div>
+
             {/* 1. HERO READINESS GAUGE & TARGET ENTERPRISE BANNER */}
             <div className="tracker-hero-card">
                 <div className="tracker-gauge-section">
@@ -575,19 +645,65 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
                                 <span>💡 {rc.roundTip}</span>
                             </div>
 
-                            {/* Action CTA to Roadmap */}
-                            {onSelectRoadmap && (
+                            {/* Action Buttons: Practice in Roadmap & Take Round Mock Test */}
+                            <div className="round-actions-stack">
                                 <button
                                     type="button"
-                                    className="round-practice-cta"
-                                    onClick={() => onSelectRoadmap(targetCompany)}
+                                    className={`round-mock-trigger-btn ${rc.clearanceProbability >= 100 ? 'unlocked-ready' : ''}`}
+                                    onClick={() => handleOpenMockTest(rc.roundNumber, `${rc.name} Mock Assessment`, false)}
                                 >
-                                    <span>Practice Round {rc.roundNumber} in Roadmap</span>
-                                    <ArrowRightIcon size={13} />
+                                    <TargetIcon size={14} />
+                                    <span>
+                                        {rc.clearanceProbability >= 100 
+                                            ? `🎯 Take Round ${rc.roundNumber} Mock Test (100% Ready)` 
+                                            : `Take Round ${rc.roundNumber} Mock Test`}
+                                    </span>
                                 </button>
-                            )}
+
+                                {onSelectRoadmap && (
+                                    <button
+                                        type="button"
+                                        className="round-practice-cta"
+                                        onClick={() => onSelectRoadmap(targetCompany)}
+                                    >
+                                        <span>Practice Round {rc.roundNumber} in Roadmap</span>
+                                        <ArrowRightIcon size={13} />
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     ))}
+                </div>
+            </div>
+
+            {/* 3.5 100% COMPREHENSIVE COMPANY MOCK SIMULATION BANNER */}
+            <div className={`comp-sim-banner ${readinessScore >= 100 ? 'unlocked' : 'standard'}`}>
+                <div className="comp-sim-left">
+                    <div className="comp-sim-badge-wrap">
+                        <TrophyIcon size={26} color={readinessScore >= 100 ? '#fbbf24' : '#a1a1aa'} />
+                    </div>
+                    <div className="comp-sim-info">
+                        <div className="comp-sim-status-row">
+                            <span className={`comp-status-chip ${readinessScore >= 100 ? 'is-ready' : 'is-progress'}`}>
+                                {readinessScore >= 100 ? '🎉 100% READINESS ACHIEVED — MOCK SIMULATION UNLOCKED' : `Readiness Progress: ${readinessScore}% / 100%`}
+                            </span>
+                        </div>
+                        <h4 className="comp-sim-title">Full {targetCompany} Comprehensive Campus Drive Simulation</h4>
+                        <p className="comp-sim-sub">
+                            End-to-end full placement drive simulation replicating all recruitment rounds under authentic timed conditions. 
+                            Generates a complete multi-round diagnostic report card with actionable Weak Zone remediation.
+                        </p>
+                    </div>
+                </div>
+                <div className="comp-sim-right">
+                    <button
+                        type="button"
+                        className={`comp-sim-action-btn ${readinessScore >= 100 ? 'highlight' : ''}`}
+                        onClick={() => handleOpenMockTest(0, `Full ${targetCompany} Comprehensive Campus Drive Simulation`, true)}
+                    >
+                        <span>{readinessScore >= 100 ? 'Take 100% Full Mock Test' : 'Take Diagnostic Simulation'}</span>
+                        <ArrowRightIcon size={14} />
+                    </button>
                 </div>
             </div>
 
@@ -599,12 +715,16 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
                 </div>
                 <div className="mastery-grid">
                     {Object.entries(topicMastery).map(([topicName, info]) => {
-                        const pct = Math.min(100, Math.round((info.solved / info.target) * 100));
+                        const target = Math.max(info.target || 10, info.solved);
+                        const pct = Math.min(100, Math.round((info.solved / target) * 100));
                         return (
                             <div key={topicName} className="mastery-item">
                                 <div className="mastery-item-head">
                                     <span className="topic-name">{topicName}</span>
-                                    <span className="topic-counts">{info.solved} / {info.target} problems</span>
+                                    <span className="topic-counts">
+                                        {info.solved} / {target} problems
+                                        {info.isMastered && <span className="mastery-tier-badge" title="Placement Target Milestone Achieved">★ Tier 2</span>}
+                                    </span>
                                 </div>
                                 <div className="mastery-bar-wrap">
                                     <div
@@ -709,6 +829,14 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
                         >
                             <BookmarkIcon size={15} filled={activeTab === 'bookmarks'} color="#fbbf24" />
                             <span>Bookmarked Revision ({bookmarks.length})</span>
+                        </button>
+                        <button
+                            type="button"
+                            className={`activity-tab ${activeTab === 'reports' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('reports')}
+                        >
+                            <BrainIcon size={15} />
+                            <span>Diagnostic Reports ({(trackerData?.mockTestReports || []).length})</span>
                         </button>
                     </div>
                 </div>
@@ -825,8 +953,92 @@ function Tracker({ onSolveQuestion, onOpenAuth, onSelectRoadmap }) {
                             </div>
                         )
                     )}
+
+                    {activeTab === 'reports' && (
+                        (trackerData?.mockTestReports || []).length === 0 ? (
+                            <div className="empty-activity-state">
+                                <p>No mock test reports yet. Take a Round Mock Test above or launch the Full Simulation to generate your diagnostic assessment!</p>
+                            </div>
+                        ) : (
+                            <div className="reports-cards-grid">
+                                {(trackerData?.mockTestReports || []).map((rep, idx) => (
+                                    <div key={idx} className={`past-report-card ${rep.passed ? 'passed' : 'needs-work'}`}>
+                                        <div className="past-report-head">
+                                            <div>
+                                                <span className={`report-round-tag ${rep.isComprehensive ? 'comp' : 'round'}`}>
+                                                    {rep.isComprehensive ? 'Full Campus Drive Simulation' : `Round ${rep.roundNumber}`}
+                                                </span>
+                                                <h4 className="past-report-title">{rep.roundTitle}</h4>
+                                            </div>
+                                            <div className="past-report-score">
+                                                <span className="score-val">{rep.score}%</span>
+                                                <span className={`score-sub ${rep.passed ? 'pass' : 'fail'}`}>
+                                                    {rep.passed ? 'Passed' : 'Needs Practice'}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="past-report-zones">
+                                            <div className="zone-mini-col">
+                                                <span className="zone-mini-lbl">🟢 Strong:</span>
+                                                <div className="zone-mini-tags">
+                                                    {(rep.strongZones || []).slice(0, 3).map((z, zIdx) => (
+                                                        <span key={zIdx} className="mini-tag strong">{z}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div className="zone-mini-col">
+                                                <span className="zone-mini-lbl">🔴 Weak:</span>
+                                                <div className="zone-mini-tags">
+                                                    {(rep.weakZones || []).slice(0, 3).map((z, zIdx) => (
+                                                        <span key={zIdx} className="mini-tag weak">{z}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="past-report-foot">
+                                            <span className="rep-date">
+                                                {new Date(rep.completedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                                            </span>
+                                            <button
+                                                type="button"
+                                                className="retake-test-btn"
+                                                onClick={() => handleOpenMockTest(rep.roundNumber, rep.roundTitle, rep.isComprehensive)}
+                                            >
+                                                <span>Retake Assessment</span>
+                                                <ArrowRightIcon size={12} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    )}
                 </div>
             </div>
+
+            {/* COMPANY ONBOARDING / RECALIBRATION MODAL */}
+            <CompanyOnboardingModal
+                isOpen={onboardingModalOpen}
+                onClose={() => setOnboardingModalOpen(false)}
+                onComplete={() => {
+                    setOnboardingModalOpen(false);
+                    fetchTrackerData();
+                }}
+            />
+
+            {/* MOCK ASSESSMENT MODAL */}
+            <MockAssessmentModal
+                isOpen={mockModal.isOpen}
+                company={mockModal.company}
+                roundNumber={mockModal.roundNumber}
+                roundTitle={mockModal.roundTitle}
+                isComprehensive={mockModal.isComprehensive}
+                onClose={handleCloseMockTest}
+                onSolveQuestion={onSolveQuestion}
+                onTestCompleted={handleTestCompleted}
+            />
         </div>
     );
 }

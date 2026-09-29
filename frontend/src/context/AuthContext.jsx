@@ -58,6 +58,14 @@ export function AuthProvider({ children }) {
             const data = await res.json();
 
             if (!res.ok) {
+                if (data.requiresVerification) {
+                    return { 
+                        success: false, 
+                        requiresVerification: true, 
+                        email: data.email, 
+                        error: data.message 
+                    };
+                }
                 return { success: false, error: data.message || 'Login failed' };
             }
 
@@ -93,20 +101,138 @@ export function AuthProvider({ children }) {
                 return { success: false, error: data.message || 'Registration failed' };
             }
 
-            localStorage.setItem('sarathi_token', data.token);
-            setToken(data.token);
-            setUser({
-                _id: data._id,
-                name: data.name,
-                email: data.email,
-                targetCompany: data.targetCompany,
-                solvedCount: 0,
-                bookmarksCount: 0
-            });
+            if (data.requiresVerification) {
+                return {
+                    success: false,
+                    requiresVerification: true,
+                    email: data.email,
+                    message: data.message
+                };
+            }
+
+            if (data.token) {
+                localStorage.setItem('sarathi_token', data.token);
+                setToken(data.token);
+                setUser({
+                    _id: data._id,
+                    name: data.name,
+                    email: data.email,
+                    targetCompany: data.targetCompany,
+                    solvedCount: 0,
+                    bookmarksCount: 0
+                });
+            }
 
             return { success: true, user: data };
         } catch (err) {
             return { success: false, error: 'Network error. Please ensure the Sarathi server is running.' };
+        }
+    };
+
+    // Email OTP Verification
+    const verifyEmail = async (email, otp) => {
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/verify-email`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, otp })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                return { success: false, error: data.message || 'Verification failed' };
+            }
+
+            if (data.token) {
+                localStorage.setItem('sarathi_token', data.token);
+                setToken(data.token);
+                setUser({
+                    _id: data._id,
+                    name: data.name,
+                    email: data.email,
+                    targetCompany: data.targetCompany,
+                    solvedCount: data.solvedCount || 0,
+                    bookmarksCount: data.bookmarksCount || 0
+                });
+            }
+
+            return { success: true, user: data };
+        } catch (err) {
+            return { success: false, error: 'Network error during verification.' };
+        }
+    };
+
+    // Resend Verification OTP
+    const resendOtp = async (email) => {
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/resend-otp`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                return { success: false, error: data.message || 'Failed to resend code' };
+            }
+
+            return { success: true, message: data.message };
+        } catch (err) {
+            return { success: false, error: 'Network error while resending code.' };
+        }
+    };
+
+    // Forgot Password - Request 6-digit OTP to real email
+    const forgotPassword = async (email) => {
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                return { success: false, error: data.message || 'Failed to send password reset code' };
+            }
+
+            return { success: true, message: data.message, email: data.email };
+        } catch (err) {
+            return { success: false, error: 'Network error while requesting password reset code.' };
+        }
+    };
+
+    // Reset Password - Verify OTP and update password
+    const resetPassword = async (email, otp, newPassword) => {
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/reset-password`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, otp, newPassword })
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                return { success: false, error: data.message || 'Failed to reset password' };
+            }
+
+            if (data.token) {
+                localStorage.setItem('sarathi_token', data.token);
+                setToken(data.token);
+                setUser({
+                    _id: data.user?._id || data._id,
+                    name: data.user?.name || data.name,
+                    email: data.user?.email || data.email,
+                    targetCompany: data.user?.targetCompany || data.targetCompany || 'Amazon',
+                    solvedCount: 0,
+                    bookmarksCount: 0
+                });
+            }
+
+            return { success: true, message: data.message };
+        } catch (err) {
+            return { success: false, error: 'Network error while resetting password.' };
         }
     };
 
@@ -224,6 +350,39 @@ export function AuthProvider({ children }) {
         }
     };
 
+    // Complete Day 1 Onboarding and configure target company & timeline
+    const completeOnboarding = async (targetCompany, targetPlacementDate) => {
+        if (!token) return { success: false, error: 'Not authenticated' };
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/user/mock-test/onboarding`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ targetCompany, targetPlacementDate })
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                return { success: false, error: data.message || 'Onboarding failed' };
+            }
+
+            setUser(prev => prev ? { 
+                ...prev, 
+                targetCompany: data.user.targetCompany, 
+                hasCompletedOnboarding: true,
+                onboardedAt: data.user.onboardedAt,
+                targetPlacementDate: data.user.targetPlacementDate
+            } : null);
+
+            return { success: true, user: data.user };
+        } catch (err) {
+            return { success: false, error: err.message };
+        }
+    };
+
     return (
         <AuthContext.Provider value={{
             user,
@@ -232,9 +391,14 @@ export function AuthProvider({ children }) {
             loading,
             login,
             register,
+            verifyEmail,
+            resendOtp,
+            forgotPassword,
+            resetPassword,
             logout,
             updateTargetCompany,
             updateTargetPlacementDate,
+            completeOnboarding,
             toggleBookmark,
             recordQuizAttempt,
             refreshUser

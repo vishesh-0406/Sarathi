@@ -22,11 +22,12 @@ function Navbar({ activeView, onNavigate, onOpenAuth }) {
     const { theme, toggleTheme } = useTheme();
     const { user, logout } = useAuth();
     const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const profileDropdownRef = useRef(null);
 
     const navItems = [
         { id: 'home', label: 'Home', icon: HomeIcon },
-        { id: 'tracker', label: 'AI Tracker', icon: TargetIcon },
+        { id: 'tracker', label: 'Sankalp', icon: TargetIcon },
         { id: 'roadmap', label: 'Roadmaps', icon: RoadmapIcon },
         { id: 'companies', label: 'Companies', icon: CompanyIcon },
         { id: 'dsa', label: 'DSA Arena', icon: DSAIcon },
@@ -135,7 +136,7 @@ function Navbar({ activeView, onNavigate, onOpenAuth }) {
                                         role="menuitem"
                                     >
                                         <TargetIcon size={14} />
-                                        <span>AI Readiness Tracker</span>
+                                        <span>Sankalp</span>
                                     </button>
 
                                     <button 
@@ -178,8 +179,46 @@ function Navbar({ activeView, onNavigate, onOpenAuth }) {
                         <span className="pulse-dot"></span>
                         <span>20 Companies • 2,000 Qs</span>
                     </div>
+
+                    {/* Mobile Hamburger Menu Toggle */}
+                    <button 
+                        type="button" 
+                        className={`gov-mobile-hamburger-btn ${mobileMenuOpen ? 'active' : ''}`}
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-label="Toggle navigation drawer"
+                    >
+                        <span className="hamburger-bar"></span>
+                        <span className="hamburger-bar"></span>
+                        <span className="hamburger-bar"></span>
+                    </button>
                 </div>
             </nav>
+
+            {/* Mobile Slide-Out Navigation Drawer */}
+            {mobileMenuOpen && (
+                <div className="gov-mobile-drawer">
+                    <div className="mobile-drawer-links">
+                        {navItems.map(item => {
+                            const isActive = activeView === item.id;
+                            const IconComponent = item.icon;
+                            return (
+                                <button
+                                    key={item.id}
+                                    className={`mobile-drawer-pill ${isActive ? 'active' : ''}`}
+                                    onClick={() => {
+                                        onNavigate(item.id);
+                                        setMobileMenuOpen(false);
+                                    }}
+                                >
+                                    <span className="nav-icon"><IconComponent size={18} /></span>
+                                    <span className="nav-label">{item.label}</span>
+                                    {isActive && <span className="mobile-active-dot">●</span>}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+            )}
         </header>
     );
 }

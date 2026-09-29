@@ -1503,3 +1503,577 @@
     padding: 2px 7px;
     border-radius: 4px;
 }
+
+/* ==========================================================================
+   DAY-BY-DAY ROADMAP PACE BANNER
+   ========================================================================== */
+.day-tracker-banner {
+    background: #111113;
+    border: 1px solid #27272a;
+    border-radius: 16px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.day-tracker-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.day-number-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: #18181b;
+    border: 2px solid #3f3f46;
+    flex-shrink: 0;
+}
+
+.day-prefix {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #a1a1aa;
+    letter-spacing: 0.08em;
+}
+
+.day-val {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.day-tracker-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.day-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.day-banner-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.day-status-pill {
+    font-size: 0.725rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    background: #142a1f;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+}
+
+.day-banner-sub {
+    font-size: 0.875rem;
+    color: #a1a1aa;
+    margin: 0;
+    line-height: 1.45;
+}
+
+.day-banner-sub strong {
+    color: #f4f4f5;
+}
+
+.recalibrate-btn {
+    background: #1c1c20;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+    padding: 0.6rem 1.15rem;
+    border-radius: 10px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.recalibrate-btn:hover {
+    background: #27272a;
+    border-color: #52525b;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   ROUND CARD ACTIONS (PRACTICE + MOCK TEST TRIGGER)
+   ========================================================================== */
+.round-actions-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.round-mock-trigger-btn {
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #f4f4f5;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.18s ease;
+}
+
+.round-mock-trigger-btn:hover {
+    background: #27272a;
+    border-color: #52525b;
+    transform: translateY(-1px);
+}
+
+.round-mock-trigger-btn.unlocked-ready {
+    background: #13271d;
+    border-color: #10b981;
+    color: #34d399;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
+}
+
+.round-mock-trigger-btn.unlocked-ready:hover {
+    background: #183325;
+    border-color: #34d399;
+}
+
+/* ==========================================================================
+   100% COMPREHENSIVE COMPANY MOCK SIMULATION BANNER
+   ========================================================================== */
+.comp-sim-banner {
+    background: #111113;
+    border: 1px solid #27272a;
+    border-radius: 18px;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.comp-sim-banner.unlocked {
+    border-color: rgba(251, 191, 36, 0.4);
+    background: linear-gradient(135deg, #1b1610 0%, #111113 100%);
+    box-shadow: 0 8px 30px rgba(251, 191, 36, 0.08);
+}
+
+.comp-sim-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex: 1;
+}
+
+.comp-sim-badge-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.comp-sim-banner.unlocked .comp-sim-badge-wrap {
+    border-color: #fbbf24;
+    background: #2a2010;
+}
+
+.comp-sim-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.comp-sim-status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comp-status-chip {
+    font-size: 0.725rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    letter-spacing: 0.03em;
+}
+
+.comp-status-chip.is-ready {
+    background: #2d210b;
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.comp-status-chip.is-progress {
+    background: #18181b;
+    color: #a1a1aa;
+    border: 1px solid #27272a;
+}
+
+.comp-sim-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.comp-sim-sub {
+    font-size: 0.85rem;
+    color: #a1a1aa;
+    margin: 0;
+    line-height: 1.45;
+}
+
+.comp-sim-action-btn {
+    background: #ffffff;
+    color: #09090b;
+    border: none;
+    padding: 0.75rem 1.4rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.comp-sim-action-btn:hover {
+    background: #e4e4e7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+}
+
+.comp-sim-action-btn.highlight {
+    background: #fbbf24;
+    color: #09090b;
+    box-shadow: 0 4px 18px rgba(251, 191, 36, 0.3);
+}
+
+.comp-sim-action-btn.highlight:hover {
+    background: #f59e0b;
+}
+
+/* ==========================================================================
+   DIAGNOSTIC REPORTS CARDS GRID (ACTIVITY HUB TAB)
+   ========================================================================== */
+.reports-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+}
+
+.past-report-card {
+    background: #141417;
+    border: 1px solid #27272a;
+    border-radius: 14px;
+    padding: 1.25rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.18s ease;
+}
+
+.past-report-card:hover {
+    border-color: #3f3f46;
+    transform: translateY(-2px);
+}
+
+.past-report-card.passed {
+    border-left: 4px solid #10b981;
+}
+
+.past-report-card.needs-work {
+    border-left: 4px solid #fbbf24;
+}
+
+.past-report-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.report-round-tag {
+    font-size: 0.725rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.35rem;
+}
+
+.report-round-tag.round {
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+}
+
+.report-round-tag.comp {
+    background: #271d12;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: #fbbf24;
+}
+
+.past-report-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.past-report-score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.score-val {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.score-sub {
+    font-size: 0.725rem;
+    font-weight: 600;
+}
+
+.score-sub.pass {
+    color: #34d399;
+}
+
+.score-sub.fail {
+    color: #fbbf24;
+}
+
+.past-report-zones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: #0d0d0f;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+.zone-mini-col {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.zone-mini-lbl {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #a1a1aa;
+    min-width: 65px;
+}
+
+.zone-mini-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.mini-tag {
+    font-size: 0.725rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.mini-tag.strong {
+    background: #13271d;
+    color: #34d399;
+}
+
+.mini-tag.weak {
+    background: #271418;
+    color: #fb7185;
+}
+
+.past-report-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    border-top: 1px solid #1f1f23;
+}
+
+.rep-date {
+    font-size: 0.75rem;
+    color: #71717a;
+}
+
+.retake-test-btn {
+    background: transparent;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+    padding: 0.4rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.15s ease;
+}
+
+.retake-test-btn:hover {
+    background: #27272a;
+    border-color: #52525b;
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .tracker-container {
+        padding: 16px 12px 60px 12px;
+        gap: 20px;
+    }
+
+    .tracker-hero-card {
+        padding: 18px 16px;
+        gap: 18px;
+    }
+
+    .tracker-gauge-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+    }
+
+    .hero-title-row {
+        justify-content: center;
+    }
+
+    .hero-title-row h2 {
+        font-size: 1.25rem;
+    }
+
+    .hero-description {
+        text-align: center;
+        font-size: 0.85rem;
+    }
+
+    .hero-action-pills-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .target-company-switcher,
+    .countdown-display-pill,
+    .pace-display-pill {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding-top: 14px;
+    }
+
+    .stat-pill-card {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .heatmap-card {
+        padding: 18px 16px;
+    }
+
+    .heatmap-scroll-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+    }
+
+    .round-clearance-card {
+        padding: 18px 16px;
+    }
+
+    .round-clearance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reports-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-tabs-header {
+        padding: 8px 12px;
+        overflow-x: auto;
+    }
+
+    .activity-tabs {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+    }
+
+    .day-tracker-banner,
+    .comp-sim-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 16px;
+    }
+
+    .recalibrate-btn,
+    .comp-sim-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-stats-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mastery-tier-badge {
+    display: inline-block;
+    margin-left: 0.45rem;
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+

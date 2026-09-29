@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Companies from './components/Companies';
 import DSA from './components/DSA';
@@ -8,7 +8,9 @@ import Roadmap from './components/Roadmap';
 import IDE from './components/IDE';
 import Tracker from './components/Tracker';
 import AuthModal from './components/AuthModal';
+import CompanyOnboardingModal from './components/CompanyOnboardingModal';
 import { CompanyLogo } from './components/CompanyLogos';
+import { useAuth } from './context/AuthContext';
 
 import { 
     RoadmapIcon, 
@@ -35,11 +37,38 @@ const POPULAR_COMPANIES = [
 ];
 
 function App() {
-    const [activeView, setActiveView] = useState('home'); // 'home' | 'roadmap' | 'companies' | 'dsa' | 'aptitude' | 'interviews'
+    const { user, isAuthenticated } = useAuth();
+    const [activeView, setActiveView] = useState('home'); // 'home' | 'roadmap' | 'companies' | 'dsa' | 'aptitude' | 'interviews' | 'tracker'
     const [activeIdeQuestion, setActiveIdeQuestion] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCompanyForRoadmap, setSelectedCompanyForRoadmap] = useState('Amazon');
     const [authModal, setAuthModal] = useState({ isOpen: false, mode: 'login' });
+    const [onboardingOpen, setOnboardingOpen] = useState(false);
+    const [prevUserId, setPrevUserId] = useState(null);
+
+    // Auto-open AI Tracker on login and trigger Day 1 onboarding if needed
+    useEffect(() => {
+        if (user && user._id !== prevUserId) {
+            setPrevUserId(user._id);
+            setActiveView('tracker');
+            if (user.targetCompany) {
+                setSelectedCompanyForRoadmap(user.targetCompany);
+            }
+            if (!user.hasCompletedOnboarding) {
+                setOnboardingOpen(true);
+            }
+        } else if (!user) {
+            setPrevUserId(null);
+        }
+    }, [user, prevUserId]);
+
+    const handleOnboardingComplete = (updatedUser) => {
+        setOnboardingOpen(false);
+        if (updatedUser?.targetCompany) {
+            setSelectedCompanyForRoadmap(updatedUser.targetCompany);
+        }
+        setActiveView('tracker');
+    };
 
     const handleOpenAuth = (mode = 'login') => {
         setAuthModal({ isOpen: true, mode });
@@ -464,6 +493,13 @@ function App() {
                 isOpen={authModal.isOpen} 
                 initialMode={authModal.mode} 
                 onClose={handleCloseAuth} 
+            />
+
+            {/* Day 1 Onboarding & Company Calibration Modal */}
+            <CompanyOnboardingModal
+                isOpen={onboardingOpen}
+                onClose={() => setOnboardingOpen(false)}
+                onComplete={handleOnboardingComplete}
             />
         </div>
     );

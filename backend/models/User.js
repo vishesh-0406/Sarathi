@@ -30,6 +30,26 @@ const userSchema = new mongoose.Schema({
         default: 'Amazon',
         trim: true
     },
+    isEmailVerified: {
+        type: Boolean,
+        default: false
+    },
+    emailVerificationOtp: {
+        type: String,
+        select: false
+    },
+    otpExpiresAt: {
+        type: Date,
+        select: false
+    },
+    resetPasswordOtp: {
+        type: String,
+        select: false
+    },
+    resetPasswordExpires: {
+        type: Date,
+        select: false
+    },
     targetPlacementDate: {
         type: Date,
         default: () => new Date(Date.now() + 45 * 24 * 60 * 60 * 1000)
@@ -60,6 +80,14 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Question'
     }],
+    hasCompletedOnboarding: {
+        type: Boolean,
+        default: false
+    },
+    onboardedAt: {
+        type: Date,
+        default: Date.now
+    },
     // Aptitude & MCQ Attempts
     quizAttempts: [{
         questionId: {
@@ -70,6 +98,29 @@ const userSchema = new mongoose.Schema({
         selectedOption: String,
         isCorrect: Boolean,
         attemptedAt: {
+            type: Date,
+            default: Date.now
+        }
+    }],
+    // Mock Test Assessments & Diagnostic Reports
+    mockTestReports: [{
+        company: { type: String, required: true },
+        roundNumber: { type: Number, default: 1 },
+        roundTitle: { type: String, default: 'Mock Assessment' },
+        isComprehensive: { type: Boolean, default: false },
+        score: { type: Number, default: 0 },
+        passed: { type: Boolean, default: false },
+        totalQuestions: { type: Number, default: 0 },
+        correctCount: { type: Number, default: 0 },
+        timeSpentSeconds: { type: Number, default: 0 },
+        strongZones: [{ type: String }],
+        weakZones: [{ type: String }],
+        verdict: { type: String, default: 'Moderate' },
+        remediationQuestionIds: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Question'
+        }],
+        completedAt: {
             type: Date,
             default: Date.now
         }

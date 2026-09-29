@@ -131,8 +131,8 @@
 
 .auth-error-banner {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 10px;
     background-color: rgba(239, 68, 68, 0.12);
     border: 1px solid rgba(239, 68, 68, 0.35);
     border-radius: 8px;
@@ -143,8 +143,53 @@
 }
 
 .auth-error-icon {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.auth-error-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.auth-error-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 2px;
+}
+
+.auth-error-action-btn {
+    background-color: #ef4444;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.auth-error-action-btn:hover {
+    background-color: #dc2626;
+}
+
+.auth-error-action-sublink {
+    background: none;
+    border: none;
+    color: #fca5a5;
+    font-size: 0.74rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+}
+
+.auth-error-action-sublink:hover {
+    color: #ffffff;
 }
 
 .auth-form {
@@ -165,6 +210,27 @@
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary, #d4d4d8);
+}
+
+.auth-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-forgot-link {
+    background: none;
+    border: none;
+    color: #38bdf8;
+    font-size: 0.76rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    transition: color 0.15s ease;
+}
+
+.auth-forgot-link:hover {
+    color: #7dd3fc;
 }
 
 .auth-input-wrapper {
@@ -307,3 +373,97 @@
 .auth-switch-link:hover {
     color: #ffffff;
 }
+
+/* OTP Email Verification Additions */
+.auth-verify-head-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    padding: 5px 12px;
+    border-radius: 9999px;
+}
+
+.auth-verify-head-badge.reset-badge {
+    color: #fbbf24;
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
+.auth-info-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.28);
+    color: #34d399;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.auth-inbox-prompt-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #101923;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+}
+
+.inbox-prompt-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+.inbox-prompt-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.inbox-prompt-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.inbox-prompt-desc {
+    font-size: 0.78rem;
+    color: #a1a1aa;
+    line-height: 1.4;
+}
+
+.inbox-prompt-desc strong {
+    color: #f4f4f5;
+    word-break: break-all;
+}
+
+.otp-code-input {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 6px;
+    text-align: center;
+}
+
+.verify-footer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-dot {
+    color: var(--text-muted, #52525b);
+}
+
